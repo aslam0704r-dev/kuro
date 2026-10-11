@@ -1,0 +1,19 @@
+{
+  "name": "kuro-managed-web",
+  "version": "3.6.2",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env.server server/index.mjs",
+    "prepare:assets": "node scripts/prepare-assets.mjs",
+    "validate:dist": "node scripts/check-dist.mjs",
+    "build": "npm run prepare:assets && npm run validate:dist",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.109.0"
+  }
+}

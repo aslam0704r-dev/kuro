@@ -1,0 +1,17 @@
+#kuro-install{box-sizing:border-box;width:min(440px,calc(100vw - 32px));max-height:85vh;overflow:auto;padding:28px;border:1px solid #b5966a70;border-radius:26px;background:#14120f;color:#f3ecdf;font:15px/1.55 system-ui;box-shadow:0 24px 90px #0009}
+#kuro-install::backdrop{background:#0009}
+#kuro-install h2{font-size:30px;line-height:1.1;margin:16px 0}
+#kuro-install p{color:#c4b8a5}
+#kuro-install-help{margin-top:18px;padding:14px;border:1px solid #b5966a40;border-radius:14px;background:#201b13}
+#kuro-install-help h3{font-size:18px;font-weight:600;line-height:1.3;margin:0 0 8px}
+#kuro-install-help p{margin:0;color:#d4c8b4}
+#kuro-install img{width:64px;height:64px;border-radius:16px}
+#kuro-install small{display:block;color:#a69c8e;margin-top:16px}
+#kuro-install .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+#kuro-install button,#kuro-install a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:24px;border:1px solid #8e795a;background:transparent;color:#f3ecdf;font:600 14px system-ui;cursor:pointer;text-decoration:none}
+#kuro-install button.primary{background:#f0b77b;color:#17120b;border-color:#f0b77b}
+#kuro-install :focus-visible{outline:2px solid #f0b77b;outline-offset:4px}
+#kuro-install:not([open]){display:none}
+#kuro-install[data-fallback][open]{display:block;position:fixed;z-index:2147483647;left:50%;top:50%;margin:0;transform:translate(-50%,-50%);animation:none}
+#kuro-install-backdrop{position:fixed;inset:0;z-index:2147483646;background:#0009}
+@media(prefers-reduced-motion:no-preference){#kuro-install[open]{animation:install-enter 220ms ease-out}@keyframes install-enter{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}}
