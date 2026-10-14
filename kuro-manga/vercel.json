@@ -25,12 +25,12 @@
       "destination": "/api/kuro?__route=/api/catalogue/:kuroPath*"
     },
     {
-      "source": "/api/profile/:kuroPath*",
-      "destination": "/api/kuro?__route=/api/profile/:kuroPath*"
-    },
-    {
       "source": "/api/profile",
       "destination": "/api/kuro?__route=/api/profile"
+    },
+    {
+      "source": "/api/profile/:kuroPath*",
+      "destination": "/api/kuro?__route=/api/profile/:kuroPath*"
     },
     {
       "source": "/api/auth/:kuroPath*",
