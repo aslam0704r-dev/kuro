@@ -63,3 +63,18 @@ test('all dynamic function rewrites use a transport-specific capture name', asyn
     }
   }
 });
+
+
+test('exact profile rewrite precedes optional wildcard profile rewrite', async () => {
+  const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  const exact = config.rewrites.findIndex(row => row.source === '/api/profile');
+  const wildcard = config.rewrites.findIndex(row => row.source === '/api/profile/:kuroPath*');
+  assert.ok(exact >= 0 && wildcard >= 0 && exact < wildcard);
+  assert.equal(config.rewrites[exact].destination, '/api/kuro?__route=/api/profile');
+});
+
+test('profile route transport resolves to the exact profile path', () => {
+  const url = resolveRequestUrl(request('/api/kuro?__route=%2Fapi%2Fprofile'));
+  assert.equal(url.pathname, '/api/profile');
+  assert.equal(url.search, '');
+});
