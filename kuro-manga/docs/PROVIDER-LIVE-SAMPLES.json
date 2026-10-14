@@ -1,0 +1,3624 @@
+{
+  "stats": {
+    "requested_names": 1254,
+    "canonical_directory_entries": 1236,
+    "installed_adapters": 116,
+    "reader_adapters": 109,
+    "current_service_pipelines_checked": 101,
+    "current_service_pipelines_passed": 96,
+    "candidate_pipelines_checked": 250,
+    "candidate_pipelines_passed": 102,
+    "homepage_results_by_requested_name": {
+      "reachable": 807,
+      "request-failed": 391,
+      "address-unresolved": 52,
+      "restricted": 1,
+      "parked": 3
+    },
+    "homepage_unique_urls_checked": 1192,
+    "requested_name_connection_states": {
+      "external": 684,
+      "unresolved": 447,
+      "reader": 116,
+      "metadata/catalogue": 7
+    }
+  },
+  "checks": [
+    {
+      "id": "apcomics",
+      "name": "AP Comics",
+      "checkedAt": "2026-10-13T13:55:34.656Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "[GIRIN] Harry Potter"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 13,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1280,
+          "height": 1829,
+          "bytes": 188176
+        }
+      },
+      "series": {
+        "id": "apcomics-L21hbmdhL2dpcmluLWhhcnJ5LXBvdHRlci8",
+        "title": "[GIRIN] Harry Potter"
+      },
+      "chapter": {
+        "id": "apcomics:L21hbmdhL2dpcmluLWhhcnJ5LXBvdHRlci8xLWNoYXB0ZXItMS1hcnRpc3QtdW5rbm93bi8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "apollcomics",
+      "name": "ApollComics",
+      "checkedAt": "2026-10-13T13:55:38.994Z",
+      "checks": {
+        "search": {
+          "count": 3
+        },
+        "details": {
+          "title": "Young Boss"
+        },
+        "chapters": {
+          "count": 112
+        },
+        "pages": {
+          "verified": true,
+          "count": 17,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 1036,
+          "bytes": 119531
+        }
+      },
+      "series": {
+        "id": "apollcomics-L21hbmdhL3lvdW5nLWJvc3Mv",
+        "title": "Young Boss"
+      },
+      "chapter": {
+        "id": "apollcomics:L21hbmdhL3lvdW5nLWJvc3MveW91bmctYm9zcy1jYXBpdHVsby0xMTMtZmluLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "anisascans",
+      "name": "Anisa Scans",
+      "checkedAt": "2026-10-13T13:55:34.656Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Mr. Kim Strikes It Rich with Auto-Hunting"
+        },
+        "chapters": {
+          "count": 25
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 14760,
+          "bytes": 1306110
+        }
+      },
+      "series": {
+        "id": "anisascans-L21hbmdhL21yLWtpbS1zdHJpa2VzLWl0LXJpY2gtd2l0aC1hdXRvLWh1bnRpbmcv",
+        "title": "Mr. Kim Strikes It Rich with Auto-Hunting"
+      },
+      "chapter": {
+        "id": "anisascans:L21hbmdhL21yLWtpbS1zdHJpa2VzLWl0LXJpY2gtd2l0aC1hdXRvLWh1bnRpbmcvY2hhcHRlci0yMy8",
+        "number": 23
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "asterscans",
+      "name": "Aster Scans",
+      "checkedAt": "2026-10-13T13:55:46.808Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Dogs Dream of Swimming"
+        },
+        "chapters": {
+          "count": 13
+        },
+        "pages": {
+          "verified": true,
+          "count": 8,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 13665,
+          "bytes": 1438402
+        }
+      },
+      "series": {
+        "id": "asterscans-L21hbmdhL2RvZ3MtZHJlYW0tb2Ytc3dpbW1pbmcv",
+        "title": "Dogs Dream of Swimming"
+      },
+      "chapter": {
+        "id": "asterscans:L2RvZ3MtZHJlYW0tb2Ytc3dpbW1pbmctY2hhcHRlci0xMy8",
+        "number": 13
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "arbxcomix",
+      "name": "ArbxComix",
+      "checkedAt": "2026-10-13T13:55:48.077Z",
+      "checks": {
+        "search": {
+          "count": 3
+        },
+        "details": {
+          "title": "مورا"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 28,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1354,
+          "height": 1920,
+          "bytes": 193912
+        }
+      },
+      "series": {
+        "id": "arbxcomix-L21hbmdhLyVkOSU4NSVkOSU4OCVkOCViMSVkOCVhNy8",
+        "title": "مورا"
+      },
+      "chapter": {
+        "id": "arbxcomix:L21hbmdhLyVkOSU4NSVkOSU4OCVkOCViMSVkOCVhNy8wMjkyMy8",
+        "number": 2923
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "bymichiscan",
+      "name": "Bymichi Scan",
+      "checkedAt": "2026-10-13T13:55:52.458Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "¡¿Reencarné en un juego otome y solo tengo la ruta del villano secundario?!"
+        },
+        "chapters": {
+          "count": 2
+        },
+        "pages": {
+          "verified": true,
+          "count": 30,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 2000,
+          "height": 2781,
+          "bytes": 322922
+        }
+      },
+      "series": {
+        "id": "bymichiscan-L21hbmdhL3JlZW5jYXJuZS1lbi11bi1qdWVnby1vdG9tZS15LXNvbG8tdGVuZ28tbGEtcnV0YS1kZWwtdmlsbGFuby1zZWN1bmRhcmlvLw",
+        "title": "¡¿Reencarné en un juego otome y solo tengo la ruta del villano secundario?!"
+      },
+      "chapter": {
+        "id": "bymichiscan:L3JlZW5jYXJuZS1lbi11bi1qdWVnby1vdG9tZS15LXNvbG8tdGVuZ28tbGEtcnV0YS1kZWwtdmlsbGFuby1zZWN1bmRhcmlvLXBhcnRlLTIv",
+        "number": 2
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "borutoexplorer",
+      "name": "Boruto Explorer",
+      "checkedAt": "2026-10-13T13:55:51.308Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Tartarugas Ninjas x Naruto"
+        },
+        "chapters": {
+          "count": 4
+        },
+        "pages": {
+          "verified": true,
+          "count": 22,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/png",
+          "width": 2000,
+          "height": 1414,
+          "bytes": 2070873
+        }
+      },
+      "series": {
+        "id": "borutoexplorer-L21hbmdhL3RhcnRhcnVnYXMtbmluamFzLXgtbmFydXRvLw",
+        "title": "Tartarugas Ninjas x Naruto"
+      },
+      "chapter": {
+        "id": "borutoexplorer:L21hbmdhL3RhcnRhcnVnYXMtbmluamFzLXgtbmFydXRvL3ZvbHVtZXMvdm9sdW1lLTQv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "arenascan",
+      "name": "Arena Scan",
+      "checkedAt": "2026-10-13T13:55:46.369Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "??? Rank no Ura Soubi Musou"
+        },
+        "chapters": {
+          "count": 94
+        },
+        "pages": {
+          "verified": true,
+          "count": 30,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 6499,
+          "bytes": 276012
+        }
+      },
+      "series": {
+        "id": "arenascan-L21hbmdhL3Jhbmstbm8tdXJhLXNvdWJpLW11c291Lw",
+        "title": "??? Rank no Ura Soubi Musou"
+      },
+      "chapter": {
+        "id": "arenascan:L3Jhbmstbm8tdXJhLXNvdWJpLW11c291LWNoYXB0ZXItOTQv",
+        "number": 94
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "cucumbermanga",
+      "name": "Cucumber Manga",
+      "checkedAt": "2026-10-13T13:55:58.271Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Wedding Blues [UNCENSORED]"
+        },
+        "chapters": {
+          "count": 5
+        },
+        "pages": {
+          "verified": true,
+          "count": 82,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1280,
+          "height": 2400,
+          "bytes": 110540
+        }
+      },
+      "series": {
+        "id": "cucumbermanga-L21hbmdhL3dlZGRpbmctYmx1ZXMtdW5jZW5zb3JlZC8",
+        "title": "Wedding Blues [UNCENSORED]"
+      },
+      "chapter": {
+        "id": "cucumbermanga:L21hbmdhL3dlZGRpbmctYmx1ZXMtdW5jZW5zb3JlZC9jaGFwdGVyLTUtdW5jZW5zb3JlZC10aGUtZW5kLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "euphoriascan",
+      "name": "Euphoria Scan",
+      "checkedAt": "2026-10-13T13:56:03.656Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Lights, Camera, Action!"
+        },
+        "chapters": {
+          "count": 17
+        },
+        "pages": {
+          "verified": true,
+          "count": 6,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 25479,
+          "bytes": 2468168
+        }
+      },
+      "series": {
+        "id": "euphoriascan-L21hbmdhL2xpZ2h0cy1jYW1lcmEtYWN0aW9uLw",
+        "title": "Lights, Camera, Action!"
+      },
+      "chapter": {
+        "id": "euphoriascan:L21hbmdhL2xpZ2h0cy1jYW1lcmEtYWN0aW9uL3NpZGUtMDctZmltLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "cafecomyaoi",
+      "name": "Café com Yaoi",
+      "checkedAt": "2026-10-13T13:56:02.940Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Meninos também podem ficar fofos vestidos de Maid?"
+        },
+        "chapters": {
+          "count": 4
+        },
+        "pages": {
+          "verified": true,
+          "count": 49,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1311,
+          "height": 899,
+          "bytes": 165956
+        }
+      },
+      "series": {
+        "id": "cafecomyaoi-L21hbmdhL21lbmlub3MtdGFtYmVtLXBvZGVtLWZpY2FyLWZvZm9zLXZlc3RpZG9zLWRlLW1haWQv",
+        "title": "Meninos também podem ficar fofos vestidos de Maid?"
+      },
+      "chapter": {
+        "id": "cafecomyaoi:L21hbmdhL21lbmlub3MtdGFtYmVtLXBvZGVtLWZpY2FyLWZvZm9zLXZlc3RpZG9zLWRlLW1haWQvY2FwaXR1bG8tMDQv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "gedecomix",
+      "name": "GEDE Comix",
+      "checkedAt": "2026-10-13T13:56:06.723Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Mom Shen Lin – [Wuming]"
+        },
+        "chapters": {
+          "count": 19
+        },
+        "pages": {
+          "verified": true,
+          "count": 125,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1885,
+          "height": 2667,
+          "bytes": 209516
+        }
+      },
+      "series": {
+        "id": "gedecomix-L3Bvcm5jb21pYy9tb20tc2hlbi1saW4td3VtaW5nLw",
+        "title": "Mom Shen Lin – [Wuming]"
+      },
+      "chapter": {
+        "id": "gedecomix:L3Bvcm5jb21pYy9tb20tc2hlbi1saW4td3VtaW5nLzE5LW1vbS1zaGVuLWxpbi1jaGFwdGVyLTE5LXd1bWluZy8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "gakamangas",
+      "name": "GakaMangas",
+      "checkedAt": "2026-10-13T13:56:07.626Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Shonen Omniverse"
+        },
+        "chapters": {
+          "count": 6
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1080,
+          "height": 1400,
+          "bytes": 317702
+        }
+      },
+      "series": {
+        "id": "gakamangas-L21hbmdhL3Nob25lbi1vbW5pdmVyc2Uv",
+        "title": "Shonen Omniverse"
+      },
+      "chapter": {
+        "id": "gakamangas:L21hbmdhL3Nob25lbi1vbW5pdmVyc2UvZXBpc29kZS02Lw",
+        "number": 6
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "galaxydegenscans",
+      "name": "GalaxyDegenScans",
+      "checkedAt": "2026-10-13T13:56:12.463Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "The World’s Strongest Assassin lives a quiet life as a priest of a rural church"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 16,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1228,
+          "height": 800,
+          "bytes": 101798
+        }
+      },
+      "series": {
+        "id": "galaxydegenscans-L21hbmdhL2Fzc2Fzc2luLXByaWVzdC8",
+        "title": "The World’s Strongest Assassin lives a quiet life as a priest of a rural church"
+      },
+      "chapter": {
+        "id": "galaxydegenscans:L21hbmdhL2Fzc2Fzc2luLXByaWVzdC92b2x1bWUtMS9jaC0wLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "isekaikomik",
+      "name": "IsekaiKomik",
+      "checkedAt": "2026-10-13T13:56:13.451Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "+99 Reinforced Wooden Stick"
+        },
+        "chapters": {
+          "count": 98
+        },
+        "pages": {
+          "verified": true,
+          "count": 162,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 800,
+          "height": 3965,
+          "bytes": 231945
+        }
+      },
+      "series": {
+        "id": "isekaikomik-L21hbmdhLzk5LXJlaW5mb3JjZWQtd29vZGVuLXN0aWNrLw",
+        "title": "+99 Reinforced Wooden Stick"
+      },
+      "chapter": {
+        "id": "isekaikomik:Lzk5LXJlaW5mb3JjZWQtd29vZGVuLXN0aWNrLWNoYXB0ZXItOTgv",
+        "number": 98
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "kanzenin",
+      "name": "Kanzenin",
+      "checkedAt": "2026-10-13T13:56:16.602Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "10 kara Hajimeru Eisai Kyouiku"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 41,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1810,
+          "height": 1018,
+          "bytes": 403193
+        }
+      },
+      "series": {
+        "id": "kanzenin-L21hbmdhLzEwLWthcmEtaGFqaW1lcnUtZWlzYWkta3lvdWlrdS8",
+        "title": "10 kara Hajimeru Eisai Kyouiku"
+      },
+      "chapter": {
+        "id": "kanzenin:LzEwLWthcmEtaGFqaW1lcnUtZWlzYWkta3lvdWlrdS1jaGFwdGVyLTEv",
+        "number": 1
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "houseofotakus",
+      "name": "House Of Otakus",
+      "checkedAt": "2026-10-13T13:56:15.124Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "El Rey Demonio Resucítado"
+        },
+        "chapters": {
+          "count": 11
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 8470,
+          "bytes": 1353864
+        }
+      },
+      "series": {
+        "id": "houseofotakus-L21hbmdhL2VsLXJleS1kZW1vbmlvLXJlc3VjaXRhZG8v",
+        "title": "El Rey Demonio Resucítado"
+      },
+      "chapter": {
+        "id": "houseofotakus:L21hbmdhL2VsLXJleS1kZW1vbmlvLXJlc3VjaXRhZG8vY2FwaXR1bG8tMTEv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "kingofshojo",
+      "name": "King of Shojo",
+      "checkedAt": "2026-10-13T13:56:22.422Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "??? Rank no Ura Soubi Musou"
+        },
+        "chapters": {
+          "count": 94
+        },
+        "pages": {
+          "verified": true,
+          "count": 30,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 6499,
+          "bytes": 276012
+        }
+      },
+      "series": {
+        "id": "kingofshojo-L21hbmdhL3Jhbmstbm8tdXJhLXNvdWJpLW11c291Lw",
+        "title": "??? Rank no Ura Soubi Musou"
+      },
+      "chapter": {
+        "id": "kingofshojo:L3Jhbmstbm8tdXJhLXNvdWJpLW11c291LWNoYXB0ZXItOTQv",
+        "number": 94
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "izanamiscans",
+      "name": "Izanami Scans",
+      "checkedAt": "2026-10-13T13:56:15.181Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "20,000 Years of Physical Cultivation"
+        },
+        "chapters": {
+          "count": 17
+        },
+        "pages": {
+          "verified": true,
+          "count": 31,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 850,
+          "height": 4234,
+          "bytes": 364989
+        }
+      },
+      "series": {
+        "id": "izanamiscans-L21hbmdhLzIwMDAwLXllYXJzLW9mLXBoeXNpY2FsLWN1bHRpdmF0aW9uLw",
+        "title": "20,000 Years of Physical Cultivation"
+      },
+      "chapter": {
+        "id": "izanamiscans:LzIwMDAwLXllYXJzLW9mLXBoeXNpY2FsLWN1bHRpdmF0aW9uLWNoYXB0ZXItMTcv",
+        "number": 17
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "kazokuden",
+      "name": "Kazoku Den",
+      "checkedAt": "2026-10-13T13:56:25.265Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Tsuzura Senpai Wa Moto Kano Dakara"
+        },
+        "chapters": {
+          "count": 3
+        },
+        "pages": {
+          "verified": true,
+          "count": 19,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 3041,
+          "height": 1011,
+          "bytes": 223692
+        }
+      },
+      "series": {
+        "id": "kazokuden-L21hbmdhL3RzdXp1cmEtc2VucGFpLXdhLW1vdG8ta2Fuby1kYWthcmEv",
+        "title": "Tsuzura Senpai Wa Moto Kano Dakara"
+      },
+      "chapter": {
+        "id": "kazokuden:L21hbmdhL3RzdXp1cmEtc2VucGFpLXdhLW1vdG8ta2Fuby1kYWthcmEvY2FwaXR1bG8tMy0wMC8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "kmansin09",
+      "name": "Kmansin09",
+      "checkedAt": "2026-10-13T13:56:29.109Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "呪術廻戦≡"
+        },
+        "chapters": {
+          "count": 25
+        },
+        "pages": {
+          "verified": true,
+          "count": 22,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1403,
+          "height": 2048,
+          "bytes": 301558
+        }
+      },
+      "series": {
+        "id": "kmansin09-L21hbmdhL3pob3Utc2h1LWh1aS16aGFuLTIv",
+        "title": "呪術廻戦≡"
+      },
+      "chapter": {
+        "id": "kmansin09:L21hbmdhL3pob3Utc2h1LWh1aS16aGFuLTIvZGkyNWh1YS8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "koreliscans",
+      "name": "Koreli Scans",
+      "checkedAt": "2026-10-13T13:56:28.313Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Akademinin Başrol Oyuncusu"
+        },
+        "chapters": {
+          "count": 140
+        },
+        "pages": {
+          "verified": true,
+          "count": 18,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 760,
+          "height": 16382,
+          "bytes": 854684
+        }
+      },
+      "series": {
+        "id": "koreliscans-L21hbmdhL2FrYWRlbWluaW4tYmFzcm9sLW95dW5jdXN1Lw",
+        "title": "Akademinin Başrol Oyuncusu"
+      },
+      "chapter": {
+        "id": "koreliscans:L2FrYWRlbWluaW4tYmFzcm9sLW95dW5jdXN1LWJvbHVtLTE0MC8",
+        "number": 140
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "lagoonscans",
+      "name": "Lagoon Scans",
+      "checkedAt": "2026-10-13T13:56:32.617Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "30 Years Since the Prologue"
+        },
+        "chapters": {
+          "count": 20
+        },
+        "pages": {
+          "verified": true,
+          "count": 18,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 11820,
+          "bytes": 324006
+        }
+      },
+      "series": {
+        "id": "lagoonscans-L21hbmdhLzMwLXllYXJzLXNpbmNlLXRoZS1wcm9sb2d1ZS8",
+        "title": "30 Years Since the Prologue"
+      },
+      "chapter": {
+        "id": "lagoonscans:LzMwLXllYXJzLXNpbmNlLXRoZS1wcm9sb2d1ZS1jaGFwdGVyLTIwLw",
+        "number": 20
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "madarascans",
+      "name": "Madara Scans",
+      "checkedAt": "2026-10-13T13:56:35.209Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "0th correctional officer"
+        },
+        "chapters": {
+          "count": 38
+        },
+        "pages": {
+          "verified": true,
+          "count": 10,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 760,
+          "height": 15626,
+          "bytes": 603164
+        }
+      },
+      "series": {
+        "id": "madarascans-L3Nlcmllcy8wdGgtY29ycmVjdGlvbmFsLW9mZmljZXIv",
+        "title": "0th correctional officer"
+      },
+      "chapter": {
+        "id": "madarascans:LzB0aC1jb3JyZWN0aW9uYWwtb2ZmaWNlci1jaGFwdGVyLTM4Lw",
+        "number": 38
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "lilymanga",
+      "name": "Lily Manga",
+      "checkedAt": "2026-10-13T13:56:43.520Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Yuri Yuri Panic: A Case of Extreme Cuteness Has Occurred!"
+        },
+        "chapters": {
+          "count": 15
+        },
+        "pages": {
+          "verified": true,
+          "count": 15,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 844,
+          "height": 1200,
+          "bytes": 214118
+        }
+      },
+      "series": {
+        "id": "lilymanga-L2dsL3l1cmkteXVyaS1wYW5pYy1hLWNhc2Utb2YtZXh0cmVtZS1jdXRlbmVzcy1oYXMtb2NjdXJyZWQv",
+        "title": "Yuri Yuri Panic: A Case of Extreme Cuteness Has Occurred!"
+      },
+      "chapter": {
+        "id": "lilymanga:L2dsL3l1cmkteXVyaS1wYW5pYy1hLWNhc2Utb2YtZXh0cmVtZS1jdXRlbmVzcy1oYXMtb2NjdXJyZWQvY2hhcHRlci0xNS8",
+        "number": 15
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "lelmanga",
+      "name": "Lelmanga",
+      "checkedAt": "2026-10-13T13:56:38.221Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "99 Wooden Stick"
+        },
+        "chapters": {
+          "count": 192
+        },
+        "pages": {
+          "verified": true,
+          "count": 312,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 1280,
+          "bytes": 44888
+        }
+      },
+      "series": {
+        "id": "lelmanga-L21hbmdhLzk5LXdvb2Rlbi1zdGljaw",
+        "title": "99 Wooden Stick"
+      },
+      "chapter": {
+        "id": "lelmanga:Lzk5LXdvb2Rlbi1zdGljay0xOTI",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "lhtranslation",
+      "name": "LHTranslation",
+      "checkedAt": "2026-10-13T13:56:52.618Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Sayounara Ryuusei, Konnichiwa Jinsei"
+        },
+        "chapters": {
+          "count": 7
+        },
+        "pages": {
+          "verified": true,
+          "count": 39,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1300,
+          "height": 1300,
+          "bytes": 1099419
+        }
+      },
+      "series": {
+        "id": "lhtranslation-L21hbmdhL3NheW91bmFyYS1yeXV1c2VpLWtvbm5pY2hpd2Etamluc2VpLw",
+        "title": "Sayounara Ryuusei, Konnichiwa Jinsei"
+      },
+      "chapter": {
+        "id": "lhtranslation:L21hbmdhL3NheW91bmFyYS1yeXV1c2VpLWtvbm5pY2hpd2Etamluc2VpL2NoYXB0ZXItOTYv",
+        "number": 96
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangatrend",
+      "name": "Manga Trend",
+      "checkedAt": "2026-10-13T13:56:55.013Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Berserk Manga"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 23,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 832,
+          "height": 1232,
+          "bytes": 837796
+        }
+      },
+      "series": {
+        "id": "mangatrend-L21hbmdhL2JlcnNlcmstbWFuZ2Ev",
+        "title": "Berserk Manga"
+      },
+      "chapter": {
+        "id": "mangatrend:L2JlcnNlcmstbWFuZ2EtY2hhcHRlci0zODYtcmF3Lw",
+        "number": 386
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangadistrict",
+      "name": "Manga District",
+      "checkedAt": "2026-10-13T13:56:57.532Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "The Uniform Freak"
+        },
+        "chapters": {
+          "count": 8
+        },
+        "pages": {
+          "verified": true,
+          "count": 12,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1440,
+          "height": 10000,
+          "bytes": 2074958
+        }
+      },
+      "series": {
+        "id": "mangadistrict-L3Nlcmllcy90aGUtdW5pZm9ybS1mcmVhay8",
+        "title": "The Uniform Freak"
+      },
+      "chapter": {
+        "id": "mangadistrict:L3Nlcmllcy90aGUtdW5pZm9ybS1mcmVhay9jaGFwdGVyLTgv",
+        "number": 8
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangacrazy",
+      "name": "MangaCrazy",
+      "checkedAt": "2026-10-13T13:56:55.504Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "How the Girl with No Self-Esteem Became the Class Otaku’s Plaything (Uncensored)"
+        },
+        "chapters": {
+          "count": 15
+        },
+        "pages": {
+          "verified": true,
+          "count": 25,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 3000,
+          "height": 1500,
+          "bytes": 752572
+        }
+      },
+      "series": {
+        "id": "mangacrazy-L21hbmdhL2hvdy10aGUtZ2lybC13aXRoLW5vLXNlbGYtZXN0ZWVtLWJlY2FtZS10aGUtY2xhc3Mtb3Rha3VzLXBsYXl0aGluZy11bmNlbnNvcmVkLw",
+        "title": "How the Girl with No Self-Esteem Became the Class Otaku’s Plaything (Uncensored)"
+      },
+      "chapter": {
+        "id": "mangacrazy:L21hbmdhL2hvdy10aGUtZ2lybC13aXRoLW5vLXNlbGYtZXN0ZWVtLWJlY2FtZS10aGUtY2xhc3Mtb3Rha3VzLXBsYXl0aGluZy11bmNlbnNvcmVkL2NoYXB0ZXItMTUv",
+        "number": 15
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangalivreto",
+      "name": "Manga Livre.to",
+      "checkedAt": "2026-10-13T13:56:58.449Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Madrasta vem primeiro (Sem Censura)"
+        },
+        "chapters": {
+          "count": 10
+        },
+        "pages": {
+          "verified": true,
+          "count": 7,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1400,
+          "height": 14500,
+          "bytes": 1429242
+        }
+      },
+      "series": {
+        "id": "mangalivreto-L21hbmdhL21hZHJhc3RhLXZlbS1wcmltZWlyby1zZW0tY2Vuc3VyYS8",
+        "title": "Madrasta vem primeiro (Sem Censura)"
+      },
+      "chapter": {
+        "id": "mangalivreto:L21hbmdhL21hZHJhc3RhLXZlbS1wcmltZWlyby1zZW0tY2Vuc3VyYS9jYXBpdHVsby0xMC8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangaeclipse",
+      "name": "Manga Eclipse",
+      "checkedAt": "2026-10-13T13:56:58.750Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Peculiar Tales of Swords and Blades"
+        },
+        "chapters": {
+          "count": 14
+        },
+        "pages": {
+          "verified": true,
+          "count": 30,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 800,
+          "height": 1203,
+          "bytes": 208793
+        }
+      },
+      "series": {
+        "id": "mangaeclipse-L21hbmdhL3BlY3VsaWFyLXRhbGVzLW9mLXN3b3Jkcy1hbmQtYmxhZGVzLw",
+        "title": "Peculiar Tales of Swords and Blades"
+      },
+      "chapter": {
+        "id": "mangaeclipse:L21hbmdhL3BlY3VsaWFyLXRhbGVzLW9mLXN3b3Jkcy1hbmQtYmxhZGVzL2NoYXB0ZXItMTQv",
+        "number": 14
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangayy",
+      "name": "MangaYY",
+      "checkedAt": "2026-10-13T13:57:06.146Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "A Huge Gal and a Tiny Gal Are Hanging Out at My New Place After My Heartbreak"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 38,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1200,
+          "height": 440,
+          "bytes": 287737
+        }
+      },
+      "series": {
+        "id": "mangayy-L21hbmdhL2EtaHVnZS1nYWwtYW5kLWEtdGlueS1nYWwtYXJlLWhhbmdpbmctb3V0LWF0LW15LW5ldy1wbGFjZS1hZnRlci1teS1oZWFydGJyZWFrLw",
+        "title": "A Huge Gal and a Tiny Gal Are Hanging Out at My New Place After My Heartbreak"
+      },
+      "chapter": {
+        "id": "mangayy:L21hbmdhL2EtaHVnZS1nYWwtYW5kLWEtdGlueS1nYWwtYXJlLWhhbmdpbmctb3V0LWF0LW15LW5ldy1wbGFjZS1hZnRlci1teS1oZWFydGJyZWFrL2NoYXB0ZXItMS8",
+        "number": 1
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangawow",
+      "name": "MangaWOW",
+      "checkedAt": "2026-10-13T13:57:05.037Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "The Villain’s Daughter Plans to Run Away"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 56,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 613,
+          "height": 2520,
+          "bytes": 984163
+        }
+      },
+      "series": {
+        "id": "mangawow-L21hbmdhL3RoZS12aWxsYWlucy1kYXVnaHRlci1wbGFucy10by1ydW4tYXdheS8",
+        "title": "The Villain’s Daughter Plans to Run Away"
+      },
+      "chapter": {
+        "id": "mangawow:L21hbmdhL3RoZS12aWxsYWlucy1kYXVnaHRlci1wbGFucy10by1ydW4tYXdheS9ib2x1bS0xLw",
+        "number": 1
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhuatop",
+      "name": "ManhuaTop",
+      "checkedAt": "2026-10-13T13:57:06.856Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Return of the Reaper: Assassin"
+        },
+        "chapters": {
+          "count": 30
+        },
+        "pages": {
+          "verified": true,
+          "count": 16,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 143450
+        }
+      },
+      "series": {
+        "id": "manhuatop-L21hbmh1YS9yZXR1cm4tb2YtdGhlLXJlYXBlci1hc3Nhc3Npbi8",
+        "title": "Return of the Reaper: Assassin"
+      },
+      "chapter": {
+        "id": "manhuatop:L21hbmh1YS9yZXR1cm4tb2YtdGhlLXJlYXBlci1hc3Nhc3Npbi9jaGFwdGVyLTMwLw",
+        "number": 30
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhuaplus",
+      "name": "ManhuaPlus",
+      "checkedAt": "2026-10-13T13:57:10.240Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Myriad Realms Gatekeeper"
+        },
+        "chapters": {
+          "count": 72
+        },
+        "pages": {
+          "verified": true,
+          "count": 7,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1500,
+          "height": 2482,
+          "bytes": 470328
+        }
+      },
+      "series": {
+        "id": "manhuaplus-L21hbmdhL215cmlhZC1yZWFsbXMtZ2F0ZWtlZXBlci8",
+        "title": "Myriad Realms Gatekeeper"
+      },
+      "chapter": {
+        "id": "manhuaplus:L21hbmdhL215cmlhZC1yZWFsbXMtZ2F0ZWtlZXBlci9jaGFwdGVyLTIwMi8",
+        "number": 202
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhuanext",
+      "name": "Manhuanext",
+      "checkedAt": "2026-10-13T13:57:10.592Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Global Beast Taming: Awakening an SSS-level Talent at the Start"
+        },
+        "chapters": {
+          "count": 3
+        },
+        "pages": {
+          "verified": true,
+          "count": 20,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 412,
+          "height": 1280,
+          "bytes": 43720
+        }
+      },
+      "series": {
+        "id": "manhuanext-L21hbmdhL2dsb2JhbC1iZWFzdC10YW1pbmctYXdha2VuaW5nLWFuLXNzcy1sZXZlbC10YWxlbnQtYXQtdGhlLXN0YXJ0Lw",
+        "title": "Global Beast Taming: Awakening an SSS-level Talent at the Start"
+      },
+      "chapter": {
+        "id": "manhuanext:L21hbmdhL2dsb2JhbC1iZWFzdC10YW1pbmctYXdha2VuaW5nLWFuLXNzcy1sZXZlbC10YWxlbnQtYXQtdGhlLXN0YXJ0L2NoYXB0ZXItMDMv",
+        "number": 3
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhwahubto",
+      "name": "ManhwaHub.to",
+      "checkedAt": "2026-10-13T13:57:13.688Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Rookie Employee Kim Cheolsu"
+        },
+        "chapters": {
+          "count": 160
+        },
+        "pages": {
+          "verified": true,
+          "count": 21,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 790,
+          "height": 10665,
+          "bytes": 442726
+        }
+      },
+      "series": {
+        "id": "manhwahubto-L21hbmh3YS9yb29raWUtZW1wbG95ZWUta2ltLWNoZW9sc3Uv",
+        "title": "Rookie Employee Kim Cheolsu"
+      },
+      "chapter": {
+        "id": "manhwahubto:L21hbmh3YS9yb29raWUtZW1wbG95ZWUta2ltLWNoZW9sc3UvY2hhcHRlci0xNjEv",
+        "number": 161
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mangaowliounoriginal",
+      "name": "MangaOwl.io (unoriginal)",
+      "checkedAt": "2026-10-13T13:57:02.151Z",
+      "checks": {
+        "search": {
+          "count": 2
+        },
+        "details": {
+          "title": "The strongest player"
+        },
+        "chapters": {
+          "count": 213
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 720,
+          "height": 11939,
+          "bytes": 855038
+        }
+      },
+      "series": {
+        "id": "mangaowliounoriginal-L3JlYWQtMS90aGUtc3Ryb25nZXN0LXBsYXllci8",
+        "title": "The strongest player"
+      },
+      "chapter": {
+        "id": "mangaowliounoriginal:L3JlYWQtMS90aGUtc3Ryb25nZXN0LXBsYXllci9mbG93ZXJzLWFyZS1iYWl0LWNoYXB0ZXItNTYv",
+        "number": 56
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhwadesu",
+      "name": "ManhwaDesu",
+      "checkedAt": "2026-10-13T13:57:10.622Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "`Sensei ni zenbu dashi nasai…’ muchimuchi hitodzuma kyōshi ni yowami o nigira re shiboritora reru kyokon shi ○ ta"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 37,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1440,
+          "height": 2099,
+          "bytes": 281717
+        }
+      },
+      "series": {
+        "id": "manhwadesu-L2tvbWlrL3NlbnNlaS1uaS16ZW5idS1kYXNoaS1uYXNhaS1tdWNoaW11Y2hpLWhpdG9kenVtYS1reW9zaGktbmkteW93YW1pLW8tbmlnaXJhLXJlLXNoaWJvcml0b3JhLXJlcnUta3lva29uLXNoaS10YS8",
+        "title": "`Sensei ni zenbu dashi nasai…’ muchimuchi hitodzuma kyōshi ni yowami o nigira re shiboritora reru kyokon shi ○ ta"
+      },
+      "chapter": {
+        "id": "manhwadesu:L3NlbnNlaS1uaS16ZW5idS1kYXNoaS1uYXNhaS1tdWNoaW11Y2hpLWhpdG9kenVtYS1reW9zaGktbmkteW93YW1pLW8tbmlnaXJhLXJlLXNoaWJvcml0b3JhLXJlcnUta3lva29uLXNoaS10YS1jaGFwdGVyLTEv",
+        "number": 1
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhwanex",
+      "name": "ManhwaNex",
+      "checkedAt": "2026-10-13T13:57:18.530Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Global Class Change: I Am the Invincible Shadow Monarch"
+        },
+        "chapters": {
+          "count": 2
+        },
+        "pages": {
+          "verified": true,
+          "count": 84,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1720,
+          "height": 5706,
+          "bytes": 207228
+        }
+      },
+      "series": {
+        "id": "manhwanex-L21hbmdhL2dsb2JhbC1jbGFzcy1jaGFuZ2UtaS1hbS10aGUtaW52aW5jaWJsZS1zaGFkb3ctbW9uYXJjaC8",
+        "title": "Global Class Change: I Am the Invincible Shadow Monarch"
+      },
+      "chapter": {
+        "id": "manhwanex:L21hbmdhL2dsb2JhbC1jbGFzcy1jaGFuZ2UtaS1hbS10aGUtaW52aW5jaWJsZS1zaGFkb3ctbW9uYXJjaC9jaGFwdGVyLTIv",
+        "number": 2
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "manhwatop",
+      "name": "Manhwatop",
+      "checkedAt": "2026-10-13T13:57:21.655Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Even the Almighty Is a First-Time Dad"
+        },
+        "chapters": {
+          "count": 45
+        },
+        "pages": {
+          "verified": true,
+          "count": 23,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 6502,
+          "bytes": 299280
+        }
+      },
+      "series": {
+        "id": "manhwatop-L21hbmdhL2V2ZW4tdGhlLWFsbWlnaHR5LWlzLWEtZmlyc3QtdGltZS1kYWQv",
+        "title": "Even the Almighty Is a First-Time Dad"
+      },
+      "chapter": {
+        "id": "manhwatop:L21hbmdhL2V2ZW4tdGhlLWFsbWlnaHR5LWlzLWEtZmlyc3QtdGltZS1kYWQvY2hhcHRlci00NS8",
+        "number": 45
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "mhscans",
+      "name": "MHScans",
+      "checkedAt": "2026-10-13T13:57:25.174Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "¡Me hice invencible en el mundo real gracias al poder que obtuve en el apocalipsis!"
+        },
+        "chapters": {
+          "count": 3
+        },
+        "pages": {
+          "verified": true,
+          "count": 8,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 864,
+          "height": 10385,
+          "bytes": 1554444
+        }
+      },
+      "series": {
+        "id": "mhscans-L3Nlcmllcy9tZS1oaWNlLWludmVuY2libGUtZW4tZWwtbXVuZG8tcmVhbC1ncmFjaWFzLWFsLXBvZGVyLXF1ZS1vYnR1dmUtZW4tZWwtYXBvY2FsaXBzaXMv",
+        "title": "¡Me hice invencible en el mundo real gracias al poder que obtuve en el apocalipsis!"
+      },
+      "chapter": {
+        "id": "mhscans:L3Nlcmllcy9tZS1oaWNlLWludmVuY2libGUtZW4tZWwtbXVuZG8tcmVhbC1ncmFjaWFzLWFsLXBvZGVyLXF1ZS1vYnR1dmUtZW4tZWwtYXBvY2FsaXBzaXMvY2FwLTMv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "monopolyscan",
+      "name": "Monopoly Scan",
+      "checkedAt": "2026-10-13T13:57:26.706Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "¡Mientras mis discipulos se matan entrenando, yo me relajo!"
+        },
+        "chapters": {
+          "count": 203
+        },
+        "pages": {
+          "verified": true,
+          "count": 4,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 13645,
+          "bytes": 919056
+        }
+      },
+      "series": {
+        "id": "monopolyscan-L21hbmdhL21pZW50cmFzLW1pcy1kaXNjaXB1bG9zLXNlLW1hdGFuLWVudHJlbmFuZG8teW8tbWUtcmVsYWpvLw",
+        "title": "¡Mientras mis discipulos se matan entrenando, yo me relajo!"
+      },
+      "chapter": {
+        "id": "monopolyscan:L21hbmdhL21pZW50cmFzLW1pcy1kaXNjaXB1bG9zLXNlLW1hdGFuLWVudHJlbmFuZG8teW8tbWUtcmVsYWpvL2NhcGl0dWxvLTE3MC8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "miauscan",
+      "name": "Miau Scan",
+      "checkedAt": "2026-10-13T13:57:16.332Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "¡¿Acaso el emperatriz x emperatriz es real?!"
+        },
+        "chapters": {
+          "count": 10
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 720,
+          "height": 3955,
+          "bytes": 399418
+        }
+      },
+      "series": {
+        "id": "miauscan-L21hbmdhL2FjYXNvLWVsLWVtcGVyYXRyaXoteC1lbXBlcmF0cml6LWVzLXJlYWwv",
+        "title": "¡¿Acaso el emperatriz x emperatriz es real?!"
+      },
+      "chapter": {
+        "id": "miauscan:L2FjYXNvLWVsLWVtcGVyYXRyaXoteC1lbXBlcmF0cml6LWVzLXJlYWwtY2FwaXR1bG8tOS8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "ninjascan",
+      "name": "Ninja Scan",
+      "checkedAt": "2026-10-13T13:57:40.777Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Apotheosis"
+        },
+        "chapters": {
+          "count": 1291
+        },
+        "pages": {
+          "verified": true,
+          "count": 2,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 750,
+          "height": 14955,
+          "bytes": 1417706
+        }
+      },
+      "series": {
+        "id": "ninjascan-L21hbmdhL2Fwb3RoZW9zaXMv",
+        "title": "Apotheosis"
+      },
+      "chapter": {
+        "id": "ninjascan:L21hbmdhL2Fwb3RoZW9zaXMvY2FwaXR1bG8tMTI4Ni8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "ngomikunoriginal",
+      "name": "Ngomik (unoriginal)",
+      "checkedAt": "2026-10-13T13:57:32.309Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "+99 Wooden Stick"
+        },
+        "chapters": {
+          "count": 99
+        },
+        "pages": {
+          "verified": true,
+          "count": 175,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 720,
+          "height": 2182,
+          "bytes": 305842
+        }
+      },
+      "series": {
+        "id": "ngomikunoriginal-L21hbmdhLzk5LXdvb2Rlbi1zdGljay8",
+        "title": "+99 Wooden Stick"
+      },
+      "chapter": {
+        "id": "ngomikunoriginal:Lzk5LXdvb2Rlbi1zdGljay1jaGFwdGVyLTk5Lw",
+        "number": 99
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "pantheonscan",
+      "name": "Pantheon Scan",
+      "checkedAt": "2026-10-13T13:57:42.348Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Amaama Cinderella"
+        },
+        "chapters": {
+          "count": 21
+        },
+        "pages": {
+          "verified": true,
+          "count": 19,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1680,
+          "height": 1050,
+          "bytes": 611961
+        }
+      },
+      "series": {
+        "id": "pantheonscan-L21hbmdhL2FtYWFtYS1jaW5kZXJlbGxhLw",
+        "title": "Amaama Cinderella"
+      },
+      "chapter": {
+        "id": "pantheonscan:L21hbmdhL2FtYWFtYS1jaW5kZXJlbGxhL2NoYXBpdHJlLTIxLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "rackus",
+      "name": "Rackus",
+      "checkedAt": "2026-10-13T13:57:46.218Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "A Streamer in the Past"
+        },
+        "chapters": {
+          "count": 90
+        },
+        "pages": {
+          "verified": true,
+          "count": 9,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1200,
+          "height": 1197,
+          "bytes": 151380
+        }
+      },
+      "series": {
+        "id": "rackus-L21hbmdhL2Etc3RyZWFtZXItaW4tdGhlLXBhc3Qv",
+        "title": "A Streamer in the Past"
+      },
+      "chapter": {
+        "id": "rackus:L2Etc3RyZWFtZXItaW4tdGhlLXBhc3QtY2hhcHRlci04OS1maW5hbC1jaGFwdGVyLw",
+        "number": 89
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "octopusmanga",
+      "name": "OctopusManga",
+      "checkedAt": "2026-10-13T13:57:44.978Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Wedding Blues [UNCENSORED]"
+        },
+        "chapters": {
+          "count": 5
+        },
+        "pages": {
+          "verified": true,
+          "count": 82,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1280,
+          "height": 2400,
+          "bytes": 110540
+        }
+      },
+      "series": {
+        "id": "octopusmanga-L21hbmdhL3dlZGRpbmctYmx1ZXMtdW5jZW5zb3JlZC8",
+        "title": "Wedding Blues [UNCENSORED]"
+      },
+      "chapter": {
+        "id": "octopusmanga:L21hbmdhL3dlZGRpbmctYmx1ZXMtdW5jZW5zb3JlZC9jaGFwdGVyLTUtdW5jZW5zb3JlZC10aGUtZW5kLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "paritehaber",
+      "name": "Paritehaber",
+      "checkedAt": "2026-10-13T13:57:48.335Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Seven Sundays"
+        },
+        "chapters": {
+          "count": 23
+        },
+        "pages": {
+          "verified": true,
+          "count": 46,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1757,
+          "height": 1171,
+          "bytes": 115479
+        }
+      },
+      "series": {
+        "id": "paritehaber-L21hbmdhL3NldmVuLXN1bmRheXMv",
+        "title": "Seven Sundays"
+      },
+      "chapter": {
+        "id": "paritehaber:L21hbmdhL3NldmVuLXN1bmRheXMvbm8tMDAyMi1jaGFwdGVyLTAyMi10aGUtZW5kLw",
+        "number": 22
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "orchisasia",
+      "name": "Orchisasia",
+      "checkedAt": "2026-10-13T13:57:46.052Z",
+      "checks": {
+        "search": {
+          "count": 4
+        },
+        "details": {
+          "title": "Bad work"
+        },
+        "chapters": {
+          "count": 33
+        },
+        "pages": {
+          "verified": true,
+          "count": 80,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1440,
+          "height": 2000,
+          "bytes": 320345
+        }
+      },
+      "series": {
+        "id": "orchisasia-L2NvbWljL2JhZC13b3JrLw",
+        "title": "Bad work"
+      },
+      "chapter": {
+        "id": "orchisasia:L2NvbWljL2JhZC13b3JrL25vLTAwNjAtY2gtMDMzLW9mZmljaWFsLw",
+        "number": 33
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "noromax",
+      "name": "Noromax",
+      "checkedAt": "2026-10-13T13:57:34.276Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "“Shop” Skill Sae Areba, Dungeon-ka Shita Sekai Demo Rakushou da Bahasa Indonesia"
+        },
+        "chapters": {
+          "count": 32
+        },
+        "pages": {
+          "verified": true,
+          "count": 20,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 850,
+          "height": 1201,
+          "bytes": 195538
+        }
+      },
+      "series": {
+        "id": "noromax-L21hbmdhL3Nob3Atc2tpbGwtc2FlLWFyZWJhLWR1bmdlb24ta2Etc2hpdGEtc2VrYWktZGVtby1yYWt1c2hvdS1kYS1iYWhhc2EtaW5kb25lc2lhLw",
+        "title": "“Shop” Skill Sae Areba, Dungeon-ka Shita Sekai Demo Rakushou da Bahasa Indonesia"
+      },
+      "chapter": {
+        "id": "noromax:L3Nob3Atc2tpbGwtc2FlLWFyZWJhLWR1bmdlb24ta2Etc2hpdGEtc2VrYWktZGVtby1yYWt1c2hvdS1kYS1jaGFwdGVyLTI4LWJhaGFzYS1pbmRvbmVzaWEv",
+        "number": 28
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "petrotechsociety",
+      "name": "Petrotechsociety",
+      "checkedAt": "2026-10-13T13:57:48.413Z",
+      "checks": {
+        "search": {
+          "count": 2
+        },
+        "details": {
+          "title": "I want to become an Incubus, too!"
+        },
+        "chapters": {
+          "count": 33
+        },
+        "pages": {
+          "verified": true,
+          "count": 10,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 738,
+          "height": 756,
+          "bytes": 99290
+        }
+      },
+      "series": {
+        "id": "petrotechsociety-L21hbmdhL2ktd2FudC10by1iZWNvbWUtYW4taW5jdWJ1cy10b28v",
+        "title": "I want to become an Incubus, too!"
+      },
+      "chapter": {
+        "id": "petrotechsociety:L21hbmdhL2ktd2FudC10by1iZWNvbWUtYW4taW5jdWJ1cy10b28vbm8tMDAzNy1jaC0wMzMv",
+        "number": 33
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "rokaricomics",
+      "name": "Rokari Comics",
+      "checkedAt": "2026-10-13T13:57:58.847Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "101st Confession"
+        },
+        "chapters": {
+          "count": 79
+        },
+        "pages": {
+          "verified": true,
+          "count": 14,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 800,
+          "height": 9845,
+          "bytes": 1995916
+        }
+      },
+      "series": {
+        "id": "rokaricomics-L21hbmdhLzEwMXN0LWNvbmZlc3Npb24v",
+        "title": "101st Confession"
+      },
+      "chapter": {
+        "id": "rokaricomics:LzEwMXN0LWNvbmZlc3Npb24tY2hhcHRlci04MC8",
+        "number": 80
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "shijiescans",
+      "name": "Shijie Scans",
+      "checkedAt": "2026-10-13T13:58:10.094Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "2. Seviye Savaş Tanrısı"
+        },
+        "chapters": {
+          "count": 46
+        },
+        "pages": {
+          "verified": true,
+          "count": 13,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1080,
+          "height": 1920,
+          "bytes": 1125445
+        }
+      },
+      "series": {
+        "id": "shijiescans-L3NlcmkvMi1zZXZpeWUtc2F2YXMtdGFucmlzaS8",
+        "title": "2. Seviye Savaş Tanrısı"
+      },
+      "chapter": {
+        "id": "shijiescans:LzItc2V2aXllLXNhdmFzLXRhbnJpc2ktYm9sdW0tNDYv",
+        "number": 46
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "singmanga",
+      "name": "Singmanga",
+      "checkedAt": "2026-10-13T13:58:12.009Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "3-Year Contract With the Grim Reaper"
+        },
+        "chapters": {
+          "count": 4
+        },
+        "pages": {
+          "verified": true,
+          "count": 6,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 690,
+          "height": 17136,
+          "bytes": 2810944
+        }
+      },
+      "series": {
+        "id": "singmanga-L21hbmdhLzMteWVhci1jb250cmFjdC13aXRoLXRoZS1ncmltLXJlYXBlci8",
+        "title": "3-Year Contract With the Grim Reaper"
+      },
+      "chapter": {
+        "id": "singmanga:LzMteWVhci1jb250cmFjdC13aXRoLXRoZS1ncmltLXJlYXBlci00Lw",
+        "number": 4
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "seraphicdeviltry",
+      "name": "SeraphicDeviltry",
+      "checkedAt": "2026-10-13T13:58:16.665Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Sasakure Chronicle"
+        },
+        "chapters": {
+          "count": 4
+        },
+        "pages": {
+          "verified": true,
+          "count": 9,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1500,
+          "height": 995,
+          "bytes": 216378
+        }
+      },
+      "series": {
+        "id": "seraphicdeviltry-L21hbmdhL3Nhc2FrdXJlLWNocm9uaWNsZS8",
+        "title": "Sasakure Chronicle"
+      },
+      "chapter": {
+        "id": "seraphicdeviltry:L21hbmdhL3Nhc2FrdXJlLWNocm9uaWNsZS92b2x1bWUtMS9jaGFwdGVyLTQv",
+        "number": 4
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "shinobiscans",
+      "name": "Shinobi Scans",
+      "checkedAt": "2026-10-13T13:58:22.098Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "GhostBlade"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 4,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 940,
+          "height": 1236,
+          "bytes": 630204
+        }
+      },
+      "series": {
+        "id": "shinobiscans-L21hbmdhL2dob3N0YmxhZGUv",
+        "title": "GhostBlade"
+      },
+      "chapter": {
+        "id": "shinobiscans:L21hbmdhL2dob3N0YmxhZGUvbi1hLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "s2manga",
+      "name": "S2Manga",
+      "checkedAt": "2026-10-13T13:58:19.916Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "During The Live Streaming, I Proposed To A Female Ghost – And She Actually Agreed?!"
+        },
+        "chapters": {
+          "count": 47
+        },
+        "pages": {
+          "verified": true,
+          "count": 12,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 800,
+          "height": 12000,
+          "bytes": 1186882
+        }
+      },
+      "series": {
+        "id": "s2manga-L21hbmdhL2R1cmluZy10aGUtbGl2ZS1zdHJlYW1pbmctaS1wcm9wb3NlZC10by1hLWZlbWFsZS1naG9zdC1hbmQtc2hlLWFjdHVhbGx5LWFncmVlZC8",
+        "title": "During The Live Streaming, I Proposed To A Female Ghost – And She Actually Agreed?!"
+      },
+      "chapter": {
+        "id": "s2manga:L21hbmdhL2R1cmluZy10aGUtbGl2ZS1zdHJlYW1pbmctaS1wcm9wb3NlZC10by1hLWZlbWFsZS1naG9zdC1hbmQtc2hlLWFjdHVhbGx5LWFncmVlZC9jaGFwdGVyLTQ3Lw",
+        "number": 47
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "speedmanga",
+      "name": "Speed Manga",
+      "checkedAt": "2026-10-13T13:58:23.709Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "(C101) [Akaneiro (Rimiki, Yakifugu)] Shittori Mattari Goonsen | Relaxing In A Steamy Hot Spring (Genshin Impact)"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 15,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1280,
+          "height": 1806,
+          "bytes": 316049
+        }
+      },
+      "series": {
+        "id": "speedmanga-L21hbmdhL2MxMDEtYWthbmVpcm8tcmltaWtpLXlha2lmdWd1LXNoaXR0b3JpLW1hdHRhcmktZ29vbnNlbi1yZWxheGluZy1pbi1hLXN0ZWFteS1ob3Qtc3ByaW5nLWdlbnNoaW4taW1wYWN0Lw",
+        "title": "(C101) [Akaneiro (Rimiki, Yakifugu)] Shittori Mattari Goonsen | Relaxing In A Steamy Hot Spring (Genshin Impact)"
+      },
+      "chapter": {
+        "id": "speedmanga:L2MxMDEtYWthbmVpcm8tcmltaWtpLXlha2lmdWd1LXNoaXR0b3JpLW1hdHRhcmktZ29vbnNlbi1yZWxheGluZy1pbi1hLXN0ZWFteS1ob3Qtc3ByaW5nLWdlbnNoaW4taW1wYWN0LSVlMCViOCU5NSVlMCViOCVhZCVlMCViOCU5OSVlMCViOCU5NyVlMCViOCViNSVlMCViOSU4OC0xLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "thunderscans",
+      "name": "Thunder Scans",
+      "checkedAt": "2026-10-13T13:58:27.847Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "★The Ultimate Tank Returns★ Dominating with 10,000× Attack Speed"
+        },
+        "chapters": {
+          "count": 6
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 14962,
+          "bytes": 2292178
+        }
+      },
+      "series": {
+        "id": "thunderscans-L2NvbWljcy8lZTIlOTglODV0aGUtdWx0aW1hdGUtdGFuay1yZXR1cm5zJWUyJTk4JTg1LWRvbWluYXRpbmctd2l0aC0xMDAwMHgtYXR0YWNrLXNwZWVkLw",
+        "title": "★The Ultimate Tank Returns★ Dominating with 10,000× Attack Speed"
+      },
+      "chapter": {
+        "id": "thunderscans:LyVlMiU5OCU4NXRoZS11bHRpbWF0ZS10YW5rLXJldHVybnMlZTIlOTglODUtZG9taW5hdGluZy13aXRoLTEwMDAweC1hdHRhY2stc3BlZWQtY2hhcHRlci02Lw",
+        "number": 6
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "sodsaime",
+      "name": "Sodsaime",
+      "checkedAt": "2026-10-13T13:58:23.373Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": ".hack//G.U.+"
+        },
+        "chapters": {
+          "count": 3
+        },
+        "pages": {
+          "verified": true,
+          "count": 14,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1000,
+          "height": 1443,
+          "bytes": 438314
+        }
+      },
+      "series": {
+        "id": "sodsaime-L21hbmdhL2hhY2stZy11Lw",
+        "title": ".hack//G.U.+"
+      },
+      "chapter": {
+        "id": "sodsaime:L2hhY2stZy11LTMv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "siikomik",
+      "name": "Siikomik",
+      "checkedAt": "2026-10-13T13:58:25.792Z",
+      "checks": {
+        "search": {
+          "count": 24
+        },
+        "details": {
+          "title": "Sewer Rats"
+        },
+        "chapters": {
+          "count": 13
+        },
+        "pages": {
+          "verified": true,
+          "count": 29,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 4000,
+          "bytes": 439560
+        }
+      },
+      "series": {
+        "id": "siikomik-L2tvbWlrL3Nld2VyLXJhdHMv",
+        "title": ""
+      },
+      "chapter": {
+        "id": "siikomik:L2tvbWlrL3Nld2VyLXJhdHMvY2hhcHRlci0xMy8",
+        "number": 13
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "toonily",
+      "name": "Toonily",
+      "checkedAt": "2026-10-13T13:58:28.300Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "A Dream Escape END"
+        },
+        "chapters": {
+          "count": 78
+        },
+        "pages": {
+          "verified": true,
+          "count": 13,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 760,
+          "height": 9180,
+          "bytes": 1031852
+        }
+      },
+      "series": {
+        "id": "toonily-L3NlcmllL2EtZHJlYW0tZXNjYXBlLTgyYTNmNzk3Lw",
+        "title": "A Dream Escape"
+      },
+      "chapter": {
+        "id": "toonily:L3NlcmllL2EtZHJlYW0tZXNjYXBlLTgyYTNmNzk3L2NoYXB0ZXItNzgv",
+        "number": 78
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "tortuga",
+      "name": "Tortuga Çeviri",
+      "checkedAt": "2026-10-13T13:58:30.857Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Son Manga Sınıfı"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 11,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 900,
+          "height": 500,
+          "bytes": 146439
+        }
+      },
+      "series": {
+        "id": "tortuga-L21hbmdhL3Nvbi1tYW5nYS1zaW5pZmkv",
+        "title": "Son Manga Sınıfı"
+      },
+      "chapter": {
+        "id": "tortuga:L21hbmdhL3Nvbi1tYW5nYS1zaW5pZmkvc29uLW1hbmdhLXNpbmlmaS0wMS8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "topmanhua",
+      "name": "Top Manhua",
+      "checkedAt": "2026-10-13T13:58:32.301Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Return of the Reaper: Assassin"
+        },
+        "chapters": {
+          "count": 30
+        },
+        "pages": {
+          "verified": true,
+          "count": 16,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 143450
+        }
+      },
+      "series": {
+        "id": "topmanhua-L3Nlcmllcy9yZXR1cm4tb2YtdGhlLXJlYXBlci1hc3Nhc3Npbi8",
+        "title": "Return of the Reaper: Assassin"
+      },
+      "chapter": {
+        "id": "topmanhua:L3Nlcmllcy9yZXR1cm4tb2YtdGhlLXJlYXBlci1hc3Nhc3Npbi9jaGFwdGVyLTMwLw",
+        "number": 30
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "tsundokutraducoes",
+      "name": "Tsundoku Traduções",
+      "checkedAt": "2026-10-13T13:58:33.598Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "86: Oitenta e Seis"
+        },
+        "chapters": {
+          "count": 10
+        },
+        "pages": {
+          "verified": true,
+          "count": 1,
+          "sampledPages": 1
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 5000,
+          "height": 1250,
+          "bytes": 484686
+        }
+      },
+      "series": {
+        "id": "tsundokutraducoes-L21hbmdhLzg2LW9pdGVudGEtZS1zZWlzLw",
+        "title": "86: Oitenta e Seis"
+      },
+      "chapter": {
+        "id": "tsundokutraducoes:Lzg2LW9pdGVudGEtZS1zZWlzLXZvbC0xMC1wb3NmYWNpby0yLw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "tritiniascans",
+      "name": "Tritinia Scans",
+      "checkedAt": "2026-10-13T13:58:34.670Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Kekkon shiyou. Rikon zentei de."
+        },
+        "chapters": {
+          "count": 2
+        },
+        "pages": {
+          "verified": true,
+          "count": 45,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/png",
+          "width": 720,
+          "height": 465,
+          "bytes": 435364
+        }
+      },
+      "series": {
+        "id": "tritiniascans-L21hbmdhL2tla2tvbi1zaGl5b3Utcmlrb24temVudGVpLWRlLw",
+        "title": "Kekkon shiyou. Rikon zentei de."
+      },
+      "chapter": {
+        "id": "tritiniascans:L21hbmdhL2tla2tvbi1zaGl5b3Utcmlrb24temVudGVpLWRlL2NoLTE2Lw",
+        "number": 16
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "undertranslations",
+      "name": "UnderTranslations",
+      "checkedAt": "2026-10-13T13:58:34.573Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "¿Puedo Pedirle una Última Cosa?"
+        },
+        "chapters": {
+          "count": 49
+        },
+        "pages": {
+          "verified": true,
+          "count": 25,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 2500,
+          "height": 1406,
+          "bytes": 2456943
+        }
+      },
+      "series": {
+        "id": "undertranslations-L21hbmdhL3B1ZWRvLXBlZGlybGUtdW5hLXVsdGltYS1jb3NhLw",
+        "title": "¿Puedo Pedirle una Última Cosa?"
+      },
+      "chapter": {
+        "id": "undertranslations:L3NjYXJsZXQtY2FwaXR1bG8tNDc4Lw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "yurionline",
+      "name": "Yuri-Online",
+      "checkedAt": "2026-10-13T13:58:36.739Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Detrás del viaje del Héroe"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 54,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1440,
+          "height": 2048,
+          "bytes": 740097
+        }
+      },
+      "series": {
+        "id": "yurionline-L21hbmdhL2RldHJhcy1kZWwtdmlhamUtZGVsLWhlcm9lLw",
+        "title": "Detrás del viaje del Héroe"
+      },
+      "chapter": {
+        "id": "yurionline:L21hbmdhL2RldHJhcy1kZWwtdmlhamUtZGVsLWhlcm9lL2NhcGl0dWxvLTEv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "zinmanga",
+      "name": "Zinmanga",
+      "checkedAt": "2026-10-13T13:58:38.151Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Breakers"
+        },
+        "chapters": {
+          "count": 119
+        },
+        "pages": {
+          "verified": true,
+          "count": 84,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 533,
+          "bytes": 143450
+        }
+      },
+      "series": {
+        "id": "zinmanga-L21hbmdhL2JyZWFrZXJzLw",
+        "title": "Breakers"
+      },
+      "chapter": {
+        "id": "zinmanga:L21hbmdhL2JyZWFrZXJzL2NoYXB0ZXItMTE5Lw",
+        "number": 119
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "yaoihub",
+      "name": "Yaoihub",
+      "checkedAt": "2026-10-13T13:58:42.032Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Kinks in Development"
+        },
+        "chapters": {
+          "count": 57
+        },
+        "pages": {
+          "verified": true,
+          "count": 53,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/png",
+          "width": 1000,
+          "height": 563,
+          "bytes": 206523
+        }
+      },
+      "series": {
+        "id": "yaoihub-L21hbmdhL2tpbmtzLWluLWRldmVsb3BtZW50Lw",
+        "title": "Kinks in Development"
+      },
+      "chapter": {
+        "id": "yaoihub:L21hbmdhL2tpbmtzLWluLWRldmVsb3BtZW50L2NoLTA1Ny8",
+        "number": 57
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "asurascans",
+      "name": "Asura Scans",
+      "checkedAt": "2026-10-13T13:58:42.814Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Pick Up a Grimoire, Become a Mage"
+        },
+        "chapters": {
+          "count": 6
+        },
+        "pages": {
+          "verified": true,
+          "count": 26,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1532,
+          "height": 1024,
+          "bytes": 224908
+        }
+      },
+      "series": {
+        "id": "asurascans-pick-up-a-grimoire-become-a-mage",
+        "title": "Pick Up a Grimoire, Become a Mage"
+      },
+      "chapter": {
+        "id": "asurascans:pick-up-a-grimoire-become-a-mage~6",
+        "number": 6
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "kenscans",
+      "name": "Kenscans",
+      "checkedAt": "2026-10-13T13:58:43.904Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Even When I'm Dead"
+        },
+        "chapters": {
+          "count": 3
+        },
+        "pages": {
+          "verified": true,
+          "count": 41,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1500,
+          "height": 5000,
+          "bytes": 891884
+        }
+      },
+      "series": {
+        "id": "kenscans-WyJldmVuLXdoZW4taSdtLWRlYWQiLDI4OV0",
+        "title": "Even When I'm Dead"
+      },
+      "chapter": {
+        "id": "kenscans:10731",
+        "number": 48
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "sanascans",
+      "name": "Sana Scans",
+      "checkedAt": "2026-10-13T13:58:50.315Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Killed by My Fiancé, Reborn to My Father the Duke’s Love — This Time I’ll Be Happy!"
+        },
+        "chapters": {
+          "count": 3
+        },
+        "pages": {
+          "verified": true,
+          "count": 16,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 960,
+          "height": 4095,
+          "bytes": 741800
+        }
+      },
+      "series": {
+        "id": "sanascans-WyJraWxsZWQtYnktbXktZmlhbmNlLXJlYm9ybi10by1teS1mYXRoZXItdGhlLWR1a2Uncy1sb3ZlLXRoaXMtdGltZS1pJ2xsLWJlLWhhcHB5ISIsNTA3XQ",
+        "title": "Killed by My Fiancé, Reborn to My Father the Duke’s Love — This Time I’ll Be Happy!"
+      },
+      "chapter": {
+        "id": "sanascans:6396",
+        "number": 3
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "vortexscans",
+      "name": "Vortex Scans",
+      "checkedAt": "2026-10-13T13:58:57.871Z",
+      "checks": {
+        "search": {
+          "count": 2
+        },
+        "details": {
+          "title": "Absolute Domination"
+        },
+        "chapters": {
+          "count": 112
+        },
+        "pages": {
+          "verified": true,
+          "count": 33,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 800,
+          "height": 5000,
+          "bytes": 564486
+        }
+      },
+      "series": {
+        "id": "vortexscans-WyJhYnNvbHV0ZS1kb21pbmF0aW9uIiwzOTRd",
+        "title": "Absolute Domination"
+      },
+      "chapter": {
+        "id": "vortexscans:33896",
+        "number": 112
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "renascans",
+      "name": "Renascans",
+      "checkedAt": "2026-10-13T13:59:04.276Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "The Devil Raises a Lady"
+        },
+        "chapters": {
+          "count": 63
+        },
+        "pages": {
+          "verified": true,
+          "count": 48,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 900,
+          "height": 5000,
+          "bytes": 750734
+        }
+      },
+      "series": {
+        "id": "renascans-WyJ0aGUtZGV2aWwtcmFpc2VzLWEtbGFkeS00enQ3YThhNCIsNTRd",
+        "title": "The Devil Raises a Lady"
+      },
+      "chapter": {
+        "id": "renascans:2970",
+        "number": 125
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "orionscans",
+      "name": "Orion Scans",
+      "checkedAt": "2026-10-13T13:59:01.853Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "The Little Girl Sword Saint ~The Sword Saint Who Reincarnated One Million Times Wants to Find a Worthy Rival in This Life Too~"
+        },
+        "chapters": {
+          "count": 2
+        },
+        "pages": {
+          "verified": true,
+          "count": 21,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 962,
+          "height": 2480,
+          "bytes": 606266
+        }
+      },
+      "series": {
+        "id": "orionscans-WyJ0aGUtbGl0dGxlLWdpcmwtc3dvcmQtc2FpbnQtfnRoZS1zd29yZC1zYWludC13aG8tcmVpbmNhcm5hdGVkLW9uZS1taWxsaW9uLXRpbWVzLXdhbnRzLXRvLWZpbmQtYS13b3J0aHktcml2YWwtaW4tdGhpcy1saWZlLXRvb34iLDMwOF0",
+        "title": "The Little Girl Sword Saint ~The Sword Saint Who Reincarnated One Million Times Wants to Find a Worthy Rival in This Life Too~"
+      },
+      "chapter": {
+        "id": "orionscans:3517",
+        "number": 2
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "lepoytl",
+      "name": "LepoyTL",
+      "checkedAt": "2026-10-13T13:59:16.276Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Ore Wa Bishoujo V-Tuber"
+        },
+        "chapters": {
+          "count": 16
+        },
+        "pages": {
+          "verified": true,
+          "count": 12,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1120,
+          "height": 1600,
+          "bytes": 1172014
+        }
+      },
+      "series": {
+        "id": "lepoytl-LzIwMjYvMDkvb3JlLXdhLWJpc2hvdWpvLXYtdHViZXIuaHRtbA",
+        "title": "Ore Wa Bishoujo V-Tuber"
+      },
+      "chapter": {
+        "id": "lepoytl:LzIwMjYvMDkvb3JlLXdhLWJpc2hvdWpvLXYtdHViZXItY2hhcHRlci0xNC5odG1s",
+        "number": 14
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "aarlas",
+      "name": "Aarlas",
+      "checkedAt": "2026-10-13T13:59:10.844Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Asobinin na Shoujotachi wa Kyou mo Houkago Yatteiru - Arlas"
+        },
+        "chapters": {
+          "count": 4
+        },
+        "pages": {
+          "verified": true,
+          "count": 27,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 960,
+          "height": 1359,
+          "bytes": 281496
+        }
+      },
+      "series": {
+        "id": "aarlas-LzIwMjYvMDIvYXNvYmluaW4tbmEtc2hvdWpvdGFjaGktd2Eta3lvdS1tby5odG1s",
+        "title": "Asobinin na Shoujotachi wa Kyou mo Houkago Yatteiru"
+      },
+      "chapter": {
+        "id": "aarlas:LzIwMjYvMDQvY2hhcHRlci0wNC5odG1s",
+        "number": 4
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "darkroomfansub",
+      "name": "Dark Room Fansub",
+      "checkedAt": "2026-10-13T13:59:19.108Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Smoky Nectar Renew"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 36,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/png",
+          "width": 792,
+          "height": 612,
+          "bytes": 579110
+        }
+      },
+      "series": {
+        "id": "darkroomfansub-LzIwMjUvMDEvc21va3ktbmVjdGFyLXJlbmV3Lmh0bWw",
+        "title": "Smoky Nectar Renew"
+      },
+      "chapter": {
+        "id": "darkroomfansub:LzIwMjIvMDIvY2gtNi5odG1s",
+        "number": 1
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "datgarscan",
+      "name": "Dat-Gar Scan",
+      "checkedAt": "2026-10-13T13:59:21.904Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Abysmal - Dat-Gar Scan"
+        },
+        "chapters": {
+          "count": 17
+        },
+        "pages": {
+          "verified": true,
+          "count": 17,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1134,
+          "height": 1600,
+          "bytes": 467052
+        }
+      },
+      "series": {
+        "id": "datgarscan-LzIwMjYvMDQvYWJ5c21hbC5odG1s",
+        "title": "Abysmal"
+      },
+      "chapter": {
+        "id": "datgarscan:LzIwMjYvMTAvY2FwLTYzLmh0bWw",
+        "number": 6.3
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "shiyurasub",
+      "name": "ShiyuraSub",
+      "checkedAt": "2026-10-13T13:59:22.949Z",
+      "checks": {
+        "search": {
+          "count": 2
+        },
+        "details": {
+          "title": "Detektif Conan - Shiyura Sub"
+        },
+        "chapters": {
+          "count": 112
+        },
+        "pages": {
+          "verified": true,
+          "count": 17,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1115,
+          "height": 1600,
+          "bytes": 862015
+        }
+      },
+      "series": {
+        "id": "shiyurasub-LzIwMjEvMTAvZGV0ZWt0aWYtY29uYW4uaHRtbA",
+        "title": "Detektif Conan"
+      },
+      "chapter": {
+        "id": "shiyurasub:LzIwMjYvMDcvY2hhcHRlci0xMTY2Lmh0bWw",
+        "number": 1166
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "shadowceviri",
+      "name": "Shadow Çeviri",
+      "checkedAt": "2026-10-13T13:59:23.185Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Hajime No Ippo - Shadow Çeviri"
+        },
+        "chapters": {
+          "count": 232
+        },
+        "pages": {
+          "verified": true,
+          "count": 17,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1115,
+          "height": 1600,
+          "bytes": 1226362
+        }
+      },
+      "series": {
+        "id": "shadowceviri-LzIwMjEvMDUvaGFqaW1lLW5vLWlwcG9fMS5odG1s",
+        "title": "Hajime No Ippo"
+      },
+      "chapter": {
+        "id": "shadowceviri:LzIwMjYvMDMvaGFqaW1lLW5vLWlwcG8tMTUxNS5odG1s",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "xsanomanga",
+      "name": "XSano Manga",
+      "checkedAt": "2026-10-13T13:59:29.354Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "BE BLUES"
+        },
+        "chapters": {
+          "count": 217
+        },
+        "pages": {
+          "verified": true,
+          "count": 20,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 3200,
+          "height": 2318,
+          "bytes": 507235
+        }
+      },
+      "series": {
+        "id": "xsanomanga-LzIwMjMvMDIvYmUtYmx1ZXMuaHRtbA",
+        "title": "BE BLUES"
+      },
+      "chapter": {
+        "id": "xsanomanga:LzIwMjYvMDgvMjE3LWJlLWJsdWVzLmh0bWw",
+        "number": 217
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "yurimoonsub",
+      "name": "Yuri Moon Sub",
+      "checkedAt": "2026-10-13T13:59:27.600Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "MURMUR مترجمة - YuriMoonSub"
+        },
+        "chapters": {
+          "count": 22
+        },
+        "pages": {
+          "verified": true,
+          "count": 86,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 122692
+        }
+      },
+      "series": {
+        "id": "yurimoonsub-LzIwMjYvMDMvbXVybXVyLmh0bWw",
+        "title": "MURMUR مترجمة"
+      },
+      "chapter": {
+        "id": "yurimoonsub:LzIwMjYvMDgvbXVybXVyY2gyMS5odG1s",
+        "number": 21
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "yokai",
+      "name": "Yokai",
+      "checkedAt": "2026-10-13T13:59:30.511Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Hunter x Hunter: Kurapika Tsuioku-hen - Yokai"
+        },
+        "chapters": {
+          "count": 2
+        },
+        "pages": {
+          "verified": true,
+          "count": 36,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/png",
+          "width": 1096,
+          "height": 1600,
+          "bytes": 1020421
+        }
+      },
+      "series": {
+        "id": "yokai-LzIwMjMvMDkvaHVudGVyLXgtaHVudGVyLWt1cmFwaWthLXRzdWlva3UtaGVuLmh0bWw",
+        "title": "Hunter x Hunter: Kurapika Tsuioku-hen"
+      },
+      "chapter": {
+        "id": "yokai:LzIwMjQvMDcvY2hhcHRlci0yLmh0bWw",
+        "number": 2
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "akazascans",
+      "name": "Akaza Scans",
+      "checkedAt": "2026-10-13T14:02:17.849Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Apollo Savings Bank"
+        },
+        "chapters": {
+          "count": 3
+        }
+      },
+      "series": {
+        "id": "akazascans-L21hbmdhL2Fwb2xsby1zYXZpbmdzLWJhbmsv",
+        "title": "Apollo Savings Bank"
+      },
+      "chapter": {
+        "id": "akazascans:L2Fwb2xsby1zYXZpbmdzLWJhbmstY2hhcHRlci0zOS8",
+        "number": 39
+      },
+      "status": "failed-current-check",
+      "stage": "pages",
+      "error": "Source request timed out",
+      "statusCode": 504
+    },
+    {
+      "id": "anikiga",
+      "name": "Anikiga",
+      "checkedAt": "2026-10-13T14:02:17.850Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Ano Ko ni Kubittake"
+        },
+        "chapters": {
+          "count": 1
+        },
+        "pages": {
+          "verified": true,
+          "count": 15,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1912,
+          "height": 1120,
+          "bytes": 251226
+        }
+      },
+      "series": {
+        "id": "anikiga-L21hbmdhL2Fuby1rby1uaS1rdWJpdHRha2Uv",
+        "title": "Ano Ko ni Kubittake"
+      },
+      "chapter": {
+        "id": "anikiga:L21hbmdhL2Fuby1rby1uaS1rdWJpdHRha2Uvb25lLXNob3Qv",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "cocomic",
+      "name": "Cocomic",
+      "checkedAt": "2026-10-13T14:02:36.373Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Soul Sealer’s School Life"
+        },
+        "chapters": {
+          "count": 37
+        },
+        "pages": {
+          "verified": true,
+          "count": 8,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 800,
+          "height": 9096,
+          "bytes": 350059
+        }
+      },
+      "series": {
+        "id": "cocomic-L21hbmdhL3NvdWwtc2VhbGVyLXMtc2Nob29sLWxpZmUtMi8",
+        "title": "Soul Sealer’s School Life"
+      },
+      "chapter": {
+        "id": "cocomic:L21hbmdhL3NvdWwtc2VhbGVyLXMtc2Nob29sLWxpZmUtMi9jaGFwLTM3Lw",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "3asq",
+      "name": "3asq",
+      "checkedAt": "2026-10-13T14:02:33.131Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Haha to Iu Jubaku Musume to Iu Rougoku"
+        },
+        "chapters": {
+          "count": 7
+        }
+      },
+      "series": {
+        "id": "3asq-L21hbmdhL2hhaGEtdG8taXUtanViYWt1LW11c3VtZS10by1pdS1yb3Vnb2t1Lw",
+        "title": "Haha to Iu Jubaku Musume to Iu Rougoku"
+      },
+      "chapter": {
+        "id": "3asq:L21hbmdhL2hhaGEtdG8taXUtanViYWt1LW11c3VtZS10by1pdS1yb3Vnb2t1Lzcv",
+        "number": 7
+      },
+      "status": "failed-current-check",
+      "stage": "pages",
+      "error": "Source request timed out",
+      "statusCode": 504
+    },
+    {
+      "id": "inkapk",
+      "name": "Inkapk",
+      "checkedAt": "2026-10-13T14:02:56.181Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Supervisor Access"
+        },
+        "chapters": {
+          "count": 137
+        },
+        "pages": {
+          "verified": true,
+          "count": 3,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 720,
+          "height": 14442,
+          "bytes": 2128305
+        }
+      },
+      "series": {
+        "id": "inkapk-L29icmFzL3N1cGVydmlzb3ItYWNjZXNzLw",
+        "title": "Supervisor Access"
+      },
+      "chapter": {
+        "id": "inkapk:L29icmFzL3N1cGVydmlzb3ItYWNjZXNzL2NhcGl0dWxvLTEzNy1wcm9sb2dvLWFydC1ib251cy8",
+        "number": 0
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "decadencescans",
+      "name": "Decadence Scans",
+      "checkedAt": "2026-10-13T14:02:42.047Z",
+      "checks": {
+        "search": {
+          "count": 6
+        },
+        "details": {
+          "title": "Christmas"
+        },
+        "chapters": {
+          "count": 1
+        }
+      },
+      "series": {
+        "id": "decadencescans-L21hbmdhL2NocmlzdG1hcy8",
+        "title": "Christmas"
+      },
+      "chapter": {
+        "id": "decadencescans:L21hbmdhL2NocmlzdG1hcy9jaHJpc3RtYXMv",
+        "number": 0
+      },
+      "status": "failed-current-check",
+      "stage": "pages",
+      "error": "Source request timed out",
+      "statusCode": 504
+    },
+    {
+      "id": "ksgroup",
+      "name": "KS Group",
+      "checkedAt": "2026-10-13T14:03:04.768Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Kaiko Sareta Kyutei Renkinjutsu Shi Ha Henkyo De Dainoen Wo Tsukuriageru Sokoku Wo Retakedo, Saikyo Ryochi De Slow Life Wo Oka Suru"
+        },
+        "chapters": {
+          "count": 27
+        },
+        "pages": {
+          "verified": true,
+          "count": 40,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1000,
+          "height": 1414,
+          "bytes": 712333
+        }
+      },
+      "series": {
+        "id": "ksgroup-L21hbmdhL2thaWtvLXNhcmV0YS1reXV0ZWktcmVua2luanV0c3Utc2hpLWhhLWhlbmt5by1kZS1kYWlub2VuLXdvLXRzdWt1cmlhZ2VydS1zb2tva3Utd28tcmV0YWtlZG8tc2Fpa3lvLXJ5b2NoaS1kZS1zbG93LWxpZmUtd28tb2thLXN1cnUv",
+        "title": "Kaiko Sareta Kyutei Renkinjutsu Shi Ha Henkyo De Dainoen Wo Tsukuriageru Sokoku Wo Retakedo, Saikyo Ryochi De Slow Life Wo Oka Suru"
+      },
+      "chapter": {
+        "id": "ksgroup:L21hbmdhL2thaWtvLXNhcmV0YS1reXV0ZWktcmVua2luanV0c3Utc2hpLWhhLWhlbmt5by1kZS1kYWlub2VuLXdvLXRzdWt1cmlhZ2VydS1zb2tva3Utd28tcmV0YWtlZG8tc2Fpa3lvLXJ5b2NoaS1kZS1zbG93LWxpZmUtd28tb2thLXN1cnUvY2hhcHRlci0yNy8",
+        "number": 27
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "ravenscans",
+      "name": "Raven Scans",
+      "checkedAt": "2026-10-13T14:03:09.976Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "??? Rank no Ura Soubi Musou"
+        },
+        "chapters": {
+          "count": 94
+        },
+        "pages": {
+          "verified": true,
+          "count": 15,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 800,
+          "height": 14441,
+          "bytes": 674580
+        }
+      },
+      "series": {
+        "id": "ravenscans-L21hbmdhL3Jhbmstbm8tdXJhLXNvdWJpLW11c291Lw",
+        "title": "??? Rank no Ura Soubi Musou"
+      },
+      "chapter": {
+        "id": "ravenscans:L3Jhbmstbm8tdXJhLXNvdWJpLW11c291LWNoYXB0ZXItOTQv",
+        "number": 94
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "ragnarokscanlation",
+      "name": "Ragnarok Scanlation",
+      "checkedAt": "2026-10-13T14:03:12.935Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "Four Knights of the Apocalypse"
+        },
+        "chapters": {
+          "count": 6
+        },
+        "pages": {
+          "verified": true,
+          "count": 1,
+          "sampledPages": 1
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 6001,
+          "height": 4001,
+          "bytes": 1893752
+        }
+      },
+      "series": {
+        "id": "ragnarokscanlation-L3Nlcmllcy9mb3VyLWtuaWdodHMtb2YtdGhlLWFwb2NhbHlwc2Uv",
+        "title": "Four Knights of the Apocalypse"
+      },
+      "chapter": {
+        "id": "ragnarokscanlation:L3Nlcmllcy9mb3VyLWtuaWdodHMtb2YtdGhlLWFwb2NhbHlwc2UvY2hhcHRlci0yNTcv",
+        "number": 257
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "moondaisyscans",
+      "name": "Moon Daisy Scans",
+      "checkedAt": "2026-10-13T14:03:08.191Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "500CC"
+        },
+        "chapters": {
+          "count": 5
+        },
+        "pages": {
+          "verified": true,
+          "count": 10,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/png",
+          "width": 2000,
+          "height": 1600,
+          "bytes": 2724323
+        }
+      },
+      "series": {
+        "id": "moondaisyscans-L21hbmdhLzUwMGNjLw",
+        "title": "500CC"
+      },
+      "chapter": {
+        "id": "moondaisyscans:LzUwMGMtNS1ib2x1bS1maW5hbC8",
+        "number": 5
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "flamecomics",
+      "name": "Flame Comics",
+      "checkedAt": "2026-10-13T14:03:15.423Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "30 Years Have Passed Since the Prologue"
+        },
+        "chapters": {
+          "count": 18
+        },
+        "pages": {
+          "verified": true,
+          "count": 15,
+          "sampledPages": 2
+        },
+        "serving": {
+          "mime": "image/jpeg",
+          "width": 1778,
+          "height": 1000,
+          "bytes": 439483
+        }
+      },
+      "series": {
+        "id": "flamecomics-165",
+        "title": "30 Years Have Passed Since the Prologue"
+      },
+      "chapter": {
+        "id": "flamecomics:165~57fedf883166a727",
+        "number": 18
+      },
+      "status": "connected-sample-verified"
+    },
+    {
+      "id": "nyxscans",
+      "name": "Nyx Scans",
+      "checkedAt": "2026-10-13T14:03:23.765Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "The Grand Duke's new daughter-in-law is a little fierce"
+        },
+        "chapters": {
+          "count": 22
+        }
+      },
+      "series": {
+        "id": "nyxscans-WyJ0aGUtZ3JhbmQtZHVrZSdzLW5ldy1kYXVnaHRlci1pbi1sYXctaXMtYS1saXR0bGUtZmllcmNlIiw3NDBd",
+        "title": "The Grand Duke's new daughter-in-law is a little fierce"
+      },
+      "chapter": {
+        "id": "nyxscans:51412",
+        "number": 22
+      },
+      "status": "failed-current-check",
+      "stage": "pages",
+      "error": "Source request timed out",
+      "statusCode": 504
+    },
+    {
+      "id": "azoramoon",
+      "name": "AzoraMoon",
+      "checkedAt": "2026-10-13T14:03:28.135Z",
+      "checks": {
+        "search": {
+          "count": 1
+        },
+        "details": {
+          "title": "I’m a phantom thief, but I ended up in a fake marriage with a detective"
+        },
+        "chapters": {
+          "count": 48
+        }
+      },
+      "series": {
+        "id": "azoramoon-WyJpbS1hLXBoYW50b20tdGhpZWYtYnV0LWktZW5kZWQtdXAtaW4tYS1mYWtlLW1hcnJpYWdlLXdpdGgtYS1kZXRlY3RpdmUiLDE4NDld",
+        "title": "I’m a phantom thief, but I ended up in a fake marriage with a detective"
+      },
+      "chapter": {
+        "id": "azoramoon:133050",
+        "number": 46
+      },
+      "status": "failed-current-check",
+      "stage": "pages",
+      "error": "Source request timed out",
+      "statusCode": 504
+    }
+  ]
+}

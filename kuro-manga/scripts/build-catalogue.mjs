@@ -1,0 +1,10 @@
+import {build} from 'esbuild';import {readFile} from 'node:fs/promises';import {createHash} from 'node:crypto';
+import {buildLocalAssets} from './build-local.mjs';
+import {policyProvider} from '../client/content-policy.mjs';
+const bundle=await readFile(new URL('../dist/_expo/static/js/web/entry-4ca7ae590a4065290203fe34e743fcb9.js',import.meta.url));
+if(createHash('sha256').update(bundle).digest('hex')!=='4ca7ae590a4065290203fe34e743fcb9e08253d93026aeee7a5bf25efd8b4e07')throw new Error('The exported app changed; re-inspect the Metro contracts before building this bootstrap.');
+const registry=JSON.parse(await readFile(new URL('../dist/provider-registry.json',import.meta.url)));
+const providers=registry.providers.filter(x=>x.adapter).map(({id,name,adapter,mode,website,language,readable,defaultEnabled,contentWarning})=>policyProvider({id,name,adapter,mode,website,language,readable,defaultEnabled,contentWarning,available:id!=='mangabaka'}));
+await buildLocalAssets();
+await build({entryPoints:['client/catalogue-core.mjs'],outfile:'dist/catalogue-core.js',format:'iife',bundle:true,minify:false,target:'es2020',external:['/vendor/local/*'],define:{__KURO_BOOTSTRAP_PROVIDERS__:JSON.stringify(providers)},legalComments:'inline'});
+console.log('Catalogue bootstrap built before app startup; original export integrity confirmed.');

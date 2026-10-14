@@ -1,0 +1,454 @@
+TAP version 13
+# Subtest: all exported asset URLs survive Vercel CLI default directory exclusions
+ok 1 - all exported asset URLs survive Vercel CLI default directory exclusions
+  ---
+  duration_ms: 19.4793
+  type: 'test'
+  ...
+# Subtest: manifest icons are PNGs at the advertised dimensions
+ok 2 - manifest icons are PNGs at the advertised dimensions
+  ---
+  duration_ms: 2.0266
+  type: 'test'
+  ...
+# Subtest: the exported page includes existing install resources
+ok 3 - the exported page includes existing install resources
+  ---
+  duration_ms: 3.3137
+  type: 'test'
+  ...
+# Subtest: password sign-in accepts a Vercel parsed body and returns only an opaque HttpOnly cookie
+ok 4 - password sign-in accepts a Vercel parsed body and returns only an opaque HttpOnly cookie
+  ---
+  duration_ms: 288.0572
+  type: 'test'
+  ...
+# Subtest: signup waits for email verification and enforces the resend cooldown
+ok 5 - signup waits for email verification and enforces the resend cooldown
+  ---
+  duration_ms: 106.4719
+  type: 'test'
+  ...
+# Subtest: email OTP cannot promote an ordinary login into password recovery
+ok 6 - email OTP cannot promote an ordinary login into password recovery
+  ---
+  duration_ms: 80.6189
+  type: 'test'
+  ...
+# Subtest: SMS OTP verifies a phone number and creates a real provider-backed session
+ok 7 - SMS OTP verifies a phone number and creates a real provider-backed session
+  ---
+  duration_ms: 67.3527
+  type: 'test'
+  ...
+# Subtest: recovery codes authorize a password update and revoke existing web sessions
+ok 8 - recovery codes authorize a password update and revoke existing web sessions
+  ---
+  duration_ms: 139.4799
+  type: 'test'
+  ...
+# Subtest: verification stops after five incorrect codes
+ok 9 - verification stops after five incorrect codes
+  ---
+  duration_ms: 168.6098
+  type: 'test'
+  ...
+# Subtest: Google uses S256 PKCE and rejects wrong-browser and replayed callbacks
+ok 10 - Google uses S256 PKCE and rejects wrong-browser and replayed callbacks
+  ---
+  duration_ms: 97.0892
+  type: 'test'
+  ...
+# Subtest: Google callback can finish in a different process using shared Redis state
+ok 11 - Google callback can finish in a different process using shared Redis state
+  ---
+  duration_ms: 331.9293
+  type: 'test'
+  ...
+# Subtest: CSRF requests cannot create an authenticated session
+ok 12 - CSRF requests cannot create an authenticated session
+  ---
+  duration_ms: 8.9733
+  type: 'test'
+  ...
+# Subtest: local sign-out clears cookies when provider revocation is unavailable
+ok 13 - local sign-out clears cookies when provider revocation is unavailable
+  ---
+  duration_ms: 39.0668
+  type: 'test'
+  ...
+# Subtest: local sign-out clears cookies during a Redis outage
+ok 14 - local sign-out clears cookies during a Redis outage
+  ---
+  duration_ms: 18.9803
+  type: 'test'
+  ...
+# Subtest: sign-out also cancels a pending Google flow
+ok 15 - sign-out also cancels a pending Google flow
+  ---
+  duration_ms: 40.517
+  type: 'test'
+  ...
+# Subtest: unconfigured production auth leaves guest endpoints usable without opening SQLite
+ok 16 - unconfigured production auth leaves guest endpoints usable without opening SQLite
+  ---
+  duration_ms: 129.0633
+  type: 'test'
+  ...
+# Subtest: privileged Supabase credentials disable authentication without an import crash
+ok 17 - privileged Supabase credentials disable authentication without an import crash
+  ---
+  duration_ms: 58.7078
+  type: 'test'
+  ...
+# Subtest: test-only HTTP provider transport cannot enable production auth
+ok 18 - test-only HTTP provider transport cannot enable production auth
+  ---
+  duration_ms: 57.727
+  type: 'test'
+  ...
+# Subtest: Vercel auth stays disabled when Supabase is set but shared state is missing
+ok 19 - Vercel auth stays disabled when Supabase is set but shared state is missing
+  ---
+  duration_ms: 157.9571
+  type: 'test'
+  ...
+# Subtest: accepts Vercel JSON bodies after the request stream has been consumed
+ok 20 - accepts Vercel JSON bodies after the request stream has been consumed
+  ---
+  duration_ms: 1.5558
+  type: 'test'
+  ...
+# Subtest: rejects oversized pre-parsed bodies
+ok 21 - rejects oversized pre-parsed bodies
+  ---
+  duration_ms: 0.6436
+  type: 'test'
+  ...
+# Subtest: still reads raw JSON streams on the local Node server
+ok 22 - still reads raw JSON streams on the local Node server
+  ---
+  duration_ms: 2.4951
+  type: 'test'
+  ...
+# Subtest: rejects arrays and null instead of treating them as auth forms
+ok 23 - rejects arrays and null instead of treating them as auth forms
+  ---
+  duration_ms: 1.5026
+  type: 'test'
+  ...
+# Subtest: does not accept a lookalike JSON content type
+ok 24 - does not accept a lookalike JSON content type
+  ---
+  duration_ms: 0.3065
+  type: 'test'
+  ...
+# Subtest: uses Vercel client addresses only on Vercel and validates the header
+ok 25 - uses Vercel client addresses only on Vercel and validates the header
+  ---
+  duration_ms: 3.1935
+  type: 'test'
+  ...
+# Subtest: platform chooses Android ahead of compatibility strings
+ok 26 - platform chooses Android ahead of compatibility strings
+  ---
+  duration_ms: 0.8806
+  type: 'test'
+  ...
+# Subtest: platform chooses Windows desktop and UA client hints
+ok 27 - platform chooses Windows desktop and UA client hints
+  ---
+  duration_ms: 0.8107
+  type: 'test'
+  ...
+# Subtest: iPad desktop mode does not offer a Windows EXE
+ok 28 - iPad desktop mode does not offer a Windows EXE
+  ---
+  duration_ms: 0.1093
+  type: 'test'
+  ...
+# Subtest: unsupported systems do not get a primary native installer
+ok 29 - unsupported systems do not get a primary native installer
+  ---
+  duration_ms: 0.1613
+  type: 'test'
+  ...
+# Subtest: release validates actual download metadata
+ok 30 - release validates actual download metadata
+  ---
+  duration_ms: 0.3891
+  type: 'test'
+  ...
+# Subtest: release rejects unsafe URLs and suffix mismatches
+ok 31 - release rejects unsafe URLs and suffix mismatches
+  ---
+  duration_ms: 0.2504
+  type: 'test'
+  ...
+# Subtest: release rejects invalid manifest shape, sizes, hashes and text injection
+ok 32 - release rejects invalid manifest shape, sizes, hashes and text injection
+  ---
+  duration_ms: 0.2677
+  type: 'test'
+  ...
+# Subtest: native entry marker recognizes only the two built clients
+ok 33 - native entry marker recognizes only the two built clients
+  ---
+  duration_ms: 0.2012
+  type: 'test'
+  ...
+# Subtest: release refuses absent installer files instead of publishing dummy links
+ok 34 - release refuses absent installer files instead of publishing dummy links
+  ---
+  duration_ms: 6.3388
+  type: 'test'
+  ...
+# Subtest: release rejects HTML and renamed non-binary installers
+ok 35 - release rejects HTML and renamed non-binary installers
+  ---
+  duration_ms: 8.0803
+  type: 'test'
+  ...
+# Subtest: release version cannot escape the download directory
+ok 36 - release version cannot escape the download directory
+  ---
+  duration_ms: 0.2575
+  type: 'test'
+  ...
+# Subtest: actual delivered installers produce accurate sizes and digests
+ok 37 - actual delivered installers produce accurate sizes and digests
+  ---
+  duration_ms: 6.7211
+  type: 'test'
+  ...
+# Subtest: native build gate validates both actual installers and assetlinks
+ok 38 - native build gate validates both actual installers and assetlinks
+  ---
+  duration_ms: 11.3874
+  type: 'test'
+  ...
+# Subtest: native build gate fails when a binary changed after metadata generation
+ok 39 - native build gate fails when a binary changed after metadata generation
+  ---
+  duration_ms: 433.0356
+  type: 'test'
+  ...
+# Subtest: native build gate fails when assetlinks names a different signing certificate
+ok 40 - native build gate fails when assetlinks names a different signing certificate
+  ---
+  duration_ms: 297.5621
+  type: 'test'
+  ...
+# Subtest: native build gate fails when APK or assetlinks was omitted
+ok 41 - native build gate fails when APK or assetlinks was omitted
+  ---
+  duration_ms: 288.0213
+  type: 'test'
+  ...
+# Subtest: profile requests require a verified KURO session
+ok 42 - profile requests require a verified KURO session
+  ---
+  duration_ms: 119.0175
+  type: 'test'
+  ...
+# Subtest: edited display name persists across a new login and appears in the existing session API
+ok 43 - edited display name persists across a new login and appears in the existing session API
+  ---
+  duration_ms: 191.9576
+  type: 'test'
+  ...
+# Subtest: names reject empty, long, control-character and non-string input
+ok 44 - names reject empty, long, control-character and non-string input
+  ---
+  duration_ms: 198.0201
+  type: 'test'
+  ...
+# Subtest: markup in a name is persisted as display text
+ok 45 - markup in a name is persisted as display text
+  ---
+  duration_ms: 81.0982
+  type: 'test'
+  ...
+# Subtest: cross-origin and missing-origin profile mutations are rejected
+ok 46 - cross-origin and missing-origin profile mutations are rejected
+  ---
+  duration_ms: 20.0697
+  type: 'test'
+  ...
+# Subtest: recovery-only sessions cannot read or edit normal profile data
+ok 47 - recovery-only sessions cannot read or edit normal profile data
+  ---
+  duration_ms: 125.8385
+  type: 'test'
+  ...
+# Subtest: MIME spoofing, SVG and unsupported payloads are rejected
+ok 48 - MIME spoofing, SVG and unsupported payloads are rejected
+  ---
+  duration_ms: 156.5473
+  type: 'test'
+  ...
+# Subtest: header-only truncated images are rejected after decoding
+ok 49 - header-only truncated images are rejected after decoding
+  ---
+  duration_ms: 59.5666
+  type: 'test'
+  ...
+# Subtest: oversized raw, streamed and content-length uploads are rejected
+ok 50 - oversized raw, streamed and content-length uploads are rejected
+  ---
+  duration_ms: 107.0377
+  type: 'test'
+  ...
+# Subtest: image dimensions are bounded before pixel decoding
+ok 51 - image dimensions are bounded before pixel decoding
+  ---
+  duration_ms: 54.1806
+  type: 'test'
+  ...
+# Subtest: upload, replacement and removal persist and keep photos owner-authenticated
+ok 52 - upload, replacement and removal persist and keep photos owner-authenticated
+  ---
+  duration_ms: 261.8983
+  type: 'test'
+  ...
+# Subtest: a different account and a manipulated metadata path cannot retrieve the first account image
+ok 53 - a different account and a manipulated metadata path cannot retrieve the first account image
+  ---
+  duration_ms: 87.3373
+  type: 'test'
+  ...
+# Subtest: Storage contents are revalidated and re-encoded when served even after a direct upload
+ok 54 - Storage contents are revalidated and re-encoded when served even after a direct upload
+  ---
+  duration_ms: 78.0217
+  type: 'test'
+  ...
+# Subtest: definite metadata rejection preserves the prior avatar and rolls back the new object
+ok 55 - definite metadata rejection preserves the prior avatar and rolls back the new object
+  ---
+  duration_ms: 86.5042
+  type: 'test'
+  ...
+# Subtest: storage outages fail closed without clearing a working avatar
+ok 56 - storage outages fail closed without clearing a working avatar
+  ---
+  duration_ms: 82.7525
+  type: 'test'
+  ...
+# Subtest: profile mutation limits return 429 after the permitted actions
+ok 57 - profile mutation limits return 429 after the permitted actions
+  ---
+  duration_ms: 449.8941
+  type: 'test'
+  ...
+# Subtest: a stale editor cannot save after the signed-in account changes
+ok 58 - a stale editor cannot save after the signed-in account changes
+  ---
+  duration_ms: 76.242
+  type: 'test'
+  ...
+# Subtest: Vercel octet-stream parsed upload preserves binary bytes and validates its claimed image MIME
+ok 59 - Vercel octet-stream parsed upload preserves binary bytes and validates its claimed image MIME
+  ---
+  duration_ms: 61.9646
+  type: 'test'
+  ...
+# Subtest: failed avatar removal metadata update preserves the current picture
+ok 60 - failed avatar removal metadata update preserves the current picture
+  ---
+  duration_ms: 77.4751
+  type: 'test'
+  ...
+# Subtest: an avatar metadata commit followed by an error response is reconciled without deleting the new photo
+ok 61 - an avatar metadata commit followed by an error response is reconciled without deleting the new photo
+  ---
+  duration_ms: 83.0417
+  type: 'test'
+  ...
+# Subtest: an unreadable metadata result retains the potentially committed photo until reconciliation is possible
+ok 62 - an unreadable metadata result retains the potentially committed photo until reconciliation is possible
+  ---
+  duration_ms: 79.3877
+  type: 'test'
+  ...
+# Subtest: a timed-out metadata write that commits after reconciliation still has its uploaded image
+ok 63 - a timed-out metadata write that commits after reconciliation still has its uploaded image
+  ---
+  duration_ms: 347.7605
+  type: 'test'
+  ...
+# Subtest: migration enforces owner-only access even alongside an existing permissive policy
+ok 64 - migration enforces owner-only access even alongside an existing permissive policy
+  ---
+  duration_ms: 1421.7181
+  type: 'test'
+  ...
+# Subtest: OAuth state survives a request served by another function instance
+ok 65 - OAuth state survives a request served by another function instance
+  ---
+  duration_ms: 51.174
+  type: 'test'
+  ...
+# Subtest: provider tokens and PKCE verifiers are encrypted in the shared database
+ok 66 - provider tokens and PKCE verifiers are encrypted in the shared database
+  ---
+  duration_ms: 22.4215
+  type: 'test'
+  ...
+# Subtest: auth reads use the primary even when ordinary replica reads are stale
+ok 67 - auth reads use the primary even when ordinary replica reads are stale
+  ---
+  duration_ms: 13.2466
+  type: 'test'
+  ...
+# Subtest: an encrypted session cannot be moved to another cookie record
+ok 68 - an encrypted session cannot be moved to another cookie record
+  ---
+  duration_ms: 35.2793
+  type: 'test'
+  ...
+# Subtest: editing a stored expiry cannot extend an authenticated record
+ok 69 - editing a stored expiry cannot extend an authenticated record
+  ---
+  duration_ms: 21.1705
+  type: 'test'
+  ...
+# Subtest: concurrent instances share one atomic rate-limit budget
+ok 70 - concurrent instances share one atomic rate-limit budget
+  ---
+  duration_ms: 59.2471
+  type: 'test'
+  ...
+# Subtest: global logout removes only that user and refresh cannot resurrect a deleted session
+ok 71 - global logout removes only that user and refresh cannot resurrect a deleted session
+  ---
+  duration_ms: 53.2736
+  type: 'test'
+  ...
+# Subtest: requests using the same session are serialized across instances
+ok 72 - requests using the same session are serialized across instances
+  ---
+  duration_ms: 305.826
+  type: 'test'
+  ...
+# Subtest: expired records are unavailable from every instance
+ok 73 - expired records are unavailable from every instance
+  ---
+  duration_ms: 1112.4413
+  type: 'test'
+  ...
+# Subtest: shared-store failures reject auth operations with a safe temporary error
+ok 74 - shared-store failures reject auth operations with a safe temporary error
+  ---
+  duration_ms: 2.0079
+  type: 'test'
+  ...
+1..74
+# tests 74
+# suites 0
+# pass 74
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3128.6781

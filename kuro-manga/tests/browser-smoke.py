@@ -17,6 +17,8 @@ with sync_playwright() as p:
         # Reproduce the screenshot's missing-offer state. Synthetic handoff events still reach the app.
         page.add_init_script("window.addEventListener('beforeinstallprompt', e => { if (e.isTrusted) e.stopImmediatePropagation(); }, true);")
         page.route("**/__proxy?*", lambda route: route.fulfill(status=503, content_type="text/plain", body="Test source unavailable"))
+        page.route("**/api/catalogue/provider/**", lambda route: route.fulfill(status=503, content_type="application/json", body='{"error":"Sources excluded from PWA test"}'))
+        page.route("**/api/catalogue/mangadex?*", lambda route: route.fulfill(status=503, content_type="application/json", body='{"error":"Sources excluded from PWA test"}'))
         page.route("https://**/*", lambda route: route.fulfill(status=503, body="External content excluded from the UI smoke test"))
         return page
     errors = []
@@ -25,7 +27,7 @@ with sync_playwright() as p:
     page.on("pageerror", lambda error: errors.append(str(error)))
     page.goto(origin, wait_until="networkidle")
     print("Rendered:", json.dumps(page.locator("body").inner_text()[:700]))
-    expect(page.locator("#kuro-install[open]")).to_be_visible(timeout=10000)
+    expect(page.locator("#kuro-install:not([hidden])")).to_be_visible(timeout=10000)
     page.evaluate("document.fonts.ready")
     font_status = page.evaluate("Array.from(document.fonts).map(f => ({family:f.family,status:f.status}))")
     print("Fonts:", json.dumps(font_status))
@@ -33,29 +35,27 @@ with sync_playwright() as p:
     for response_url in ["/manifest.webmanifest", "/icons/kuro-192.png", "/icons/kuro-512.png", "/sw.js"]:
         assert page.request.get(origin + response_url).status == 200, response_url
     page.screenshot(path=str(evidence / "desktop-install.png"))
-    install = page.get_by_role("button", name="Install KURO", exact=True)
+    install = page.get_by_role("button", name="Install KURO in your browser", exact=True)
     expect(install).to_be_visible(timeout=3000)
     install.click()
     expect(page.locator("#kuro-install-help")).to_be_visible()
     assert "Open in app" in page.locator("#kuro-install-help").inner_text()
     assert page.evaluate("window.fixturePromptCalls") is None
-    page.get_by_role("button", name="Hide instructions", exact=True).click()
-    expect(page.locator("#kuro-install-help")).to_be_hidden()
-    page.get_by_role("button", name="Not now", exact=True).click()
+    page.get_by_role("button", name="Later", exact=True).click()
     page.reload(wait_until="networkidle")
     page.wait_for_timeout(3800)
-    expect(page.locator("#kuro-install[open]")).to_have_count(0)
+    expect(page.locator("#kuro-install:not([hidden])")).to_have_count(0)
     page.evaluate("window.dispatchEvent(new Event('kuro-install'))")
-    expect(page.locator("#kuro-install[open]")).to_be_visible()
+    expect(page.locator("#kuro-install:not([hidden])")).to_be_visible()
     page.evaluate("""() => {
       const event = new Event('beforeinstallprompt');
       event.prompt = async () => { window.fixturePromptCalls = (window.fixturePromptCalls || 0) + 1; };
       event.userChoice = Promise.resolve({outcome:'accepted'});
       window.dispatchEvent(event);
     }""")
-    page.get_by_role("button", name="Install KURO", exact=True).click()
+    page.get_by_role("button", name="Install KURO in your browser", exact=True).click()
     page.wait_for_timeout(1500)
-    expect(page.locator("#kuro-install[open]")).to_have_count(0)
+    expect(page.locator("#kuro-install:not([hidden])")).to_have_count(0)
     assert page.evaluate("window.fixturePromptCalls") == 1
     page.goto(origin + "/account", wait_until="networkidle")
     expect(page.get_by_text("Continue with Google", exact=True)).to_be_visible()
@@ -67,19 +67,20 @@ with sync_playwright() as p:
     context.add_init_script("delete HTMLDialogElement.prototype.showModal; delete HTMLDialogElement.prototype.close;")
     page = page_for(context)
     page.goto(origin, wait_until="networkidle")
-    expect(page.locator("#kuro-install[open]")).to_be_visible(timeout=10000)
+    expect(page.locator("#kuro-install:not([hidden])")).to_be_visible(timeout=10000)
     page.screenshot(path=str(evidence / "mobile-fallback-install.png"))
-    page.get_by_role("button", name="Install KURO", exact=True).click()
+    page.get_by_role("button", name="Install KURO in your browser", exact=True).click()
     expect(page.locator("#kuro-install-help")).to_be_visible()
-    page.get_by_role("button", name="Hide instructions", exact=True).click()
+    page.locator('#kuro-install-action').focus()
     page.keyboard.press("Tab")
-    assert page.evaluate("!!document.activeElement.closest('#kuro-install')")
+    assert not page.evaluate("!!document.activeElement.closest('#kuro-install')")
+    page.locator('#kuro-install-action').focus()
     page.keyboard.press("Escape")
-    expect(page.locator("#kuro-install[open]")).to_have_count(0)
+    expect(page.locator("#kuro-install:not([hidden])")).to_have_count(0)
     page.evaluate("window.dispatchEvent(new Event('kuro-install'))")
-    expect(page.locator("#kuro-install[open]")).to_be_visible()
-    page.get_by_role("button", name="Not now", exact=True).click()
-    expect(page.locator("#kuro-install[open]")).to_have_count(0)
+    expect(page.locator("#kuro-install:not([hidden])")).to_be_visible()
+    page.get_by_role("button", name="Later", exact=True).click()
+    expect(page.locator("#kuro-install:not([hidden])")).to_have_count(0)
     context.close()
 
     context = browser.new_context()
@@ -107,7 +108,7 @@ with sync_playwright() as p:
     context.close()
     browser.close()
 report = {"passed": True, "page_errors": errors, "fonts": font_status,
-          "checks": ["PWA resources", "first-visit dialog", "install action without native offer", "dismissal", "re-entry", "prompt handoff",
-                     "mobile fallback", "focus trap", "Escape", "standalone suppression", "offline navigation", "Google UI handoff"]}
+          "checks": ["PWA resources", "first-visit notice", "browser install fallback", "dismissal", "re-entry", "prompt handoff",
+                     "mobile notice", "untrapped page focus", "Escape", "standalone suppression", "offline navigation", "Google UI handoff"]}
 (evidence / "verification.json").write_text(json.dumps(report, indent=2), encoding="utf8")
 print("Browser smoke passed:", ", ".join(report["checks"]))

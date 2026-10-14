@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "version": "3.9.0",
+  "android": {
+    "url": "/downloads/KURO-3.9.0-android.apk",
+    "bytes": 1337046,
+    "sha256": "2ea56656e8a0be21f766bf0a785a643a1053ebe37c2ca831686403d7316be325",
+    "minimumSystem": "Android 10+"
+  },
+  "windows": {
+    "url": "/downloads/KURO-3.9.0-windows.exe",
+    "bytes": 61952,
+    "sha256": "ad3e60f7891acd1adf5b513a470b148da129a4ccbdb76c3cef600094059e61af",
+    "minimumSystem": "Windows 10/11 + Edge"
+  }
+}

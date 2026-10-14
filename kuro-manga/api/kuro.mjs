@@ -1,4 +1,6 @@
 import { authRoute } from '../server/auth/routes.mjs';
+import { profileRoute } from '../server/profile/routes.mjs';
+import { catalogueRoute } from '../server/catalogue/routes.mjs';
 import { proxy } from '../server/proxy.mjs';
 
 // Vercel serverless adapter for Kuro's existing same-origin endpoints.
@@ -24,6 +26,8 @@ export default async function handler(req, res) {
     return;
   }
   if (await authRoute(req, res, url)) return;
+  if (await profileRoute(req, res, url)) return;
+  if (await catalogueRoute(req, res, url)) return;
 
   res.statusCode = 404;
   res.end('Not found');

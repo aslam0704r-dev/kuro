@@ -1,0 +1,14 @@
+[
+    {
+        "target":  {
+                       "sha256_cert_fingerprints":  [
+                                                        "00:B6:BE:3B:C1:43:71:5F:2A:4B:BB:A3:70:92:D7:20:2C:3A:E8:0F:C9:A9:FD:E1:26:FF:96:77:87:35:AA:71"
+                                                    ],
+                       "namespace":  "android_app",
+                       "package_name":  "app.kuro.manga"
+                   },
+        "relation":  [
+                         "delegate_permission/common.handle_all_urls"
+                     ]
+    }
+]

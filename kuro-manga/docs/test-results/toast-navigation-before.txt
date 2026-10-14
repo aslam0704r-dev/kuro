@@ -1,0 +1,48 @@
+test_pending_manual_open_does_not_focus_a_new_screen (__main__.InstallToast.test_pending_manual_open_does_not_focus_a_new_screen) ... FAIL
+
+======================================================================
+FAIL: test_pending_manual_open_does_not_focus_a_new_screen (__main__.InstallToast.test_pending_manual_open_does_not_focus_a_new_screen)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\kuro-native\tests\install-toast.py", line 101, in test_pending_manual_open_does_not_focus_a_new_screen
+    expect(field).to_be_focused()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\sync_api\_generated.py", line 23391, in to_be_focused
+    self._sync(self._impl_obj.to_be_focused(timeout=to_milliseconds(timeout)))
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_assertions.py", line 873, in to_be_focused
+    await self._expect_impl(
+    ...<5 lines>...
+    )
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_assertions.py", line 128, in _expect_impl
+    _record_soft_or_raise(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        AssertionError(
+        ^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        self._is_soft,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_assertions.py", line 60, in _record_soft_or_raise
+    raise error
+AssertionError: Locator expected to be focused
+Actual value: inactive 
+Call log:
+  - Expect "to_be_focused" with timeout 5000ms
+  - waiting for get_by_role("textbox", name="Email address", exact=True)
+    14 � locator resolved to <input rows="1" dir="auto" type="email" maxlength="254" autocorrect="off" spellcheck="false" autocomplete="email" autocapitalize="none" aria-label="Email address" virtualkeyboardpolicy="auto" placeholder="you@example.com" value="new-screen@example.com" class="css-11aywtz r-6taxm2 r-1cxykhi r-1p04q6i r-t23y2h r-rs99b7 r-sr90hx r-a023e6 r-1sn7ly2 r-3pj75a"/>
+       - unexpected value "inactive"
+
+Aria snapshot:
+- textbox "Email address":
+  - /placeholder: you@example.com
+  - text: new-screen@example.com
+
+----------------------------------------------------------------------
+Ran 1 test in 8.252s
+
+FAILED (failures=1)

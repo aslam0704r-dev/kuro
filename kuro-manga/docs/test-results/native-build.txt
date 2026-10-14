@@ -1,0 +1,19 @@
+
+> kuro-managed-web@3.9.1 build
+> npm run prepare:assets && npm run validate:dist && npm run validate:native
+
+
+> kuro-managed-web@3.9.1 prepare:assets
+> node scripts/prepare-assets.mjs
+
+Exported vendor assets prepared for Vercel upload.
+
+> kuro-managed-web@3.9.1 validate:dist
+> node scripts/check-dist.mjs
+
+Prebuilt web release validated: 48 referenced resources exist and survive deployment exclusions.
+
+> kuro-managed-web@3.9.1 validate:native
+> node scripts/validate-native.mjs
+
+Native release validated: APK/EXE bytes, hashes, public certificate and Digital Asset Links. APK cryptographic verification is recorded separately by apksigner.

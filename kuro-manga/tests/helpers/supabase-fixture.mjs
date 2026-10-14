@@ -2,7 +2,8 @@ import http from 'node:http';
 import { once } from 'node:events';
 import { randomUUID, createHash } from 'node:crypto';
 export async function supabaseFixture() {
-  const users = new Map(), tokens = new Map(), codes = new Set();
+  const users = new Map(), tokens = new Map(), codes = new Set(), objects = new Map();
+  let metadataFailure = false, storageFailure = false, ambiguousMetadata = false, metadataReadBlocked = false;
   let url, challenge = '', usedGoogle = false, unavailable = false;
   function user(destination, phone = false, verified = true) {
     if (!users.has(destination)) users.set(destination, { id: randomUUID(), aud: 'authenticated', role: 'authenticated',
@@ -29,11 +30,47 @@ export async function supabaseFixture() {
     if (unavailable) { respond(503, { message: 'Fixture provider unavailable' }); return; }
     const address = new URL(req.url, url), chunks = [];
     for await (const chunk of req) chunks.push(chunk);
-    const input = chunks.length ? JSON.parse(Buffer.concat(chunks).toString()) : {};
     const account = tokens.get(String(req.headers.authorization || '').replace(/^Bearer /, ''));
+    const raw = Buffer.concat(chunks);
+    if (address.pathname.startsWith('/storage/v1/')) {
+      if (storageFailure) return respond(503, { message: 'Fixture storage unavailable' });
+      if (!account) return respond(401, { message: 'Invalid token' });
+      const match = /^\/storage\/v1\/object\/(?:authenticated\/)?kuro-avatars(?:\/(.*))?$/.exec(address.pathname);
+      if (!match) return respond(404, { message: 'Not found' });
+      const objectPath = decodeURIComponent(match[1] || '');
+      const owned = key => key.split('/')[0] === account.id;
+      if (req.method === 'DELETE') {
+        const paths = JSON.parse(raw.toString()).prefixes;
+        if (!paths.every(owned)) return respond(403, { message: 'RLS denied' });
+        paths.forEach(key => objects.delete(key)); return respond(200, paths.map(name => ({ name })));
+      }
+      if (!owned(objectPath)) return respond(403, { message: 'RLS denied' });
+      if (req.method === 'POST') {
+        objects.set(objectPath, { bytes: raw, type: req.headers['content-type'] });
+        return respond(200, { Key: 'kuro-avatars/' + objectPath, Id: randomUUID() });
+      }
+      const found = objects.get(objectPath);
+      if (!found) return respond(404, { message: 'Object not found', statusCode: '404' });
+      res.writeHead(200, { 'Content-Type': found.type }); res.end(found.bytes); return;
+    }
+    const input = raw.length ? JSON.parse(raw.toString()) : {};
     if (address.pathname === '/auth/v1/user') {
       if (!account) return respond(401, { message: 'Invalid token', code: 'bad_jwt' });
+      if (req.method === 'GET' && metadataReadBlocked) return respond(503, { message: 'Fixture read unavailable' });
       if (req.method === 'PUT' && input.password) account.password = input.password;
+      if (req.method === 'PUT' && input.data) {
+        if (metadataFailure) return respond(metadataFailure === 'reject' ? 400 : 503, { message: 'Fixture metadata update rejected' });
+        if (ambiguousMetadata === 'delayed') {
+          const captured = { ...input.data };
+          setTimeout(() => Object.assign(account.user_metadata, captured), 200);
+          return respond(503, { message: 'Fixture response lost while write continues' });
+        }
+        Object.assign(account.user_metadata, input.data);
+        if (ambiguousMetadata) {
+          metadataReadBlocked = ambiguousMetadata === 'unreadable';
+          return respond(503, { message: 'Fixture response lost after commit' });
+        }
+      }
       return respond(200, publicUser(account));
     }
     if (address.pathname === '/auth/v1/logout') return respond(200, {});
@@ -71,5 +108,8 @@ export async function supabaseFixture() {
   });
   server.listen(0, '127.0.0.1'); await once(server, 'listening'); url = 'http://127.0.0.1:' + server.address().port;
   return { url, setGoogleChallenge(value) { challenge = value; usedGoogle = false; }, setFailure(value) { unavailable = value; },
+    setMetadataFailure(value) { metadataFailure = value; }, setStorageFailure(value) { storageFailure = value; },
+    setAmbiguousMetadata(value) { ambiguousMetadata = value; metadataReadBlocked = false; },
+    user(email) { return user(email); }, phoneSession(destination) { return session(user(destination,true)); }, objects,
     async close() { server.closeAllConnections(); await new Promise(resolve => server.close(resolve)); } };
 }

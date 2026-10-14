@@ -1,0 +1,6272 @@
+[
+  {
+    "line": 1,
+    "name": "11toon",
+    "id": "11toon"
+  },
+  {
+    "line": 2,
+    "name": "1Manga.co",
+    "id": "1mangaco"
+  },
+  {
+    "line": 3,
+    "name": "1piecemanga.com",
+    "id": "1piecemangacom"
+  },
+  {
+    "line": 4,
+    "name": "3asq",
+    "id": "3asq"
+  },
+  {
+    "line": 5,
+    "name": "Aarlas",
+    "id": "aarlas"
+  },
+  {
+    "line": 6,
+    "name": "AcervoEremita",
+    "id": "acervoeremita"
+  },
+  {
+    "line": 7,
+    "name": "AComics",
+    "id": "acomics"
+  },
+  {
+    "line": 8,
+    "name": "Afrodit Scans",
+    "id": "afroditscans"
+  },
+  {
+    "line": 9,
+    "name": "Ainz Scans ID",
+    "id": "ainzscansid"
+  },
+  {
+    "line": 10,
+    "name": "ajimenoippo.com",
+    "id": "ajimenoippocom"
+  },
+  {
+    "line": 11,
+    "name": "Akai Comic",
+    "id": "akaicomic"
+  },
+  {
+    "line": 12,
+    "name": "AKAYA",
+    "id": "akaya"
+  },
+  {
+    "line": 13,
+    "name": "Akaza Scans",
+    "id": "akazascans"
+  },
+  {
+    "line": 14,
+    "name": "akiramanga.com",
+    "id": "akiramangacom"
+  },
+  {
+    "line": 15,
+    "name": "Alandal",
+    "id": "alandal"
+  },
+  {
+    "line": 16,
+    "name": "AllManga",
+    "id": "allmanga"
+  },
+  {
+    "line": 17,
+    "name": "Alpha Manga",
+    "id": "alphamanga"
+  },
+  {
+    "line": 18,
+    "name": "Alphapolis",
+    "id": "alphapolis"
+  },
+  {
+    "line": 19,
+    "name": "Alucard Scans",
+    "id": "alucardscans"
+  },
+  {
+    "line": 20,
+    "name": "AlwatanManga",
+    "id": "alwatanmanga"
+  },
+  {
+    "line": 21,
+    "name": "Amanga Planet",
+    "id": "amangaplanet"
+  },
+  {
+    "line": 22,
+    "name": "Ameba Manga",
+    "id": "amebamanga"
+  },
+  {
+    "line": 23,
+    "name": "Amuy",
+    "id": "amuy"
+  },
+  {
+    "line": 24,
+    "name": "Anikiga",
+    "id": "anikiga"
+  },
+  {
+    "line": 25,
+    "name": "AniList",
+    "id": "anilist"
+  },
+  {
+    "line": 26,
+    "name": "Anime GDR Club",
+    "id": "animegdrclub"
+  },
+  {
+    "line": 27,
+    "name": "AnimeSama",
+    "id": "animesama"
+  },
+  {
+    "line": 28,
+    "name": "AnimeXNovel",
+    "id": "animexnovel"
+  },
+  {
+    "line": 29,
+    "name": "Anisa Scans",
+    "id": "anisascans"
+  },
+  {
+    "line": 30,
+    "name": "Aniverse",
+    "id": "aniverse"
+  },
+  {
+    "line": 31,
+    "name": "Anyone Manga",
+    "id": "anyonemanga"
+  },
+  {
+    "line": 32,
+    "name": "AnzManga",
+    "id": "anzmanga"
+  },
+  {
+    "line": 33,
+    "name": "AnzMangasHd",
+    "id": "anzmangashd"
+  },
+  {
+    "line": 34,
+    "name": "ao-ashi-manga.com",
+    "id": "aoashimangacom"
+  },
+  {
+    "line": 35,
+    "name": "AP Comics",
+    "id": "apcomics"
+  },
+  {
+    "line": 36,
+    "name": "Apenas Uma Fã",
+    "id": "apenasumafa"
+  },
+  {
+    "line": 37,
+    "name": "APKOMIK",
+    "id": "apkomik"
+  },
+  {
+    "line": 38,
+    "name": "ApollComics",
+    "id": "apollcomics"
+  },
+  {
+    "line": 39,
+    "name": "Aqua Manga",
+    "id": "aquamanga"
+  },
+  {
+    "line": 40,
+    "name": "Arab Toons",
+    "id": "arabtoons"
+  },
+  {
+    "line": 41,
+    "name": "ArabianScan",
+    "id": "arabianscan"
+  },
+  {
+    "line": 42,
+    "name": "ArabManhwa",
+    "id": "arabmanhwa"
+  },
+  {
+    "line": 43,
+    "name": "AralosBD",
+    "id": "aralosbd"
+  },
+  {
+    "line": 44,
+    "name": "ArazNovel",
+    "id": "araznovel"
+  },
+  {
+    "line": 45,
+    "name": "ArbxComix",
+    "id": "arbxcomix"
+  },
+  {
+    "line": 46,
+    "name": "Arc-Relight",
+    "id": "arcrelight"
+  },
+  {
+    "line": 47,
+    "name": "Arcura Fansub",
+    "id": "arcurafansub"
+  },
+  {
+    "line": 48,
+    "name": "Area Manga",
+    "id": "areamanga"
+  },
+  {
+    "line": 49,
+    "name": "Arena Scan",
+    "id": "arenascan"
+  },
+  {
+    "line": 50,
+    "name": "AresManga",
+    "id": "aresmanga"
+  },
+  {
+    "line": 51,
+    "name": "Argos Comics",
+    "id": "argoscomics"
+  },
+  {
+    "line": 52,
+    "name": "Argos Scan",
+    "id": "argosscan"
+  },
+  {
+    "line": 53,
+    "name": "AriaToon",
+    "id": "ariatoon"
+  },
+  {
+    "line": 54,
+    "name": "Ariverse",
+    "id": "ariverse"
+  },
+  {
+    "line": 55,
+    "name": "Armageddon Scanlation",
+    "id": "armageddonscanlation"
+  },
+  {
+    "line": 56,
+    "name": "Art Lapsa",
+    "id": "artlapsa"
+  },
+  {
+    "line": 57,
+    "name": "Arthur Scan",
+    "id": "arthurscan"
+  },
+  {
+    "line": 58,
+    "name": "Arven Comics",
+    "id": "arvencomics"
+  },
+  {
+    "line": 59,
+    "name": "AryaScans",
+    "id": "aryascans"
+  },
+  {
+    "line": 60,
+    "name": "Asacomi",
+    "id": "asacomi"
+  },
+  {
+    "line": 61,
+    "name": "Asia Lotus",
+    "id": "asialotus"
+  },
+  {
+    "line": 62,
+    "name": "AsiaToon",
+    "id": "asiatoon"
+  },
+  {
+    "line": 63,
+    "name": "Asmodeus Scans",
+    "id": "asmodeusscans"
+  },
+  {
+    "line": 64,
+    "name": "Assorted Scans",
+    "id": "assortedscans"
+  },
+  {
+    "line": 65,
+    "name": "Aster Scans",
+    "id": "asterscans"
+  },
+  {
+    "line": 66,
+    "name": "Astral Scans",
+    "id": "astralscans"
+  },
+  {
+    "line": 67,
+    "name": "Astral-Manga",
+    "id": "astralmanga"
+  },
+  {
+    "line": 68,
+    "name": "AstraManga",
+    "id": "astramanga"
+  },
+  {
+    "line": 69,
+    "name": "Astratoons",
+    "id": "astratoons"
+  },
+  {
+    "line": 70,
+    "name": "Asura Scans",
+    "id": "asurascans"
+  },
+  {
+    "line": 71,
+    "name": "Asura Scans TR",
+    "id": "asurascanstr"
+  },
+  {
+    "line": 72,
+    "name": "Atemporal",
+    "id": "atemporal"
+  },
+  {
+    "line": 73,
+    "name": "Athrea Scans",
+    "id": "athreascans"
+  },
+  {
+    "line": 74,
+    "name": "Atsumaru",
+    "id": "atsumaru"
+  },
+  {
+    "line": 75,
+    "name": "Aunt Manhwa",
+    "id": "auntmanhwa"
+  },
+  {
+    "line": 76,
+    "name": "Aurora Scans",
+    "id": "aurorascans"
+  },
+  {
+    "line": 77,
+    "name": "Azora",
+    "id": "azoramoon"
+  },
+  {
+    "line": 78,
+    "name": "Azorafly",
+    "id": "azoramoon"
+  },
+  {
+    "line": 79,
+    "name": "AzoraMoon",
+    "id": "azoramoon"
+  },
+  {
+    "line": 80,
+    "name": "Azuretoons",
+    "id": "azuretoons"
+  },
+  {
+    "line": 81,
+    "name": "BacaKomik",
+    "id": "bacakomik"
+  },
+  {
+    "line": 82,
+    "name": "Bacami",
+    "id": "bacami"
+  },
+  {
+    "line": 83,
+    "name": "Bakai",
+    "id": "bakai"
+  },
+  {
+    "line": 84,
+    "name": "Bakkin",
+    "id": "bakkin"
+  },
+  {
+    "line": 85,
+    "name": "Bakkin Self-hosted",
+    "id": "bakkinselfhosted"
+  },
+  {
+    "line": 86,
+    "name": "bananafishmanga.com",
+    "id": "bananafishmangacom"
+  },
+  {
+    "line": 87,
+    "name": "BananaScan",
+    "id": "bananascan"
+  },
+  {
+    "line": 88,
+    "name": "BananaScan.Com",
+    "id": "bananascancom"
+  },
+  {
+    "line": 89,
+    "name": "Banchan Scan",
+    "id": "banchanscan"
+  },
+  {
+    "line": 90,
+    "name": "Baozimh",
+    "id": "baozimh"
+  },
+  {
+    "line": 91,
+    "name": "BarManga",
+    "id": "barmanga"
+  },
+  {
+    "line": 92,
+    "name": "BatCave",
+    "id": "batcave"
+  },
+  {
+    "line": 93,
+    "name": "Battle In 5 Seconds After Meeting",
+    "id": "battlein5secondsaftermeeting"
+  },
+  {
+    "line": 94,
+    "name": "Bbato",
+    "id": "bbato"
+  },
+  {
+    "line": 95,
+    "name": "beckmanga.com",
+    "id": "beckmangacom"
+  },
+  {
+    "line": 96,
+    "name": "Bega Translation",
+    "id": "begatranslation"
+  },
+  {
+    "line": 97,
+    "name": "BentoScan",
+    "id": "bentoscan"
+  },
+  {
+    "line": 98,
+    "name": "berserk-manga.com",
+    "id": "berserkmangacom"
+  },
+  {
+    "line": 99,
+    "name": "Bibibi Comic",
+    "id": "bibibicomic"
+  },
+  {
+    "line": 100,
+    "name": "Big Comics",
+    "id": "bigcomics"
+  },
+  {
+    "line": 101,
+    "name": "BigSolo",
+    "id": "bigsolo"
+  },
+  {
+    "line": 102,
+    "name": "BirdManga",
+    "id": "birdmanga"
+  },
+  {
+    "line": 103,
+    "name": "blackclova.com",
+    "id": "blackclovacom"
+  },
+  {
+    "line": 104,
+    "name": "Blackout Comics",
+    "id": "blackoutcomics"
+  },
+  {
+    "line": 105,
+    "name": "BlackToon",
+    "id": "blacktoon"
+  },
+  {
+    "line": 106,
+    "name": "Bladetoons",
+    "id": "bladetoons"
+  },
+  {
+    "line": 107,
+    "name": "bleach-read.com",
+    "id": "bleachreadcom"
+  },
+  {
+    "line": 108,
+    "name": "bleachmanga.org",
+    "id": "bleachmangaorg"
+  },
+  {
+    "line": 109,
+    "name": "Bloom Scans",
+    "id": "bloomscans"
+  },
+  {
+    "line": 110,
+    "name": "Blossom Scans",
+    "id": "blossomscans"
+  },
+  {
+    "line": 111,
+    "name": "Blue Solo",
+    "id": "bluesolo"
+  },
+  {
+    "line": 112,
+    "name": "bluelock-read.com",
+    "id": "bluelockreadcom"
+  },
+  {
+    "line": 113,
+    "name": "bluelockmanga.net",
+    "id": "bluelockmanganet"
+  },
+  {
+    "line": 114,
+    "name": "bocchitherockmanga.com",
+    "id": "bocchitherockmangacom"
+  },
+  {
+    "line": 115,
+    "name": "BokugenTranslation",
+    "id": "bokugentranslation"
+  },
+  {
+    "line": 116,
+    "name": "Bomtoon",
+    "id": "bomtoon"
+  },
+  {
+    "line": 117,
+    "name": "BOOK WALKER",
+    "id": "bookwalker"
+  },
+  {
+    "line": 118,
+    "name": "Booklista Studio",
+    "id": "booklistastudio"
+  },
+  {
+    "line": 119,
+    "name": "BookLive",
+    "id": "booklive"
+  },
+  {
+    "line": 120,
+    "name": "BookWalker Japan",
+    "id": "bookwalkerjapan"
+  },
+  {
+    "line": 121,
+    "name": "Borat Scans",
+    "id": "boratscans"
+  },
+  {
+    "line": 122,
+    "name": "Boruto Explorer",
+    "id": "borutoexplorer"
+  },
+  {
+    "line": 123,
+    "name": "BrainRotComics",
+    "id": "brainrotcomics"
+  },
+  {
+    "line": 124,
+    "name": "Broccoli Soup",
+    "id": "broccolisoup"
+  },
+  {
+    "line": 125,
+    "name": "Bun Manga",
+    "id": "bunmanga"
+  },
+  {
+    "line": 126,
+    "name": "buttsmithy",
+    "id": "buttsmithy"
+  },
+  {
+    "line": 127,
+    "name": "Bymichi Scan",
+    "id": "bymichiscan"
+  },
+  {
+    "line": 128,
+    "name": "C'moA",
+    "id": "cmoa"
+  },
+  {
+    "line": 129,
+    "name": "Café com Yaoi",
+    "id": "cafecomyaoi"
+  },
+  {
+    "line": 130,
+    "name": "callofthenight.com",
+    "id": "callofthenightcom"
+  },
+  {
+    "line": 131,
+    "name": "CapibaraTraductor",
+    "id": "capibaratraductor"
+  },
+  {
+    "line": 132,
+    "name": "Capitoons",
+    "id": "capitoons"
+  },
+  {
+    "line": 133,
+    "name": "Cartel De Manhwas",
+    "id": "carteldemanhwas"
+  },
+  {
+    "line": 134,
+    "name": "Catharsis World",
+    "id": "catharsisworld"
+  },
+  {
+    "line": 135,
+    "name": "CatharsisFantasy",
+    "id": "catharsisfantasy"
+  },
+  {
+    "line": 136,
+    "name": "Catoons",
+    "id": "catoons"
+  },
+  {
+    "line": 137,
+    "name": "Celestial Moon",
+    "id": "celestialmoon"
+  },
+  {
+    "line": 138,
+    "name": "centuriya.com",
+    "id": "centuriyacom"
+  },
+  {
+    "line": 139,
+    "name": "Cerberus Series",
+    "id": "cerberusseries"
+  },
+  {
+    "line": 140,
+    "name": "Cerise Scan",
+    "id": "cerisescan"
+  },
+  {
+    "line": 141,
+    "name": "Chainsaw Man fan reader",
+    "id": "chainsawmanfanreader"
+  },
+  {
+    "line": 142,
+    "name": "chainsawdevil.com",
+    "id": "chainsawdevilcom"
+  },
+  {
+    "line": 143,
+    "name": "Champion Cross",
+    "id": "championcross"
+  },
+  {
+    "line": 144,
+    "name": "ChaosTrad",
+    "id": "chaostrad"
+  },
+  {
+    "line": 145,
+    "name": "chapmanganato.to",
+    "id": "chapmanganatoto"
+  },
+  {
+    "line": 146,
+    "name": "ChoChoX",
+    "id": "chochox"
+  },
+  {
+    "line": 147,
+    "name": "Ciao Plus",
+    "id": "ciaoplus"
+  },
+  {
+    "line": 148,
+    "name": "Clone Manga",
+    "id": "clonemanga"
+  },
+  {
+    "line": 149,
+    "name": "Clown Corps",
+    "id": "clowncorps"
+  },
+  {
+    "line": 150,
+    "name": "CManga",
+    "id": "cmanga"
+  },
+  {
+    "line": 151,
+    "name": "CManhua",
+    "id": "cmanhua"
+  },
+  {
+    "line": 152,
+    "name": "Cocomic",
+    "id": "cocomic"
+  },
+  {
+    "line": 153,
+    "name": "Code Arc Mangas",
+    "id": "codearcmangas"
+  },
+  {
+    "line": 154,
+    "name": "coffeemanga.io",
+    "id": "coffeemangaio"
+  },
+  {
+    "line": 155,
+    "name": "Collected Curios",
+    "id": "collectedcurios"
+  },
+  {
+    "line": 156,
+    "name": "Colorcito Scan",
+    "id": "colorcitoscan"
+  },
+  {
+    "line": 157,
+    "name": "Colorized Mangas",
+    "id": "colorizedmangas"
+  },
+  {
+    "line": 158,
+    "name": "Com-X",
+    "id": "comx"
+  },
+  {
+    "line": 159,
+    "name": "Comic Action",
+    "id": "comicaction"
+  },
+  {
+    "line": 160,
+    "name": "Comic Asura",
+    "id": "comicasura"
+  },
+  {
+    "line": 161,
+    "name": "Comic Boost",
+    "id": "comicboost"
+  },
+  {
+    "line": 162,
+    "name": "Comic Border",
+    "id": "comicborder"
+  },
+  {
+    "line": 163,
+    "name": "Comic CX",
+    "id": "comiccx"
+  },
+  {
+    "line": 164,
+    "name": "Comic DAYS",
+    "id": "comicdays"
+  },
+  {
+    "line": 165,
+    "name": "Comic Earth Star",
+    "id": "comicearthstar"
+  },
+  {
+    "line": 166,
+    "name": "Comic Festa",
+    "id": "comicfesta"
+  },
+  {
+    "line": 167,
+    "name": "Comic Fury",
+    "id": "comicfury"
+  },
+  {
+    "line": 168,
+    "name": "COMIC FUZ",
+    "id": "comicfuz"
+  },
+  {
+    "line": 169,
+    "name": "Comic Gardo",
+    "id": "comicgardo"
+  },
+  {
+    "line": 170,
+    "name": "Comic Grast",
+    "id": "comicgrast"
+  },
+  {
+    "line": 171,
+    "name": "Comic Growl",
+    "id": "comicgrowl"
+  },
+  {
+    "line": 172,
+    "name": "Comic Nettai",
+    "id": "comicnettai"
+  },
+  {
+    "line": 173,
+    "name": "Comic Ogyaaa",
+    "id": "comicogyaaa"
+  },
+  {
+    "line": 174,
+    "name": "Comic Pash",
+    "id": "comicpash"
+  },
+  {
+    "line": 175,
+    "name": "Comic Ride",
+    "id": "comicride"
+  },
+  {
+    "line": 176,
+    "name": "Comic Room Base",
+    "id": "comicroombase"
+  },
+  {
+    "line": 177,
+    "name": "Comic Ryu",
+    "id": "comicryu"
+  },
+  {
+    "line": 178,
+    "name": "Comic Seasons",
+    "id": "comicseasons"
+  },
+  {
+    "line": 179,
+    "name": "Comic Trail",
+    "id": "comictrail"
+  },
+  {
+    "line": 180,
+    "name": "Comic Verse",
+    "id": "comicverse"
+  },
+  {
+    "line": 181,
+    "name": "Comic Y-OURs",
+    "id": "comicyours"
+  },
+  {
+    "line": 182,
+    "name": "Comic21",
+    "id": "comic21"
+  },
+  {
+    "line": 183,
+    "name": "Comicaso",
+    "id": "comicaso"
+  },
+  {
+    "line": 184,
+    "name": "ComicHubFree",
+    "id": "comichubfree"
+  },
+  {
+    "line": 185,
+    "name": "Comick (Unoriginal)",
+    "id": "comickunoriginal"
+  },
+  {
+    "line": 186,
+    "name": "ComicK Fanmade",
+    "id": "comickfanmade"
+  },
+  {
+    "line": 187,
+    "name": "ComicLand",
+    "id": "comicland"
+  },
+  {
+    "line": 188,
+    "name": "Comico",
+    "id": "comico"
+  },
+  {
+    "line": 189,
+    "name": "Comics Kingdom",
+    "id": "comicskingdom"
+  },
+  {
+    "line": 190,
+    "name": "Comics Valley",
+    "id": "comicsvalley"
+  },
+  {
+    "line": 191,
+    "name": "Comikey",
+    "id": "comikey"
+  },
+  {
+    "line": 192,
+    "name": "Comirela",
+    "id": "comirela"
+  },
+  {
+    "line": 193,
+    "name": "Comivex",
+    "id": "comivex"
+  },
+  {
+    "line": 194,
+    "name": "Comix",
+    "id": "comix"
+  },
+  {
+    "line": 195,
+    "name": "ComixTopia",
+    "id": "comixtopia"
+  },
+  {
+    "line": 196,
+    "name": "Commit Strip",
+    "id": "commitstrip"
+  },
+  {
+    "line": 197,
+    "name": "Coolmic",
+    "id": "coolmic"
+  },
+  {
+    "line": 198,
+    "name": "Corocoro Online",
+    "id": "corocoroonline"
+  },
+  {
+    "line": 199,
+    "name": "Corona EX",
+    "id": "coronaex"
+  },
+  {
+    "line": 200,
+    "name": "CosmicScans",
+    "id": "cosmicscans"
+  },
+  {
+    "line": 201,
+    "name": "Coven Scan",
+    "id": "covenscan"
+  },
+  {
+    "line": 202,
+    "name": "CrotPedia",
+    "id": "crotpedia"
+  },
+  {
+    "line": 203,
+    "name": "Cubari",
+    "id": "cubari"
+  },
+  {
+    "line": 204,
+    "name": "Cucumber Manga",
+    "id": "cucumbermanga"
+  },
+  {
+    "line": 205,
+    "name": "CulturedWorks",
+    "id": "culturedworks"
+  },
+  {
+    "line": 206,
+    "name": "Cutie Comics",
+    "id": "cutiecomics"
+  },
+  {
+    "line": 207,
+    "name": "CuuTruyen",
+    "id": "cuutruyen"
+  },
+  {
+    "line": 208,
+    "name": "CuuTruyen (unoriginal)",
+    "id": "cuutruyenunoriginal"
+  },
+  {
+    "line": 209,
+    "name": "Cyanide & Happiness",
+    "id": "cyanidehappiness"
+  },
+  {
+    "line": 210,
+    "name": "CyComi",
+    "id": "cycomi"
+  },
+  {
+    "line": 211,
+    "name": "Daily Manhwa",
+    "id": "dailymanhwa"
+  },
+  {
+    "line": 212,
+    "name": "DailySuka",
+    "id": "dailysuka"
+  },
+  {
+    "line": 213,
+    "name": "DamCoNuong",
+    "id": "damconuong"
+  },
+  {
+    "line": 214,
+    "name": "dandadanmanga.net",
+    "id": "dandadanmanganet"
+  },
+  {
+    "line": 215,
+    "name": "Danke fürs Lesen",
+    "id": "dankefurslesen"
+  },
+  {
+    "line": 216,
+    "name": "DaoMeoDen",
+    "id": "daomeoden"
+  },
+  {
+    "line": 217,
+    "name": "Dark Legacy Comics",
+    "id": "darklegacycomics"
+  },
+  {
+    "line": 218,
+    "name": "Dark Room Fansub",
+    "id": "darkroomfansub"
+  },
+  {
+    "line": 219,
+    "name": "Dark Science",
+    "id": "darkscience"
+  },
+  {
+    "line": 220,
+    "name": "Darths & Droids",
+    "id": "darthsdroids"
+  },
+  {
+    "line": 221,
+    "name": "Dassou Scan",
+    "id": "dassouscan"
+  },
+  {
+    "line": 222,
+    "name": "Dat-Gar Scan",
+    "id": "datgarscan"
+  },
+  {
+    "line": 223,
+    "name": "DB New Hope",
+    "id": "dbnewhope"
+  },
+  {
+    "line": 224,
+    "name": "DDT Team",
+    "id": "ddtteam"
+  },
+  {
+    "line": 225,
+    "name": "Death Toll Scans",
+    "id": "deathtollscans"
+  },
+  {
+    "line": 226,
+    "name": "death-note-manga.com",
+    "id": "deathnotemangacom"
+  },
+  {
+    "line": 227,
+    "name": "Decadence Scans",
+    "id": "decadencescans"
+  },
+  {
+    "line": 228,
+    "name": "Delitoon",
+    "id": "delitoon"
+  },
+  {
+    "line": 229,
+    "name": "Demonic Scans",
+    "id": "demonicscans"
+  },
+  {
+    "line": 230,
+    "name": "demonslayermanga.com",
+    "id": "demonslayermangacom"
+  },
+  {
+    "line": 231,
+    "name": "Despair Manga",
+    "id": "despairmanga"
+  },
+  {
+    "line": 232,
+    "name": "Desu",
+    "id": "desu"
+  },
+  {
+    "line": 233,
+    "name": "Detective Conan Ar",
+    "id": "detectiveconanar"
+  },
+  {
+    "line": 234,
+    "name": "DeviantArt",
+    "id": "deviantart"
+  },
+  {
+    "line": 235,
+    "name": "DFlowScans",
+    "id": "dflowscans"
+  },
+  {
+    "line": 236,
+    "name": "DGManga",
+    "id": "dgmanga"
+  },
+  {
+    "line": 237,
+    "name": "DiamondFansub",
+    "id": "diamondfansub"
+  },
+  {
+    "line": 238,
+    "name": "Digital Comic Museum",
+    "id": "digitalcomicmuseum"
+  },
+  {
+    "line": 239,
+    "name": "DigitalTeam",
+    "id": "digitalteam"
+  },
+  {
+    "line": 240,
+    "name": "Dilar",
+    "id": "dilar"
+  },
+  {
+    "line": 241,
+    "name": "Dilib",
+    "id": "dilib"
+  },
+  {
+    "line": 242,
+    "name": "Diva Scans",
+    "id": "divascans"
+  },
+  {
+    "line": 243,
+    "name": "Docomo",
+    "id": "docomo"
+  },
+  {
+    "line": 244,
+    "name": "DocTruyen3Q",
+    "id": "doctruyen3q"
+  },
+  {
+    "line": 245,
+    "name": "DocTruyen5s",
+    "id": "doctruyen5s"
+  },
+  {
+    "line": 246,
+    "name": "Dojing.net",
+    "id": "dojingnet"
+  },
+  {
+    "line": 247,
+    "name": "Domal Fansub",
+    "id": "domalfansub"
+  },
+  {
+    "line": 248,
+    "name": "Dragon Ball Multiverse",
+    "id": "dragonballmultiverse"
+  },
+  {
+    "line": 249,
+    "name": "Dragon Tea",
+    "id": "dragontea"
+  },
+  {
+    "line": 250,
+    "name": "dragonballsuper.org",
+    "id": "dragonballsuperorg"
+  },
+  {
+    "line": 251,
+    "name": "DragonTranslation.org",
+    "id": "dragontranslationorg"
+  },
+  {
+    "line": 252,
+    "name": "Drake Scans",
+    "id": "drakescans"
+  },
+  {
+    "line": 253,
+    "name": "DreamTeams Scans",
+    "id": "dreamteamsscans"
+  },
+  {
+    "line": 254,
+    "name": "Dua Leo Truyen",
+    "id": "dualeotruyen"
+  },
+  {
+    "line": 255,
+    "name": "Duskoryvile",
+    "id": "duskoryvile"
+  },
+  {
+    "line": 256,
+    "name": "Dynasty",
+    "id": "dynasty"
+  },
+  {
+    "line": 257,
+    "name": "Dynasty Scans",
+    "id": "dynasty"
+  },
+  {
+    "line": 258,
+    "name": "Ego Toons",
+    "id": "egotoons"
+  },
+  {
+    "line": 259,
+    "name": "El Goonish Shive",
+    "id": "elgoonishshive"
+  },
+  {
+    "line": 260,
+    "name": "Elan School",
+    "id": "elanschool"
+  },
+  {
+    "line": 261,
+    "name": "Elder Manga",
+    "id": "eldermanga"
+  },
+  {
+    "line": 262,
+    "name": "Elf Toon",
+    "id": "elftoon"
+  },
+  {
+    "line": 263,
+    "name": "elusive-samurai.com",
+    "id": "elusivesamuraicom"
+  },
+  {
+    "line": 264,
+    "name": "emaqi",
+    "id": "emaqi"
+  },
+  {
+    "line": 265,
+    "name": "Emperor Scan",
+    "id": "emperorscan"
+  },
+  {
+    "line": 266,
+    "name": "Empire Webtoon",
+    "id": "empirewebtoon"
+  },
+  {
+    "line": 267,
+    "name": "EnchiladaScan",
+    "id": "enchiladascan"
+  },
+  {
+    "line": 268,
+    "name": "EnLigneManga",
+    "id": "enlignemanga"
+  },
+  {
+    "line": 269,
+    "name": "Epsilon Scan",
+    "id": "epsilonscan"
+  },
+  {
+    "line": 270,
+    "name": "Eris Scans",
+    "id": "erisscans"
+  },
+  {
+    "line": 271,
+    "name": "Es.Mi2Manga",
+    "id": "esmi2manga"
+  },
+  {
+    "line": 272,
+    "name": "EShadow",
+    "id": "eshadow"
+  },
+  {
+    "line": 273,
+    "name": "Eskimangalar",
+    "id": "eskimangalar"
+  },
+  {
+    "line": 274,
+    "name": "EternalMangas",
+    "id": "eternalmangas"
+  },
+  {
+    "line": 275,
+    "name": "Euphoria Scan",
+    "id": "euphoriascan"
+  },
+  {
+    "line": 276,
+    "name": "Eva Scans",
+    "id": "evascans"
+  },
+  {
+    "line": 277,
+    "name": "Existential Comics",
+    "id": "existentialcomics"
+  },
+  {
+    "line": 278,
+    "name": "EZmanga",
+    "id": "ezmanga"
+  },
+  {
+    "line": 279,
+    "name": "Fairy Scans",
+    "id": "fairyscans"
+  },
+  {
+    "line": 280,
+    "name": "fairytail100yearsquest.com",
+    "id": "fairytail100yearsquestcom"
+  },
+  {
+    "line": 281,
+    "name": "Falco Scan",
+    "id": "falcoscan"
+  },
+  {
+    "line": 282,
+    "name": "FanFox",
+    "id": "fanfox"
+  },
+  {
+    "line": 283,
+    "name": "FastScan",
+    "id": "fastscan"
+  },
+  {
+    "line": 284,
+    "name": "Faust",
+    "id": "faust"
+  },
+  {
+    "line": 285,
+    "name": "Fenix Project",
+    "id": "fenixproject"
+  },
+  {
+    "line": 286,
+    "name": "Firescans",
+    "id": "firescans"
+  },
+  {
+    "line": 287,
+    "name": "Flame Comics",
+    "id": "flamecomics"
+  },
+  {
+    "line": 288,
+    "name": "Fleur Blanche",
+    "id": "fleurblanche"
+  },
+  {
+    "line": 289,
+    "name": "FlowerManga.net",
+    "id": "flowermanganet"
+  },
+  {
+    "line": 290,
+    "name": "FMTeam",
+    "id": "fmteam"
+  },
+  {
+    "line": 291,
+    "name": "FoolSlide Customizable",
+    "id": "foolslidecustomizable"
+  },
+  {
+    "line": 292,
+    "name": "Frieren Online",
+    "id": "frierenonline"
+  },
+  {
+    "line": 293,
+    "name": "frieren-manga.com",
+    "id": "frierenmangacom"
+  },
+  {
+    "line": 294,
+    "name": "FrManga",
+    "id": "frmanga"
+  },
+  {
+    "line": 295,
+    "name": "FrScans.com",
+    "id": "frscanscom"
+  },
+  {
+    "line": 296,
+    "name": "FSI Comics",
+    "id": "fsicomics"
+  },
+  {
+    "line": 297,
+    "name": "Furyo Society",
+    "id": "furyosociety"
+  },
+  {
+    "line": 298,
+    "name": "FuryoSquad",
+    "id": "furyosquad"
+  },
+  {
+    "line": 299,
+    "name": "G-Comi",
+    "id": "gcomi"
+  },
+  {
+    "line": 300,
+    "name": "gachiakutayo.com",
+    "id": "gachiakutayocom"
+  },
+  {
+    "line": 301,
+    "name": "gafeland",
+    "id": "gafeland"
+  },
+  {
+    "line": 302,
+    "name": "Gaiatoon",
+    "id": "gaiatoon"
+  },
+  {
+    "line": 303,
+    "name": "GakaMangas",
+    "id": "gakamangas"
+  },
+  {
+    "line": 304,
+    "name": "GALAX Scans",
+    "id": "galaxscans"
+  },
+  {
+    "line": 305,
+    "name": "galaxxias.com",
+    "id": "galaxxiascom"
+  },
+  {
+    "line": 306,
+    "name": "GalaxyDegenScans",
+    "id": "galaxydegenscans"
+  },
+  {
+    "line": 307,
+    "name": "GalaxyManga",
+    "id": "galaxymanga"
+  },
+  {
+    "line": 308,
+    "name": "Gangan Online",
+    "id": "ganganonline"
+  },
+  {
+    "line": 309,
+    "name": "GANMA!",
+    "id": "ganma"
+  },
+  {
+    "line": 310,
+    "name": "gantzmangafree.com",
+    "id": "gantzmangafreecom"
+  },
+  {
+    "line": 311,
+    "name": "GantzVN",
+    "id": "gantzvn"
+  },
+  {
+    "line": 312,
+    "name": "Garcia Manga",
+    "id": "garciamanga"
+  },
+  {
+    "line": 313,
+    "name": "Gaugau Monster Plus",
+    "id": "gaugaumonsterplus"
+  },
+  {
+    "line": 314,
+    "name": "Geass Comics",
+    "id": "geasscomics"
+  },
+  {
+    "line": 315,
+    "name": "GEDE Comix",
+    "id": "gedecomix"
+  },
+  {
+    "line": 316,
+    "name": "Gensura",
+    "id": "gensura"
+  },
+  {
+    "line": 317,
+    "name": "Genz Toon",
+    "id": "genztoon"
+  },
+  {
+    "line": 318,
+    "name": "Genz Toons",
+    "id": "genztoons"
+  },
+  {
+    "line": 319,
+    "name": "Ghost Scan",
+    "id": "ghostscan"
+  },
+  {
+    "line": 320,
+    "name": "GhosToon",
+    "id": "ghostoon"
+  },
+  {
+    "line": 321,
+    "name": "GingeRTooN",
+    "id": "gingertoon"
+  },
+  {
+    "line": 322,
+    "name": "gintama.site",
+    "id": "gintamasite"
+  },
+  {
+    "line": 323,
+    "name": "GirlsTop",
+    "id": "girlstop"
+  },
+  {
+    "line": 324,
+    "name": "Gistamis House",
+    "id": "gistamishouse"
+  },
+  {
+    "line": 325,
+    "name": "GlobalComix",
+    "id": "globalcomix"
+  },
+  {
+    "line": 326,
+    "name": "GManga",
+    "id": "gmanga"
+  },
+  {
+    "line": 327,
+    "name": "Goc Truyen Tranh",
+    "id": "goctruyentranh"
+  },
+  {
+    "line": 328,
+    "name": "Goc Truyen Tranh Vui",
+    "id": "goctruyentranhvui"
+  },
+  {
+    "line": 329,
+    "name": "Goda",
+    "id": "goda"
+  },
+  {
+    "line": 330,
+    "name": "Gone with the Blastwave",
+    "id": "gonewiththeblastwave"
+  },
+  {
+    "line": 331,
+    "name": "GoodToon",
+    "id": "goodtoon"
+  },
+  {
+    "line": 332,
+    "name": "Goon Scans",
+    "id": "goonscans"
+  },
+  {
+    "line": 333,
+    "name": "Goraku Web",
+    "id": "gorakuweb"
+  },
+  {
+    "line": 334,
+    "name": "Gourmet Scans",
+    "id": "gourmetscans"
+  },
+  {
+    "line": 335,
+    "name": "grandbluemanga.com",
+    "id": "grandbluemangacom"
+  },
+  {
+    "line": 336,
+    "name": "Greed Scans",
+    "id": "greedscans"
+  },
+  {
+    "line": 337,
+    "name": "Gremory Mangas",
+    "id": "gremorymangas"
+  },
+  {
+    "line": 338,
+    "name": "Grim Scans",
+    "id": "grimscans"
+  },
+  {
+    "line": 339,
+    "name": "Grrl Power Comic",
+    "id": "grrlpowercomic"
+  },
+  {
+    "line": 340,
+    "name": "GTO The Great Site",
+    "id": "gtothegreatsite"
+  },
+  {
+    "line": 341,
+    "name": "Gunnerkrigg Court",
+    "id": "gunnerkriggcourt"
+  },
+  {
+    "line": 342,
+    "name": "gutsberserk.com",
+    "id": "gutsberserkcom"
+  },
+  {
+    "line": 343,
+    "name": "Guya.moe",
+    "id": "guya"
+  },
+  {
+    "line": 344,
+    "name": "Gölge Bahçesi",
+    "id": "golgebahcesi"
+  },
+  {
+    "line": 345,
+    "name": "Hachirumi",
+    "id": "hachirumi"
+  },
+  {
+    "line": 346,
+    "name": "Hades no Fansub",
+    "id": "hadesnofansub"
+  },
+  {
+    "line": 347,
+    "name": "Hades Scans",
+    "id": "hadesscans"
+  },
+  {
+    "line": 348,
+    "name": "hajime-noippo.com",
+    "id": "hajimenoippocom"
+  },
+  {
+    "line": 349,
+    "name": "HamlaManga",
+    "id": "hamlamanga"
+  },
+  {
+    "line": 350,
+    "name": "Hana Book",
+    "id": "hanabook"
+  },
+  {
+    "line": 351,
+    "name": "Hanami Heaven",
+    "id": "hanamiheaven"
+  },
+  {
+    "line": 352,
+    "name": "Hanmokku Scan",
+    "id": "hanmokkuscan"
+  },
+  {
+    "line": 353,
+    "name": "Harmony-Scan",
+    "id": "harmonyscan"
+  },
+  {
+    "line": 354,
+    "name": "Hasta Team",
+    "id": "hastateam"
+  },
+  {
+    "line": 355,
+    "name": "Hattori Manga",
+    "id": "hattorimanga"
+  },
+  {
+    "line": 356,
+    "name": "Hattori Scans",
+    "id": "hattoriscans"
+  },
+  {
+    "line": 357,
+    "name": "Hayalistic",
+    "id": "hayalistic"
+  },
+  {
+    "line": 358,
+    "name": "Heavenly Delusion fan reader",
+    "id": "heavenlydelusionfanreader"
+  },
+  {
+    "line": 359,
+    "name": "heavenly-delusion.com",
+    "id": "heavenlydelusioncom"
+  },
+  {
+    "line": 360,
+    "name": "HeavenManga",
+    "id": "heavenmanga"
+  },
+  {
+    "line": 361,
+    "name": "Hijala Translations",
+    "id": "hijalatranslations"
+  },
+  {
+    "line": 362,
+    "name": "HipercooL",
+    "id": "hipercool"
+  },
+  {
+    "line": 363,
+    "name": "Hipertoon",
+    "id": "hipertoon"
+  },
+  {
+    "line": 364,
+    "name": "Hive Scans",
+    "id": "hivetoons"
+  },
+  {
+    "line": 365,
+    "name": "HiveToons",
+    "id": "hivetoons"
+  },
+  {
+    "line": 366,
+    "name": "Hiveworks Comics",
+    "id": "hiveworkscomics"
+  },
+  {
+    "line": 367,
+    "name": "HizoManga",
+    "id": "hizomanga"
+  },
+  {
+    "line": 368,
+    "name": "HM2D",
+    "id": "hm2d"
+  },
+  {
+    "line": 369,
+    "name": "HNI-Scantrad",
+    "id": "hniscantrad"
+  },
+  {
+    "line": 370,
+    "name": "HOLONOMETRIA",
+    "id": "holonometria"
+  },
+  {
+    "line": 371,
+    "name": "Holotoon",
+    "id": "holotoon"
+  },
+  {
+    "line": 372,
+    "name": "Holy Scans",
+    "id": "holyscans"
+  },
+  {
+    "line": 373,
+    "name": "homunculusmanga.com",
+    "id": "homunculusmangacom"
+  },
+  {
+    "line": 374,
+    "name": "HoneyManga",
+    "id": "honeymanga"
+  },
+  {
+    "line": 375,
+    "name": "Honkai Impact 3rd",
+    "id": "honkaiimpact3rd"
+  },
+  {
+    "line": 376,
+    "name": "HonkaiImpact3",
+    "id": "honkaiimpact3"
+  },
+  {
+    "line": 377,
+    "name": "House Of Otakus",
+    "id": "houseofotakus"
+  },
+  {
+    "line": 378,
+    "name": "HQ Now!",
+    "id": "hqnow"
+  },
+  {
+    "line": 379,
+    "name": "Hunlight Comics",
+    "id": "hunlightcomics"
+  },
+  {
+    "line": 380,
+    "name": "Hunters Scans",
+    "id": "huntersscans"
+  },
+  {
+    "line": 381,
+    "name": "Hwago",
+    "id": "hwago"
+  },
+  {
+    "line": 382,
+    "name": "hxhmanga.com",
+    "id": "hxhmangacom"
+  },
+  {
+    "line": 383,
+    "name": "Hyakuro Translations",
+    "id": "hyakurotranslations"
+  },
+  {
+    "line": 384,
+    "name": "hyoukamanga.com",
+    "id": "hyoukamangacom"
+  },
+  {
+    "line": 385,
+    "name": "Học Viện 2Ten",
+    "id": "hocvien2ten"
+  },
+  {
+    "line": 386,
+    "name": "I Roved Out",
+    "id": "irovedout"
+  },
+  {
+    "line": 387,
+    "name": "I'm An Evil God",
+    "id": "imanevilgod"
+  },
+  {
+    "line": 388,
+    "name": "ichithewitchread.com",
+    "id": "ichithewitchreadcom"
+  },
+  {
+    "line": 389,
+    "name": "Ikigai Mangas",
+    "id": "ikigaimangas"
+  },
+  {
+    "line": 390,
+    "name": "Ikiru",
+    "id": "ikiru"
+  },
+  {
+    "line": 391,
+    "name": "InfinityScans",
+    "id": "infinityscans"
+  },
+  {
+    "line": 392,
+    "name": "InfraFandub",
+    "id": "infrafandub"
+  },
+  {
+    "line": 393,
+    "name": "initialdmanga.com",
+    "id": "initialdmangacom"
+  },
+  {
+    "line": 394,
+    "name": "Inkapk",
+    "id": "inkapk"
+  },
+  {
+    "line": 395,
+    "name": "INKR Comics",
+    "id": "inkrcomics"
+  },
+  {
+    "line": 396,
+    "name": "InkStory",
+    "id": "inkstory"
+  },
+  {
+    "line": 397,
+    "name": "InManga",
+    "id": "inmanga"
+  },
+  {
+    "line": 398,
+    "name": "Inmortal Scan",
+    "id": "inmortalscan"
+  },
+  {
+    "line": 399,
+    "name": "InsanosScan",
+    "id": "insanosscan"
+  },
+  {
+    "line": 400,
+    "name": "inuyasha.net",
+    "id": "inuyashanet"
+  },
+  {
+    "line": 401,
+    "name": "Inventario Oculto",
+    "id": "inventariooculto"
+  },
+  {
+    "line": 402,
+    "name": "IsekaiKomik",
+    "id": "isekaikomik"
+  },
+  {
+    "line": 403,
+    "name": "Izanami Scans",
+    "id": "izanamiscans"
+  },
+  {
+    "line": 404,
+    "name": "izneo (webtoons)",
+    "id": "izneowebtoons"
+  },
+  {
+    "line": 405,
+    "name": "J-Novel",
+    "id": "jnovel"
+  },
+  {
+    "line": 406,
+    "name": "Japscan",
+    "id": "japscan"
+  },
+  {
+    "line": 407,
+    "name": "Jeaz Scans",
+    "id": "jeazscans"
+  },
+  {
+    "line": 408,
+    "name": "Jelly Comics",
+    "id": "jellycomics"
+  },
+  {
+    "line": 409,
+    "name": "Jestful",
+    "id": "jestful"
+  },
+  {
+    "line": 410,
+    "name": "Jikan",
+    "id": "jikan"
+  },
+  {
+    "line": 411,
+    "name": "Jinmangas",
+    "id": "jinmangas"
+  },
+  {
+    "line": 412,
+    "name": "jjkaisen.com",
+    "id": "jjkaisencom"
+  },
+  {
+    "line": 413,
+    "name": "JoJoLands fan reader",
+    "id": "jojolandsfanreader"
+  },
+  {
+    "line": 414,
+    "name": "jojolandsmanga.com",
+    "id": "jojolandsmangacom"
+  },
+  {
+    "line": 415,
+    "name": "jojolionmanga.com",
+    "id": "jojolionmangacom"
+  },
+  {
+    "line": 416,
+    "name": "Juin Jutsu Team Reader",
+    "id": "juinjutsuteamreader"
+  },
+  {
+    "line": 417,
+    "name": "JuraTempest",
+    "id": "juratempest"
+  },
+  {
+    "line": 418,
+    "name": "K MANGA",
+    "id": "kmanga"
+  },
+  {
+    "line": 419,
+    "name": "Kadocomi",
+    "id": "kadocomi"
+  },
+  {
+    "line": 420,
+    "name": "Kagane",
+    "id": "kagane"
+  },
+  {
+    "line": 421,
+    "name": "kagane.to",
+    "id": "kaganeto"
+  },
+  {
+    "line": 422,
+    "name": "kagurabachi-manga.com",
+    "id": "kagurabachimangacom"
+  },
+  {
+    "line": 423,
+    "name": "kagurabachiread.com",
+    "id": "kagurabachireadcom"
+  },
+  {
+    "line": 424,
+    "name": "Kaguya",
+    "id": "kaguya"
+  },
+  {
+    "line": 425,
+    "name": "kaijuno8-manga.com",
+    "id": "kaijuno8mangacom"
+  },
+  {
+    "line": 426,
+    "name": "Kaizen Scan",
+    "id": "kaizenscan"
+  },
+  {
+    "line": 427,
+    "name": "Kakao Webtoon",
+    "id": "kakaowebtoon"
+  },
+  {
+    "line": 428,
+    "name": "KakaoPage",
+    "id": "kakaopage"
+  },
+  {
+    "line": 429,
+    "name": "KaliScan",
+    "id": "kaliscan"
+  },
+  {
+    "line": 430,
+    "name": "Kami Sama Explorer",
+    "id": "kamisamaexplorer"
+  },
+  {
+    "line": 431,
+    "name": "KamiComic",
+    "id": "kamicomic"
+  },
+  {
+    "line": 432,
+    "name": "Kanzenin",
+    "id": "kanzenin"
+  },
+  {
+    "line": 433,
+    "name": "Kappa Beast",
+    "id": "kappabeast"
+  },
+  {
+    "line": 434,
+    "name": "Kayn Scans",
+    "id": "kaynscans"
+  },
+  {
+    "line": 435,
+    "name": "Kazoku Den",
+    "id": "kazokuden"
+  },
+  {
+    "line": 436,
+    "name": "keenspot",
+    "id": "keenspot"
+  },
+  {
+    "line": 437,
+    "name": "Keenspot TwoKinds",
+    "id": "keenspot"
+  },
+  {
+    "line": 438,
+    "name": "kenganashura.com",
+    "id": "kenganashuracom"
+  },
+  {
+    "line": 439,
+    "name": "Kenscans",
+    "id": "kenscans"
+  },
+  {
+    "line": 440,
+    "name": "Kewn Scans",
+    "id": "kewnscans"
+  },
+  {
+    "line": 441,
+    "name": "KhoManhwa",
+    "id": "khomanhwa"
+  },
+  {
+    "line": 442,
+    "name": "Kill Six Billion Demons",
+    "id": "killsixbilliondemons"
+  },
+  {
+    "line": 443,
+    "name": "KimiComi",
+    "id": "kimicomi"
+  },
+  {
+    "line": 444,
+    "name": "King of Shojo",
+    "id": "kingofshojo"
+  },
+  {
+    "line": 445,
+    "name": "KingComiX",
+    "id": "kingcomix"
+  },
+  {
+    "line": 446,
+    "name": "Kiraboshi",
+    "id": "kiraboshi"
+  },
+  {
+    "line": 447,
+    "name": "KiraKira",
+    "id": "kirakira"
+  },
+  {
+    "line": 448,
+    "name": "Kiryuu",
+    "id": "kiryuu"
+  },
+  {
+    "line": 449,
+    "name": "KissLove",
+    "id": "kisslove"
+  },
+  {
+    "line": 450,
+    "name": "Kissmanga.in",
+    "id": "kissmangain"
+  },
+  {
+    "line": 451,
+    "name": "Kitsu",
+    "id": "kitsu"
+  },
+  {
+    "line": 452,
+    "name": "Kitsune Dawn",
+    "id": "kitsunedawn"
+  },
+  {
+    "line": 453,
+    "name": "Kiutaku",
+    "id": "kiutaku"
+  },
+  {
+    "line": 454,
+    "name": "KivaraToons",
+    "id": "kivaratoons"
+  },
+  {
+    "line": 455,
+    "name": "Kiwiya Scans",
+    "id": "kiwiyascans"
+  },
+  {
+    "line": 456,
+    "name": "KL Raw",
+    "id": "klraw"
+  },
+  {
+    "line": 457,
+    "name": "KlikManga",
+    "id": "klikmanga"
+  },
+  {
+    "line": 458,
+    "name": "Klto9",
+    "id": "klto9"
+  },
+  {
+    "line": 459,
+    "name": "Kmansin09",
+    "id": "kmansin09"
+  },
+  {
+    "line": 460,
+    "name": "Kodansha",
+    "id": "kodansha"
+  },
+  {
+    "line": 461,
+    "name": "Kodoku Studio",
+    "id": "kodokustudio"
+  },
+  {
+    "line": 462,
+    "name": "Koinobori Scan",
+    "id": "koinoboriscan"
+  },
+  {
+    "line": 463,
+    "name": "KokoMangas",
+    "id": "kokomangas"
+  },
+  {
+    "line": 464,
+    "name": "Kombatch",
+    "id": "kombatch"
+  },
+  {
+    "line": 465,
+    "name": "Komga",
+    "id": "komga"
+  },
+  {
+    "line": 466,
+    "name": "Komik Next G Online",
+    "id": "komiknextgonline"
+  },
+  {
+    "line": 467,
+    "name": "KomikIndo",
+    "id": "komikindo"
+  },
+  {
+    "line": 468,
+    "name": "KomikIndoID",
+    "id": "komikindoid"
+  },
+  {
+    "line": 469,
+    "name": "KomikNesia",
+    "id": "komiknesia"
+  },
+  {
+    "line": 470,
+    "name": "KomikStation",
+    "id": "komikstation"
+  },
+  {
+    "line": 471,
+    "name": "Komiktap",
+    "id": "komiktap"
+  },
+  {
+    "line": 472,
+    "name": "Komiku",
+    "id": "komiku"
+  },
+  {
+    "line": 473,
+    "name": "Komiku.com",
+    "id": "komikucom"
+  },
+  {
+    "line": 474,
+    "name": "Komikzoid",
+    "id": "komikzoid"
+  },
+  {
+    "line": 475,
+    "name": "KonohaManga",
+    "id": "konohamanga"
+  },
+  {
+    "line": 476,
+    "name": "Koreli Manga",
+    "id": "korelimanga"
+  },
+  {
+    "line": 477,
+    "name": "Koreli Scans",
+    "id": "koreliscans"
+  },
+  {
+    "line": 478,
+    "name": "KS Group",
+    "id": "ksgroup"
+  },
+  {
+    "line": 479,
+    "name": "KSGroupScans",
+    "id": "ksgroup"
+  },
+  {
+    "line": 480,
+    "name": "Kuaikan Manhua",
+    "id": "kuaikanmanhua"
+  },
+  {
+    "line": 481,
+    "name": "KumaPoi",
+    "id": "kumapoi"
+  },
+  {
+    "line": 482,
+    "name": "Kumaraw",
+    "id": "kumaraw"
+  },
+  {
+    "line": 483,
+    "name": "KumoPoi",
+    "id": "kumopoi"
+  },
+  {
+    "line": 484,
+    "name": "Kun Manga Online",
+    "id": "kunmangaonline"
+  },
+  {
+    "line": 485,
+    "name": "Kurage Bunch",
+    "id": "kuragebunch"
+  },
+  {
+    "line": 486,
+    "name": "KuraManga",
+    "id": "kuramanga"
+  },
+  {
+    "line": 487,
+    "name": "Kuroi Manga",
+    "id": "kuroimanga"
+  },
+  {
+    "line": 488,
+    "name": "KuroMangas",
+    "id": "kuromangas"
+  },
+  {
+    "line": 489,
+    "name": "Lagoon Scans",
+    "id": "lagoonscans"
+  },
+  {
+    "line": 490,
+    "name": "Lalatoon",
+    "id": "lalatoon"
+  },
+  {
+    "line": 491,
+    "name": "LanorTrad",
+    "id": "lanortrad"
+  },
+  {
+    "line": 492,
+    "name": "LANraragi",
+    "id": "lanraragi"
+  },
+  {
+    "line": 493,
+    "name": "Lavinia Fansub",
+    "id": "laviniafansub"
+  },
+  {
+    "line": 494,
+    "name": "Lector Asteria",
+    "id": "lectorasteria"
+  },
+  {
+    "line": 495,
+    "name": "lector-mangas.lat",
+    "id": "lectormangaslat"
+  },
+  {
+    "line": 496,
+    "name": "LectorJPG",
+    "id": "lectorjpg"
+  },
+  {
+    "line": 497,
+    "name": "LectorManga.lat",
+    "id": "lectormangaslat"
+  },
+  {
+    "line": 498,
+    "name": "LectorXD",
+    "id": "lectorxd"
+  },
+  {
+    "line": 499,
+    "name": "LeerCapitulo",
+    "id": "leercapitulo"
+  },
+  {
+    "line": 500,
+    "name": "LeerMangaEsp",
+    "id": "leermangaesp"
+  },
+  {
+    "line": 501,
+    "name": "LeerManhwas",
+    "id": "leermanhwas"
+  },
+  {
+    "line": 502,
+    "name": "LeesinComic",
+    "id": "leesincomic"
+  },
+  {
+    "line": 503,
+    "name": "Leitor de Mangas",
+    "id": "leitordemangas"
+  },
+  {
+    "line": 504,
+    "name": "Leitura Manga",
+    "id": "leituramanga"
+  },
+  {
+    "line": 505,
+    "name": "Lelmanga",
+    "id": "lelmanga"
+  },
+  {
+    "line": 506,
+    "name": "Lelscan",
+    "id": "lelscan"
+  },
+  {
+    "line": 507,
+    "name": "Lelscan-VF",
+    "id": "lelscanvf"
+  },
+  {
+    "line": 508,
+    "name": "LelScanFr",
+    "id": "lelscanfr"
+  },
+  {
+    "line": 509,
+    "name": "LepoyTL",
+    "id": "lepoytl"
+  },
+  {
+    "line": 510,
+    "name": "Ler 999",
+    "id": "ler999"
+  },
+  {
+    "line": 511,
+    "name": "Les Poroiniens",
+    "id": "lesporoiniens"
+  },
+  {
+    "line": 512,
+    "name": "Leslie&Victims",
+    "id": "leslievictims"
+  },
+  {
+    "line": 513,
+    "name": "Lezhin Comics",
+    "id": "lezhincomics"
+  },
+  {
+    "line": 514,
+    "name": "LHTranslation",
+    "id": "lhtranslation"
+  },
+  {
+    "line": 515,
+    "name": "LianScans",
+    "id": "lianscans"
+  },
+  {
+    "line": 516,
+    "name": "LikeManga",
+    "id": "likemanga"
+  },
+  {
+    "line": 517,
+    "name": "Lily Manga",
+    "id": "lilymanga"
+  },
+  {
+    "line": 518,
+    "name": "LimitedTimePoject",
+    "id": "limitedtimepoject"
+  },
+  {
+    "line": 519,
+    "name": "Limon Manga",
+    "id": "limonmanga"
+  },
+  {
+    "line": 520,
+    "name": "Line Manga",
+    "id": "linemanga"
+  },
+  {
+    "line": 521,
+    "name": "LinkManga",
+    "id": "linkmanga"
+  },
+  {
+    "line": 522,
+    "name": "LinkStartScan",
+    "id": "linkstartscan"
+  },
+  {
+    "line": 523,
+    "name": "Little Tyrant",
+    "id": "littletyrant"
+  },
+  {
+    "line": 524,
+    "name": "LkScanlation",
+    "id": "lkscanlation"
+  },
+  {
+    "line": 525,
+    "name": "Lmtos",
+    "id": "lmtos"
+  },
+  {
+    "line": 526,
+    "name": "Loading Artist",
+    "id": "loadingartist"
+  },
+  {
+    "line": 527,
+    "name": "LoLoBun",
+    "id": "lolobun"
+  },
+  {
+    "line": 528,
+    "name": "LoppyToon",
+    "id": "loppytoon"
+  },
+  {
+    "line": 529,
+    "name": "Love4u",
+    "id": "love4u"
+  },
+  {
+    "line": 530,
+    "name": "Lua Scans",
+    "id": "luascans"
+  },
+  {
+    "line": 531,
+    "name": "LuffyManga",
+    "id": "luffymanga"
+  },
+  {
+    "line": 532,
+    "name": "Luminare Translations",
+    "id": "luminaretranslations"
+  },
+  {
+    "line": 533,
+    "name": "Luminous Scans",
+    "id": "luminousscans"
+  },
+  {
+    "line": 534,
+    "name": "LumosKomik",
+    "id": "lumoskomik"
+  },
+  {
+    "line": 535,
+    "name": "Luna Pieces",
+    "id": "lunapieces"
+  },
+  {
+    "line": 536,
+    "name": "Luna Scans",
+    "id": "lunascans"
+  },
+  {
+    "line": 537,
+    "name": "Lunar Manga",
+    "id": "lunarmanga"
+  },
+  {
+    "line": 538,
+    "name": "LuotTruyen",
+    "id": "luottruyen"
+  },
+  {
+    "line": 539,
+    "name": "LupiTeam",
+    "id": "lupiteam"
+  },
+  {
+    "line": 540,
+    "name": "Lura Toon",
+    "id": "luratoon"
+  },
+  {
+    "line": 541,
+    "name": "LuvEvaLand",
+    "id": "luvevaland"
+  },
+  {
+    "line": 542,
+    "name": "Luvyaa",
+    "id": "luvyaa"
+  },
+  {
+    "line": 543,
+    "name": "LXManga",
+    "id": "lxmanga"
+  },
+  {
+    "line": 544,
+    "name": "LxManga.org (unoriginal)",
+    "id": "lxmangaorgunoriginal"
+  },
+  {
+    "line": 545,
+    "name": "Lycan Toons",
+    "id": "lycantoons"
+  },
+  {
+    "line": 546,
+    "name": "Ma Brute",
+    "id": "mabrute"
+  },
+  {
+    "line": 547,
+    "name": "Madara Scans",
+    "id": "madarascans"
+  },
+  {
+    "line": 548,
+    "name": "MadaraDex",
+    "id": "madaradex"
+  },
+  {
+    "line": 549,
+    "name": "madeabyss.com",
+    "id": "madeabysscom"
+  },
+  {
+    "line": 550,
+    "name": "Madokami",
+    "id": "madokami"
+  },
+  {
+    "line": 551,
+    "name": "Magazine Pocket",
+    "id": "magazinepocket"
+  },
+  {
+    "line": 552,
+    "name": "MAGCOMI",
+    "id": "magcomi"
+  },
+  {
+    "line": 553,
+    "name": "Magical Translators",
+    "id": "magicaltranslators"
+  },
+  {
+    "line": 554,
+    "name": "MagKan",
+    "id": "magkan"
+  },
+  {
+    "line": 555,
+    "name": "Maid - Manga",
+    "id": "maidmanga"
+  },
+  {
+    "line": 556,
+    "name": "Maid Scan",
+    "id": "maidscan"
+  },
+  {
+    "line": 557,
+    "name": "Maid.my.id",
+    "id": "maidmyid"
+  },
+  {
+    "line": 558,
+    "name": "Manatoki",
+    "id": "manatoki"
+  },
+  {
+    "line": 559,
+    "name": "Manga Bahçesi",
+    "id": "mangabahcesi"
+  },
+  {
+    "line": 560,
+    "name": "Manga Baka",
+    "id": "mangabaka"
+  },
+  {
+    "line": 561,
+    "name": "Manga Can",
+    "id": "mangacan"
+  },
+  {
+    "line": 562,
+    "name": "Manga Crab",
+    "id": "mangacrab"
+  },
+  {
+    "line": 563,
+    "name": "Manga Dass",
+    "id": "mangadass"
+  },
+  {
+    "line": 564,
+    "name": "Manga Demon",
+    "id": "demonicscans"
+  },
+  {
+    "line": 565,
+    "name": "Manga District",
+    "id": "mangadistrict"
+  },
+  {
+    "line": 566,
+    "name": "Manga Diyarı",
+    "id": "mangadiyar"
+  },
+  {
+    "line": 567,
+    "name": "Manga Draft",
+    "id": "mangadraft"
+  },
+  {
+    "line": 568,
+    "name": "Manga Drama",
+    "id": "mangadrama"
+  },
+  {
+    "line": 569,
+    "name": "Manga Eclipse",
+    "id": "mangaeclipse"
+  },
+  {
+    "line": 570,
+    "name": "Manga Flix",
+    "id": "mangaflix"
+  },
+  {
+    "line": 571,
+    "name": "Manga Kingdom",
+    "id": "mangakingdom"
+  },
+  {
+    "line": 572,
+    "name": "Manga Kiss",
+    "id": "mangakiss"
+  },
+  {
+    "line": 573,
+    "name": "Manga Kusu",
+    "id": "mangakusu"
+  },
+  {
+    "line": 574,
+    "name": "Manga Livre Blog",
+    "id": "mangalivreblog"
+  },
+  {
+    "line": 575,
+    "name": "Manga Livre.to",
+    "id": "mangalivreto"
+  },
+  {
+    "line": 576,
+    "name": "Manga Million",
+    "id": "mangamillion"
+  },
+  {
+    "line": 577,
+    "name": "Manga Mirai",
+    "id": "mangamirai"
+  },
+  {
+    "line": 578,
+    "name": "Manga Mukai",
+    "id": "mangamukai"
+  },
+  {
+    "line": 579,
+    "name": "Manga NXY",
+    "id": "manganxy"
+  },
+  {
+    "line": 580,
+    "name": "Manga ONE",
+    "id": "mangaone"
+  },
+  {
+    "line": 581,
+    "name": "Manga Online",
+    "id": "mangaonline"
+  },
+  {
+    "line": 582,
+    "name": "MANGA Plus",
+    "id": "mangaplus"
+  },
+  {
+    "line": 583,
+    "name": "MANGA Plus Creators by SHUEISHA",
+    "id": "mangapluscreatorsbyshueisha"
+  },
+  {
+    "line": 584,
+    "name": "Manga Portalı",
+    "id": "mangaportal"
+  },
+  {
+    "line": 585,
+    "name": "Manga Romance",
+    "id": "mangaromance"
+  },
+  {
+    "line": 586,
+    "name": "Manga Stop",
+    "id": "mangastop"
+  },
+  {
+    "line": 587,
+    "name": "Manga Trend",
+    "id": "mangatrend"
+  },
+  {
+    "line": 588,
+    "name": "Manga TV",
+    "id": "mangatv"
+  },
+  {
+    "line": 589,
+    "name": "MANGA UP!",
+    "id": "mangaup"
+  },
+  {
+    "line": 590,
+    "name": "Manga UP! (Japan)",
+    "id": "mangaupjapan"
+  },
+  {
+    "line": 591,
+    "name": "Manga Zegra",
+    "id": "mangazegra"
+  },
+  {
+    "line": 592,
+    "name": "Manga Şehri.net",
+    "id": "mangasehrinet"
+  },
+  {
+    "line": 593,
+    "name": "Manga-5",
+    "id": "manga5"
+  },
+  {
+    "line": 594,
+    "name": "Manga-Bay",
+    "id": "mangabay"
+  },
+  {
+    "line": 595,
+    "name": "Manga-Corporation",
+    "id": "mangacorporation"
+  },
+  {
+    "line": 596,
+    "name": "Manga-Scantrad",
+    "id": "mangascantrad"
+  },
+  {
+    "line": 597,
+    "name": "Manga-shi",
+    "id": "mangashi"
+  },
+  {
+    "line": 598,
+    "name": "Manga-TR",
+    "id": "mangatr"
+  },
+  {
+    "line": 599,
+    "name": "Manga.uno",
+    "id": "mangauno"
+  },
+  {
+    "line": 600,
+    "name": "Manga1000",
+    "id": "manga1000"
+  },
+  {
+    "line": 601,
+    "name": "manga4life.com",
+    "id": "manga4lifecom"
+  },
+  {
+    "line": 602,
+    "name": "MangaArab",
+    "id": "mangaarab"
+  },
+  {
+    "line": 603,
+    "name": "MangaBall",
+    "id": "mangaball"
+  },
+  {
+    "line": 604,
+    "name": "MangaBang Comics",
+    "id": "mangabangcomics"
+  },
+  {
+    "line": 605,
+    "name": "MangaBats",
+    "id": "mangabats"
+  },
+  {
+    "line": 606,
+    "name": "MangaBerri",
+    "id": "mangaberri"
+  },
+  {
+    "line": 607,
+    "name": "MangaBlackCat",
+    "id": "mangablackcat"
+  },
+  {
+    "line": 608,
+    "name": "MangaBlaze",
+    "id": "mangablaze"
+  },
+  {
+    "line": 609,
+    "name": "MangaBolt",
+    "id": "mangabolt"
+  },
+  {
+    "line": 610,
+    "name": "MangaBox",
+    "id": "mangabox"
+  },
+  {
+    "line": 611,
+    "name": "MangaBu",
+    "id": "mangabu"
+  },
+  {
+    "line": 612,
+    "name": "mangabuddy.com",
+    "id": "mangabuddycom"
+  },
+  {
+    "line": 613,
+    "name": "MangaBuff",
+    "id": "mangabuff"
+  },
+  {
+    "line": 614,
+    "name": "MangaChan",
+    "id": "mangachan"
+  },
+  {
+    "line": 615,
+    "name": "Mangack",
+    "id": "mangack"
+  },
+  {
+    "line": 616,
+    "name": "mangaclash.com",
+    "id": "mangaclashcom"
+  },
+  {
+    "line": 617,
+    "name": "MangaCloud",
+    "id": "mangacloud"
+  },
+  {
+    "line": 618,
+    "name": "MangaCrazy",
+    "id": "mangacrazy"
+  },
+  {
+    "line": 619,
+    "name": "MangaDash",
+    "id": "mangadash"
+  },
+  {
+    "line": 620,
+    "name": "MangaDE",
+    "id": "mangade"
+  },
+  {
+    "line": 621,
+    "name": "MangaDenizi",
+    "id": "mangadenizi"
+  },
+  {
+    "line": 622,
+    "name": "MangaDex",
+    "id": "mangadex"
+  },
+  {
+    "line": 623,
+    "name": "MangaDia",
+    "id": "mangadia"
+  },
+  {
+    "line": 624,
+    "name": "MangaDNA",
+    "id": "mangadna"
+  },
+  {
+    "line": 625,
+    "name": "mangadna.com",
+    "id": "mangadna"
+  },
+  {
+    "line": 626,
+    "name": "MangaDot",
+    "id": "mangadot"
+  },
+  {
+    "line": 627,
+    "name": "Mangadotnet",
+    "id": "mangadotnet"
+  },
+  {
+    "line": 628,
+    "name": "Mangadusleri",
+    "id": "mangadusleri"
+  },
+  {
+    "line": 629,
+    "name": "mangaeffect.com",
+    "id": "mangaeffectcom"
+  },
+  {
+    "line": 630,
+    "name": "MangaFire",
+    "id": "mangafire"
+  },
+  {
+    "line": 631,
+    "name": "MangaFlame",
+    "id": "mangaflame"
+  },
+  {
+    "line": 632,
+    "name": "Mangaforfree.com",
+    "id": "mangaforfreecom"
+  },
+  {
+    "line": 633,
+    "name": "MangaForFree.net",
+    "id": "mangaforfreenet"
+  },
+  {
+    "line": 634,
+    "name": "MangaFox",
+    "id": "fanfox"
+  },
+  {
+    "line": 635,
+    "name": "MangaFox.fun",
+    "id": "mangafoxfun"
+  },
+  {
+    "line": 636,
+    "name": "mangafox.me",
+    "id": "mangafoxme"
+  },
+  {
+    "line": 637,
+    "name": "Mangafreak",
+    "id": "mangafreak"
+  },
+  {
+    "line": 638,
+    "name": "Mangafree",
+    "id": "jinmangas"
+  },
+  {
+    "line": 639,
+    "name": "MangaGeko",
+    "id": "mgeko"
+  },
+  {
+    "line": 640,
+    "name": "MangaGG",
+    "id": "mangagg"
+  },
+  {
+    "line": 641,
+    "name": "Mangago",
+    "id": "mangago"
+  },
+  {
+    "line": 642,
+    "name": "MangaGo.fun",
+    "id": "mangagofun"
+  },
+  {
+    "line": 643,
+    "name": "MangaGTR",
+    "id": "mangagtr"
+  },
+  {
+    "line": 644,
+    "name": "MangaHaus",
+    "id": "mangahaus"
+  },
+  {
+    "line": 645,
+    "name": "MangaHe",
+    "id": "mangahe"
+  },
+  {
+    "line": 646,
+    "name": "MangaHere",
+    "id": "mangahere"
+  },
+  {
+    "line": 647,
+    "name": "MangaHere.onl",
+    "id": "mangahereonl"
+  },
+  {
+    "line": 648,
+    "name": "MangaHub",
+    "id": "mangahub"
+  },
+  {
+    "line": 649,
+    "name": "MangaHub.fr",
+    "id": "mangahubfr"
+  },
+  {
+    "line": 650,
+    "name": "mangahub.us",
+    "id": "mangahubus"
+  },
+  {
+    "line": 651,
+    "name": "MangaInkAR",
+    "id": "mangainkar"
+  },
+  {
+    "line": 652,
+    "name": "MangaInUa",
+    "id": "mangainua"
+  },
+  {
+    "line": 653,
+    "name": "MangaJY",
+    "id": "mangajy"
+  },
+  {
+    "line": 654,
+    "name": "MangaK",
+    "id": "mangak"
+  },
+  {
+    "line": 655,
+    "name": "MangaKa",
+    "id": "mangaka"
+  },
+  {
+    "line": 656,
+    "name": "MangaKakalot",
+    "id": "mangakakalot"
+  },
+  {
+    "line": 657,
+    "name": "Mangakakalot.fun",
+    "id": "mangakakalotfun"
+  },
+  {
+    "line": 658,
+    "name": "MangaKatana",
+    "id": "mangakatana"
+  },
+  {
+    "line": 659,
+    "name": "Mangakawaii",
+    "id": "mangakawaii"
+  },
+  {
+    "line": 660,
+    "name": "MangaKoinu",
+    "id": "mangakoinu"
+  },
+  {
+    "line": 661,
+    "name": "Mangakuri",
+    "id": "mangakuri"
+  },
+  {
+    "line": 662,
+    "name": "MangaKuro",
+    "id": "mangakuro"
+  },
+  {
+    "line": 663,
+    "name": "Mangalay",
+    "id": "mangalay"
+  },
+  {
+    "line": 664,
+    "name": "MangaLek",
+    "id": "mangalek"
+  },
+  {
+    "line": 665,
+    "name": "MangaLib",
+    "id": "mangalib"
+  },
+  {
+    "line": 666,
+    "name": "mangalife.us",
+    "id": "mangalifeus"
+  },
+  {
+    "line": 667,
+    "name": "Mangalink",
+    "id": "mangalink"
+  },
+  {
+    "line": 668,
+    "name": "MangaLionz",
+    "id": "mangalionz"
+  },
+  {
+    "line": 669,
+    "name": "MangaLivre",
+    "id": "mangalivre"
+  },
+  {
+    "line": 670,
+    "name": "MangaLivre.org",
+    "id": "mangalivreorg"
+  },
+  {
+    "line": 671,
+    "name": "MangaLix",
+    "id": "mangalix"
+  },
+  {
+    "line": 672,
+    "name": "Mangalt",
+    "id": "mangalt"
+  },
+  {
+    "line": 673,
+    "name": "MangaManiacs",
+    "id": "mangamaniacs"
+  },
+  {
+    "line": 674,
+    "name": "MangaMasr",
+    "id": "mangamasr"
+  },
+  {
+    "line": 675,
+    "name": "MangaMelon",
+    "id": "mangamelon"
+  },
+  {
+    "line": 676,
+    "name": "MangaMen",
+    "id": "mangamen"
+  },
+  {
+    "line": 677,
+    "name": "Mangamo",
+    "id": "mangamo"
+  },
+  {
+    "line": 678,
+    "name": "MangaMoins",
+    "id": "mangamoins"
+  },
+  {
+    "line": 679,
+    "name": "mangamonk.com",
+    "id": "mangamonkcom"
+  },
+  {
+    "line": 680,
+    "name": "MangaNato",
+    "id": "manganato"
+  },
+  {
+    "line": 681,
+    "name": "MangaNel",
+    "id": "manganel"
+  },
+  {
+    "line": 682,
+    "name": "MangaNova",
+    "id": "manganova"
+  },
+  {
+    "line": 683,
+    "name": "MangaNow",
+    "id": "manganow"
+  },
+  {
+    "line": 684,
+    "name": "MangaOni",
+    "id": "mangaoni"
+  },
+  {
+    "line": 685,
+    "name": "MangaOnline.fun",
+    "id": "mangaonlinefun"
+  },
+  {
+    "line": 686,
+    "name": "MangaOr",
+    "id": "mangaor"
+  },
+  {
+    "line": 687,
+    "name": "MangaOwl.io (unoriginal)",
+    "id": "mangaowliounoriginal"
+  },
+  {
+    "line": 688,
+    "name": "MangaPanda.onl",
+    "id": "mangapandaonl"
+  },
+  {
+    "line": 689,
+    "name": "MangaPark",
+    "id": "mangapark"
+  },
+  {
+    "line": 690,
+    "name": "MANGAPDF",
+    "id": "mangapdf"
+  },
+  {
+    "line": 691,
+    "name": "MangaPill",
+    "id": "mangapill"
+  },
+  {
+    "line": 692,
+    "name": "MangaPlaza",
+    "id": "mangaplaza"
+  },
+  {
+    "line": 693,
+    "name": "MangaPoisk",
+    "id": "mangapoisk"
+  },
+  {
+    "line": 694,
+    "name": "Mangarama",
+    "id": "mangarama"
+  },
+  {
+    "line": 695,
+    "name": "MangaRead",
+    "id": "mangaread"
+  },
+  {
+    "line": 696,
+    "name": "MangaRead.org",
+    "id": "mangaread"
+  },
+  {
+    "line": 697,
+    "name": "MangaReader.in",
+    "id": "mangareaderin"
+  },
+  {
+    "line": 698,
+    "name": "MangaReader.site",
+    "id": "mangareadersite"
+  },
+  {
+    "line": 699,
+    "name": "Mangas Brasuka",
+    "id": "mangasbrasuka"
+  },
+  {
+    "line": 700,
+    "name": "Mangas No Sekai",
+    "id": "mangasnosekai"
+  },
+  {
+    "line": 701,
+    "name": "Mangas-Origines.fr",
+    "id": "mangasoriginesfr"
+  },
+  {
+    "line": 702,
+    "name": "Mangas.in",
+    "id": "mangasin"
+  },
+  {
+    "line": 703,
+    "name": "mangasee123.com",
+    "id": "mangasee123com"
+  },
+  {
+    "line": 704,
+    "name": "MangaSky",
+    "id": "mangasky"
+  },
+  {
+    "line": 705,
+    "name": "MangaSnow",
+    "id": "mangasnow"
+  },
+  {
+    "line": 706,
+    "name": "MangaSpark",
+    "id": "mangaspark"
+  },
+  {
+    "line": 707,
+    "name": "MangaSushi",
+    "id": "mangasushi"
+  },
+  {
+    "line": 708,
+    "name": "Mangasusu",
+    "id": "mangasusu"
+  },
+  {
+    "line": 709,
+    "name": "MangaSwat",
+    "id": "mangaswat"
+  },
+  {
+    "line": 710,
+    "name": "MangaTaro",
+    "id": "mangataro"
+  },
+  {
+    "line": 711,
+    "name": "mangataro.org",
+    "id": "mangataro"
+  },
+  {
+    "line": 712,
+    "name": "Mangatellers",
+    "id": "mangatellers"
+  },
+  {
+    "line": 713,
+    "name": "MangaTilkisi",
+    "id": "mangatilkisi"
+  },
+  {
+    "line": 714,
+    "name": "MangaToday",
+    "id": "mangatoday"
+  },
+  {
+    "line": 715,
+    "name": "MangaToon",
+    "id": "mangatoon"
+  },
+  {
+    "line": 716,
+    "name": "MangaTown",
+    "id": "mangatown"
+  },
+  {
+    "line": 717,
+    "name": "MangaTX",
+    "id": "mangatx"
+  },
+  {
+    "line": 718,
+    "name": "MangaUpdates",
+    "id": "mangaupdates"
+  },
+  {
+    "line": 719,
+    "name": "MangaVault",
+    "id": "mangavault"
+  },
+  {
+    "line": 720,
+    "name": "MangaWorld",
+    "id": "mangaworld"
+  },
+  {
+    "line": 721,
+    "name": "MangaWOW",
+    "id": "mangawow"
+  },
+  {
+    "line": 722,
+    "name": "MangaWT",
+    "id": "mangawt"
+  },
+  {
+    "line": 723,
+    "name": "MangaYi",
+    "id": "mangayi"
+  },
+  {
+    "line": 724,
+    "name": "MangaYY",
+    "id": "mangayy"
+  },
+  {
+    "line": 725,
+    "name": "mangayy.org",
+    "id": "mangayy"
+  },
+  {
+    "line": 726,
+    "name": "MangaZure",
+    "id": "mangazure"
+  },
+  {
+    "line": 727,
+    "name": "ManGeek",
+    "id": "mangeek"
+  },
+  {
+    "line": 728,
+    "name": "Mangitto",
+    "id": "mangitto"
+  },
+  {
+    "line": 729,
+    "name": "Mango Toons",
+    "id": "mangotoons"
+  },
+  {
+    "line": 730,
+    "name": "MangoLibreria",
+    "id": "mangolibreria"
+  },
+  {
+    "line": 731,
+    "name": "Manhastro",
+    "id": "manhastro"
+  },
+  {
+    "line": 732,
+    "name": "Manhua Rush",
+    "id": "manhuarush"
+  },
+  {
+    "line": 733,
+    "name": "Manhua Zonghe",
+    "id": "manhuazonghe"
+  },
+  {
+    "line": 734,
+    "name": "ManhuaHot",
+    "id": "manhuahot"
+  },
+  {
+    "line": 735,
+    "name": "Manhuanext",
+    "id": "manhuanext"
+  },
+  {
+    "line": 736,
+    "name": "ManhuaPlus",
+    "id": "manhuaplus"
+  },
+  {
+    "line": 737,
+    "name": "Manhuarm",
+    "id": "manhuarm"
+  },
+  {
+    "line": 738,
+    "name": "ManhuaTop",
+    "id": "manhuatop"
+  },
+  {
+    "line": 739,
+    "name": "ManhuaUS",
+    "id": "manhuaus"
+  },
+  {
+    "line": 740,
+    "name": "Manhwa Comics",
+    "id": "manhwacomics"
+  },
+  {
+    "line": 741,
+    "name": "Manhwa Indo",
+    "id": "manhwaindo"
+  },
+  {
+    "line": 742,
+    "name": "Manhwa List",
+    "id": "manhwalist"
+  },
+  {
+    "line": 743,
+    "name": "Manhwa Reads",
+    "id": "manhwareads"
+  },
+  {
+    "line": 744,
+    "name": "Manhwa Toon",
+    "id": "manhwatoon"
+  },
+  {
+    "line": 745,
+    "name": "Manhwa-Latino",
+    "id": "manhwalatino"
+  },
+  {
+    "line": 746,
+    "name": "ManhwaBuddy",
+    "id": "manhwabuddy"
+  },
+  {
+    "line": 747,
+    "name": "ManhwaDen",
+    "id": "manhwaden"
+  },
+  {
+    "line": 748,
+    "name": "ManhwaDesu",
+    "id": "manhwadesu"
+  },
+  {
+    "line": 749,
+    "name": "ManhwaGet",
+    "id": "manhwaget"
+  },
+  {
+    "line": 750,
+    "name": "ManhwaHub",
+    "id": "manhwahub"
+  },
+  {
+    "line": 751,
+    "name": "ManhwaHub.to",
+    "id": "manhwahubto"
+  },
+  {
+    "line": 752,
+    "name": "ManhwaLand.mom",
+    "id": "manhwalandmom"
+  },
+  {
+    "line": 753,
+    "name": "Manhwalike",
+    "id": "manhwalike"
+  },
+  {
+    "line": 754,
+    "name": "ManhwaManhua",
+    "id": "manhwamanhua"
+  },
+  {
+    "line": 755,
+    "name": "ManhwaNex",
+    "id": "manhwanex"
+  },
+  {
+    "line": 756,
+    "name": "ManhwaOnline",
+    "id": "manhwaonline"
+  },
+  {
+    "line": 757,
+    "name": "ManhwaRead",
+    "id": "manhwaread"
+  },
+  {
+    "line": 758,
+    "name": "ManhwasMe",
+    "id": "manhwasme"
+  },
+  {
+    "line": 759,
+    "name": "Manhwatop",
+    "id": "manhwatop"
+  },
+  {
+    "line": 760,
+    "name": "ManhwaWeb",
+    "id": "manhwaweb"
+  },
+  {
+    "line": 761,
+    "name": "ManhwaZ",
+    "id": "manhwaz"
+  },
+  {
+    "line": 762,
+    "name": "ManhwaZone",
+    "id": "manhwazone"
+  },
+  {
+    "line": 763,
+    "name": "Manta",
+    "id": "manta"
+  },
+  {
+    "line": 764,
+    "name": "Mantraz Scan",
+    "id": "mantrazscan"
+  },
+  {
+    "line": 765,
+    "name": "manytoon.com",
+    "id": "manytooncom"
+  },
+  {
+    "line": 766,
+    "name": "Marmota",
+    "id": "marmota"
+  },
+  {
+    "line": 767,
+    "name": "mashlemanga.net",
+    "id": "mashlemanganet"
+  },
+  {
+    "line": 768,
+    "name": "MayoTune",
+    "id": "mayotune"
+  },
+  {
+    "line": 769,
+    "name": "Mecha Comic",
+    "id": "mechacomic"
+  },
+  {
+    "line": 770,
+    "name": "MeDamTruyen",
+    "id": "medamtruyen"
+  },
+  {
+    "line": 771,
+    "name": "Mediocre Toons",
+    "id": "mediocretoons"
+  },
+  {
+    "line": 772,
+    "name": "Megatokyo",
+    "id": "megatokyo"
+  },
+  {
+    "line": 773,
+    "name": "Mehgazone",
+    "id": "mehgazone"
+  },
+  {
+    "line": 774,
+    "name": "MeiToon",
+    "id": "meitoon"
+  },
+  {
+    "line": 775,
+    "name": "Menudo-Fansub",
+    "id": "menudofansub"
+  },
+  {
+    "line": 776,
+    "name": "MeoSSS",
+    "id": "meosss"
+  },
+  {
+    "line": 777,
+    "name": "MeoSua",
+    "id": "meosua"
+  },
+  {
+    "line": 778,
+    "name": "Merlin Scans",
+    "id": "merlinscans"
+  },
+  {
+    "line": 779,
+    "name": "MG Komik",
+    "id": "mgkomik"
+  },
+  {
+    "line": 780,
+    "name": "Mgeko",
+    "id": "mgeko"
+  },
+  {
+    "line": 781,
+    "name": "Mgread.io",
+    "id": "mgreadio"
+  },
+  {
+    "line": 782,
+    "name": "MHScans",
+    "id": "mhscans"
+  },
+  {
+    "line": 783,
+    "name": "Miau Scan",
+    "id": "miauscan"
+  },
+  {
+    "line": 784,
+    "name": "MikoRoku",
+    "id": "mikoroku"
+  },
+  {
+    "line": 785,
+    "name": "Mikrokosmos Fansub",
+    "id": "mikrokosmosfansub"
+  },
+  {
+    "line": 786,
+    "name": "MilaSub",
+    "id": "milasub"
+  },
+  {
+    "line": 787,
+    "name": "MiMi",
+    "id": "mimi"
+  },
+  {
+    "line": 788,
+    "name": "Minda Fansub",
+    "id": "mindafansub"
+  },
+  {
+    "line": 789,
+    "name": "MiniTwo Scan",
+    "id": "minitwoscan"
+  },
+  {
+    "line": 790,
+    "name": "MinoTruyen",
+    "id": "minotruyen"
+  },
+  {
+    "line": 791,
+    "name": "MissKon",
+    "id": "misskon"
+  },
+  {
+    "line": 792,
+    "name": "Mist Scans",
+    "id": "mistscans"
+  },
+  {
+    "line": 793,
+    "name": "Mitaku",
+    "id": "mitaku"
+  },
+  {
+    "line": 794,
+    "name": "Mkissa",
+    "id": "mkissa"
+  },
+  {
+    "line": 795,
+    "name": "MLBB Lore",
+    "id": "mlbblore"
+  },
+  {
+    "line": 796,
+    "name": "MoeTruyen",
+    "id": "moetruyen"
+  },
+  {
+    "line": 797,
+    "name": "MoeTruyenSuiCao (unoriginal)",
+    "id": "moetruyensuicaounoriginal"
+  },
+  {
+    "line": 798,
+    "name": "Mono Manga",
+    "id": "monomanga"
+  },
+  {
+    "line": 799,
+    "name": "Monochrome Custom",
+    "id": "monochromecustom"
+  },
+  {
+    "line": 800,
+    "name": "Monochrome Scans",
+    "id": "monochromescans"
+  },
+  {
+    "line": 801,
+    "name": "Monopoly Scan",
+    "id": "monopolyscan"
+  },
+  {
+    "line": 802,
+    "name": "Monte Tai",
+    "id": "montetai"
+  },
+  {
+    "line": 803,
+    "name": "Moon Daisy Scans",
+    "id": "moondaisyscans"
+  },
+  {
+    "line": 804,
+    "name": "MR Tenzus",
+    "id": "mrtenzus"
+  },
+  {
+    "line": 805,
+    "name": "Mr. Blue",
+    "id": "mrblue"
+  },
+  {
+    "line": 806,
+    "name": "Mugiwaras Oficial",
+    "id": "mugiwarasoficial"
+  },
+  {
+    "line": 807,
+    "name": "Mundo Manhwa",
+    "id": "mundomanhwa"
+  },
+  {
+    "line": 808,
+    "name": "MurimScan",
+    "id": "murimscan"
+  },
+  {
+    "line": 809,
+    "name": "MyAnimeList",
+    "id": "myanimelist"
+  },
+  {
+    "line": 810,
+    "name": "NamiComi",
+    "id": "namicomi"
+  },
+  {
+    "line": 811,
+    "name": "Narasi Ninja",
+    "id": "narasininja"
+  },
+  {
+    "line": 812,
+    "name": "NatoManga",
+    "id": "natomanga"
+  },
+  {
+    "line": 813,
+    "name": "Natsu",
+    "id": "natsu"
+  },
+  {
+    "line": 814,
+    "name": "Naver Series",
+    "id": "naverseries"
+  },
+  {
+    "line": 815,
+    "name": "Naver Webtoon",
+    "id": "naverwebtoon"
+  },
+  {
+    "line": 816,
+    "name": "Nebulosa Scan",
+    "id": "nebulosascan"
+  },
+  {
+    "line": 817,
+    "name": "NekoScans",
+    "id": "nekoscans"
+  },
+  {
+    "line": 818,
+    "name": "Nemesis scans",
+    "id": "nemesisscans"
+  },
+  {
+    "line": 819,
+    "name": "NeoManga",
+    "id": "neomanga"
+  },
+  {
+    "line": 820,
+    "name": "NetTruyenCO (unoriginal)",
+    "id": "nettruyencounoriginal"
+  },
+  {
+    "line": 821,
+    "name": "NetTruyenS (unoriginal)",
+    "id": "nettruyensunoriginal"
+  },
+  {
+    "line": 822,
+    "name": "NetTruyenViet (unoriginal)",
+    "id": "nettruyenvietunoriginal"
+  },
+  {
+    "line": 823,
+    "name": "NetTruyenX (unoriginal)",
+    "id": "nettruyenxunoriginal"
+  },
+  {
+    "line": 824,
+    "name": "NeuManga.xyz",
+    "id": "neumangaxyz"
+  },
+  {
+    "line": 825,
+    "name": "New Manhwa",
+    "id": "newmanhwa"
+  },
+  {
+    "line": 826,
+    "name": "Newtoki (SBXH)",
+    "id": "newtokisbxh"
+  },
+  {
+    "line": 827,
+    "name": "NewXToon",
+    "id": "newxtoon"
+  },
+  {
+    "line": 828,
+    "name": "NexComic",
+    "id": "nexcomic"
+  },
+  {
+    "line": 829,
+    "name": "Nexus Mangás",
+    "id": "nexusmangas"
+  },
+  {
+    "line": 830,
+    "name": "Nexus Toons",
+    "id": "nexustoons"
+  },
+  {
+    "line": 831,
+    "name": "NexusScanlation",
+    "id": "nexusscanlation"
+  },
+  {
+    "line": 832,
+    "name": "NgamenKomik",
+    "id": "ngamenkomik"
+  },
+  {
+    "line": 833,
+    "name": "Ngomik (unoriginal)",
+    "id": "ngomikunoriginal"
+  },
+  {
+    "line": 834,
+    "name": "NhatTruyen",
+    "id": "nhattruyen"
+  },
+  {
+    "line": 835,
+    "name": "Niadd",
+    "id": "niadd"
+  },
+  {
+    "line": 836,
+    "name": "NIFTeam",
+    "id": "nifteam"
+  },
+  {
+    "line": 837,
+    "name": "NihonKuni",
+    "id": "nihonkuni"
+  },
+  {
+    "line": 838,
+    "name": "NineAnime",
+    "id": "nineanime"
+  },
+  {
+    "line": 839,
+    "name": "NineGrid",
+    "id": "ninegrid"
+  },
+  {
+    "line": 840,
+    "name": "Ninekon",
+    "id": "ninekon"
+  },
+  {
+    "line": 841,
+    "name": "Ninja Scan",
+    "id": "ninjascan"
+  },
+  {
+    "line": 842,
+    "name": "Nirvana Manga",
+    "id": "nirvanamanga"
+  },
+  {
+    "line": 843,
+    "name": "Nivera Fansub",
+    "id": "niverafansub"
+  },
+  {
+    "line": 844,
+    "name": "NixManga",
+    "id": "nixmanga"
+  },
+  {
+    "line": 845,
+    "name": "Nocturne Summer",
+    "id": "nocturnesummer"
+  },
+  {
+    "line": 846,
+    "name": "Noromax",
+    "id": "noromax"
+  },
+  {
+    "line": 847,
+    "name": "Nova Manhwas",
+    "id": "novamanhwas"
+  },
+  {
+    "line": 848,
+    "name": "NovelCool",
+    "id": "novelcool"
+  },
+  {
+    "line": 849,
+    "name": "NovelCrow",
+    "id": "novelcrow"
+  },
+  {
+    "line": 850,
+    "name": "NoxManga",
+    "id": "noxmanga"
+  },
+  {
+    "line": 851,
+    "name": "Nuvia Toon",
+    "id": "nuviatoon"
+  },
+  {
+    "line": 852,
+    "name": "Nux Scans",
+    "id": "nuxscans"
+  },
+  {
+    "line": 853,
+    "name": "Nyanu Kafe",
+    "id": "nyanukafe"
+  },
+  {
+    "line": 854,
+    "name": "Nyra Scans",
+    "id": "nyrascans"
+  },
+  {
+    "line": 855,
+    "name": "Nyx Scans",
+    "id": "nyxscans"
+  },
+  {
+    "line": 856,
+    "name": "OctopusManga",
+    "id": "octopusmanga"
+  },
+  {
+    "line": 857,
+    "name": "Oduto",
+    "id": "oduto"
+  },
+  {
+    "line": 858,
+    "name": "OioiVn",
+    "id": "oioivn"
+  },
+  {
+    "line": 859,
+    "name": "OkuToon",
+    "id": "okutoon"
+  },
+  {
+    "line": 860,
+    "name": "OkyyKomik",
+    "id": "okyykomik"
+  },
+  {
+    "line": 861,
+    "name": "Olympus Scanlation",
+    "id": "olympusscanlation"
+  },
+  {
+    "line": 862,
+    "name": "olympusxyz.com",
+    "id": "olympusscanlation"
+  },
+  {
+    "line": 863,
+    "name": "Omega Scans",
+    "id": "omegascans"
+  },
+  {
+    "line": 864,
+    "name": "Omicaso",
+    "id": "omicaso"
+  },
+  {
+    "line": 865,
+    "name": "Omoi",
+    "id": "omoi"
+  },
+  {
+    "line": 866,
+    "name": "One Piece Fans",
+    "id": "onepiecefans"
+  },
+  {
+    "line": 867,
+    "name": "One Punch Man Online",
+    "id": "onepunchmanonline"
+  },
+  {
+    "line": 868,
+    "name": "OneManga.info",
+    "id": "onemangainfo"
+  },
+  {
+    "line": 869,
+    "name": "onepieceread.com",
+    "id": "onepiecereadcom"
+  },
+  {
+    "line": 870,
+    "name": "onepunchmanmanga.org",
+    "id": "onepunchmanmangaorg"
+  },
+  {
+    "line": 871,
+    "name": "OneReader",
+    "id": "onereader"
+  },
+  {
+    "line": 872,
+    "name": "ONF MANGAS",
+    "id": "onfmangas"
+  },
+  {
+    "line": 873,
+    "name": "OniSaga",
+    "id": "onisaga"
+  },
+  {
+    "line": 874,
+    "name": "Onma",
+    "id": "onma"
+  },
+  {
+    "line": 875,
+    "name": "Ono",
+    "id": "ono"
+  },
+  {
+    "line": 876,
+    "name": "oots",
+    "id": "oots"
+  },
+  {
+    "line": 877,
+    "name": "Opiatoon",
+    "id": "opiatoon"
+  },
+  {
+    "line": 878,
+    "name": "Orca Manga",
+    "id": "orcamanga"
+  },
+  {
+    "line": 879,
+    "name": "Orchisasia",
+    "id": "orchisasia"
+  },
+  {
+    "line": 880,
+    "name": "OrckuMangas",
+    "id": "orckumangas"
+  },
+  {
+    "line": 881,
+    "name": "OreManga",
+    "id": "oremanga"
+  },
+  {
+    "line": 882,
+    "name": "Ori Manga",
+    "id": "orimanga"
+  },
+  {
+    "line": 883,
+    "name": "Orion Scans",
+    "id": "orionscans"
+  },
+  {
+    "line": 884,
+    "name": "Ortega Scans",
+    "id": "ortegascans"
+  },
+  {
+    "line": 885,
+    "name": "Osaka Scan",
+    "id": "osakascan"
+  },
+  {
+    "line": 886,
+    "name": "oshinokoyo.com",
+    "id": "oshinokoyocom"
+  },
+  {
+    "line": 887,
+    "name": "OSOSEDKI",
+    "id": "ososedki"
+  },
+  {
+    "line": 888,
+    "name": "Ota Scans",
+    "id": "otascans"
+  },
+  {
+    "line": 889,
+    "name": "Otakusic",
+    "id": "otakusic"
+  },
+  {
+    "line": 890,
+    "name": "OTruyen",
+    "id": "otruyen"
+  },
+  {
+    "line": 891,
+    "name": "oyasumipunpun.com",
+    "id": "oyasumipunpuncom"
+  },
+  {
+    "line": 892,
+    "name": "OzulScans",
+    "id": "ozulscans"
+  },
+  {
+    "line": 893,
+    "name": "Panconcola",
+    "id": "panconcola"
+  },
+  {
+    "line": 894,
+    "name": "PandaChaika",
+    "id": "pandachaika"
+  },
+  {
+    "line": 895,
+    "name": "Panomic",
+    "id": "panomic"
+  },
+  {
+    "line": 896,
+    "name": "Pantheon Scan",
+    "id": "pantheonscan"
+  },
+  {
+    "line": 897,
+    "name": "PapScan",
+    "id": "papscan"
+  },
+  {
+    "line": 898,
+    "name": "Paradise BL",
+    "id": "paradisebl"
+  },
+  {
+    "line": 899,
+    "name": "Paradise Scans",
+    "id": "paradisescans"
+  },
+  {
+    "line": 900,
+    "name": "Paradox Scans",
+    "id": "paradoxscans"
+  },
+  {
+    "line": 901,
+    "name": "parasytemanga.com",
+    "id": "parasytemangacom"
+  },
+  {
+    "line": 902,
+    "name": "Paritehaber",
+    "id": "paritehaber"
+  },
+  {
+    "line": 903,
+    "name": "PassamaoScan",
+    "id": "passamaoscan"
+  },
+  {
+    "line": 904,
+    "name": "Patch Friday",
+    "id": "patchfriday"
+  },
+  {
+    "line": 905,
+    "name": "Pati Manga",
+    "id": "patimanga"
+  },
+  {
+    "line": 906,
+    "name": "Paw Manga",
+    "id": "pawmanga"
+  },
+  {
+    "line": 907,
+    "name": "Pepper&Carrot",
+    "id": "peppercarrot"
+  },
+  {
+    "line": 908,
+    "name": "Petrotechsociety",
+    "id": "petrotechsociety"
+  },
+  {
+    "line": 909,
+    "name": "PhenixScans",
+    "id": "phenixscans"
+  },
+  {
+    "line": 910,
+    "name": "Philia Scans",
+    "id": "philiascans"
+  },
+  {
+    "line": 911,
+    "name": "Phoenix Scans",
+    "id": "phoenixscans"
+  },
+  {
+    "line": 912,
+    "name": "Piccoma",
+    "id": "piccoma"
+  },
+  {
+    "line": 913,
+    "name": "Pink Rosa",
+    "id": "pinkrosa"
+  },
+  {
+    "line": 914,
+    "name": "Pink Sea Unicorn",
+    "id": "pinkseaunicorn"
+  },
+  {
+    "line": 915,
+    "name": "Pixiv",
+    "id": "pixiv"
+  },
+  {
+    "line": 916,
+    "name": "pixiv Comic",
+    "id": "pixivcomic"
+  },
+  {
+    "line": 917,
+    "name": "PizzariaScan",
+    "id": "pizzariascan"
+  },
+  {
+    "line": 918,
+    "name": "Platinum Lily Scan",
+    "id": "platinumlilyscan"
+  },
+  {
+    "line": 919,
+    "name": "Plot Twist No Fansub",
+    "id": "plottwistnofansub"
+  },
+  {
+    "line": 920,
+    "name": "Pluma Comics",
+    "id": "plumacomics"
+  },
+  {
+    "line": 921,
+    "name": "Pocket Comics",
+    "id": "pocketcomics"
+  },
+  {
+    "line": 922,
+    "name": "Point Zero Toons",
+    "id": "pointzerotoons"
+  },
+  {
+    "line": 923,
+    "name": "Portal Yaoi",
+    "id": "portalyaoi"
+  },
+  {
+    "line": 924,
+    "name": "Poseidon Scans",
+    "id": "poseidonscans"
+  },
+  {
+    "line": 925,
+    "name": "PowerManga",
+    "id": "powermanga"
+  },
+  {
+    "line": 926,
+    "name": "Pramramadhan",
+    "id": "pramramadhan"
+  },
+  {
+    "line": 927,
+    "name": "Project Suki",
+    "id": "projectsuki"
+  },
+  {
+    "line": 928,
+    "name": "punpunmanga.com",
+    "id": "punpunmangacom"
+  },
+  {
+    "line": 929,
+    "name": "PureManga",
+    "id": "puremanga"
+  },
+  {
+    "line": 930,
+    "name": "Qi Scans",
+    "id": "qiscans"
+  },
+  {
+    "line": 931,
+    "name": "QiManga",
+    "id": "qimanga"
+  },
+  {
+    "line": 932,
+    "name": "Questionable Content",
+    "id": "questionablecontent"
+  },
+  {
+    "line": 933,
+    "name": "Rackus",
+    "id": "rackus"
+  },
+  {
+    "line": 934,
+    "name": "Rage Scans",
+    "id": "ragescans"
+  },
+  {
+    "line": 935,
+    "name": "Ragna Scans",
+    "id": "ragnascans"
+  },
+  {
+    "line": 936,
+    "name": "Ragnar Scans",
+    "id": "ragnarscans"
+  },
+  {
+    "line": 937,
+    "name": "Ragnarok Scanlation",
+    "id": "ragnarokscanlation"
+  },
+  {
+    "line": 938,
+    "name": "Raijin Scans",
+    "id": "raijinscans"
+  },
+  {
+    "line": 939,
+    "name": "Raindrop Fansub",
+    "id": "raindropfansub"
+  },
+  {
+    "line": 940,
+    "name": "RamaReader",
+    "id": "ramareader"
+  },
+  {
+    "line": 941,
+    "name": "Randowiz",
+    "id": "randowiz"
+  },
+  {
+    "line": 942,
+    "name": "Raven Scans",
+    "id": "ravenscans"
+  },
+  {
+    "line": 943,
+    "name": "RavenManga",
+    "id": "ravenmanga"
+  },
+  {
+    "line": 944,
+    "name": "Raw Otaku",
+    "id": "rawotaku"
+  },
+  {
+    "line": 945,
+    "name": "Raw UwU",
+    "id": "rawuwu"
+  },
+  {
+    "line": 946,
+    "name": "RawBaka",
+    "id": "rawbaka"
+  },
+  {
+    "line": 947,
+    "name": "Rawdevart.art",
+    "id": "rawdevartart"
+  },
+  {
+    "line": 948,
+    "name": "RawDEX",
+    "id": "rawdex"
+  },
+  {
+    "line": 949,
+    "name": "RawINU",
+    "id": "rawinu"
+  },
+  {
+    "line": 950,
+    "name": "Rawkuma",
+    "id": "rawkuma"
+  },
+  {
+    "line": 951,
+    "name": "RawMiu",
+    "id": "rawmiu"
+  },
+  {
+    "line": 952,
+    "name": "Razure",
+    "id": "razure"
+  },
+  {
+    "line": 953,
+    "name": "RD Scans",
+    "id": "rdscans"
+  },
+  {
+    "line": 954,
+    "name": "Read Comics Online",
+    "id": "readcomicsonline"
+  },
+  {
+    "line": 955,
+    "name": "Read One Piece Manga Online",
+    "id": "readonepiecemangaonline"
+  },
+  {
+    "line": 956,
+    "name": "Read One-Punch Man Manga Online",
+    "id": "readonepunchmanmangaonline"
+  },
+  {
+    "line": 957,
+    "name": "Read Solo Leveling Manga Manhwa Online",
+    "id": "readsololevelingmangamanhwaonline"
+  },
+  {
+    "line": 958,
+    "name": "read-jjk.com",
+    "id": "readjjkcom"
+  },
+  {
+    "line": 959,
+    "name": "read-kengan-ashura.com",
+    "id": "readkenganashuracom"
+  },
+  {
+    "line": 960,
+    "name": "ReadAllComics",
+    "id": "readallcomics"
+  },
+  {
+    "line": 961,
+    "name": "readberserk.com",
+    "id": "readberserkcom"
+  },
+  {
+    "line": 962,
+    "name": "readblackclover.com",
+    "id": "readblackclovercom"
+  },
+  {
+    "line": 963,
+    "name": "readchainsawman.com",
+    "id": "readchainsawmancom"
+  },
+  {
+    "line": 964,
+    "name": "readclaymore.com",
+    "id": "readclaymorecom"
+  },
+  {
+    "line": 965,
+    "name": "ReadComicOnline",
+    "id": "readcomiconline"
+  },
+  {
+    "line": 966,
+    "name": "Reader Store",
+    "id": "readerstore"
+  },
+  {
+    "line": 967,
+    "name": "readhaikyuu.com",
+    "id": "readhaikyuucom"
+  },
+  {
+    "line": 968,
+    "name": "readhellsing.com",
+    "id": "readhellsingcom"
+  },
+  {
+    "line": 969,
+    "name": "readjujutsukaisen.com",
+    "id": "readjujutsukaisencom"
+  },
+  {
+    "line": 970,
+    "name": "readkingdomfree.com",
+    "id": "readkingdomfreecom"
+  },
+  {
+    "line": 971,
+    "name": "readmanganato.com",
+    "id": "readmanganatocom"
+  },
+  {
+    "line": 972,
+    "name": "readmha.com",
+    "id": "readmhacom"
+  },
+  {
+    "line": 973,
+    "name": "readnaruto.com",
+    "id": "readnarutocom"
+  },
+  {
+    "line": 974,
+    "name": "ReadNifTeam",
+    "id": "readnifteam"
+  },
+  {
+    "line": 975,
+    "name": "readonepiece.com",
+    "id": "readonepiececom"
+  },
+  {
+    "line": 976,
+    "name": "readopm.com",
+    "id": "readopmcom"
+  },
+  {
+    "line": 977,
+    "name": "readoshinoko.com",
+    "id": "readoshinokocom"
+  },
+  {
+    "line": 978,
+    "name": "readoverlord.com",
+    "id": "readoverlordcom"
+  },
+  {
+    "line": 979,
+    "name": "readsnk.com",
+    "id": "readsnkcom"
+  },
+  {
+    "line": 980,
+    "name": "readsnkmanga.com",
+    "id": "readsnkmangacom"
+  },
+  {
+    "line": 981,
+    "name": "Real Life Comics",
+    "id": "reallifecomics"
+  },
+  {
+    "line": 982,
+    "name": "ReaperTrans",
+    "id": "reapertrans"
+  },
+  {
+    "line": 983,
+    "name": "ReiManga",
+    "id": "reimanga"
+  },
+  {
+    "line": 984,
+    "name": "Renascans",
+    "id": "renascans"
+  },
+  {
+    "line": 985,
+    "name": "Revistas e Quadrinhos",
+    "id": "revistasequadrinhos"
+  },
+  {
+    "line": 986,
+    "name": "Revival Scans",
+    "id": "revivalscans"
+  },
+  {
+    "line": 987,
+    "name": "ReYume",
+    "id": "reyume"
+  },
+  {
+    "line": 988,
+    "name": "RF Dragon Scan",
+    "id": "rfdragonscan"
+  },
+  {
+    "line": 989,
+    "name": "RichtoScan",
+    "id": "richtoscan"
+  },
+  {
+    "line": 990,
+    "name": "RIDI",
+    "id": "ridi"
+  },
+  {
+    "line": 991,
+    "name": "RimacomiPlus",
+    "id": "rimacomiplus"
+  },
+  {
+    "line": 992,
+    "name": "Rimu Scans",
+    "id": "rimuscans"
+  },
+  {
+    "line": 993,
+    "name": "Rinko Comics",
+    "id": "rinkocomics"
+  },
+  {
+    "line": 994,
+    "name": "Risentoons",
+    "id": "risentoons"
+  },
+  {
+    "line": 995,
+    "name": "Rithar Scans",
+    "id": "ritharscans"
+  },
+  {
+    "line": 996,
+    "name": "Riztranslation",
+    "id": "riztranslation"
+  },
+  {
+    "line": 997,
+    "name": "Rizz Comic",
+    "id": "rizzfables"
+  },
+  {
+    "line": 998,
+    "name": "Rizz Fables",
+    "id": "rizzfables"
+  },
+  {
+    "line": 999,
+    "name": "Rncalation",
+    "id": "rncalation"
+  },
+  {
+    "line": 1000,
+    "name": "Roads Team",
+    "id": "roadsteam"
+  },
+  {
+    "line": 1001,
+    "name": "Rocks Manga",
+    "id": "rocksmanga"
+  },
+  {
+    "line": 1002,
+    "name": "Rokari Comics",
+    "id": "rokaricomics"
+  },
+  {
+    "line": 1003,
+    "name": "Rolia Scan",
+    "id": "roliascan"
+  },
+  {
+    "line": 1004,
+    "name": "Rose Squad Scans",
+    "id": "rosesquadscans"
+  },
+  {
+    "line": 1005,
+    "name": "Roseveil",
+    "id": "roseveil"
+  },
+  {
+    "line": 1006,
+    "name": "Roxinha",
+    "id": "roxinha"
+  },
+  {
+    "line": 1007,
+    "name": "Ryukomik",
+    "id": "ryukomik"
+  },
+  {
+    "line": 1008,
+    "name": "Rüya Manga",
+    "id": "ruyamanga"
+  },
+  {
+    "line": 1009,
+    "name": "S2Manga",
+    "id": "s2manga"
+  },
+  {
+    "line": 1010,
+    "name": "Sabrina Online",
+    "id": "sabrinaonline"
+  },
+  {
+    "line": 1011,
+    "name": "Sacachispa",
+    "id": "sacachispa"
+  },
+  {
+    "line": 1012,
+    "name": "Sagrado Império da Britannia",
+    "id": "sagradoimperiodabritannia"
+  },
+  {
+    "line": 1013,
+    "name": "Saikai Scan",
+    "id": "saikaiscan"
+  },
+  {
+    "line": 1014,
+    "name": "sakamotomanga.com",
+    "id": "sakamotomangacom"
+  },
+  {
+    "line": 1015,
+    "name": "SamuraiScan",
+    "id": "samuraiscan"
+  },
+  {
+    "line": 1016,
+    "name": "Sana Scans",
+    "id": "sanascans"
+  },
+  {
+    "line": 1017,
+    "name": "Sandra and Woo",
+    "id": "sandraandwoo"
+  },
+  {
+    "line": 1018,
+    "name": "SangChanhTeam",
+    "id": "sangchanhteam"
+  },
+  {
+    "line": 1019,
+    "name": "SapphireScan",
+    "id": "sapphirescan"
+  },
+  {
+    "line": 1020,
+    "name": "Sasangeyou",
+    "id": "sasangeyou"
+  },
+  {
+    "line": 1021,
+    "name": "Saturday Morning Breakfast Comics",
+    "id": "saturdaymorningbreakfastcomics"
+  },
+  {
+    "line": 1022,
+    "name": "SayManhwa",
+    "id": "newmanhwa"
+  },
+  {
+    "line": 1023,
+    "name": "Scan Reader",
+    "id": "scanreader"
+  },
+  {
+    "line": 1024,
+    "name": "Scan VF",
+    "id": "scanvf"
+  },
+  {
+    "line": 1025,
+    "name": "Scan-Manga",
+    "id": "scanmanga"
+  },
+  {
+    "line": 1026,
+    "name": "Scan4Arab",
+    "id": "scan4arab"
+  },
+  {
+    "line": 1027,
+    "name": "ScanR",
+    "id": "scanr"
+  },
+  {
+    "line": 1028,
+    "name": "ScansFR",
+    "id": "scansfr"
+  },
+  {
+    "line": 1029,
+    "name": "ScansGG",
+    "id": "scansgg"
+  },
+  {
+    "line": 1030,
+    "name": "Scantrad Union",
+    "id": "scantradunion"
+  },
+  {
+    "line": 1031,
+    "name": "Schlock Mercenary",
+    "id": "schlockmercenary"
+  },
+  {
+    "line": 1032,
+    "name": "ScyllaComics",
+    "id": "scyllacomics"
+  },
+  {
+    "line": 1033,
+    "name": "Scythe Scans",
+    "id": "scythescans"
+  },
+  {
+    "line": 1034,
+    "name": "Seikowo",
+    "id": "seikowo"
+  },
+  {
+    "line": 1035,
+    "name": "Seinagi",
+    "id": "seinagi"
+  },
+  {
+    "line": 1036,
+    "name": "SeineManga",
+    "id": "seinemanga"
+  },
+  {
+    "line": 1037,
+    "name": "Sekte Komik",
+    "id": "sektekomik"
+  },
+  {
+    "line": 1038,
+    "name": "Sen Manga",
+    "id": "senmanga"
+  },
+  {
+    "line": 1039,
+    "name": "SeraphicDeviltry",
+    "id": "seraphicdeviltry"
+  },
+  {
+    "line": 1040,
+    "name": "Serein Scan",
+    "id": "sereinscan"
+  },
+  {
+    "line": 1041,
+    "name": "Setsu Scans",
+    "id": "setsuscans"
+  },
+  {
+    "line": 1042,
+    "name": "Shadow Manga",
+    "id": "shadowmanga"
+  },
+  {
+    "line": 1043,
+    "name": "Shadow Çeviri",
+    "id": "shadowceviri"
+  },
+  {
+    "line": 1044,
+    "name": "Shiba Manga",
+    "id": "shibamanga"
+  },
+  {
+    "line": 1045,
+    "name": "Shijie Scans",
+    "id": "shijiescans"
+  },
+  {
+    "line": 1046,
+    "name": "Shikimori",
+    "id": "shikimori"
+  },
+  {
+    "line": 1047,
+    "name": "Shinigami",
+    "id": "shinigami"
+  },
+  {
+    "line": 1048,
+    "name": "Shinobi Scans",
+    "id": "shinobiscans"
+  },
+  {
+    "line": 1049,
+    "name": "Shirai Scans",
+    "id": "shiraiscans"
+  },
+  {
+    "line": 1050,
+    "name": "ShiyuraSub",
+    "id": "shiyurasub"
+  },
+  {
+    "line": 1051,
+    "name": "Shonen Jump",
+    "id": "shonenjump"
+  },
+  {
+    "line": 1052,
+    "name": "Siikomik",
+    "id": "siikomik"
+  },
+  {
+    "line": 1053,
+    "name": "SilentQuill",
+    "id": "silentquill"
+  },
+  {
+    "line": 1054,
+    "name": "Singmanga",
+    "id": "singmanga"
+  },
+  {
+    "line": 1055,
+    "name": "SinhSieuSao",
+    "id": "sinhsieusao"
+  },
+  {
+    "line": 1056,
+    "name": "Siren Scans",
+    "id": "sirenscans"
+  },
+  {
+    "line": 1057,
+    "name": "Siren Scans FR",
+    "id": "sirenscansfr"
+  },
+  {
+    "line": 1058,
+    "name": "Siyah Melek",
+    "id": "siyahmelek"
+  },
+  {
+    "line": 1059,
+    "name": "SkyMangas",
+    "id": "skymangas"
+  },
+  {
+    "line": 1060,
+    "name": "Sleepy Translations",
+    "id": "sleepytranslations"
+  },
+  {
+    "line": 1061,
+    "name": "Slept Manga",
+    "id": "sleptmanga"
+  },
+  {
+    "line": 1062,
+    "name": "SlimeRead (unoriginal)",
+    "id": "slimereadunoriginal"
+  },
+  {
+    "line": 1063,
+    "name": "Slow Manga",
+    "id": "slowmanga"
+  },
+  {
+    "line": 1064,
+    "name": "Snafu Comics",
+    "id": "snafucomics"
+  },
+  {
+    "line": 1065,
+    "name": "SoaiCaComic",
+    "id": "soaicacomic"
+  },
+  {
+    "line": 1066,
+    "name": "Sodsaime",
+    "id": "sodsaime"
+  },
+  {
+    "line": 1067,
+    "name": "Soft Epsilon Scan",
+    "id": "softepsilonscan"
+  },
+  {
+    "line": 1068,
+    "name": "Softkomik",
+    "id": "softkomik"
+  },
+  {
+    "line": 1069,
+    "name": "Sokuyomi",
+    "id": "sokuyomi"
+  },
+  {
+    "line": 1070,
+    "name": "Solar and Sundry",
+    "id": "solarandsundry"
+  },
+  {
+    "line": 1071,
+    "name": "Solaris Scans",
+    "id": "solarisscans"
+  },
+  {
+    "line": 1072,
+    "name": "Soul Scans",
+    "id": "soulscans"
+  },
+  {
+    "line": 1073,
+    "name": "sousou-no-frieren.com",
+    "id": "sousounofrierencom"
+  },
+  {
+    "line": 1074,
+    "name": "Speed Manga",
+    "id": "speedmanga"
+  },
+  {
+    "line": 1075,
+    "name": "Spicy Scan",
+    "id": "spicyscan"
+  },
+  {
+    "line": 1076,
+    "name": "Spider Scans",
+    "id": "spiderscans"
+  },
+  {
+    "line": 1077,
+    "name": "Spmanhwa",
+    "id": "spmanhwa"
+  },
+  {
+    "line": 1078,
+    "name": "spyxfamilymanga.org",
+    "id": "spyxfamilymangaorg"
+  },
+  {
+    "line": 1079,
+    "name": "Starlight Scan",
+    "id": "starlightscan"
+  },
+  {
+    "line": 1080,
+    "name": "StarManga",
+    "id": "starmanga"
+  },
+  {
+    "line": 1081,
+    "name": "steel-ball-run.com",
+    "id": "steelballruncom"
+  },
+  {
+    "line": 1082,
+    "name": "StellarSaber",
+    "id": "stellarsaber"
+  },
+  {
+    "line": 1083,
+    "name": "stone-ocean-manga.com",
+    "id": "stoneoceanmangacom"
+  },
+  {
+    "line": 1084,
+    "name": "StoneScape",
+    "id": "stonescape"
+  },
+  {
+    "line": 1085,
+    "name": "Submanhwa",
+    "id": "submanhwa"
+  },
+  {
+    "line": 1086,
+    "name": "Sugo Comics",
+    "id": "sugocomics"
+  },
+  {
+    "line": 1087,
+    "name": "SummerToon",
+    "id": "summertoon"
+  },
+  {
+    "line": 1088,
+    "name": "Sunday Webry",
+    "id": "sundaywebry"
+  },
+  {
+    "line": 1089,
+    "name": "Sunset Manga",
+    "id": "sunsetmanga"
+  },
+  {
+    "line": 1090,
+    "name": "Sunshine Butterfly Scans",
+    "id": "sunshinebutterflyscans"
+  },
+  {
+    "line": 1091,
+    "name": "SUPER MEGA",
+    "id": "supermega"
+  },
+  {
+    "line": 1092,
+    "name": "SushiScan",
+    "id": "sushiscan"
+  },
+  {
+    "line": 1093,
+    "name": "Sushiscan.fr",
+    "id": "sushiscanfr"
+  },
+  {
+    "line": 1094,
+    "name": "Swords Comic",
+    "id": "swordscomic"
+  },
+  {
+    "line": 1095,
+    "name": "sxfmanga.net",
+    "id": "sxfmanganet"
+  },
+  {
+    "line": 1096,
+    "name": "Taddy INK (Webtoons)",
+    "id": "taddyinkwebtoons"
+  },
+  {
+    "line": 1097,
+    "name": "TaimuMangas",
+    "id": "taimumangas"
+  },
+  {
+    "line": 1098,
+    "name": "Taiyo",
+    "id": "taiyo"
+  },
+  {
+    "line": 1099,
+    "name": "TajManga",
+    "id": "tajmanga"
+  },
+  {
+    "line": 1100,
+    "name": "TakeComic",
+    "id": "takecomic"
+  },
+  {
+    "line": 1101,
+    "name": "Tanuki-Manga",
+    "id": "tanukimanga"
+  },
+  {
+    "line": 1102,
+    "name": "Tao Sect",
+    "id": "taosect"
+  },
+  {
+    "line": 1103,
+    "name": "Tapas",
+    "id": "tapas"
+  },
+  {
+    "line": 1104,
+    "name": "Tappytoon",
+    "id": "tappytoon"
+  },
+  {
+    "line": 1105,
+    "name": "Tarot Scans",
+    "id": "tarotscans"
+  },
+  {
+    "line": 1106,
+    "name": "Taurus Fansub",
+    "id": "taurusfansub"
+  },
+  {
+    "line": 1107,
+    "name": "TCB Scans",
+    "id": "tcbscans"
+  },
+  {
+    "line": 1108,
+    "name": "Team Lanh Lung",
+    "id": "teamlanhlung"
+  },
+  {
+    "line": 1109,
+    "name": "Team Shadow",
+    "id": "teamshadow"
+  },
+  {
+    "line": 1110,
+    "name": "Team Shadowi",
+    "id": "teamshadowi"
+  },
+  {
+    "line": 1111,
+    "name": "TeamX",
+    "id": "teamx"
+  },
+  {
+    "line": 1112,
+    "name": "TeleTruyen",
+    "id": "teletruyen"
+  },
+  {
+    "line": 1113,
+    "name": "Temaki mangás",
+    "id": "temakimangas"
+  },
+  {
+    "line": 1114,
+    "name": "Temple Scan",
+    "id": "templescan"
+  },
+  {
+    "line": 1115,
+    "name": "Tencent Dongman",
+    "id": "tencentdongman"
+  },
+  {
+    "line": 1116,
+    "name": "Tenshi Manga",
+    "id": "tenshimanga"
+  },
+  {
+    "line": 1117,
+    "name": "tgmanga.com",
+    "id": "tgmangacom"
+  },
+  {
+    "line": 1118,
+    "name": "The Apothecary Diaries fan reader",
+    "id": "theapothecarydiariesfanreader"
+  },
+  {
+    "line": 1119,
+    "name": "The Blank",
+    "id": "theblank"
+  },
+  {
+    "line": 1120,
+    "name": "The Duck Webcomics",
+    "id": "theduckwebcomics"
+  },
+  {
+    "line": 1121,
+    "name": "The Library of Ohara",
+    "id": "thelibraryofohara"
+  },
+  {
+    "line": 1122,
+    "name": "The Property of Hate",
+    "id": "thepropertyofhate"
+  },
+  {
+    "line": 1123,
+    "name": "TheManga",
+    "id": "themanga"
+  },
+  {
+    "line": 1124,
+    "name": "ThienThaiTruyen",
+    "id": "thienthaitruyen"
+  },
+  {
+    "line": 1125,
+    "name": "Thunder Scans",
+    "id": "thunderscans"
+  },
+  {
+    "line": 1126,
+    "name": "Thỏ Ham Ngủ",
+    "id": "thohamngu"
+  },
+  {
+    "line": 1127,
+    "name": "Tia Manhwa",
+    "id": "tiamanhwa"
+  },
+  {
+    "line": 1128,
+    "name": "TimelessToons",
+    "id": "timelesstoons"
+  },
+  {
+    "line": 1129,
+    "name": "TodayManga",
+    "id": "todaymanga"
+  },
+  {
+    "line": 1130,
+    "name": "tokyoghoulclub.com",
+    "id": "tokyoghoulclubcom"
+  },
+  {
+    "line": 1131,
+    "name": "tomie-manga.com",
+    "id": "tomiemangacom"
+  },
+  {
+    "line": 1132,
+    "name": "Tonari no Young Jump",
+    "id": "tonarinoyoungjump"
+  },
+  {
+    "line": 1133,
+    "name": "TonizuToon",
+    "id": "tonizutoon"
+  },
+  {
+    "line": 1134,
+    "name": "Toomics",
+    "id": "toomics"
+  },
+  {
+    "line": 1135,
+    "name": "ToomTam-Manga",
+    "id": "toomtammanga"
+  },
+  {
+    "line": 1136,
+    "name": "Toon FR",
+    "id": "toonfr"
+  },
+  {
+    "line": 1137,
+    "name": "Toon-es",
+    "id": "toones"
+  },
+  {
+    "line": 1138,
+    "name": "ToonBr",
+    "id": "toonbr"
+  },
+  {
+    "line": 1139,
+    "name": "Tooncubus",
+    "id": "tooncubus"
+  },
+  {
+    "line": 1140,
+    "name": "ToonGod",
+    "id": "toongod"
+  },
+  {
+    "line": 1141,
+    "name": "ToonHey",
+    "id": "toonhey"
+  },
+  {
+    "line": 1142,
+    "name": "Toonily",
+    "id": "toonily"
+  },
+  {
+    "line": 1143,
+    "name": "Toonily.me",
+    "id": "toonilyme"
+  },
+  {
+    "line": 1144,
+    "name": "Toonizy",
+    "id": "toonizy"
+  },
+  {
+    "line": 1145,
+    "name": "Toonkor",
+    "id": "toonkor"
+  },
+  {
+    "line": 1146,
+    "name": "ToonLivre",
+    "id": "toonlivre"
+  },
+  {
+    "line": 1147,
+    "name": "ToonsGate",
+    "id": "toonsgate"
+  },
+  {
+    "line": 1148,
+    "name": "Toontaku",
+    "id": "toontaku"
+  },
+  {
+    "line": 1149,
+    "name": "Toonz/Toonx",
+    "id": "toonztoonx"
+  },
+  {
+    "line": 1150,
+    "name": "Top Manhua",
+    "id": "topmanhua"
+  },
+  {
+    "line": 1151,
+    "name": "Top Truyen",
+    "id": "toptruyen"
+  },
+  {
+    "line": 1152,
+    "name": "TopManhua.fan",
+    "id": "topmanhuafan"
+  },
+  {
+    "line": 1153,
+    "name": "TopManhua.net",
+    "id": "topmanhuanet"
+  },
+  {
+    "line": 1154,
+    "name": "Tortuga Çeviri",
+    "id": "tortuga"
+  },
+  {
+    "line": 1155,
+    "name": "Traducciones Moonlight",
+    "id": "traduccionesmoonlight"
+  },
+  {
+    "line": 1156,
+    "name": "Traduções do Lipe",
+    "id": "traducoesdolipe"
+  },
+  {
+    "line": 1157,
+    "name": "trigunmanga.com",
+    "id": "trigunmangacom"
+  },
+  {
+    "line": 1158,
+    "name": "Tritinia Scans",
+    "id": "tritiniascans"
+  },
+  {
+    "line": 1159,
+    "name": "TrManga",
+    "id": "trmanga"
+  },
+  {
+    "line": 1160,
+    "name": "truemanga.com",
+    "id": "truemangacom"
+  },
+  {
+    "line": 1161,
+    "name": "Tsundoku Traduções",
+    "id": "tsundokutraducoes"
+  },
+  {
+    "line": 1162,
+    "name": "TuttoAnimeManga",
+    "id": "tuttoanimemanga"
+  },
+  {
+    "line": 1163,
+    "name": "Twatt",
+    "id": "twatt"
+  },
+  {
+    "line": 1164,
+    "name": "Twi4",
+    "id": "twi4"
+  },
+  {
+    "line": 1165,
+    "name": "Twicomi",
+    "id": "twicomi"
+  },
+  {
+    "line": 1166,
+    "name": "TWManga",
+    "id": "twmanga"
+  },
+  {
+    "line": 1167,
+    "name": "Türkçe Manga Oku",
+    "id": "turkcemangaoku"
+  },
+  {
+    "line": 1168,
+    "name": "U-NEXT",
+    "id": "unext"
+  },
+  {
+    "line": 1169,
+    "name": "Uchuujin Projects",
+    "id": "uchuujinprojects"
+  },
+  {
+    "line": 1170,
+    "name": "Ulas Comic",
+    "id": "ulascomic"
+  },
+  {
+    "line": 1171,
+    "name": "UnderTranslations",
+    "id": "undertranslations"
+  },
+  {
+    "line": 1172,
+    "name": "UTOON",
+    "id": "utoon"
+  },
+  {
+    "line": 1173,
+    "name": "UzayManga",
+    "id": "uzaymanga"
+  },
+  {
+    "line": 1174,
+    "name": "vagabondmanga.org",
+    "id": "vagabondmangaorg"
+  },
+  {
+    "line": 1175,
+    "name": "Valir Scans",
+    "id": "valirscans"
+  },
+  {
+    "line": 1176,
+    "name": "Vanilla Scans",
+    "id": "vanillascans"
+  },
+  {
+    "line": 1177,
+    "name": "VCPVMP",
+    "id": "vcpvmp"
+  },
+  {
+    "line": 1178,
+    "name": "Ver Manhwas",
+    "id": "vermanhwas"
+  },
+  {
+    "line": 1179,
+    "name": "vgperson",
+    "id": "vgperson"
+  },
+  {
+    "line": 1180,
+    "name": "vinlandsagamanga.net",
+    "id": "vinlandsagamanganet"
+  },
+  {
+    "line": 1181,
+    "name": "Vinne Veritas - CCC",
+    "id": "vinneveritasccc"
+  },
+  {
+    "line": 1182,
+    "name": "Violet Scans",
+    "id": "violetscans"
+  },
+  {
+    "line": 1183,
+    "name": "Vision Haze",
+    "id": "visionhaze"
+  },
+  {
+    "line": 1184,
+    "name": "Vixen Logic",
+    "id": "vixenlogic"
+  },
+  {
+    "line": 1185,
+    "name": "VIZ Manga",
+    "id": "vizmanga"
+  },
+  {
+    "line": 1186,
+    "name": "VoraToon",
+    "id": "voratoon"
+  },
+  {
+    "line": 1187,
+    "name": "Vortex Scans",
+    "id": "vortexscans"
+  },
+  {
+    "line": 1188,
+    "name": "Voyce.Me",
+    "id": "voyceme"
+  },
+  {
+    "line": 1189,
+    "name": "VyvyManga",
+    "id": "vyvymanga"
+  },
+  {
+    "line": 1190,
+    "name": "Walpurgi Scan",
+    "id": "walpurgiscan"
+  },
+  {
+    "line": 1191,
+    "name": "War For Rayuba",
+    "id": "warforrayuba"
+  },
+  {
+    "line": 1192,
+    "name": "WebComics",
+    "id": "webcomics"
+  },
+  {
+    "line": 1193,
+    "name": "Webdex Scans",
+    "id": "webdexscans"
+  },
+  {
+    "line": 1194,
+    "name": "Webnex",
+    "id": "webnex"
+  },
+  {
+    "line": 1195,
+    "name": "Webnovel",
+    "id": "webnovel"
+  },
+  {
+    "line": 1196,
+    "name": "WEBTOON",
+    "id": "webtoon"
+  },
+  {
+    "line": 1197,
+    "name": "Webtoon Hatti",
+    "id": "webtoonhatti"
+  },
+  {
+    "line": 1198,
+    "name": "WebtoonOku",
+    "id": "webtoonoku"
+  },
+  {
+    "line": 1199,
+    "name": "WebtoonScan",
+    "id": "webtoonscan"
+  },
+  {
+    "line": 1200,
+    "name": "WebtoonXYZ",
+    "id": "webtoonxyz"
+  },
+  {
+    "line": 1201,
+    "name": "WeebCentral",
+    "id": "weebcentral"
+  },
+  {
+    "line": 1202,
+    "name": "Weekly Young Magazine",
+    "id": "weeklyyoungmagazine"
+  },
+  {
+    "line": 1203,
+    "name": "Weloma",
+    "id": "weloma"
+  },
+  {
+    "line": 1204,
+    "name": "WeLoveManga",
+    "id": "welovemanga"
+  },
+  {
+    "line": 1205,
+    "name": "West Manga",
+    "id": "westmanga"
+  },
+  {
+    "line": 1206,
+    "name": "Whale Manga",
+    "id": "whalemanga"
+  },
+  {
+    "line": 1207,
+    "name": "Wildtoon",
+    "id": "wildtoon"
+  },
+  {
+    "line": 1208,
+    "name": "WitchScans",
+    "id": "witchscans"
+  },
+  {
+    "line": 1209,
+    "name": "WitchToons",
+    "id": "witchtoons"
+  },
+  {
+    "line": 1210,
+    "name": "Wolf.com",
+    "id": "wolfcom"
+  },
+  {
+    "line": 1211,
+    "name": "WoopRead",
+    "id": "woopread"
+  },
+  {
+    "line": 1212,
+    "name": "Writers' Scans",
+    "id": "writersscans"
+  },
+  {
+    "line": 1213,
+    "name": "Wurmz",
+    "id": "wurmz"
+  },
+  {
+    "line": 1214,
+    "name": "wurmz.net",
+    "id": "wurmz"
+  },
+  {
+    "line": 1215,
+    "name": "WuxiaWorld",
+    "id": "wuxiaworld"
+  },
+  {
+    "line": 1216,
+    "name": "Xiutaku",
+    "id": "xiutaku"
+  },
+  {
+    "line": 1217,
+    "name": "xkcd",
+    "id": "xkcd"
+  },
+  {
+    "line": 1218,
+    "name": "XlecX",
+    "id": "xlecx"
+  },
+  {
+    "line": 1219,
+    "name": "XoManga",
+    "id": "xomanga"
+  },
+  {
+    "line": 1220,
+    "name": "XOXO Comics",
+    "id": "xoxocomics"
+  },
+  {
+    "line": 1221,
+    "name": "XSano Manga",
+    "id": "xsanomanga"
+  },
+  {
+    "line": 1222,
+    "name": "XYZ Comics",
+    "id": "xyzcomics"
+  },
+  {
+    "line": 1223,
+    "name": "Yaksha Scans",
+    "id": "yakshascans"
+  },
+  {
+    "line": 1224,
+    "name": "YakshaComics",
+    "id": "yakshacomics"
+  },
+  {
+    "line": 1225,
+    "name": "Yaoihub",
+    "id": "yaoihub"
+  },
+  {
+    "line": 1226,
+    "name": "YaoiScan",
+    "id": "yaoiscan"
+  },
+  {
+    "line": 1227,
+    "name": "YellowNote",
+    "id": "yellownote"
+  },
+  {
+    "line": 1228,
+    "name": "Yokai",
+    "id": "yokai"
+  },
+  {
+    "line": 1229,
+    "name": "Yomonga",
+    "id": "yomonga"
+  },
+  {
+    "line": 1230,
+    "name": "Yomu Comics",
+    "id": "yomucomics"
+  },
+  {
+    "line": 1231,
+    "name": "Yomu Mangás",
+    "id": "yomumangas"
+  },
+  {
+    "line": 1232,
+    "name": "Yona Bar",
+    "id": "yonabar"
+  },
+  {
+    "line": 1233,
+    "name": "Yorai",
+    "id": "yorai"
+  },
+  {
+    "line": 1234,
+    "name": "Young Animal",
+    "id": "younganimal"
+  },
+  {
+    "line": 1235,
+    "name": "Young Champion",
+    "id": "youngchampion"
+  },
+  {
+    "line": 1236,
+    "name": "Young Jump+",
+    "id": "sourcebdfca5fd649614b6"
+  },
+  {
+    "line": 1237,
+    "name": "YSK Comics",
+    "id": "yskcomics"
+  },
+  {
+    "line": 1238,
+    "name": "Yugen Mangás",
+    "id": "yugenmangas"
+  },
+  {
+    "line": 1239,
+    "name": "Yupmanga",
+    "id": "yupmanga"
+  },
+  {
+    "line": 1240,
+    "name": "Yuri Moon Sub",
+    "id": "yurimoonsub"
+  },
+  {
+    "line": 1241,
+    "name": "Yuri-Online",
+    "id": "yurionline"
+  },
+  {
+    "line": 1242,
+    "name": "Zahard",
+    "id": "zahard"
+  },
+  {
+    "line": 1243,
+    "name": "Zazamanga",
+    "id": "zazamanga"
+  },
+  {
+    "line": 1244,
+    "name": "Zebrack",
+    "id": "zebrack"
+  },
+  {
+    "line": 1245,
+    "name": "ZenithScans",
+    "id": "zenithscans"
+  },
+  {
+    "line": 1246,
+    "name": "Zenko",
+    "id": "zenko"
+  },
+  {
+    "line": 1247,
+    "name": "Zenon",
+    "id": "zenon"
+  },
+  {
+    "line": 1248,
+    "name": "Zerosum Online",
+    "id": "zerosumonline"
+  },
+  {
+    "line": 1249,
+    "name": "ZettaHQ",
+    "id": "zettahq"
+  },
+  {
+    "line": 1250,
+    "name": "ZeurelScan",
+    "id": "zeurelscan"
+  },
+  {
+    "line": 1251,
+    "name": "Zinmanga",
+    "id": "zinmanga"
+  },
+  {
+    "line": 1252,
+    "name": "Zinmanga.net",
+    "id": "zinmanganet"
+  },
+  {
+    "line": 1253,
+    "name": "Zonatmo",
+    "id": "zonatmo"
+  },
+  {
+    "line": 1254,
+    "name": "ÇaprazManga",
+    "id": "caprazmanga"
+  }
+]

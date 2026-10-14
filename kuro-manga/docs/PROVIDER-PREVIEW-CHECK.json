@@ -1,0 +1,196 @@
+{
+  "origin": "http://127.0.0.1:4184",
+  "scope": "Actual compiled KURO runtime with real public Asura gateway; local account service is a fixture.",
+  "registered": 116,
+  "mobileOverflow": false,
+  "wholeSelectedChapterImages": [
+    {
+      "index": 0,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 223432
+    },
+    {
+      "index": 1,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 488524
+    },
+    {
+      "index": 2,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 38794
+    },
+    {
+      "index": 3,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 489624
+    },
+    {
+      "index": 4,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 95710
+    },
+    {
+      "index": 5,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 667210
+    },
+    {
+      "index": 6,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 93542
+    },
+    {
+      "index": 7,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 522442
+    },
+    {
+      "index": 8,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 137186
+    },
+    {
+      "index": 9,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 724988
+    },
+    {
+      "index": 10,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 126842
+    },
+    {
+      "index": 11,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 666292
+    },
+    {
+      "index": 12,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 92208
+    },
+    {
+      "index": 13,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 627652
+    },
+    {
+      "index": 14,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 103850
+    },
+    {
+      "index": 15,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 525912
+    },
+    {
+      "index": 16,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 160068
+    },
+    {
+      "index": 17,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 637512
+    },
+    {
+      "index": 18,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 279756
+    },
+    {
+      "index": 19,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 539380
+    },
+    {
+      "index": 20,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 737402
+    },
+    {
+      "index": 21,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 110432
+    },
+    {
+      "index": 22,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 517628
+    },
+    {
+      "index": 23,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 101558
+    },
+    {
+      "index": 24,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 742734
+    },
+    {
+      "index": 25,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 97370
+    },
+    {
+      "index": 26,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 565244
+    },
+    {
+      "index": 27,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 82534
+    },
+    {
+      "index": 28,
+      "status": 200,
+      "mime": "image/webp",
+      "bytes": 681348
+    }
+  ],
+  "readerUrl": "http://127.0.0.1:4184/reader/asurascans:pick-up-a-grimoire-become-a-mage~1?mangaId=asurascans-pick-up-a-grimoire-become-a-mage&sourceId=asurascans&mangaTitle=Pick%20Up%20a%20Grimoire%2C%20Become%20a%20Mage&coverUrl=https%3A%2F%2Fcdn.asurascans.com%2Fasura-images%2Fcovers%2Fpick-up-a-grimoire-become-a-mage.1bf474.webp&chapterTitle=Chapter%201&chapterNumber=1",
+  "pageImages": [
+    {
+      "complete": true,
+      "width": 1532,
+      "height": 1024
+    },
+    {
+      "complete": true,
+      "width": 900,
+      "height": 16000
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,10 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {CONTENT_POLICY_VERSION,providerContentPolicy} from '../client/content-policy.mjs';
+const registry=JSON.parse(await readFile(new URL('../dist/provider-registry.json',import.meta.url)));
+const providers=registry.providers.map(p=>({id:p.id,name:p.name,website:p.website||null,adapter:p.adapter||null,readable:p.readable===true,category:p.category,...providerContentPolicy(p)}));
+const counts=Object.fromEntries(['eligible','restricted','blocked'].map(state=>[state,providers.filter(p=>p.state===state).length]));
+const report={policyVersion:CONTENT_POLICY_VERSION,date:'2026-10-14',scope:'Review of every current registry entry against supported positive rating contracts. This is not an HTTP availability audit or a visual inspection of all provider titles/pages.',unknown:'blocked',runtimeOptOut:false,counts,providerCount:providers.length,eligibleReaderProviders:providers.filter(p=>p.state==='eligible'&&p.readable).map(p=>p.id),eligibleMetadataProviders:providers.filter(p=>p.state==='eligible'&&!p.readable).map(p=>p.id),providers};
+await writeFile(new URL('../docs/CONTENT-PROVIDER-AUDIT.json',import.meta.url),JSON.stringify(report,null,2)+'\n');
+const csv=value=>'"'+String(value??'').replaceAll('"','""')+'"';
+await writeFile(new URL('../docs/CONTENT-PROVIDER-AUDIT.csv',import.meta.url),['id,name,website,adapter,readable,category,state,reason,version',...providers.map(p=>['id','name','website','adapter','readable','category','state','reason','version'].map(k=>csv(p[k])).join(','))].join('\n')+'\n');
+console.log(JSON.stringify({...counts,total:providers.length,eligibleReaders:report.eligibleReaderProviders,eligibleMetadata:report.eligibleMetadataProviders}));

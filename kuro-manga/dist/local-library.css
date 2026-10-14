@@ -1,0 +1,37 @@
+.kuro-local-toolbar{display:flex;align-items:center;gap:12px;padding:4px 0 2px;font-family:Inter_400Regular,Inter,sans-serif}
+.kuro-local-toolbar button,.kuro-local-dialog button{cursor:pointer;font:inherit;min-height:42px;border:1px solid #302d24;border-radius:10px;background:#19170f;color:#f0eee6;padding:10px 14px}
+.kuro-local-toolbar .kuro-local-import-button{display:inline-flex;align-items:center;gap:6px;background:#e7b978;color:#17130f;border-color:#e7b978;font-size:12px;font-weight:700;white-space:nowrap}
+.kuro-local-toolbar .kuro-local-files-button{background:transparent;border:0;font-size:11px;color:#c9bca8}
+.kuro-local-device-caption{font-size:11px;color:#9e9688}
+.kuro-local-dialog{box-sizing:border-box;max-width:660px;width:calc(100% - 32px);max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;border:1px solid #393329;border-radius:22px;background:#10100d;color:#f0eee6;padding:28px;font:13px/1.6 Inter_400Regular,Inter,sans-serif;box-shadow:0 28px 100px #0009;animation:kuro-local-enter .18s ease-out}
+.kuro-local-dialog::backdrop{background:#050503cc}
+.kuro-local-dialog *{box-sizing:border-box}
+.kuro-local-dialog-header{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:10px}
+.kuro-local-dialog h2{font-family:CinemaDisplay,Anton,sans-serif;font-size:34px;font-weight:400;line-height:1.2;margin:4px 0 0;text-transform:uppercase}
+.kuro-local-eyebrow{color:#e7b978;font-size:9px;font-weight:700;letter-spacing:2px;margin:0}
+.kuro-local-dialog .kuro-local-close{font-size:25px;padding:0;min-width:40px;min-height:40px;background:transparent;border:0}
+.kuro-local-note{color:#bbb2a3;margin:14px 0 22px;font-size:12px}
+.kuro-local-drop{border:1px dashed #63513a;border-radius:16px;background:#1a1710;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;transition:background .15s,border-color .15s}
+.kuro-local-drop.is-dragging{background:#2e2414;border-color:#e7b978}
+.kuro-local-file-icon{font-size:26px;color:#e7b978;line-height:1.3}.kuro-local-drop strong{font-size:15px}.kuro-local-drop p{margin:0 0 6px;font-size:12px;color:#bbb2a3}
+.kuro-local-dialog small{display:block;font-size:10px;color:#a69d8d;line-height:1.7;overflow-wrap:anywhere}
+.kuro-local-choices{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:8px 0}
+.kuro-local-dialog .kuro-local-primary{background:#e7b978;color:#17130f;border-color:#e7b978;font-weight:700}
+.kuro-local-dialog button:disabled{cursor:default;opacity:.5}
+.kuro-local-dialog button:focus-visible,.kuro-local-toolbar button:focus-visible,.kuro-local-dialog input:focus-visible{outline:2px solid #f4d4a7;outline-offset:3px}
+.kuro-local-progress{display:flex;align-items:center;gap:10px;color:#e7b978;margin-top:16px;font-size:12px;flex-wrap:wrap}
+.kuro-local-progress button{margin-left:auto;font-size:11px}
+.kuro-local-spinner{width:16px;height:16px;border:2px solid #514027;border-top-color:#e7b978;border-radius:50%;animation:kuro-local-spin .8s linear infinite}
+.kuro-local-error{border:1px solid #733e32;background:#301c16;padding:12px 14px;border-radius:10px;color:#f7ba9d;font-size:12px}
+.kuro-local-draft{display:grid;grid-template-columns:85px 1fr;gap:18px;margin:20px 0;background:#19170f;border:1px solid #302d24;border-radius:14px;padding:16px}
+.kuro-local-draft>img{width:85px;height:122px;object-fit:contain;object-position:top;border-radius:7px;background:#0b0b09}
+.kuro-local-draft label{display:block;font-size:11px;color:#c9bca8;margin-bottom:6px}
+.kuro-local-draft input:not([type=checkbox]){background:#0d0d0a;border:1px solid #514633;border-radius:8px;width:100%;min-height:42px;padding:9px 10px;color:#f0eee6;font:inherit}
+.kuro-local-draft p{margin:8px 0;font-size:11px;color:#b4aa99}.kuro-local-draft .kuro-local-order{display:flex;align-items:center;gap:8px;min-height:36px;margin:0}.kuro-local-order input{accent-color:#e7b978}
+.kuro-local-draft button{margin-top:12px;min-width:130px}
+.kuro-local-result{background:#1b2419;border:1px solid #485c39;border-radius:12px;padding:16px;margin:20px 0}.kuro-local-result strong{color:#d4e2bd}.kuro-local-result p{margin:6px 0;color:#c2c7b7;font-size:12px}.kuro-local-result .kuro-local-choices{justify-content:flex-start}
+.kuro-local-device-files{border-top:1px solid #302d24;margin-top:22px;padding-top:16px}.kuro-local-section-heading{display:flex;justify-content:space-between;align-items:center}.kuro-local-device-files h3{font-size:14px;font-weight:600;margin:0}.kuro-local-section-heading span{font-size:10px;color:#a69d8d}.kuro-local-device-files>p{color:#a69d8d;font-size:12px}.kuro-local-device-files ul{list-style:none;padding:0;margin:10px 0 18px}
+.kuro-local-book{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #302d24}.kuro-local-book>img{object-fit:cover;border-radius:5px;background:#15140f}.kuro-local-book-info{flex:1;min-width:0}.kuro-local-book-info strong{font-size:12px;font-weight:600;display:block;overflow-wrap:anywhere}.kuro-local-book-actions{display:flex;gap:6px;flex-wrap:wrap;max-width:220px;justify-content:flex-end}.kuro-local-book-actions button{font-size:10px;min-height:36px;padding:7px 10px}.kuro-local-book-actions span{font-size:10px;flex-basis:100%;color:#e8c4ac}.kuro-local-dialog .kuro-local-danger{color:#f4b99a;border-color:#914e37}
+@media(max-width:699px){.kuro-local-dialog{width:calc(100% - 20px);padding:20px;max-height:calc(100dvh - 24px);border-radius:18px}.kuro-local-dialog h2{font-size:29px}.kuro-local-drop{padding:18px 10px}.kuro-local-choices button{font-size:11px;padding:10px 12px}.kuro-local-draft{grid-template-columns:65px 1fr;gap:12px;padding:12px}.kuro-local-draft>img{width:65px;height:95px}.kuro-local-book{flex-wrap:wrap;gap:10px}.kuro-local-book-actions{margin-left:52px;max-width:none;justify-content:flex-start}.kuro-local-book-actions button{min-height:42px}.kuro-local-toolbar{gap:8px}}
+@keyframes kuro-local-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes kuro-local-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.kuro-local-dialog,.kuro-local-spinner{animation:none}.kuro-local-drop{transition:none}}

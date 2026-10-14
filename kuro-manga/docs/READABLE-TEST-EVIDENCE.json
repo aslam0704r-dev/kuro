@@ -1,0 +1,93 @@
+{
+  "version": "4.4.0",
+  "date": "2026-10-14",
+  "node": {
+    "passed": 205,
+    "failed": 0,
+    "skipped": 0,
+    "dedicated_real_redis": true,
+    "sha256": "fdc1ead60f1f30efe78a6b949427b8f6413fdf6633d267d2e4f513f8363488f6"
+  },
+  "browser": {
+    "passed": 82,
+    "failed": 0,
+    "suites": {
+      "content-browser": {
+        "passed": 16,
+        "failed": 0,
+        "sha256": "9299df140a67ef8115203f20b13b3c10983bf07fbb4bb4f9d74ab5d70984748d"
+      },
+      "readable-browser": {
+        "passed": 6,
+        "failed": 0,
+        "sha256": "71a80cbeec8ecf422365cd280fe81f3e798c2cbdfcdc6cb7c32b916dd5b47a3f"
+      },
+      "email-auth-browser": {
+        "passed": 4,
+        "failed": 0,
+        "sha256": "0b1929fcdf660cd6210eee54ff5fc1140c2f22154ff1729f2a5710fd5faf68ee"
+      },
+      "local-library-browser": {
+        "passed": 12,
+        "failed": 0,
+        "sha256": "046e0b2080d5234fd26811bebb1d9e61aa5058806891d6dedcf9d02cb6fdf4eb"
+      },
+      "mobile-artwork-browser": {
+        "passed": 5,
+        "failed": 0,
+        "sha256": "c912c80b25e6fb1e0adb2fe422f149954882864c3c6e8be678985724b5af44cd"
+      },
+      "profile-browser": {
+        "passed": 13,
+        "failed": 0,
+        "sha256": "03ac449360f010a54157ce62740f9c193d1aee05a5257f3685ed6c16b5eb465d"
+      },
+      "profile-ui-regressions": {
+        "passed": 3,
+        "failed": 0,
+        "sha256": "cb8ed97bee1777fe1919b066258837d4f7cda2534c582e0b19449d703d9b3781"
+      },
+      "native-install-browser": {
+        "passed": 13,
+        "failed": 0,
+        "sha256": "f4f249202078801d289c140b2346601394e750c423961dba2667a5d97d03c886"
+      },
+      "install-toast": {
+        "passed": 10,
+        "failed": 0,
+        "sha256": "94d872ab826d053ba4122f2a4595afe3e3664411cbce861ec4107aefde7e9728"
+      }
+    }
+  },
+  "live_audit": {
+    "uniqueCount": 72,
+    "verifiedEditions": 72,
+    "duplicatesGrouped": 0,
+    "qualification": "at least one complete chapter; every page fetched and decoded",
+    "scope": "partial candidate sweep; verified KURO remote inventory",
+    "windowMs": 21600000,
+    "asOf": 1792000450596,
+    "oldestCheckAt": 1791989136845,
+    "latestCheckAt": 1791989771289,
+    "entireProviderAudited": false,
+    "deviceImportsIncluded": false,
+    "policyVersion": "strict-1",
+    "readabilityVersion": "complete-chapter-1",
+    "auditCoverage": null,
+    "startedAt": 1791989133749,
+    "updatedAt": 1791989779730,
+    "candidateTotalReported": 41337,
+    "checkedCandidates": 100,
+    "approvedCandidates": 99,
+    "qualifiedEditions": 72,
+    "excludedOrUnverified": 28,
+    "pendingCandidates": 0
+  },
+  "build": {
+    "passed": true,
+    "referenced_resources": 66,
+    "native_hashes_validated": true
+  },
+  "live_deployment_performed": false,
+  "private_keys_accessed": false
+}

@@ -1,0 +1,17 @@
+﻿Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): false
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=KURO, O=KURO
+Signer #1 certificate SHA-256 digest: 00b6be3bc143715f2a4bbba37092d7202c3ae80fc9a9fde126ff96778735aa71
+Signer #1 certificate SHA-1 digest: 353260b760eac9d856e260aa04fdb3b9311aa46f
+Signer #1 certificate MD5 digest: 4e980688832bffd1a45becb6383ea91d
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 3072
+Signer #1 public key SHA-256 digest: 739ed7f75fa83709206ec8240162a3173acd922e1f2b7efc902a93a33f84a85b
+Signer #1 public key SHA-1 digest: 0979b647352f602f096d0c45f50baeb7e5d369bc
+Signer #1 public key MD5 digest: 7a2f6c90238122e707c2f9141fee6597

@@ -1,0 +1,6 @@
+test_pending_manual_open_does_not_focus_a_new_screen (__main__.InstallToast.test_pending_manual_open_does_not_focus_a_new_screen) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.181s
+
+OK

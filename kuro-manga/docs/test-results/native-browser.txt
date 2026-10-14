@@ -1,0 +1,13 @@
+PASS: Windows offers and downloads the actual EXE with matching release bytes; never claims OS installation
+PASS: browser installation remains available alongside the Windows installer
+PASS: dismissal remains effective across reloads
+PASS: Android offers and downloads the actual signed APK and fits the mobile screen
+PASS: missing release manifest preserves browser installation and exposes no native link
+PASS: HTML masquerading as release metadata preserves browser installation and exposes no native link
+PASS: cross-origin download metadata preserves browser installation and exposes no native link
+PASS: HTML masquerading as the EXE does not become an installer offer
+PASS: native launch entry suppresses automatic install prompting
+PASS: iPhone keeps supported Safari installation instructions
+PASS: explicit re-entry after appinstalled creates an attached working notice
+PASS: installed browser app allows explicit installation re-entry
+PASS: stalled release response body times out and preserves browser installation

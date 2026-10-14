@@ -1,4 +1,8 @@
-# Managed accounts in KURO 3.6.2
+# Managed accounts in KURO 3.8.0
+
+The account profile module now supports display-name editing and private photos.
+Follow [../PROFILE-SETUP.md](../PROFILE-SETUP.md) for its Storage migration. Profile
+data uses existing Auth metadata; there is no new public profiles table.
 
 The web client already includes password login, signup/email verification, email
 OTP, mobile-number OTP, recovery, Google login and local/global logout. Requests

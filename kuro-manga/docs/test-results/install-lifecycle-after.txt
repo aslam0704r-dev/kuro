@@ -1,0 +1,8 @@
+test_after_appinstalled_explicit_dialog_is_attached (__main__.InstallLifecycle.test_after_appinstalled_explicit_dialog_is_attached) ... ok
+test_stalled_json_body_falls_back (__main__.InstallLifecycle.test_stalled_json_body_falls_back) ... ok
+test_standalone_keeps_explicit_reentry (__main__.InstallLifecycle.test_standalone_keeps_explicit_reentry) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 10.701s
+
+OK

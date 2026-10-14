@@ -9,8 +9,11 @@ export function setCookie(res, kind, id, seconds) {
   const current = res.getHeader('Set-Cookie') || [];
   res.setHeader('Set-Cookie', [...(Array.isArray(current) ? current : [current]), `${cookieName(kind)}=${id}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${seconds}${production || process.env.AUTH_SECURE_COOKIE === 'true' ? '; Secure' : ''}`]);
 }
-export function assertOrigin(req) {
+export function assertSameOrigin(req) {
   if (req.headers.origin !== origin(req) || req.headers['sec-fetch-site'] === 'cross-site') throw Object.assign(new Error('Origin not allowed'), { status: 403 });
+}
+export function assertOrigin(req) {
+  assertSameOrigin(req);
   if (!/^application\/json(?:;|$)/i.test(req.headers['content-type']?.trim() || '')) throw Object.assign(new Error('Send JSON'), { status: 415 });
 }
 export async function bodyOf(req) {
@@ -40,13 +43,13 @@ export function clientAddress(req) {
   return req.socket?.remoteAddress || 'unknown';
 }
 export function address(value, channel) {
-  if (typeof value !== 'string') fail('Enter an email or international phone number');
+  if (channel && channel !== 'email') fail('Phone sign-in is unavailable. Use your email address.');
+  if (typeof value !== 'string') fail('Enter an email address');
   const result = value.trim();
-  if (channel === 'sms') { if (!/^\+[1-9]\d{7,14}$/.test(result)) fail('Use international format, for example +919876543210'); return result; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(result) || result.length > 254) fail('Enter a valid email address'); return result.toLowerCase();
 }
 export function password(value) { if (typeof value !== 'string' || value.length < 12 || value.length > 128) fail('Use a password of 12–128 characters'); return value; }
 export function challengeView(c) {
-  if (!c) return null;
-  return { channel: c.channel, kind: c.kind, destination: c.channel === 'sms' ? `••••${c.address.slice(-4)}` : `${c.address.slice(0, 1)}•••@${c.address.split('@')[1]}`, expiresAt: c.expires, resendAt: c.sentAt + 60000 };
+  if (!c || c.channel !== 'email') return null;
+  return { channel: 'email', kind: c.kind, destination: `${c.address.slice(0, 1)}•••@${c.address.split('@')[1]}`, expiresAt: c.expires, resendAt: c.sentAt + 60000 };
 }

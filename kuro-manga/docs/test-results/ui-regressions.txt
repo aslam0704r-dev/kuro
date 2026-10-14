@@ -1,0 +1,8 @@
+test_picture_actions_preserve_unsaved_name (__main__.ProfileInteractionChecks.test_picture_actions_preserve_unsaved_name) ... ok
+test_shared_cookie_account_switch_refreshes_private_picture (__main__.ProfileInteractionChecks.test_shared_cookie_account_switch_refreshes_private_picture) ... ok
+test_timeout_stops_loading_and_reports_uncertain_save (__main__.ProfileInteractionChecks.test_timeout_stops_loading_and_reports_uncertain_save) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 8.044s
+
+OK

@@ -1,0 +1,73 @@
+{
+  "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\n01\nNOW SHOWING  /  01\u201402\nASURA SCANS  /  DOLLY\nMYST, MIGHT,\nMAYHEM\nAction / Adventure / Crazy MC\n\uf4c6\nEXPLORE SERIES\n\uf133\nCHAPTER SOURCE\n9.8 SOURCE RATING\nTHE LINEUP  /  SWIPE TO EXPLORE\n\uf127\n\uf133\n01\nMyst, Might, Mayhem\n02\nOvergeared\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nASURA SCANS\nMurim Psychopath\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSU",
+  "images": [
+    {
+      "src": "https://cdn.asurascans.com/asura-images/covers/myst-might-mayhem.78970c.webp",
+      "w": 1042,
+      "h": 1510,
+      "rect": {
+        "width": 390,
+        "height": 590.796875
+      },
+      "filter": "none",
+      "fit": "contain",
+      "hero": true
+    },
+    {
+      "src": "https://cdn.asurascans.com/asura-images/covers/myst-might-mayhem.78970c.webp",
+      "w": 1042,
+      "h": 1510,
+      "rect": {
+        "width": 44,
+        "height": 61
+      },
+      "filter": "none",
+      "fit": "cover",
+      "hero": false
+    },
+    {
+      "src": "https://cdn.asurascans.com/asura-images/covers/overgeared.905990.webp",
+      "w": 948,
+      "h": 1280,
+      "rect": {
+        "width": 44,
+        "height": 61
+      },
+      "filter": "none",
+      "fit": "cover",
+      "hero": false
+    },
+    {
+      "src": "https://cdn.asurascans.com/asura-images/covers/murim-psychopath.60ee5d.webp",
+      "w": 800,
+      "h": 1220,
+      "rect": {
+        "width": 90.23999786376953,
+        "height": 136.300048828125
+      },
+      "filter": "none",
+      "fit": "contain",
+      "hero": false
+    },
+    {
+      "src": "http://127.0.0.1:4184/icons/kuro-192.png",
+      "w": 192,
+      "h": 192,
+      "rect": {
+        "width": 36,
+        "height": 36
+      },
+      "filter": "none",
+      "fit": "fill",
+      "hero": false
+    }
+  ],
+  "poster": [
+    {
+      "transform": "none",
+      "opacity": "1",
+      "filter": "none"
+    }
+  ],
+  "errors": []
+}

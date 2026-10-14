@@ -1,0 +1,87 @@
+test_automatic_notice_has_polite_announcement (__main__.InstallToast.test_automatic_notice_has_polite_announcement) ... FAIL
+
+======================================================================
+FAIL: test_automatic_notice_has_polite_announcement (__main__.InstallToast.test_automatic_notice_has_polite_announcement)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\kuro-native\tests\install-toast.py", line 105, in test_automatic_notice_has_polite_announcement
+    expect(status).to_contain_text('Install KURO')
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\sync_api\_generated.py", line 22016, in to_contain_text
+    self._sync(
+    ~~~~~~~~~~^
+        self._impl_obj.to_contain_text(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        )
+        ^
+    )
+    ^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_sync_base.py", line 115, in _sync
+    return task.result()
+           ~~~~~~~~~~~^^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_assertions.py", line 303, in to_contain_text
+    await self._expect_impl(
+    ...<9 lines>...
+    )
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_assertions.py", line 128, in _expect_impl
+    _record_soft_or_raise(
+    ~~~~~~~~~~~~~~~~~~~~~^
+        AssertionError(
+        ^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        self._is_soft,
+        ^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\Aslam\Documents\Codex\2026-10-12\referenced-chatgpt-conversation-this-is-an-2\work\browser-deps\playwright\_impl\_assertions.py", line 60, in _record_soft_or_raise
+    raise error
+AssertionError: Locator expected to contain text 'Install KURO'
+Actual value: None
+Error: element(s) not found 
+Call log:
+  - Expect "to_contain_text" with timeout 5000ms
+  - waiting for locator("#kuro-install-announcement")
+
+Aria snapshot:
+- text: KURO / THE STORY HOUSE
+- button "Sign in or create account": \uf4aa
+- button "Explore manga and manhwa": \uf563
+- text: YOUR NEXT WORLD AWAITS.
+- button "Reload the spotlight \u2192"
+- text: 01 / CHOOSE YOUR UNIVERSE ONE MORE CHAPTER.
+- button "Browse Manga": From Japan Manga \uf149
+- button "Browse Manhwa": From Korea Manhwa \uf149
+- button "Browse Manhua": From China Manhua \uf149
+- text: SET THE MOOD. Pick a feeling. Discover a different shelf.
+- 'button "Mood: Surprise me" [pressed]': \uf58d \uf21e Surprise me
+- 'button "Mood: Adrenaline"': \uf31a Adrenaline
+- 'button "Mood: Other worlds"': \uf4c4 Other worlds
+- 'button "Mood: Heartbeats"': \uf377 Heartbeats
+- 'button "Mood: Slow days"': \uf1ca Slow days
+- text: Down the rabbit hole Small detours. Entirely new worlds.
+- button "Browse Worlds beyond ours": \uf4c4 FANTASY & ADVENTURE Worlds beyond ours \uf133
+- button "Browse Finished. Binge-ready.": \uf225 COMPLETED SERIES Finished. Binge-ready. \uf133
+- button "Browse A little heart-racing": \uf377 ROMANCE STORIES A little heart-racing \uf133
+- button "Browse From the publisher": \uf488 WEBTOON ORIGINALS From the publisher \uf133
+- text: 0 unique Home picks � Only chapter-verified titles are shown. Rankings follow each source. 8 feed requests are unavailable; other feeds remain visible.
+- button "\uf284 There�s more out there. Browse all sources, genres and catalogues. \uf133"
+- text: KURO / CINEMA
+- tab "Home": \uf383 01 / Home
+- tab "Explore": \uf284 02 / Explore
+- tab "Library": \uf110 03 / Library
+- tab "Settings": \uf48b 04 / Settings
+- region "Install KURO":
+  - heading "Install KURO" [level=2]
+  - paragraph: Windows 10/11 + Edge
+  - button "Dismiss install notification": �
+  - button "Install KURO in your browser": Browser install
+  - button "Later"
+  - link "Install KURO for Windows":
+    - /url: /downloads/KURO-3.9.0-windows.exe
+    - text: Install
+
+----------------------------------------------------------------------
+Ran 1 test in 9.381s
+
+FAILED (failures=1)

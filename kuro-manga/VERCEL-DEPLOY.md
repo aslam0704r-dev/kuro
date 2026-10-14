@@ -1,4 +1,16 @@
-# Deploy KURO 3.6.2 to Vercel
+# Mandatory content update
+
+Read [READABLE-CATALOGUE.md](READABLE-CATALOGUE.md) and [STRICT-CONTENT.md](STRICT-CONTENT.md) first. Deploy the whole 4.4.0 source, including data/readable-audit.json, and reload clients. Unverified providers, incomplete chapter proofs and unreviewed files are restricted. No new Supabase migration, storage policy or private key is required; retain your existing configuration. Disable Supabase's Phone provider and link a verified email for any phone-only accounts you intend to keep using.
+
+# Deploy KURO 4.4.0 to Vercel
+
+For the included APK/EXE downloads and public Android assetlinks, follow
+[NATIVE-INSTALL-SETUP.md](NATIVE-INSTALL-SETUP.md). Deploy the complete package;
+the native binaries are prebuilt and are validated during the Vercel build.
+
+For the profile editor, first follow [PROFILE-SETUP.md](PROFILE-SETUP.md) and apply
+the private avatar Storage migration. The remaining authentication and deployment
+settings below continue to apply.
 
 ## 1. Import the correct project folder
 
@@ -84,9 +96,8 @@ belong in Vercel's server environment. None belong in dist/ or a release ZIP.
 
 Follow [docs/ACCOUNTS.md](docs/ACCOUNTS.md). Email signup requires Confirm email.
 Email OTP and password recovery use numeric codes: install the supplied Supabase
-email templates and configure a production SMTP sender. SMS requires Supabase's
-Phone provider and an SMS service; keep that service's credentials in Supabase.
-Passwords must be 12–128 characters and phone numbers must use E.164 format.
+email templates and configure a production SMTP sender. Disable the Phone provider;
+phone/SMS requests are refused by the app. Passwords must be 12–128 characters.
 
 ## 5. Redeploy and check
 
@@ -95,7 +106,7 @@ PUBLIC_ORIGIN when testing auth. A www/non-www, preview/production, or old/new
 hostname mismatch will break origin checks or OAuth cookies.
 
 - Open /account, try Google, and confirm it returns to the signed-in account.
-- Try a verified email/password, email code, SMS code and recovery with accounts
+- Try a verified email/password, email code and recovery with accounts
   and delivery providers you control.
 - Check /manifest.webmanifest and /icons/kuro-192.png.
 - The welcome install dialog appears after about 3.5 seconds on a fresh visit.
@@ -122,5 +133,5 @@ redirect URLs; see [redirect configuration](https://supabase.com/docs/guides/aut
 | OAuth failed | Both callback settings, same browser/domain, flow within ten minutes, Google provider/test-user settings |
 
 The code was checked locally with a controlled auth provider and Redis. Real Google
-consent, email/SMS delivery and your live Vercel deployment still need these account
+consent, email delivery and your live Vercel deployment still need these account
 settings and a deployment check.

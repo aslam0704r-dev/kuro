@@ -1,5 +1,7 @@
 import http from 'node:http';
 import { authRoute } from './auth/routes.mjs';
+import { profileRoute } from './profile/routes.mjs';
+import { catalogueRoute } from './catalogue/routes.mjs';
 import { createReadStream } from 'node:fs';
 import { stat, readFile } from 'node:fs/promises';
 import { securityHeaders } from './security.mjs';
@@ -8,10 +10,10 @@ import { proxy } from './proxy.mjs';
 
 const root = path.resolve(process.env.WEB_ROOT || 'dist');
 const port = Number(process.env.PORT || 8081);
-const types = { '.webmanifest': 'application/manifest+json', '.html': 'text/html; charset=utf-8', '.js': 'text/javascript',
-  '.css': 'text/css', '.json': 'application/json', '.png': 'image/png',
+const types = { '.webmanifest': 'application/manifest+json', '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript',
+  '.css': 'text/css', '.json': 'application/json', '.wasm': 'application/wasm', '.bcmap': 'application/octet-stream', '.png': 'image/png',
   '.jpg': 'image/jpeg', '.webp': 'image/webp', '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon', '.ttf': 'font/ttf', '.woff2': 'font/woff2' };
+  '.ico': 'image/x-icon', '.ttf': 'font/ttf', '.woff2': 'font/woff2', '.apk': 'application/vnd.android.package-archive', '.exe': 'application/vnd.microsoft.portable-executable' };
 await stat(path.join(root, 'index.html')).catch(() => {
   throw new Error('Web export missing. Run npm run build:web first.');
 });
@@ -21,6 +23,8 @@ const server = http.createServer(async (req, res) => {
     for (const [name, value] of Object.entries(headers)) res.setHeader(name, value);
     const url = new URL(req.url, 'http://localhost');
     if (await authRoute(req, res, url)) return;
+    if (await profileRoute(req, res, url)) return;
+    if (await catalogueRoute(req, res, url)) return;
     if (url.pathname === '/__proxy') return await proxy(req, res, url);
     if (!['GET', 'HEAD'].includes(req.method)) { res.writeHead(405); res.end(); return; }
     if (url.pathname === '/healthz') { res.end('ok'); return; }
@@ -39,6 +43,7 @@ const server = http.createServer(async (req, res) => {
       'Content-Length': info.size,
       'Cache-Control': file.includes(`${path.sep}_expo${path.sep}`) ? 'public, max-age=31536000, immutable' : 'no-cache',
       'X-Content-Type-Options': 'nosniff',
+      ...(/\.(apk|exe)$/.test(file) ? { 'Content-Disposition': 'attachment; filename="' + path.basename(file) + '"' } : {}),
     });
     if (req.method === 'HEAD') res.end();
     else createReadStream(file).on('error', () => res.destroy()).pipe(res);

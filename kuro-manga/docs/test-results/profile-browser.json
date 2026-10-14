@@ -1,0 +1,19 @@
+{
+  "checks": [
+    "guest account retains login controls without profile editor",
+    "a delayed old profile response cannot overwrite a completed save",
+    "name save persists and refreshes the existing account state",
+    "image preview and upload use the real local API and private Storage fixture",
+    "replacement photo is saved",
+    "remove clears the private photo",
+    "user names are rendered as text and cannot inject HTML",
+    "keyboard focus and Escape close the editor",
+    "SPA navigation removes profile controls outside account",
+    "the existing sign-out action clears the editor and its private preview",
+    "a different account has a separate profile",
+    "profile editor fits a mobile screen",
+    "no uncaught page JavaScript errors"
+  ],
+  "passed": 13,
+  "page_errors": []
+}

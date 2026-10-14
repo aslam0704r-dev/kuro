@@ -1,3 +1,4 @@
+import { displayName } from '../profile/data.mjs';
 export const url = process.env.SUPABASE_URL || '';
 export const key = process.env.SUPABASE_PUBLISHABLE_KEY || '';
 export const production = process.env.NODE_ENV === 'production' || process.env.VERCEL === '1';
@@ -22,6 +23,6 @@ export const configurationIssue = issue();
 export const configured = !configurationIssue;
 export function origin(req) { return process.env.PUBLIC_ORIGIN || `http://${req.headers.host}`; }
 export function safeUser(user) {
-  return { id: user.id, name: String(user.user_metadata?.display_name || user.user_metadata?.full_name || 'Reader').slice(0, 60),
-    email: user.email || '', phone: user.phone || '', emailVerified: !!user.email_confirmed_at, phoneVerified: !!user.phone_confirmed_at };
+  return { id: user.id, name: displayName(user),
+    email: user.email || '', emailVerified: !!user.email_confirmed_at };
 }

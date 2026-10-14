@@ -2,7 +2,7 @@ import { configured, configurationIssue, safeUser } from '../managed/config.mjs'
 import { send, assertOrigin, bodyOf, cookieId, setCookie, address, password, fail, challengeView, clientAddress } from '../managed/http.mjs';
 import { storageIssue, limited, read, remove, serialize } from '../managed/store.mjs';
 import { current, provider, establish, logout } from '../managed/provider.mjs';
-import { sendChallenge, verifyChallenge } from '../managed/challenges.mjs';
+import { sendChallenge, verifyChallenge, emailChallenge } from '../managed/challenges.mjs';
 import { beginGoogle, finishGoogle } from '../managed/oauth.mjs';
 export async function authRoute(req, res, url) {
   if (!url.pathname.startsWith('/api/auth/')) return false;
@@ -26,7 +26,7 @@ export async function authRoute(req, res, url) {
       if (action === 'session' && req.method === 'GET') {
         const active = await current(req, res);
         send(res, 200, { configured: true, user: active ? safeUser(active.user) : null, recovery: !!active?.recovery,
-          challenge: challengeView(await read(cookieId(req, 'challenge'), 'challenge')) }); return;
+          challenge: challengeView(await emailChallenge(req,res)) }); return;
       }
       if (action === 'callback' && req.method === 'GET') {
         try { await finishGoogle(req, res, url); res.writeHead(303, { Location: '/account', 'Cache-Control': 'no-store', 'Referrer-Policy': 'no-referrer' }); }

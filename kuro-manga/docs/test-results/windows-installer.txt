@@ -1,0 +1,20 @@
+PASS: fixed production HTTPS app address
+PASS: safe Edge app arguments without security bypass
+PASS: declining the desktop shortcut excludes that path from installation changes
+PASS: desktop shortcut choice adds only the two known shortcut paths
+PASS: outside application directory rejected
+PASS: non-EXE payload rejected before writing
+PASS: invalid payload creates no app directory
+PASS: actual installer payloads and ownership marker are written
+PASS: installed launcher bytes are preserved
+PASS: reinstallation succeeds in owned directory
+PASS: uninstall removes only known application files
+PASS: uninstall preserves unrelated user files
+PASS: unowned nonempty directory is not overwritten
+PASS: rejected installation preserves existing files
+PASS: locked uninstall retains application files and ownership for retry
+PASS: integrated installation transaction is implemented
+PASS: failed upgrade restores prior payload and integration state
+PASS: integrated uninstall transaction is implemented
+PASS: failed integration removal restores the owned installation for retry
+19 Windows sandbox checks passed; no registry, shortcut or system installation writes.

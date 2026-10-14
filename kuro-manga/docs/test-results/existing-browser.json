@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "page_errors": [],
+  "fonts": [
+    {
+      "family": "CinemaDisplay",
+      "status": "loaded"
+    },
+    {
+      "family": "ionicons",
+      "status": "loaded"
+    }
+  ],
+  "checks": [
+    "PWA resources",
+    "first-visit notice",
+    "browser install fallback",
+    "dismissal",
+    "re-entry",
+    "prompt handoff",
+    "mobile notice",
+    "untrapped page focus",
+    "Escape",
+    "standalone suppression",
+    "offline navigation",
+    "Google UI handoff"
+  ]
+}

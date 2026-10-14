@@ -67,11 +67,43 @@ test('email OTP cannot promote an ordinary login into password recovery', async 
   assert.equal((await b.request('password', { password: 'changed-password-123' })).status, 403);
 });
 
-test('SMS OTP verifies a phone number and creates a real provider-backed session', async () => {
-  const b = browser();
-  assert.equal((await b.request('otp', { channel: 'sms', address: '+919876543210' })).body.challenge.channel, 'sms');
-  const result = await b.request('verify', { code: '654321' });
-  assert.equal(result.status, 200); assert.equal(result.body.user.phoneVerified, true); assert.equal(result.body.user.phone, '+919876543210');
+test('phone and non-email OTP requests cannot send a code or establish a session', async () => {
+  for (const input of [{channel:'sms',address:'+919876543210'}, {channel:'phone',email:'no-phone@example.com'},
+    {channel:'SMS',email:'no-phone@example.com'}, {phone:'+919876543210',email:'no-phone@example.com'}]) {
+    const b = browser(), result = await b.request('otp', input);
+    assert.equal(result.status, 400); assert.match(result.body.error, /email|phone/i);
+    assert.equal(b.jar.has('kuro_m_challenge'), false);
+    assert.equal((await b.request('verify', {code:'654321'})).status, 400);
+    assert.equal((await b.request('session', {}, 'GET')).body.user, null);
+  }
+});
+
+test('saved SMS challenges are cancelled in session, resend and verification paths', async () => {
+  const {save,read} = await import('../server/managed/store.mjs');
+  for (const action of ['session','resend','verify']) {
+    const b=browser(), id=await save('challenge',{kind:'login',channel:'sms',address:'+919876543210',tries:0,sentAt:Date.now()-90000},600);
+    b.jar.set('kuro_m_challenge',id);
+    const result=await b.request(action,{code:'654321'},action==='session'?'GET':'POST');
+    assert.equal(result.status,action==='session'?200:400);
+    assert.equal(result.body.challenge??null,null); assert.ok(!JSON.stringify(result.body).includes('919876543210'));
+    assert.equal(b.jar.has('kuro_m_challenge'),false); assert.equal(await read(id,'challenge'),null);
+  }
+});
+
+test('phone-only accounts cannot keep old web sessions or create new ones', async () => {
+  const {save}=await import('../server/managed/store.mjs'), b=browser(), phoneSession=provider.phoneSession('+919811111111');
+  const id=await save('session',{session:phoneSession,recovery:false},600,phoneSession.user.id);
+  b.jar.set('kuro_m_session',id);
+  assert.equal((await b.request('session',{},'GET')).body.user,null); assert.equal(b.jar.has('kuro_m_session'),false);
+  const account=provider.user('phone-only@example.com'); account.email_confirmed_at=null;account.phone_confirmed_at=new Date().toISOString();
+  assert.equal((await browser().request('login',{email:account.email,password:'reader-password-123'})).status,403);
+});
+
+test('verified email accounts retain login without exposing linked phone information', async () => {
+  const account=provider.user('linked-email@example.com'); account.phone='+919822222222';account.phone_confirmed_at=new Date().toISOString();
+  const result=await browser().request('login',{email:account.email,password:'reader-password-123'});
+  assert.equal(result.status,200); assert.equal(result.body.user.emailVerified,true);
+  assert.ok(!JSON.stringify(result.body).includes(account.phone));
 });
 
 test('recovery codes authorize a password update and revoke existing web sessions', async () => {

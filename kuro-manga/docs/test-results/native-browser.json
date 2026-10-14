@@ -1,0 +1,18 @@
+{
+  "passed": 13,
+  "checks": [
+    "Windows offers and downloads the actual EXE with matching release bytes; never claims OS installation",
+    "browser installation remains available alongside the Windows installer",
+    "dismissal remains effective across reloads",
+    "Android offers and downloads the actual signed APK and fits the mobile screen",
+    "missing release manifest preserves browser installation and exposes no native link",
+    "HTML masquerading as release metadata preserves browser installation and exposes no native link",
+    "cross-origin download metadata preserves browser installation and exposes no native link",
+    "HTML masquerading as the EXE does not become an installer offer",
+    "native launch entry suppresses automatic install prompting",
+    "iPhone keeps supported Safari installation instructions",
+    "explicit re-entry after appinstalled creates an attached working notice",
+    "installed browser app allows explicit installation re-entry",
+    "stalled release response body times out and preserves browser installation"
+  ]
+}

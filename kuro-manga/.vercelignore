@@ -1,0 +1,13 @@
+node_modules/
+private-data/
+tests/
+.env*
+*.sqlite*
+*.key
+*.log
+work/
+native/
+*.jks
+*.keystore
+*.pfx
+*.dpapi

@@ -15,7 +15,7 @@ function storedSession(session, userId) {
 export async function establish(req, res, session, recovery = false) {
   if (!session?.access_token || !session.refresh_token) fail('Verification did not create a session');
   const { client } = provider(); const { data, error } = await client.auth.getUser(session.access_token);
-  if (error || !data.user || (!data.user.email_confirmed_at && !data.user.phone_confirmed_at)) fail('Account verification is required', 403);
+  if (error || !data.user?.email || !data.user.email_confirmed_at) fail('A verified email is required. Link and verify your email before signing in.', 403);
   await remove(cookieId(req, 'session'));
   const seconds = recovery ? 600 : 7 * 86400;
   const id = await save('session', { session: storedSession(session, data.user.id), recovery }, seconds, data.user.id);
@@ -31,7 +31,7 @@ export async function current(req, res) {
   if (error || !data.session) { await remove(id); setCookie(res, 'session', '', 0); return null; }
   const verified = await client.auth.getUser(data.session.access_token);
   if (verified.error && (!verified.error.status || verified.error.status >= 500 || verified.error.status === 429)) fail('Account service temporarily unavailable. Please retry.', 503);
-  if (verified.error || !verified.data.user) { await remove(id); setCookie(res, 'session', '', 0); return null; }
+  if (verified.error || !verified.data.user?.email || !verified.data.user.email_confirmed_at) { await remove(id); setCookie(res, 'session', '', 0); return null; }
   const remaining = Math.max(0, (record.expires - Date.now()) / 1000);
   const updated = remaining > 0 && await save('session', { session: storedSession(data.session, verified.data.user.id), recovery: record.recovery }, remaining, verified.data.user.id, id);
   if (!updated) { setCookie(res, 'session', '', 0); return null; }

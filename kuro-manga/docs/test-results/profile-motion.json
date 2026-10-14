@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "desktop editor has a distinct live reader preview and settings layout",
+    "avatar motion actually advances after the opening sequence",
+    "pointer movement drives a bounded preview tilt",
+    "typing updates the live preview and character count safely",
+    "successful save produces confirmation feedback",
+    "changing reduced-motion preference cancels active effects without losing edits",
+    "drag-and-drop preview saves through the existing secure binary API",
+    "animated close completes and preserves name refresh",
+    "mobile layout fits without horizontal overflow and controls remain reachable",
+    "reduced-motion preference disables motion while saving and keyboard closing still work",
+    "no uncaught JavaScript errors across desktop, mobile and reduced-motion contexts"
+  ],
+  "passed": 11,
+  "page_errors": []
+}
