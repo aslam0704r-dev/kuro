@@ -1,7 +1,7 @@
 {
-  "version": "4.4.0",
+  "version": "4.4.1",
   "native_release_version": "3.9.0",
-  "release_date": "2026-10-14",
+  "release_date": "2026-10-15",
   "baseline": "KURO 4.3.0 full source; protected profile/native baseline 3.9.1",
   "compiled_client_rebuilt": false,
   "original_editable_expo_source_available": false,
@@ -65,15 +65,16 @@
     "device_imports_in_remote_count": false
   },
   "test_counts": {
-    "node_passed": 205,
+    "node_passed": 212,
     "node_failed": 0,
     "node_skipped": 0,
     "browser_passed": 82,
     "browser_failed": 0
   },
-  "test_evidence": "docs/READABLE-TEST-EVIDENCE.json",
-  "test_report": "docs/READABLE-TEST-RESULTS.md",
-  "review_report": "docs/READABLE-REVIEW.md",
+  "test_evidence": "docs/VERCEL-ROUTING-EVIDENCE-4.4.1.json",
+  "test_report": "docs/VERCEL-ROUTING-4.4.1.md",
+  "review_report": "docs/VERCEL-ROUTING-REVIEW-4.4.1.md",
+  "browser_test_version": "4.4.0",
   "live_audit_evidence": "data/readable-audit.json",
   "live_audit_checkpoint": "docs/READABLE-AUDIT-CHECKPOINT.json",
   "changed_from_4_3": [
@@ -83,6 +84,7 @@
     "START-HERE.md",
     "STRICT-CONTENT.md",
     "VERCEL-DEPLOY.md",
+    "api/kuro.mjs",
     "client/catalogue-core.mjs",
     "client/content-runtime.mjs",
     "dist/catalogue-core.js",
@@ -106,7 +108,8 @@
     "tests/catalogue-runtime.test.mjs",
     "tests/content-browser.py",
     "tests/content-service.test.mjs",
-    "tests/helpers/supabase-fixture.mjs"
+    "tests/helpers/supabase-fixture.mjs",
+    "vercel.json"
   ],
   "added_from_4_3": [
     "READABLE-CATALOGUE.md",
@@ -119,6 +122,9 @@
     "docs/READABLE-REVIEW.md",
     "docs/READABLE-TEST-EVIDENCE.json",
     "docs/READABLE-TEST-RESULTS.md",
+    "docs/VERCEL-ROUTING-4.4.1.md",
+    "docs/VERCEL-ROUTING-EVIDENCE-4.4.1.json",
+    "docs/VERCEL-ROUTING-REVIEW-4.4.1.md",
     "docs/superpowers/plans/2026-10-14-email-login-readable-catalogue.md",
     "docs/superpowers/specs/2026-10-14-email-login-readable-catalogue.md",
     "scripts/audit-readable.mjs",
@@ -127,11 +133,13 @@
     "tests/readable-audit.test.mjs",
     "tests/readable-browser.py",
     "tests/readable-client.test.mjs",
-    "tests/readable.test.mjs"
+    "tests/readable.test.mjs",
+    "tests/vercel-routing.test.mjs"
   ],
   "supabase_migration_change": false,
   "new_private_keys_required": false,
-  "live_deployment_performed": false,
+  "initial_release_deployed": true,
+  "followup_deployment_receipt": "KURO-PUSH-DEPLOYMENT-4.4.1.json",
   "verification_scope": "Local controlled account/storage/browser fixtures, dedicated real Redis, independent scoped review and partial public page audit. No complete provider sweep, universal human visual review, live Supabase/RLS deployment or native OS install.",
   "file_hashes_excluding_manifest": {
     ".env.server.example": "9663b9e11bf3e657a4a29e4b3b222a8f2bb81e4f84c69f7f7016efeda2b8090f",
@@ -143,13 +151,13 @@
     "PROFILE-SETUP.md": "e9310f5b10c7f4fd2772ee798c4ccf9951216792213cb480e69e2aa53670c65a",
     "PROVIDERS-SETUP.md": "8264af667fbfc8fe22f8cef050d7b50d915c69aff264ed716ac2b9561677e533",
     "READABLE-CATALOGUE.md": "ae5d820c9c2324bb81f48241e8b063cb3242c4f99cece09c11db785237e9db46",
-    "README.md": "bb267dad4e5d29a01198059a0032815a95a30d25f72cb664f506ca86a719f95c",
+    "README.md": "8766e5c01fa5fb12367feb45eee953ad820a3b521e88c981d401fc2b07afc508",
     "START-HERE.md": "797858ede3f5957001203ef4f8fd988f1c3493532de4dac3ae1c4ff1b6c43186",
     "START-KURO.cmd": "f680572a26324d861ea88d3fe43c24ca312c282f55cef1afc39ebddc3542e506",
     "STRICT-CONTENT.md": "25f7323b1a1d4d0aa27cf1e50b1ac4293db82948c816ba871f3d837a7be8a819",
     "VERCEL-DEPLOY.md": "ebb2dec777fa77db80573c0c00a198f9e4f3f691228fc7e38f44a4886d29678a",
     "api/catalogue-refresh.mjs": "a119f7c63b7d54747dc0d8e52184482b454e9840eea17407b098e57d2f668d2b",
-    "api/kuro.mjs": "6f70c63ee6728901a2e76ebb48dc653ee82493366ffde7fdd214b16dcfb8b08c",
+    "api/kuro.mjs": "172d0e22749702d609318180d3cf183aabe81931ebeb79e09c3daa61e4bfd483",
     "client/catalogue-core.mjs": "7b72ae28793547e3042bb1eaacad3a3a4c1eb3646bb409bf8ce53c2245600b87",
     "client/content-denylist.mjs": "fd885091d36e15ef00f653612a4c7102c36b54a9ee9ae391fc500421dcb2192b",
     "client/content-policy.mjs": "b572566c4510c71e53638559ec0ed5b1e9a35858cb5a7d3071d064fc4a511815",
@@ -504,6 +512,9 @@
     "docs/README.md": "3d203fcf51fac4a6c7d56cd2e39174be35d9442cbc07a6f543e3ba10c08b06d8",
     "docs/SECURITY-36.md": "e2d52e0922437cf48fcdc12fcf6932dc5b7755fa8c1bf193b023ac4fe03b8860",
     "docs/VERCEL-DEPLOYMENT.md": "1a463180a5840e1c7f0153c6814f1e7081b213ff9256c027e323c55250aec33a",
+    "docs/VERCEL-ROUTING-4.4.1.md": "085ae4254419ef06674ce51182ea43a8e8ce824c001c6bfc8a6cd74ff4b5d9b3",
+    "docs/VERCEL-ROUTING-EVIDENCE-4.4.1.json": "1e299c57ddfb7794ddce08cfccb3b308a99cceb5f2b27172553c0436782e069f",
+    "docs/VERCEL-ROUTING-REVIEW-4.4.1.md": "7effeec4197e4425954c0c882afab2647417e27b23c4a66a03b644491b11623b",
     "docs/email-templates/confirm-signup.html": "266cbd9cfa718af2c792841f69195c7794b57c02e0d3e9c1d1d039dd74d075c6",
     "docs/email-templates/email-otp.html": "ff6ba7f1a47eb1a23c95434b9decbb13369dc6a4f6475b99afb588ae5c1c4e4f",
     "docs/email-templates/recovery.html": "22f6e1ae9fec5692785ec8a0849d73315548f524f1b5b5a1ca279b437595b676",
@@ -578,8 +589,8 @@
     "native/windows/Launcher.cs": "4f09ad1527415bc88cbceb38c389196ecee625c1b5e1c3214c2ef83117da32f5",
     "native/windows/app.manifest": "9450ccc9f47c8e6616e0da6eba464d83723bfcab5406667b83643e13b7b85157",
     "native/windows/build.ps1": "2401fb18a067703bc1e2fe3957db0fe1996085f8e3677b2f6f547d05773664c4",
-    "package-lock.json": "88f1ae7f8f9a3cb8da8153007405e53cf0005a3e9e43e649acb456045b65473e",
-    "package.json": "8a73d011bb9913e48971d183d5c8ed623cdf8221c4964542ed73fd556cd0c33d",
+    "package-lock.json": "117a0aedb2b7062ab8a02399b118ba0347632459db8532a6d60d63b5c3d4739c",
+    "package.json": "bd2fd6edbbdf825f1561845551350e248f64d8d2d4c14271705892a5be0d8301",
     "scripts/audit-content-policy.mjs": "9cba8774df7e4a565d761dfb3f8ce20ccd1647549d09345e1574c58d0676eb4f",
     "scripts/audit-readable.mjs": "6f5fe1ad8f0463ffb81455cde06bd2291b41a089c2f30ff589fc4ef67b17cfff",
     "scripts/build-catalogue.mjs": "a4775a343ff634fa2faf459c070f7029eab0c937c9e5e9f5958e1f045ce922eb",
@@ -699,9 +710,10 @@
     "tests/readable.test.mjs": "ea813f2891a1ef948c4ec098c3e196788ac79b182c48c7714595e1a394670288",
     "tests/storage-policy.test.mjs": "71cec8bce2e54b2a1ac30d6bdc9776c7965cb1fee428da68b8c169e827651fa8",
     "tests/store.test.mjs": "56afc752c51bb26529fcb519e26bd6578dfc351540b40a2a63daaa82894c4f9d",
+    "tests/vercel-routing.test.mjs": "1b75f4befc405d3f190e6d4834a027a8ccc63a7e45707e2427cd1fb8183255b9",
     "tests/windows-installer-checks.ps1": "41e299a55b270d35678e518f6a18cb6988a2d5a79ef675afa3ed0e87d68977f4",
     "tests/windows-installer-tests.cs": "b56f518a87dfdbbe1e9dfb4f35c90c30be5b8a2060032fc89c2017671876af81",
-    "vercel.json": "63ea4b20480890251ef6b44d214038b04c0463b3cef363e2ef1c29c7a1ce667c"
+    "vercel.json": "70ff16fa40e81162dc8b3a19f8a8df336677e70957ec1c2cf515a0810d688647"
   },
   "excluded": [
     "private keys",

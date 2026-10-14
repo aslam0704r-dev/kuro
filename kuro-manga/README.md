@@ -1,3 +1,7 @@
+# KURO 4.4.1 — Vercel routing correction
+
+Version 4.4.1 keeps the 4.4.0 features and corrects Vercel rewrite query handling. The internal capture uses `kuroPath`, which the server adapter removes before endpoint validation. Public MangaDex `path` values and Google callback `code`/`state` remain intact. See [docs/VERCEL-ROUTING-4.4.1.md](docs/VERCEL-ROUTING-4.4.1.md) for the correction and verification scope.
+
 # KURO 4.4.0 — email login and verified readable titles
 
 Read [READABLE-CATALOGUE.md](READABLE-CATALOGUE.md) first. Phone/SMS login is removed; email password, email codes and Google remain. Collections always hide titles without one completely checked chapter and group confirmed editions. The Providers page shows an exact count of the recent verified KURO inventory. The bundled live audit is a **partial sweep of 100 candidate entries**, not the full provider catalogue. All 2,134 pages of the 72 qualifying chapters were fetched, MIME/signature checked and fully decoded. Device imports remain private to their device.

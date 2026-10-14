@@ -1,0 +1,33 @@
+{
+  "version": "4.4.1",
+  "date_client": "2026-10-15",
+  "node": {
+    "passed": 212,
+    "failed": 0,
+    "skipped": 0,
+    "dedicated_real_redis": true,
+    "log_sha256": "81f2f817628f7cafd822d69df3739b1f6237a572708b4b1521f8450a5b612cbe"
+  },
+  "build": {
+    "passed": true,
+    "log_sha256": "4c184514626e99332c690a9873307017732c4e93825710ba873cdb93c2b1f4f1"
+  },
+  "routing_regressions": {
+    "passed": 7,
+    "failed": 0,
+    "independently_rechecked": true
+  },
+  "browser": {
+    "passed": 82,
+    "version": "4.4.0",
+    "date_client": "2026-10-14",
+    "fresh_for_this_patch": false
+  },
+  "deployment": {
+    "initial_commit": "f518cb4c5b9cbca4d7eeb663ce36dcaf6d8dfccf",
+    "initial_vercel_status": "success",
+    "initial_count_http_status": 400,
+    "followup_live_verification": "recorded separately after deployment"
+  },
+  "private_keys_requested_or_exposed": false
+}

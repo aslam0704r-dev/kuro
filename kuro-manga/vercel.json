@@ -21,20 +21,20 @@
       "destination": "/api/catalogue-refresh"
     },
     {
-      "source": "/api/catalogue/:path*",
-      "destination": "/api/kuro?__route=/api/catalogue/:path*"
+      "source": "/api/catalogue/:kuroPath*",
+      "destination": "/api/kuro?__route=/api/catalogue/:kuroPath*"
     },
     {
-      "source": "/api/profile/:path*",
-      "destination": "/api/kuro?__route=/api/profile/:path*"
+      "source": "/api/profile/:kuroPath*",
+      "destination": "/api/kuro?__route=/api/profile/:kuroPath*"
     },
     {
       "source": "/api/profile",
       "destination": "/api/kuro?__route=/api/profile"
     },
     {
-      "source": "/api/auth/:path*",
-      "destination": "/api/kuro?__route=/api/auth/:path*"
+      "source": "/api/auth/:kuroPath*",
+      "destination": "/api/kuro?__route=/api/auth/:kuroPath*"
     },
     {
       "source": "/__proxy",
