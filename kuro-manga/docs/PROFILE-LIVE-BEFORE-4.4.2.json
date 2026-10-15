@@ -1,0 +1,41 @@
+{
+  "phase": "before",
+  "atUTC": "2026-10-15T09:40:10.197448+00:00",
+  "url": "https://kuro-manga.vercel.app/account",
+  "accountHTTP": 200,
+  "responses": [
+    {
+      "path": "/profile-editor.css",
+      "status": 200
+    },
+    {
+      "path": "/profile-editor.js",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "status": 404
+    },
+    {
+      "path": "/api/profile",
+      "status": 404
+    },
+    {
+      "path": "/api/profile",
+      "status": 404
+    },
+    {
+      "path": "/api/auth/session",
+      "status": 200
+    },
+    {
+      "path": "/api/profile",
+      "status": 404
+    }
+  ],
+  "guestLoginVisible": true,
+  "guestEditorCount": 0,
+  "pageErrors": [],
+  "isolatedGuestContext": true,
+  "liveAuthenticatedAccountTested": false
+}

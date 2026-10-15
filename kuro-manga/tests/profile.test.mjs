@@ -1,6 +1,6 @@
 import test, { before, after } from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, rm } from 'node:fs/promises';
+import { mkdtemp, rm, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { randomBytes, randomUUID } from 'node:crypto';
@@ -40,6 +40,34 @@ async function account(email = 'profile-' + n++ + '@example.com', recovery = fal
   return { email, auth, async request(input) { const r = await invokeProfile(handler, { ...input, ip, cookie: cookies(jar) }); mergeCookies(jar, r); return r; } };
 }
 const upload = (bytes, imageType = 'image/png', stream = false) => ({ path: '/api/profile/avatar', method: 'POST', body: bytes, type: 'application/octet-stream', headers: { 'x-kuro-image-type': imageType }, stream });
+
+async function deployedProfileRoot() {
+  const config = JSON.parse(await readFile(new URL('../vercel.json', import.meta.url), 'utf8'));
+  // Both configured patterns match /api/profile. Vercel takes the first one;
+  // its zero-segment wildcard expands to an empty string in the destination.
+  // This is the deployed request shape that the direct local server bypasses.
+  const rule = config.rewrites.find(row => ['/api/profile', '/api/profile/:kuroPath*'].includes(row.source));
+  assert.ok(rule, 'The public profile API must have a rewrite');
+  return rule.destination.replace(':kuroPath*', '');
+}
+
+test('deployed profile root reaches the session guard rather than a missing route', async () => {
+  const response = await invokeProfile(handler, { requestUrl: await deployedProfileRoot() });
+  assert.equal(response.status, 401);
+  assert.equal(response.body.error, 'Sign in to edit your profile.');
+});
+
+test('deployed profile root loads and saves the authenticated account', async () => {
+  const reader = await account();
+  const requestUrl = await deployedProfileRoot();
+  const initial = await reader.request({ requestUrl });
+  assert.equal(initial.status, 200);
+  assert.equal(typeof initial.body.id, 'string');
+  const saved = await reader.request({ requestUrl, method: 'POST', body: { name: 'Deployed Reader' } });
+  assert.equal(saved.status, 200);
+  assert.equal(saved.body.id, initial.body.id);
+  assert.equal((await reader.request({ requestUrl })).body.name, 'Deployed Reader');
+});
 
 test('profile requests require a verified KURO session', async () => {
   assert.equal((await invokeProfile(handler)).status, 401);

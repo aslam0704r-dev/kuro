@@ -1,7 +1,7 @@
 import { Readable } from 'node:stream';
 export async function invokeProfile(handler, input = {}) {
   const req = Readable.from(input.stream ? [input.body] : []);
-  req.url = '/api/kuro?__route=' + encodeURIComponent(input.path || '/api/profile');
+  req.url = input.requestUrl || '/api/kuro?__route=' + encodeURIComponent(input.path || '/api/profile');
   req.method = input.method || 'GET';
   req.headers = { host: 'localhost:8081', origin: input.origin ?? 'http://localhost:8081',
     'content-type': input.type || 'application/json', cookie: input.cookie || '', ...input.headers };

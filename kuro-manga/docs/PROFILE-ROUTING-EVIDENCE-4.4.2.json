@@ -1,0 +1,73 @@
+{
+  "version": "4.4.2",
+  "date_client": "2026-10-15",
+  "node": {
+    "passed": 214,
+    "failed": 0,
+    "skipped": 0,
+    "dedicated_real_redis": true,
+    "log_sha256": "c53f8efb2d8b94c9f3f40ad60f0ed77d26118492a2a68e894ba7fa4f6e1ce858"
+  },
+  "build": {
+    "passed": true,
+    "log_sha256": "a30e50e1abe63f0679fa90a08dbb7d6fa1a31095cb47d9f01b85e841f5483f9a"
+  },
+  "new_regressions": {
+    "red_failed": 2,
+    "red_actual_status": 404,
+    "expected_statuses": [
+      401,
+      200
+    ],
+    "green_passed": 2
+  },
+  "browser": {
+    "fresh_passed": 31,
+    "failed": 0,
+    "profile": {
+      "checks": [
+        "guest account retains login controls without profile editor",
+        "a delayed old profile response cannot overwrite a completed save",
+        "name save persists and refreshes the existing account state",
+        "image preview and upload use the real local API and private Storage fixture",
+        "replacement photo is saved",
+        "remove clears the private photo",
+        "user names are rendered as text and cannot inject HTML",
+        "keyboard focus and Escape close the editor",
+        "SPA navigation removes profile controls outside account",
+        "the existing sign-out action clears the editor and its private preview",
+        "a different account has a separate profile",
+        "profile editor fits a mobile screen",
+        "no uncaught page JavaScript errors"
+      ],
+      "passed": 13,
+      "page_errors": []
+    },
+    "motion": {
+      "checks": [
+        "desktop editor has a distinct live reader preview and settings layout",
+        "avatar motion actually advances after the opening sequence",
+        "pointer movement drives a bounded preview tilt",
+        "typing updates the live preview and character count safely",
+        "successful save produces confirmation feedback",
+        "changing reduced-motion preference cancels active effects without losing edits",
+        "drag-and-drop preview saves through the existing secure binary API",
+        "animated close completes and preserves name refresh",
+        "mobile layout fits without horizontal overflow and controls remain reachable",
+        "reduced-motion preference disables motion while saving and keyboard closing still work",
+        "no uncaught JavaScript errors across desktop, mobile and reduced-motion contexts"
+      ],
+      "passed": 11,
+      "page_errors": []
+    },
+    "profile_interaction_passed": 3,
+    "email_auth_passed": 4,
+    "full_historical_browser_suite_rerun": false
+  },
+  "deployment": {
+    "verification_receipt": "KURO-PUSH-DEPLOYMENT-4.4.2.json",
+    "live_authenticated_account_tested": false,
+    "live_storage_RLS_verified": false
+  },
+  "private_keys_requested_or_exposed": false
+}

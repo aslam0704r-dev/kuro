@@ -1,5 +1,6 @@
 /node_modules/
 /private-data/
+/work/
 /tests/.state-*/
 /tests/.auth-*/
 /tests/.config-*/
