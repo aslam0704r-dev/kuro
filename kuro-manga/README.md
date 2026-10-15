@@ -1,4 +1,10 @@
-# KURO 4.4.1 — Vercel routing correction
+# KURO 4.6.0 — optional sources and progressive loading
+
+Open **Settings → All 1,236 providers**. Verified sources start on; additional sources start off and have saved selection switches. Status labels distinguish a saved choice from a working reader, external platform or unresolved connection. Mandatory adult/unrated-content and complete-chapter checks remain in force.
+
+Home/search share a fair incremental chapter-check queue. Discovery publishes each provider/page independently, and source cooldowns honor Retry-After. Read [the 4.6 report](docs/PROVIDER-LOADING-4.6.0.md), [source setup](PROVIDERS-SETUP.md) and [START-HERE.md](START-HERE.md). No new environment setting or SQL migration is needed. The provider inventory is not a claim of 1,236 working readers.
+
+## Previous routing correction — 4.4.1
 
 Version 4.4.1 keeps the 4.4.0 features and corrects Vercel rewrite query handling. The internal capture uses `kuroPath`, which the server adapter removes before endpoint validation. Public MangaDex `path` values and Google callback `code`/`state` remain intact. See [docs/VERCEL-ROUTING-4.4.1.md](docs/VERCEL-ROUTING-4.4.1.md) for the correction and verification scope.
 

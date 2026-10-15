@@ -1,0 +1,75 @@
+{
+  "version": "4.6.0",
+  "date_client": "2026-10-15",
+  "node": {
+    "passed": 271,
+    "failed": 0,
+    "skipped": 0,
+    "dedicated_real_redis": true,
+    "log_sha256": "54f1e1ea75dab0c5fe19502b3b05a5ea77feee764eaeb7bb125a4ab015bef501"
+  },
+  "build": {
+    "passed": true,
+    "log_sha256": "85c21648d5c3a3307f679de102837b8d0438b26a43f67f79010a25a6c1e7de05"
+  },
+  "fresh_browser": {
+    "passed": 56,
+    "failed": 0,
+    "suites": {
+      "provider-loading-browser": 10,
+      "readable-performance-browser": 4,
+      "content-browser": 16,
+      "readable-browser": 6,
+      "profile-browser": 13,
+      "profile-ui-regressions": 3,
+      "email-auth-browser": 4
+    },
+    "log_sha256": {
+      "provider-loading-browser": "13a15f7150b3727ffb30b558a87403301f13481ed55b100eb218e200dcd70d9e",
+      "readable-performance-browser": "1413cc15e9ee5e70a757b9dc3c7aae27ca9f716efc50b0853b957deb9988fe1f",
+      "content-browser": "e3d75f02d849b4161bd22f302f1c164981bc429a1a8ab55a2ae1716b353c3b9b",
+      "readable-browser": "c83ab758d603ac55a7a57664c4a65cc0b44874dcf1297548afa483786cd68fbb",
+      "profile-browser": "03ac449360f010a54157ce62740f9c193d1aee05a5257f3685ed6c16b5eb465d",
+      "profile-ui-regressions": "d8e911d9aae6421c2088f340612b6763a082db639eef0c0d9b2a8fca9bab95d9",
+      "email-auth-browser": "71f951ade7d2127be202bfe3a98191180bc1f92f169d06c0d9adb3ec6abd9930"
+    }
+  },
+  "controlled_cold_queue": {
+    "titles": 3,
+    "long_pending_titles": 2,
+    "baseline_version": "4.5.0",
+    "baseline_failed_home_and_search_at_ms": 6000,
+    "baseline_log_sha256": "a1b9ffb65dc7eadb4ba5472c0a885bc308d6f3fccfd157036894775c046f2388",
+    "patched": [
+      {
+        "route": "/",
+        "short_title_visible_ms": 453
+      },
+      {
+        "route": "/search",
+        "short_title_visible_ms": 439
+      }
+    ],
+    "synthetic_fast_responses": true,
+    "production_speed_guarantee": false
+  },
+  "selection": {
+    "directory_entries": 1236,
+    "fresh_defaults": [
+      "anilist",
+      "mangadex"
+    ],
+    "optional_default": false,
+    "saved_on_device": true,
+    "selection_is_not_content_or_reader_approval": true
+  },
+  "content_policy_unchanged": true,
+  "all_provider_readability_audit_repeated": false,
+  "live_before_report": "docs/PROVIDER-LOADING-HOME-BEFORE-4.6.0.json",
+  "live_after_receipt": "KURO-PUSH-DEPLOYMENT-4.6.0.json",
+  "live_authenticated_supabase_rls_tested": false,
+  "private_keys_requested_or_exposed": false,
+  "review_report": "docs/PROVIDER-LOADING-REVIEW-4.6.0.md",
+  "review_sha256": "50528f699f81fb095dacbb7896b57cb234c1dd451ed8a407a5e7acb02797ec3f",
+  "discarded_experiment": "Device imports deliberately do not participate in Discovery; no product change was made to expose them there."
+}

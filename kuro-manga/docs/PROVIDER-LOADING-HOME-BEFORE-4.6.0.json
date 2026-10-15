@@ -1,0 +1,499 @@
+{
+  "phase": "pre-4.6-home",
+  "origin": "https://kuro-manga.vercel.app",
+  "target": "/",
+  "searchTerm": null,
+  "events": [
+    {
+      "path": "/api/catalogue/providers",
+      "query": "",
+      "startMs": 4200,
+      "status": 200,
+      "responseMs": 6592,
+      "durationMs": 2392
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%3Flimit%3D20%26offset%3D0%26availableTranslatedLanguage%255B%255D%3Den%26hasAvailableChapters%3Dtrue%26order%255BfollowedCount%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 4720,
+      "status": 200,
+      "responseMs": 8612,
+      "durationMs": 3892
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%3Flimit%3D20%26offset%3D0%26availableTranslatedLanguage%255B%255D%3Den%26hasAvailableChapters%3Dtrue%26order%255BlatestUploadedChapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 4721,
+      "status": 200,
+      "responseMs": 9052,
+      "durationMs": 4331
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-45777a73-98a6-47ba-b7df-e879365cb1cb",
+      "startMs": 9462,
+      "status": 200,
+      "responseMs": 10105,
+      "durationMs": 643
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-77bee52c-d2d6-44ad-a33a-1734c1fe696a",
+      "startMs": 9299,
+      "status": 200,
+      "responseMs": 10334,
+      "durationMs": 1035
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-e78a489b-6632-4d61-b00b-5206f5b8b22b",
+      "startMs": 9295,
+      "status": 200,
+      "responseMs": 11504,
+      "durationMs": 2209
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-eb2d1a45-d4e7-4e32-a171-b5b029c5b0cb",
+      "startMs": 9299,
+      "status": 200,
+      "responseMs": 12056,
+      "durationMs": 2757
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F45777a73-98a6-47ba-b7df-e879365cb1cb%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 10106,
+      "status": 429,
+      "responseMs": 12116,
+      "durationMs": 2010
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-32d76d19-8a05-4db0-9fc2-e0b0648fe9d0",
+      "startMs": 9295,
+      "status": 200,
+      "responseMs": 12128,
+      "durationMs": 2833
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-9d3d3403-1a87-4737-9803-bc3d99db1424",
+      "startMs": 9299,
+      "status": 200,
+      "responseMs": 12160,
+      "durationMs": 2861
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-d7037b2a-874a-4360-8a7b-07f2899152fd",
+      "startMs": 9300,
+      "status": 200,
+      "responseMs": 13345,
+      "durationMs": 4045
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-a96676e5-8ae2-425e-b549-7f15dd34a6d8",
+      "startMs": 9299,
+      "status": 200,
+      "responseMs": 13352,
+      "durationMs": 4053
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fe78a489b-6632-4d61-b00b-5206f5b8b22b%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 11504,
+      "status": 200,
+      "responseMs": 13844,
+      "durationMs": 2340
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F45777a73-98a6-47ba-b7df-e879365cb1cb%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 12636,
+      "status": 429,
+      "responseMs": 14010,
+      "durationMs": 1374
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F32d76d19-8a05-4db0-9fc2-e0b0648fe9d0%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 12130,
+      "status": 200,
+      "responseMs": 14481,
+      "durationMs": 2351
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F45777a73-98a6-47ba-b7df-e879365cb1cb%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 14803,
+      "status": 429,
+      "responseMs": 16231,
+      "durationMs": 1428
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-6670ee28-f26d-4b61-b49c-d71149cd5a6e",
+      "startMs": 9300,
+      "status": 429,
+      "responseMs": 16541,
+      "durationMs": 7241
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-c4ca02fb-8378-433b-8049-fbbea5d25cba",
+      "startMs": 9301,
+      "status": 429,
+      "responseMs": 16611,
+      "durationMs": 7310
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-878634d2-ea39-4001-a4bf-31458020d16a",
+      "startMs": 9300,
+      "status": 200,
+      "responseMs": 16758,
+      "durationMs": 7458
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-9a414441-bbad-43f1-a3a7-dc262ca790a3",
+      "startMs": 9301,
+      "status": 429,
+      "responseMs": 16804,
+      "durationMs": 7503
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-a25e46ec-30f7-4db6-89df-cacbc1d9a900",
+      "startMs": 9301,
+      "status": 429,
+      "responseMs": 16844,
+      "durationMs": 7543
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-1fc3d326-c037-43fa-8953-ed52a56caa18",
+      "startMs": 9301,
+      "status": 200,
+      "responseMs": 16910,
+      "durationMs": 7609
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-55ace2fb-e157-4d76-9e72-67c6bd762a39",
+      "startMs": 9301,
+      "status": 200,
+      "responseMs": 17031,
+      "durationMs": 7730
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-6b9bd81a-ae0f-4495-bde9-9ba20ee00981",
+      "startMs": 14501,
+      "status": 429,
+      "responseMs": 17105,
+      "durationMs": 2604
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F6b9bd81a-ae0f-4495-bde9-9ba20ee00981%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 17106,
+      "status": 429,
+      "responseMs": 18666,
+      "durationMs": 1560
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512",
+      "startMs": 16252,
+      "status": 200,
+      "responseMs": 18681,
+      "durationMs": 2429
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-b9c42e2c-3cda-4f5d-b503-fa1767e6108a",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 19392,
+      "durationMs": 9924
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-5f64d517-c4ea-40c0-a463-fcc069d39d3b",
+      "startMs": 9312,
+      "status": 200,
+      "responseMs": 19693,
+      "durationMs": 10381
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-418791c0-35cf-4f87-936b-acd9cddf0989",
+      "startMs": 9300,
+      "status": 200,
+      "responseMs": 19871,
+      "durationMs": 10571
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F6b9bd81a-ae0f-4495-bde9-9ba20ee00981%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 19019,
+      "status": 429,
+      "responseMs": 20484,
+      "durationMs": 1465
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fb0b721ff-c388-4486-aa0f-c2b0bb321512%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 18682,
+      "status": 429,
+      "responseMs": 20925,
+      "durationMs": 2243
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-37f5cce0-8070-4ada-96e5-fa24b1bd4ff9",
+      "startMs": 9312,
+      "status": 200,
+      "responseMs": 20977,
+      "durationMs": 11665
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-1e01d7f6-c4e1-4102-9dd0-a6fccc065978",
+      "startMs": 9468,
+      "status": 429,
+      "responseMs": 20997,
+      "durationMs": 11529
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7",
+      "startMs": 9467,
+      "status": 200,
+      "responseMs": 21083,
+      "durationMs": 11616
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-543253c3-9a95-43ea-83ff-f9a8c27d6ca5",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 21213,
+      "durationMs": 11745
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-39b4e02a-f2f2-4ff0-bf2c-f87cf54ab178",
+      "startMs": 9312,
+      "status": 200,
+      "responseMs": 21383,
+      "durationMs": 12071
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F6b9bd81a-ae0f-4495-bde9-9ba20ee00981%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 21346,
+      "status": 429,
+      "responseMs": 22784,
+      "durationMs": 1438
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fb0b721ff-c388-4486-aa0f-c2b0bb321512%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 21384,
+      "status": 429,
+      "responseMs": 23001,
+      "durationMs": 1617
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-4a973243-952e-44d7-a50f-883b4b7c9cc2",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 23193,
+      "durationMs": 13725
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-bcfe1b36-daee-40fd-9984-d9597caf9da7",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 23294,
+      "durationMs": 13826
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-b106762c-0302-4098-825e-d2e4d73bd87e",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 23794,
+      "durationMs": 14326
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-44e19786-bac7-47a6-a4fd-545aa68436ed",
+      "startMs": 22784,
+      "status": 200,
+      "responseMs": 25006,
+      "durationMs": 2222
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-983c0d0a-8cad-4b1b-b054-d1c0463527ac",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 25293,
+      "durationMs": 15825
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-9f18938b-f466-4f74-b6f0-140dc28e8812",
+      "startMs": 9468,
+      "status": 200,
+      "responseMs": 25307,
+      "durationMs": 15839
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fb0b721ff-c388-4486-aa0f-c2b0bb321512%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 23852,
+      "status": 429,
+      "responseMs": 25485,
+      "durationMs": 1633
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-6b9bd81a-ae0f-4495-bde9-9ba20ee00981",
+      "startMs": 25504,
+      "status": 429,
+      "responseMs": 26904,
+      "durationMs": 1400
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F44e19786-bac7-47a6-a4fd-545aa68436ed%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 25006,
+      "status": 200,
+      "responseMs": 27562,
+      "durationMs": 2556
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F6b9bd81a-ae0f-4495-bde9-9ba20ee00981%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 26904,
+      "status": 429,
+      "responseMs": 28492,
+      "durationMs": 1588
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F6b9bd81a-ae0f-4495-bde9-9ba20ee00981%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 28868,
+      "status": 429,
+      "responseMs": 30255,
+      "durationMs": 1387
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F6b9bd81a-ae0f-4495-bde9-9ba20ee00981%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 31097,
+      "status": 429,
+      "responseMs": 32510,
+      "durationMs": 1413
+    }
+  ],
+  "pending": [
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3A3715fc8f-74dd-4c2c-8f71-2170be0a7baa",
+      "startMs": 27567
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-b6b87e4d-c1cc-4d0b-8588-df715dd98624",
+      "startMs": 32510
+    }
+  ],
+  "snapshots": [
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nChecking recent updates for readable chapters\u2026\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n0 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "firstCoverLoadedMs": null,
+      "lastCheck": null,
+      "elapsedMs": 7476
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nKURO / THE STORY HOUSE\n01\nNOW SHOWING  /  01\u201405\nMANGADEX  /  DOLLY\nKAGE NO\nJITSURYOKUSHA NI\nNARITAKUTE!\nReincarnation / Action / Demons\n\uf4c6\nEXPLORE SERIES\n\uf133\nCHAPTER SOURCE\nCHECK AVAILABILITY\nTHE LINEUP  /  SWIPE TO EXPLORE\n\uf127\n\uf133\n01\nKage no Jitsuryokusha ni Naritakute!\n02\nKomi-san wa Komyushou Desu.\n03\nKumo desu ga, Nani ka?\n04\nKi ni Natteru Hito ga Otoko ja Nakatta\n05\nMairimashita! Iruma-kun\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\n661\nOPEN SERIES  \u2197\nMANGADEX\nChicchakute Dekakute Kawaii Nanase-san o Kanchigai Motokare kara Ubatte Shiawase ni Suru\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nThe Female Knight Who Knew Only Battle Was Pampered Continuously\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nMonochrome Lovers\n174\nOPEN SERIES  \u2197\nMANGADEX\nTenmaku no Jaadugar\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nSSS-geup Jugeoya Saneun Hunter\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nMANGADEX\nMieruko-chan\n\uf1a9\nMANGADEX\nAkuyaku Reijou Level 99 ~Watashi wa Ura Boss desuga Maou de wa Arimasen~\n\uf1a9\nMANGADEX\nKaoru Hana wa Rin to Saku\n\uf1a9\nMANGADEX\nMaou no Ore ga Dorei Elf o Yome ni Shitanda ga, Dou Medereba ii",
+      "coverImages": 26,
+      "loadedCovers": 2,
+      "firstCoverLoadedMs": 11595.199999999255,
+      "lastCheck": null,
+      "elapsedMs": 12487
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nKURO / THE STORY HOUSE\n01\nNOW SHOWING  /  01\u201405\nMANGADEX  /  DOLLY\nKAGE NO\nJITSURYOKUSHA NI\nNARITAKUTE!\nReincarnation / Action / Demons\n\uf4c6\nEXPLORE SERIES\n\uf133\nCHAPTER SOURCE\nCHECK AVAILABILITY\nTHE LINEUP  /  SWIPE TO EXPLORE\n\uf127\n\uf133\n01\nKage no Jitsuryokusha ni Naritakute!\n02\nKomi-san wa Komyushou Desu.\n03\nKumo desu ga, Nani ka?\n04\nKi ni Natteru Hito ga Otoko ja Nakatta\n05\nMairimashita! Iruma-kun\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\n661\nOPEN SERIES  \u2197\nMANGADEX\nChicchakute Dekakute Kawaii Nanase-san o Kanchigai Motokare kara Ubatte Shiawase ni Suru\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nThe Female Knight Who Knew Only Battle Was Pampered Continuously\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nMonochrome Lovers\n174\nOPEN SERIES  \u2197\nMANGADEX\nTenmaku no Jaadugar\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nSSS-geup Jugeoya Saneun Hunter\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nMANGADEX\nMieruko-chan\n\uf1a9\nMANGADEX\nAkuyaku Reijou Level 99 ~Watashi wa Ura Boss desuga Maou de wa Arimasen~\n\uf1a9\nMANGADEX\nKaoru Hana wa Rin to Saku\n\uf1a9\nMANGADEX\nMaou no Ore ga Dorei Elf o Yome ni Shitanda ga, Dou Medereba ii",
+      "coverImages": 22,
+      "loadedCovers": 6,
+      "firstCoverLoadedMs": 11595.199999999255,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792079844649,
+        "expiresAt": 1792079957870,
+        "error": "[mangadex] Failed to load chapters for 45777a73-98a6-47ba-b7df-e879365cb1cb \u2014 HTTP 429",
+        "id": "mangadex-45777a73-98a6-47ba-b7df-e879365cb1cb"
+      },
+      "elapsedMs": 17500
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nKURO / THE STORY HOUSE\n01\nNOW SHOWING  /  01\u201405\nMANGADEX  /  DOLLY\nKAGE NO\nJITSURYOKUSHA NI\nNARITAKUTE!\nReincarnation / Action / Demons\n\uf4c6\nEXPLORE SERIES\n\uf133\nCHAPTER SOURCE\nCHECK AVAILABILITY\nTHE LINEUP  /  SWIPE TO EXPLORE\n\uf127\n\uf133\n01\nKage no Jitsuryokusha ni Naritakute!\n02\nKomi-san wa Komyushou Desu.\n03\nKumo desu ga, Nani ka?\n04\nKi ni Natteru Hito ga Otoko ja Nakatta\n05\nMairimashita! Iruma-kun\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\n661\nOPEN SERIES  \u2197\nMANGADEX\nChicchakute Dekakute Kawaii Nanase-san o Kanchigai Motokare kara Ubatte Shiawase ni Suru\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nThe Female Knight Who Knew Only Battle Was Pampered Continuously\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nMonochrome Lovers\n174\nOPEN SERIES  \u2197\nMANGADEX\nTenmaku no Jaadugar\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nSSS-geup Jugeoya Saneun Hunter\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nMANGADEX\nMieruko-chan\n\uf1a9\nMANGADEX\nAkuyaku Reijou Level 99 ~Watashi wa Ura Boss desuga Maou de wa Arimasen~\n\uf1a9\nMANGADEX\nKaoru Hana wa Rin to Saku\n\uf1a9\nMANGADEX\nMaou no Ore ga Dorei Elf o Yome ni Shitanda ga, Dou Medereba ii",
+      "coverImages": 21,
+      "loadedCovers": 15,
+      "firstCoverLoadedMs": 11595.199999999255,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792079844649,
+        "expiresAt": 1792079957870,
+        "error": "[mangadex] Failed to load chapters for 45777a73-98a6-47ba-b7df-e879365cb1cb \u2014 HTTP 429",
+        "id": "mangadex-45777a73-98a6-47ba-b7df-e879365cb1cb"
+      },
+      "elapsedMs": 22504
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nKURO / THE STORY HOUSE\n01\nNOW SHOWING  /  01\u201405\nMANGADEX  /  DOLLY\nKAGE NO\nJITSURYOKUSHA NI\nNARITAKUTE!\nReincarnation / Action / Demons\n\uf4c6\nEXPLORE SERIES\n\uf133\nCHAPTER SOURCE\nCHECK AVAILABILITY\nTHE LINEUP  /  SWIPE TO EXPLORE\n\uf127\n\uf133\n01\nKage no Jitsuryokusha ni Naritakute!\n02\nKomi-san wa Komyushou Desu.\n03\nKumo desu ga, Nani ka?\n04\nKi ni Natteru Hito ga Otoko ja Nakatta\n05\nMairimashita! Iruma-kun\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\n661\nOPEN SERIES  \u2197\nMANGADEX\nChicchakute Dekakute Kawaii Nanase-san o Kanchigai Motokare kara Ubatte Shiawase ni Suru\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nThe Female Knight Who Knew Only Battle Was Pampered Continuously\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nMonochrome Lovers\n174\nOPEN SERIES  \u2197\nMANGADEX\nTenmaku no Jaadugar\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nSSS-geup Jugeoya Saneun Hunter\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nMANGADEX\nMieruko-chan\n\uf1a9\nMANGADEX\nAkuyaku Reijou Level 99 ~Watashi wa Ura Boss desuga Maou de wa Arimasen~\n\uf1a9\nMANGADEX\nKaoru Hana wa Rin to Saku\n\uf1a9\nMANGADEX\nMaou no Ore ga Dorei Elf o Yome ni Shitanda ga, Dou Medereba ii",
+      "coverImages": 21,
+      "loadedCovers": 21,
+      "firstCoverLoadedMs": 11595.199999999255,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792079853903,
+        "expiresAt": 1792079964666,
+        "error": "[mangadex] Failed to load chapters for b0b721ff-c388-4486-aa0f-c2b0bb321512 \u2014 HTTP 429",
+        "id": "mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512"
+      },
+      "elapsedMs": 27518
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nKURO / THE STORY HOUSE\n01\nNOW SHOWING  /  01\u201405\nMANGADEX  /  DOLLY\nKAGE NO\nJITSURYOKUSHA NI\nNARITAKUTE!\nReincarnation / Action / Demons\n\uf4c6\nEXPLORE SERIES\n\uf133\nCHAPTER SOURCE\nCHECK AVAILABILITY\nTHE LINEUP  /  SWIPE TO EXPLORE\n\uf127\n\uf133\n01\nKage no Jitsuryokusha ni Naritakute!\n02\nKomi-san wa Komyushou Desu.\n03\nKumo desu ga, Nani ka?\n04\nKi ni Natteru Hito ga Otoko ja Nakatta\n05\nMairimashita! Iruma-kun\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\n661\nOPEN SERIES  \u2197\nMANGADEX\nChicchakute Dekakute Kawaii Nanase-san o Kanchigai Motokare kara Ubatte Shiawase ni Suru\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nThe Female Knight Who Knew Only Battle Was Pampered Continuously\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nMonochrome Lovers\n174\nOPEN SERIES  \u2197\nMANGADEX\nTenmaku no Jaadugar\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\nMANGADEX\nSSS-geup Jugeoya Saneun Hunter\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nMANGADEX\nMieruko-chan\n\uf1a9\nMANGADEX\nAkuyaku Reijou Level 99 ~Watashi wa Ura Boss desuga Maou de wa Arimasen~\n\uf1a9\nMANGADEX\nKaoru Hana wa Rin to Saku\n\uf1a9\nMANGADEX\nMaou no Ore ga Dorei Elf o Yome ni Shitanda ga, Dou Medereba ii",
+      "coverImages": 21,
+      "loadedCovers": 21,
+      "firstCoverLoadedMs": 11595.199999999255,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792079853903,
+        "expiresAt": 1792079964666,
+        "error": "[mangadex] Failed to load chapters for b0b721ff-c388-4486-aa0f-c2b0bb321512 \u2014 HTTP 429",
+        "id": "mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512"
+      },
+      "elapsedMs": 32532
+    }
+  ],
+  "errors": [],
+  "statuses": {
+    "200": 31,
+    "429": 19
+  }
+}

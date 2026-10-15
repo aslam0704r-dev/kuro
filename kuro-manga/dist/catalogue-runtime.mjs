@@ -1,6 +1,6 @@
 import { validNewIdentity } from './catalogue-model.mjs';
 const wrapped=new WeakSet();
-function checkedManifest(manifest,id,origin){
+export function checkedManifest(manifest,id,origin){
  if(!manifest?.verified||manifest.validation!=='complete-chapter'||manifest.validatedPages!==manifest.pages?.length||manifest.pageCount!==manifest.pages?.length||manifest.chapterId!==id||!Array.isArray(manifest.pages)||!manifest.pages.length||manifest.pages.some(page=>{
   try{const url=new URL(page.url);return url.origin!==origin||url.pathname!=='/api/catalogue/page'||!url.searchParams.get('ticket');}catch{return true;}
  }))throw new Error('Chapter did not return a server verified page manifest. Retry later.');return manifest;

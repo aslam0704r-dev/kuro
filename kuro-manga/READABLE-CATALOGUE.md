@@ -1,4 +1,6 @@
-# KURO 4.5.0: faster verified catalogue
+# KURO 4.6.0: progressive verified catalogue
+
+Home/search now share a fair incremental checking queue: a pending long chapter releases its worker after each hosted batch so other titles can qualify. Discovery publishes completed source/page results independently, and metadata/page checks share Retry-After cooldowns. Every source entry can have a saved choice; approval and working connection requirements still govern actual content. Read [the current report](docs/PROVIDER-LOADING-4.6.0.md).
 
 ## Loading performance
 

@@ -1629,13 +1629,273 @@
     } };
   }
 
+  // client/listing-queue.mjs
+  init_define_KURO_BOOTSTRAP_PROVIDERS();
+  function createListingQueue({ step, clock = Date.now, isVisible = () => true, retryMs = 600, maxJobs = 2400 }) {
+    const jobs = /* @__PURE__ */ new Map(), waiting = [], queued = /* @__PURE__ */ new Set();
+    let active = 0, timer, scheduled = false, disposed = false;
+    const enqueue = (job) => {
+      if (!queued.has(job.id)) {
+        queued.add(job.id);
+        waiting.push(job.id);
+      }
+    };
+    function schedule() {
+      if (disposed || scheduled) return;
+      scheduled = true;
+      queueMicrotask(() => {
+        scheduled = false;
+        pump();
+      });
+    }
+    function pump() {
+      clearTimeout(timer);
+      timer = void 0;
+      if (disposed || !isVisible()) return;
+      let earliest = Infinity, remaining = waiting.length;
+      while (active < 2 && remaining-- > 0 && waiting.length) {
+        const id = waiting.shift();
+        queued.delete(id);
+        const job = jobs.get(id);
+        if (!job || !job.owners.size || job.running) continue;
+        if (job.retryAt > clock()) {
+          earliest = Math.min(earliest, job.retryAt);
+          enqueue(job);
+          continue;
+        }
+        job.running = true;
+        active++;
+        Promise.resolve().then(() => step(job.row)).catch((error) => ({ pending: true, retryAt: clock() + 3e4, error: error.message })).then((value) => {
+          if (disposed) return;
+          for (const listener of [...job.owners.values()]) try {
+            listener(job.row, value);
+          } catch {
+          }
+          if (value?.pending || value?.obsolete) {
+            job.retryAt = Math.max(clock() + retryMs, Number.isFinite(value.retryAt) ? value.retryAt : 0);
+            if (job.owners.size) enqueue(job);
+          }
+        }).finally(() => {
+          job.running = false;
+          active--;
+          if (!job.owners.size && !queued.has(job.id)) jobs.delete(job.id);
+          schedule();
+        });
+      }
+      if (active < 2 && earliest < Infinity) {
+        timer = setTimeout(schedule, Math.max(1, earliest - clock()));
+        timer.unref?.();
+      }
+    }
+    return {
+      watch(rows, listener) {
+        if (disposed) return () => {
+        };
+        const owner = /* @__PURE__ */ Symbol(), owned = [];
+        for (const row of rows) {
+          if (typeof row?.id !== "string") continue;
+          let job = jobs.get(row.id);
+          if (!job) {
+            if (jobs.size >= maxJobs) continue;
+            job = { id: row.id, row, owners: /* @__PURE__ */ new Map(), retryAt: 0, running: false };
+            jobs.set(row.id, job);
+          } else job.row = row;
+          job.owners.set(owner, listener);
+          owned.push(job);
+          if (!job.running) enqueue(job);
+        }
+        schedule();
+        return () => {
+          for (const job of owned) {
+            job.owners.delete(owner);
+            if (!job.owners.size && !job.running) {
+              jobs.delete(job.id);
+              queued.delete(job.id);
+            }
+          }
+          schedule();
+        };
+      },
+      resume: schedule,
+      dispose() {
+        disposed = true;
+        clearTimeout(timer);
+        waiting.length = 0;
+        queued.clear();
+        for (const job of jobs.values()) job.owners.clear();
+        jobs.clear();
+      }
+    };
+  }
+
+  // client/progressive-discovery.mjs
+  init_define_KURO_BOOTSTRAP_PROVIDERS();
+  function progressiveDiscovery(require2) {
+    const React = require2(15), { useQueries, useQueryClient } = require2(1548), { sourceManager } = require2(789), { mergePages } = require2(870), { fetchDiscoveryPage } = require2(1598), { relevanceScore } = require2(791), { useEnabledSources } = require2(1595);
+    return function useDiscovery(query, filters, enabled = true) {
+      const chosen = useEnabledSources(), client = useQueryClient(), ids = chosen.filter((id) => {
+        const source = sourceManager.get(id);
+        return !!source && (!filters.sourceId || filters.sourceId === id) && (!filters.readableOnly || source.capabilities.readable !== false) && (!filters.publisherOnly || source.capabilities.publisher) && (!filters.kind || filters.kind === "ALL" || source.capabilities.originFilter !== false) && (!filters.kind || !source.capabilities.supportedKinds || source.capabilities.supportedKinds.includes(filters.kind));
+      });
+      const text = query.trim(), filterKey = JSON.stringify(filters), key = JSON.stringify([text, ids, filterKey]), initial = ids.map((sourceId) => ({ sourceId, page: 1 }));
+      const [state, setState] = React.useState(() => ({ key, cursors: initial })), cursors = state.key === key ? state.cursors : initial;
+      const queries = useQueries({ queries: cursors.map((cursor) => ({ queryKey: ["discovery-v2", text, filterKey, cursor.sourceId, cursor.page, cursor.token || ""], enabled: enabled && ids.length > 0, staleTime: 3e5, retry: false, queryFn: () => fetchDiscoveryPage(query, filters, [cursor]) })) });
+      const fingerprint = queries.map((row) => [row.dataUpdatedAt, row.status, row.fetchStatus].join(":")).join("|");
+      const pages = React.useMemo(() => queries.flatMap((row) => row.data ? [row.data] : []), [fingerprint, key]);
+      const items = React.useMemo(() => {
+        const rows = mergePages(pages);
+        if (text && filters.sort === "RELEVANCE") {
+          const score = (row) => Math.max(...[row.title, ...row.altTitles || []].map((title) => relevanceScore(text, title)));
+          rows.sort((a, b) => score(b) - score(a) || relevanceScore(text, b.title) - relevanceScore(text, a.title) || Number(!!a.catalogueOnly) - Number(!!b.catalogueOnly));
+        }
+        return rows;
+      }, [pages, key]);
+      const reports = React.useMemo(() => [...new Map(pages.flatMap((page) => page.reports || []).map((row) => [row.sourceId, row])).values()], [pages]);
+      const planned = new Set(cursors.map((cursor) => cursor.sourceId + "|" + cursor.page + "|" + (cursor.token || ""))), latest = /* @__PURE__ */ new Map();
+      cursors.forEach((cursor, index) => {
+        if (queries[index]?.data) latest.set(cursor.sourceId, queries[index].data);
+      });
+      const next = [...latest.values()].flatMap((page) => page.next || []).filter((cursor) => cursor.page <= 25 && !planned.has(cursor.sourceId + "|" + cursor.page + "|" + (cursor.token || "")));
+      const isFetching = queries.some((row) => row.isFetching), isPending = enabled && queries.some((row) => row.isPending), isError = queries.length > 0 && queries.every((row) => row.isError);
+      const refetch = () => Promise.all(queries.map((row) => row.refetch()));
+      return {
+        items,
+        reports,
+        sourceCount: ids.length,
+        data: pages.length ? { pages, pageParams: cursors } : void 0,
+        isLoading: !pages.length && isPending,
+        isPending: !pages.length && isPending,
+        isFetching,
+        isRefetching: isFetching && pages.length > 0,
+        isError,
+        error: queries.find((row) => row.error)?.error,
+        isSuccess: pages.length > 0,
+        status: pages.length ? "success" : isError ? "error" : "pending",
+        hasNextPage: next.length > 0,
+        isFetchingNextPage: queries.some((row, index) => cursors[index].page > 1 && row.isFetching),
+        fetchNextPage: () => {
+          setState((previous) => {
+            const current = previous.key === key ? previous.cursors : initial;
+            const seen = new Set(current.map((cursor) => cursor.sourceId + "|" + cursor.page + "|" + (cursor.token || "")));
+            return { key, cursors: [...current, ...next.filter((cursor) => !seen.has(cursor.sourceId + "|" + cursor.page + "|" + (cursor.token || "")))] };
+          });
+          return Promise.resolve();
+        },
+        refetch,
+        retrySources: () => {
+          setState({ key, cursors: initial });
+          return client.resetQueries({ queryKey: ["discovery-v2", text, filterKey] });
+        }
+      };
+    };
+  }
+
+  // client/catalogue-http.mjs
+  init_define_KURO_BOOTSTRAP_PROVIDERS();
+  function retryDate(value, clock = Date.now) {
+    const now = clock(), seconds = Number(value), date = Number.isFinite(seconds) && seconds > 0 ? now + seconds * 1e3 : Date.parse(value);
+    return Math.max(now + 1e3, Math.min(now + 36e5, Number.isFinite(date) ? date : now + 6e4));
+  }
+  function createCatalogueHttp(original, resolveUrl, { clock = Date.now, getRetryAt = () => 0, onBackoff = () => {
+  } } = {}) {
+    const cache = /* @__PURE__ */ new Map(), inflight = /* @__PURE__ */ new Map();
+    let failure;
+    const applies = (value) => {
+      try {
+        const url = new URL(value);
+        return url.origin === "https://api.mangadex.org" && !url.username && !url.password;
+      } catch {
+        return false;
+      }
+    };
+    function responseError(response) {
+      const error = new Error("Source request failed (HTTP " + response.status + ").");
+      error.status = response.status;
+      if (response.status === 429 || response.status === 503) error.retryAt = retryDate(response.headers?.get("Retry-After"), clock);
+      return error;
+    }
+    async function requestText(url, options = {}) {
+      if (!applies(url)) return original.requestText(url, options);
+      const method = options.method || "GET", key = method + ":" + url, hit = cache.get(key);
+      if (method === "GET" && options.ttlMs !== 0 && hit?.expires > clock()) return hit.value;
+      const retryAt = Math.max(failure?.retryAt || 0, getRetryAt());
+      if (retryAt > clock()) {
+        const error = new Error(failure?.message || "Source rate limit reached. Retry later.");
+        error.status = failure?.status || 429;
+        error.retryAt = retryAt;
+        throw error;
+      }
+      if (method === "GET" && inflight.has(key)) return inflight.get(key);
+      const task = (async () => {
+        const controller = new AbortController();
+        let timedOut = false;
+        const abort = () => controller.abort(), timer = setTimeout(() => {
+          timedOut = true;
+          controller.abort();
+        }, Math.max(1, Math.min(25e3, Number(options.timeoutMs) || 12e3)));
+        options.signal?.addEventListener("abort", abort, { once: true });
+        if (options.signal?.aborted) controller.abort();
+        try {
+          const response = await fetch(resolveUrl(url), { method, headers: options.headers, body: options.body, credentials: "same-origin", cache: "no-store", signal: controller.signal });
+          if (!response.ok) throw responseError(response);
+          const value = await response.text();
+          if (method === "GET" && options.ttlMs !== 0) {
+            let expires = clock() + Math.max(0, Math.min(1e4, Number(options.ttlMs) || 1e4));
+            try {
+              const json = JSON.parse(value), rows = Array.isArray(json.data) ? json.data : [json.data];
+              for (const row of rows) if (Number.isFinite(row?.kuroContentApproval?.checkedAt)) expires = Math.min(expires, row.kuroContentApproval.checkedAt + 3e4);
+            } catch {
+            }
+            cache.set(key, { value, expires });
+            while (cache.size > 240) cache.delete(cache.keys().next().value);
+          }
+          return value;
+        } catch (error) {
+          if (timedOut) {
+            error.status = 503;
+            error.retryAt = clock() + 3e4;
+          }
+          if (error.retryAt) {
+            failure = error;
+            onBackoff(error.retryAt);
+          }
+          throw error;
+        } finally {
+          clearTimeout(timer);
+          options.signal?.removeEventListener("abort", abort);
+          inflight.delete(key);
+        }
+      })();
+      if (method === "GET") inflight.set(key, task);
+      return task;
+    }
+    return { ...original, requestText, requestJson: async (url, options) => applies(url) ? JSON.parse(await requestText(url, options)) : original.requestJson(url, options), clearHttpCache: () => {
+      cache.clear();
+      original.clearHttpCache?.();
+    } };
+  }
+
   // client/catalogue-core.mjs
   var completeManifest = (manifest, local = false) => manifest?.verified === true && Array.isArray(manifest.pages) && manifest.pages.length > 0 && (local ? manifest.validation === "device" : manifest.validation === "complete-chapter" && manifest.validatedPages === manifest.pages.length && manifest.pageCount === manifest.pages.length);
   var readinessFresh = (value) => !!value && Date.now() - value.checkedAt < 12e4 && value.expiresAt > Date.now();
+  var temporaryFailure = (error) => !!error.retryAt || [408, 425, 429].includes(error.status) || error.status >= 500 || ["AbortError", "TimeoutError"].includes(error.name) || /timed out|timeout|fetch|network/i.test(error.message);
+  async function jsonBody(response) {
+    let value;
+    try {
+      value = await response.json();
+    } catch {
+    }
+    if (value && typeof value === "object" && !Array.isArray(value)) return value;
+    if (!response.ok) return {};
+    const error = new Error("Source returned invalid JSON. Retry later.");
+    error.status = 502;
+    throw error;
+  }
   function createCatalogueCore(providers) {
     providers = providers.map(policyProvider);
-    const registry = { providers }, subscribers = /* @__PURE__ */ new Set(), readiness = /* @__PURE__ */ new Map(), checks = /* @__PURE__ */ new Map(), manifests = /* @__PURE__ */ new Map(), snapshots = /* @__PURE__ */ new Map();
+    const registry = { providers }, subscribers = /* @__PURE__ */ new Set(), readiness = /* @__PURE__ */ new Map(), checks = /* @__PURE__ */ new Map(), manifests = /* @__PURE__ */ new Map(), snapshots = /* @__PURE__ */ new Map(), listingProgress = /* @__PURE__ */ new Map(), sourceRetryAt = /* @__PURE__ */ new Map();
     let epoch = 0, manager, store, activeChapter;
+    let runtimeEligible = new Set(providers.filter((p) => p.contentPolicy.state === "eligible" && p.available !== false).map((p) => p.id));
     const local = typeof window !== "undefined" ? createLocalRuntime() : null;
     const safety = createContentRuntime(local), admitted = (row) => row?.sourceId === "local" ? local?.books.some((b) => b.id === row.id) : !!safety.current(row?.sourceId, row?.id);
     async function request(id, action, params = {}) {
@@ -1656,17 +1916,36 @@
       return requestOnce(id, action, params);
     }
     async function requestOnce(id, action, params = {}) {
+      if ((sourceRetryAt.get(id) || 0) > Date.now()) {
+        const error = new Error("Source rate limit reached. Retry later.");
+        error.status = 429;
+        error.retryAt = sourceRetryAt.get(id);
+        throw error;
+      }
       const query = new URLSearchParams();
       for (const [name, value] of Object.entries(params)) if (value !== void 0) query.set(name, typeof value === "object" ? JSON.stringify(value) : String(value));
       const controller = new AbortController(), timer = setTimeout(() => controller.abort(), 25e3);
       try {
         const response = await fetch("/api/catalogue/provider/" + id + "/" + action + "?" + query, { credentials: "same-origin", headers: { Accept: "application/json" }, signal: controller.signal });
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || "Provider unavailable. Retry later.");
+        const data = await jsonBody(response);
+        if (!response.ok) {
+          const error = new Error(data.error || "Provider unavailable. Retry later.");
+          error.status = response.status;
+          if (response.status === 429 || response.status === 503) {
+            error.retryAt = Math.max(sourceRetryAt.get(id) || 0, retryDate(response.headers?.get("Retry-After")));
+            sourceRetryAt.set(id, error.retryAt);
+          }
+          throw error;
+        }
         if (action === "pages" && data.result?.contentApproval?.version !== CONTENT_POLICY_VERSION) throw new Error(CONTENT_MESSAGE);
         return data.result;
       } catch (error) {
-        if (error.name === "AbortError") throw new Error("Provider request timed out. Retry later.");
+        if (error.name === "AbortError") {
+          const failure = new Error("Provider request timed out. Retry later.");
+          failure.status = 503;
+          failure.retryAt = Date.now() + 3e4;
+          throw failure;
+        }
         throw error;
       } finally {
         clearTimeout(timer);
@@ -1678,7 +1957,9 @@
     function notify() {
       epoch++;
       readiness.clear();
+      listingProgress.clear();
       for (const fn of subscribers) fn();
+      listing.resume();
       if (typeof window !== "undefined") window.dispatchEvent(new Event("kuro:catalogue-updated"));
     }
     const cached = (id) => {
@@ -1772,24 +2053,135 @@
       });
       return task;
     }
-    function preferences(currentRegistry = registry) {
+    async function checkListing(manga) {
+      const hit = cached(manga.id);
+      if (hit) {
+        if (hit.ready) try {
+          await safety.verify(manga);
+        } catch {
+          return { ready: false, checkedAt: Date.now(), expiresAt: Date.now() + 12e4, error: CONTENT_MESSAGE };
+        }
+        if (cached(manga.id) === hit) return hit;
+      }
+      if (manga.sourceId !== "mangadex") return check(manga);
+      if ((sourceRetryAt.get(manga.sourceId) || 0) > Date.now()) return { pending: true, retryAt: sourceRetryAt.get(manga.sourceId) };
+      const started = epoch, key = "listing:" + started + ":" + manga.id;
+      if (checks.has(key)) return checks.get(key).promise;
+      let progress = listingProgress.get(manga.id);
+      if (!progress || progress.epoch !== started || progress.expiresAt <= Date.now()) progress = { epoch: started, expiresAt: Date.now() + 3e5, index: 0, attempts: 0 };
+      if (progress.retryAt > Date.now()) return { pending: true, retryAt: progress.retryAt };
+      const record = { id: manga.id, invalidated: false, promise: null }, obsolete = () => started !== epoch || record.invalidated;
+      const task = (async () => {
+        let ready = false, error;
+        try {
+          await safety.verify(manga);
+          if (!progress.chapters) {
+            const response = await fetch("/api/catalogue/readable/check?" + new URLSearchParams({ provider: manga.sourceId, id: manga.id }), { credentials: "same-origin", cache: "no-store", signal: AbortSignal.timeout(15e3) }), proof = await jsonBody(response);
+            if (!response.ok) {
+              const failure = new Error(proof.error || "Source check is unavailable.");
+              failure.status = response.status;
+              if (response.status === 429 || response.status === 503) {
+                failure.retryAt = Math.max(sourceRetryAt.get(manga.sourceId) || 0, retryDate(response.headers?.get("Retry-After")));
+                sourceRetryAt.set(manga.sourceId, failure.retryAt);
+              }
+              throw failure;
+            }
+            progress.observedAt = proof.asOf;
+            progress.inventoryRevision = proof.inventoryRevision || 0;
+            ready = proof.ready === true && proof.validation === "complete-chapter" && proof.validatedPages > 0 && proof.validatedPages === proof.pageCount && proof.expiresAt > Date.now();
+            if (ready) progress.proof = proof;
+            else {
+              const chapters = await manager.require(manga.sourceId).getChapterList(manga.id), cost = (chapter) => Number.isInteger(chapter.pages) && chapter.pages > 0 ? chapter.pages : Infinity;
+              progress.chapters = [...chapters].sort((a, b) => cost(a) - cost(b)).slice(0, 10);
+              if (progress.chapters.length) {
+                if (obsolete()) return { obsolete: true };
+                listingProgress.set(manga.id, progress);
+                while (listingProgress.size > 2e3) listingProgress.delete(listingProgress.keys().next().value);
+              }
+            }
+          }
+          if (!ready && progress.chapters && progress.index < progress.chapters.length) {
+            const chapter = progress.chapters[progress.index];
+            let value;
+            try {
+              value = await requestOnce("mangadex", "pages", { id: chapter.id });
+              if (completeManifest(value)) {
+                checkedManifest(value, chapter.id, location.origin);
+                if (value.contentApproval?.mangaId !== manga.id) throw new Error("Chapter does not belong to this title.");
+                ready = true;
+                progress.proof = { expiresAt: value.expiresAt, asOf: value.readabilityAsOf, inventoryRevision: value.inventoryRevision || 0 };
+                manifests.set(chapter.id, value);
+                while (manifests.size > 64) manifests.delete(manifests.keys().next().value);
+                emitCredits();
+              } else if (value?.chapterId === chapter.id && value.pending === true && value.verified === false && !value.pages?.length && (value.stage === "preparing" || Number.isInteger(value.pageCount) && value.pageCount > 0 && Number.isInteger(value.validatedPages) && value.validatedPages >= 0 && value.validatedPages < value.pageCount)) {
+                if (++progress.attempts >= 260) throw new Error("Chapter verification did not complete.");
+                if (obsolete()) return { obsolete: true };
+                listingProgress.set(manga.id, progress);
+                return { pending: true };
+              } else throw new Error("The complete chapter could not be verified.");
+            } catch (failure) {
+              if (temporaryFailure(failure)) throw failure;
+              error = failure.message;
+              progress.index++;
+              progress.attempts = 0;
+              if (progress.index < progress.chapters.length) {
+                if (obsolete()) return { obsolete: true };
+                listingProgress.set(manga.id, progress);
+                return { pending: true };
+              }
+            }
+          }
+          if (ready) await safety.verify(manga, void 0, true);
+        } catch (failure) {
+          error = failure.message;
+          if (obsolete()) return { obsolete: true };
+          if (temporaryFailure(failure)) {
+            progress.retryAt = failure.retryAt || Date.now() + 3e4;
+            listingProgress.set(manga.id, progress);
+            sourceRetryAt.set(manga.sourceId, Math.max(sourceRetryAt.get(manga.sourceId) || 0, progress.retryAt));
+            return { pending: true, retryAt: progress.retryAt, error };
+          }
+          ready = false;
+        }
+        if (obsolete()) return { obsolete: true };
+        listingProgress.delete(manga.id);
+        const observation = progress.proof || { asOf: progress.observedAt, inventoryRevision: progress.inventoryRevision }, at = Number.isFinite(observation.asOf) ? observation.asOf : Date.now(), revision = observation.inventoryRevision || 0;
+        if (olderSnapshot(manga.id, at, revision)) return { obsolete: true };
+        rememberSnapshot(manga.id, at, ready, revision);
+        const result = { ready: ready && observation.expiresAt > Date.now(), checkedAt: Date.now(), expiresAt: ready ? Math.min(Date.now() + 12e4, observation.expiresAt) : Date.now() + 12e4, error };
+        readiness.set(manga.id, result);
+        while (readiness.size > 2e3) readiness.delete(readiness.keys().next().value);
+        core.lastCheck = { ...result, id: manga.id };
+        safety.changed();
+        if (result.ready && typeof window !== "undefined") window.dispatchEvent(new Event("kuro:readable-updated"));
+        return result;
+      })();
+      record.promise = task;
+      checks.set(key, record);
+      task.finally(() => {
+        if (checks.get(key) === record) checks.delete(key);
+      });
+      return task;
+    }
+    const listing = createListingQueue({ step: checkListing, isVisible: () => typeof document === "undefined" || !document.hidden });
+    function preferences(currentRegistry = core.registry) {
       if (!store || !manager) return;
       const old = store.getState().sourcePreferences, next = { ...old };
       let changed = false;
       currentRegistry = { ...currentRegistry, providers: currentRegistry.providers.map(policyProvider) };
-      for (const id of Object.keys(next)) if ((!manager.get(id) || id !== "local" && providerContentPolicy({ id }).state !== "eligible") && next[id].enabled) {
-        next[id] = { ...next[id], enabled: false };
+      core.registry = currentRegistry;
+      const eligible = new Set(currentRegistry.providers.filter((p) => p.contentPolicy.state === "eligible" && p.available !== false).map((p) => p.id));
+      if ([...eligible].sort().join("|") !== [...runtimeEligible].sort().join("|")) changed = true;
+      runtimeEligible = eligible;
+      for (const p of currentRegistry.providers) {
+        const previous = next[p.id];
+        if (previous?.selectionVersion === 1) continue;
+        next[p.id] = { ...previous, enabled: p.contentPolicy.state === "eligible" && p.available !== false && (typeof previous?.enabled === "boolean" ? previous.enabled : true), selectionVersion: 1, language: previous?.language || p.language || "en", readingMode: previous?.readingMode || (p.id === "guya" ? "RTL" : void 0) };
         changed = true;
       }
-      for (const p of currentRegistry.providers.filter((p2) => manager.get(p2.id))) {
-        if (!next[p.id]) {
-          next[p.id] = { enabled: !!p.defaultEnabled && p.available !== false, language: p.language || "en", readingMode: p.id === "guya" ? "RTL" : void 0 };
-          changed = true;
-        }
-        if (p.available === false && next[p.id].enabled) {
-          next[p.id] = { ...next[p.id], enabled: false };
-          changed = true;
-        }
+      if (manager.get("local") && next.local?.selectionVersion !== 1) {
+        next.local = { ...next.local, enabled: typeof next.local?.enabled === "boolean" ? next.local.enabled : true, selectionVersion: 1, language: next.local?.language || "en" };
+        changed = true;
       }
       if (changed) store.setState({ sourcePreferences: next });
     }
@@ -1806,6 +2198,8 @@
       return manifest;
     }
     function initialize(id, api, require2) {
+      if (id === 861) return createCatalogueHttp(api, (url) => require2(862).resolveFetchUrl(url), { getRetryAt: () => sourceRetryAt.get("mangadex") || 0, onBackoff: (until) => sourceRetryAt.set("mangadex", Math.max(sourceRetryAt.get("mangadex") || 0, until)) });
+      if (id === 1597) return { ...api, useDiscovery: progressiveDiscovery(require2) };
       if ([1700, 1703, 1697].includes(id)) return emailAuthExtension(id, api, require2);
       if (id === 789) {
         manager = api.sourceManager;
@@ -1849,7 +2243,7 @@
           };
         }
         const enabled = manager.enabled;
-        manager.enabled = (ids) => enabled.call(manager, ids.filter((id2) => id2 === "local" || providerContentPolicy({ id: id2 }).state === "eligible"));
+        manager.enabled = (ids) => enabled.call(manager, ids.filter((id2) => id2 === "local" || runtimeEligible.has(id2)));
         manager.getMangaDetails = async (manga) => (await safety.verify(manga, void 0, true)).manga;
       }
       if (id === 1249) {
@@ -1911,23 +2305,33 @@
         store = api.useSettingsStore;
         preferences();
         store.persist?.onFinishHydration?.(() => preferences());
-        const originalAll = store.getState().setAllSourcesEnabled, originalReset = store.getState().resetToDefaults, originalEnable = store.getState().setSourceEnabled;
-        store.setState({ setSourceEnabled: (id2, value) => originalEnable(id2, value && (id2 === "local" || providerContentPolicy({ id: id2 }).state === "eligible")), setAllSourcesEnabled: (value) => {
-          originalAll(value);
-          preferences(core.registry);
+        const originalReset = store.getState().resetToDefaults;
+        const known = (id2) => core.registry.providers.some((p) => p.id === id2) || id2 === "local" && manager.get(id2);
+        store.setState({ setSourceEnabled: (id2, value) => {
+          if (!known(id2)) return;
+          const sourcePreferences = store.getState().sourcePreferences;
+          store.setState({ sourcePreferences: { ...sourcePreferences, [id2]: { ...sourcePreferences[id2], enabled: !!value, selectionVersion: 1 } } });
+        }, setAllSourcesEnabled: (value) => {
+          const sourcePreferences = store.getState().sourcePreferences;
+          store.setState({ sourcePreferences: Object.fromEntries(Object.entries(sourcePreferences).map(([id2, p]) => [id2, { ...p, enabled: known(id2) && !!value, selectionVersion: 1 }])) });
         }, resetToDefaults: () => {
           originalReset();
+          store.setState({ sourcePreferences: {} });
           preferences(core.registry);
         } });
-        let previous = JSON.stringify(store.getState().sourcePreferences);
+        const activeIds = (state) => Object.keys(state.sourcePreferences).filter((id2) => state.sourcePreferences[id2]?.enabled && manager.get(id2) && (id2 === "local" || runtimeEligible.has(id2))).sort();
+        let previous = store.getState().sourcePreferences, previousActive = JSON.stringify(activeIds(store.getState()));
         store.subscribe((state) => {
-          const value = JSON.stringify(state.sourcePreferences);
-          if (value !== previous) {
-            previous = value;
-            preferences(core.registry);
+          if (state.sourcePreferences === previous) return;
+          previous = state.sourcePreferences;
+          preferences(core.registry);
+          const active = JSON.stringify(activeIds(store.getState()));
+          if (active !== previousActive) {
+            previousActive = active;
             notify();
           }
         });
+        return { ...api, selectEnabledSourceIds: activeIds };
       }
       if (id === 790) api.uniqueChapters = uniqueChapters;
       if (id === 794) api.groupEditions = (items) => groupSeries(items, true);
@@ -1964,6 +2368,7 @@
           const valid = !!approved && proof?.ready === true && proof.mangaId === row.id && /^mangadex:[0-9a-f-]{36}$/i.test(proof.chapterId || "") && proof.version === "complete-chapter-1" && proof.policyVersion === CONTENT_POLICY_VERSION && proof.validation === "complete-chapter" && Number.isInteger(proof.validatedPages) && proof.validatedPages > 0 && proof.validatedPages <= 500 && proof.validatedPages === proof.pageCount && Number.isFinite(proof.checkedAt) && proof.checkedAt <= now + 5e3 && Number.isFinite(proof.expiresAt) && proof.expiresAt > now && proof.expiresAt <= proof.checkedAt + 216e5;
           if (Object.hasOwn(raw, "kuroReadability") && rememberSnapshot(row.id, raw.kuroReadabilityAsOf, valid, raw.kuroReadabilityRevision || 0)) {
             readiness.delete(row.id);
+            listingProgress.delete(row.id);
             for (const [key, record] of checks) if (record.id === row.id) {
               record.invalidated = true;
               checks.delete(key);
@@ -1998,7 +2403,6 @@
           }, [items, revision, ageRevision]);
           router.useFocusEffect(React.useCallback(() => {
             if (!active || paused || document.hidden) return;
-            let alive = true, index = 0;
             const listener = () => {
               setRetry((x) => x + 1);
               setRevision((x) => x + 1);
@@ -2008,18 +2412,9 @@
               const value = cached(row.id);
               return !(value && (!value.ready || admitted(row)));
             });
-            const work = async () => {
-              while (alive && !document.hidden) {
-                const row = queue[index++];
-                if (!row) break;
-                const value = await check(row);
-                if (alive && !value.obsolete) setRevision((x) => x + 1);
-              }
-            };
-            work();
-            work();
+            const stop = listing.watch(queue, () => setRevision((x) => x + 1));
             return () => {
-              alive = false;
+              stop();
               subscribers.delete(listener);
             };
           }, [active, retry, items, paused, ageRevision]));
@@ -2059,8 +2454,9 @@
       }
     }
     const core = { registry, initialize, local, safety, notify, resume: () => {
+      listing.resume();
       for (const fn of subscribers) fn(false);
-    }, preferences, check, checkChapter, cached, replayCredits: emitCredits, get manager() {
+    }, preferences, check, checkListing, checkChapter, cached, replayCredits: emitCredits, get manager() {
       return manager;
     }, get store() {
       return store;
@@ -2072,7 +2468,7 @@
   }
   function installBootstrap(core) {
     let define;
-    const ids = /* @__PURE__ */ new Set([789, 784, 1706, 790, 794, 870, 791, 1342, 875, 1389, 1388, 1595, 862, 1249, 1660, 1536, 1602, 1705, 1722, 873, 1700, 1703, 1697]);
+    const ids = /* @__PURE__ */ new Set([789, 784, 1706, 790, 794, 870, 791, 1342, 875, 1389, 1388, 1595, 1597, 861, 862, 1249, 1660, 1536, 1602, 1705, 1722, 873, 1700, 1703, 1697]);
     Object.defineProperty(window, "__d", { configurable: true, get: () => define, set(original) {
       define = function(factory, id, dependencies, ...rest) {
         if (!ids.has(id)) return original(factory, id, dependencies, ...rest);

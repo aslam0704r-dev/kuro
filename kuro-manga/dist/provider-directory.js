@@ -2,8 +2,9 @@ const categories={official:'Official platforms',metadata:'Metadata providers',ag
 const languages={en:'English',ar:'Arabic',tr:'Turkish',id:'Indonesian'};
 const element=(tag,text,className)=>{const node=document.createElement(tag);if(text!==undefined)node.textContent=text;if(className)node.className=className;return node;};
 function status(provider){
- if(provider.contentPolicy?.state!=='eligible')return 'Restricted · unverified rating';
+ if(provider.contentPolicy?.state==='blocked')return 'Blocked by content rules';
  if(!provider.adapter)return provider.mode==='unresolved'?'Address needed':'Open on platform';
+ if(provider.contentPolicy?.state!=='eligible')return 'Rating support needed';
  if(provider.available===false)return 'Setup needed';
  if(!provider.readable)return provider.id==='webtoon'?'Official catalogue':'Metadata only';
  if(provider.health?.status==='unavailable')return 'Temporarily unavailable';
@@ -12,32 +13,33 @@ function status(provider){
  return 'Reader · verification required';
 }
 export function mountProviderDirectory(bridge){
- const entry=element('a','All providers','kuro-directory-entry');entry.id='kuro-provider-entry';entry.href='/providers';entry.hidden=true;document.body.append(entry);
+ const entry=element('a','All '+bridge.registry.providers.length.toLocaleString()+' providers','kuro-directory-entry');entry.id='kuro-provider-entry';entry.href='/providers';entry.hidden=true;document.body.append(entry);
  const view=element('main',undefined,'kuro-provider-directory');view.id='kuro-provider-directory';view.hidden=true;view.setAttribute('aria-label','KURO provider directory');
  view.innerHTML=`<div class="kuro-directory-shell"><header class="kuro-directory-header"><a href="/" class="kuro-directory-brand" aria-label="KURO home">KURO <span>/</span></a><a href="/settings" class="kuro-directory-back">Back to settings</a></header><div class="kuro-directory-heading"><div><p class="kuro-directory-eyebrow">YOUR STORY SOURCES</p><h1>One library. More worlds.</h1><p>Choose where KURO finds your next manga, manhwa or manhua.</p></div><button type="button" id="kuro-catalogue-refresh">Refresh sources <span aria-hidden="true">↻</span></button></div><div class="kuro-directory-stats" aria-label="Provider coverage"></div><section class="kuro-directory-controls" aria-label="Find providers"><label class="kuro-directory-search"><span class="kuro-directory-label">Find a provider</span><input id="kuro-provider-search" type="search" placeholder="Search by name, including aliases" autocomplete="off"></label><label><span class="kuro-directory-label">Provider category</span><select id="kuro-provider-category"><option value="all">All categories</option></select></label><label><span class="kuro-directory-label">Provider availability</span><select id="kuro-provider-availability"><option value="all">All providers</option><option value="reader">Reader adapters</option><option value="metadata">Metadata only</option><option value="external">Open on platform</option><option value="unresolved">Address needed</option><option value="enabled">Enabled in KURO</option></select></label></section><p id="kuro-directory-count" role="status" aria-live="polite"></p><div class="kuro-directory-list"></div><p class="kuro-directory-empty" hidden>No providers match. Try another name or category.</p><footer class="kuro-directory-footer"><p>Enabled sources refresh while KURO is open. Chapters and pages are checked when loaded; availability can change at the provider.</p><p>Metadata credits: <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a> · <a href="https://kitsu.app/" target="_blank" rel="noopener noreferrer">Kitsu</a> · <a href="https://jikan.moe/" target="_blank" rel="noopener noreferrer">Jikan / MyAnimeList</a> · <a href="https://www.mangaupdates.com/" target="_blank" rel="noopener noreferrer">MangaUpdates</a> · <a href="https://shikimori.io/" target="_blank" rel="noopener noreferrer">Shikimori</a> · <a href="https://mangabaka.org/" target="_blank" rel="noopener noreferrer">MangaBaka + its upstream providers</a></p></footer></div>`;
  document.body.append(view);
  const search=view.querySelector('#kuro-provider-search'),category=view.querySelector('#kuro-provider-category'),availability=view.querySelector('#kuro-provider-availability'),list=view.querySelector('.kuro-directory-list'),count=view.querySelector('#kuro-directory-count');
  availability.querySelector('option[value="reader"]').textContent='Read in KURO';
+ availability.querySelector('option[value="enabled"]').textContent='Selected sources';
  const more=element('button','Show more sources','kuro-directory-more');more.type='button';list.after(more);let limit=80,selection='';
  for(const [value,label]of Object.entries(categories)){const option=element('option',label);option.value=value;category.append(option);}
- const rule=element('p','Strict content rules are always on. Adult, suggestive and unverified titles are hidden. Sources without supported ratings are restricted.','kuro-content-notice');view.querySelector('.kuro-directory-heading').after(rule);
+ const rule=element('p','Verified sources start on. All additional sources start off, and your choices are saved on this device. Selected sources still need a working KURO connection and supported content ratings. Adult, suggestive and unrated titles remain hidden.','kuro-content-notice');view.querySelector('.kuro-directory-heading').after(rule);
+ const defaults=element('button','Use verified defaults','kuro-directory-defaults');defaults.type='button';rule.after(defaults);
+ defaults.addEventListener('click',()=>{const sourcePreferences=bridge.store.getState().sourcePreferences;bridge.store.setState({sourcePreferences:Object.fromEntries(Object.entries(sourcePreferences).map(([id,p])=>[id,{...p,enabled:id==='local'||bridge.registry.providers.some(source=>source.id===id&&source.contentPolicy?.state==='eligible'&&source.available&&bridge.manager.get(id)),selectionVersion:1}]))});});
  const stats=view.querySelector('.kuro-directory-stats');
  const readable=element('section',undefined,'kuro-content-notice');readable.id='kuro-readable-count';readable.setAttribute('aria-label','Verified readable catalogue');
  const total=element('strong','Checking readable titles…'),detail=element('p','Only unique titles with one completely checked chapter qualify.');readable.append(total,detail);stats.after(readable);
  let countBusy=false,lastCount=0;
  async function updateReadable(force=false){if(countBusy||!force&&Date.now()-lastCount<30000)return;countBusy=true;lastCount=Date.now();try{const response=await fetch('/api/catalogue/readable/count',{cache:'no-store',credentials:'same-origin',signal:AbortSignal.timeout(12000)});if(!response.ok)throw new Error();const data=await response.json();if(!Number.isSafeInteger(data.uniqueCount)||data.uniqueCount<0)throw new Error();bridge.readableCount=data;total.textContent=data.uniqueCount.toLocaleString()+' unique verified readable titles';detail.textContent='One complete chapter checked for each title in the last '+Math.round(data.windowMs/3600000)+' hours. '+data.duplicatesGrouped+' duplicate editions grouped. This is the verified KURO inventory; other provider entries remain unverified. Device imports are counted on your device.';}catch{total.textContent='Readable count is temporarily unavailable';}finally{countBusy=false;}}
  window.addEventListener('kuro:readable-updated',()=>updateReadable());setInterval(()=>{if(!view.hidden&&!document.hidden)updateReadable();},30000);
- for(const [label,value]of [['Providers checked',bridge.registry.providers.length],['Eligible reading sources',bridge.registry.providers.filter(x=>x.readable&&x.adapter&&x.available).length],['Eligible metadata sources',bridge.registry.providers.filter(x=>x.category==='metadata'&&x.available).length],['Restricted sources',bridge.registry.providers.filter(x=>!x.available).length]]){
-  const item=element('div',undefined,'kuro-directory-stat');item.append(element('strong',String(value)),element('span',label));stats.append(item);
- }
  const formatTime=value=>value?new Date(value).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Not checked in this session';
  function render(){
   const needle=search.value.normalize('NFKC').toLocaleLowerCase(),preferences=bridge.store.getState().sourcePreferences,focus=document.activeElement?.id;
+  stats.replaceChildren();for(const [label,value]of [['Directory entries',bridge.registry.providers.length],['Selected sources',bridge.registry.providers.filter(p=>preferences[p.id]?.enabled).length],['Ready to connect',bridge.registry.providers.filter(p=>preferences[p.id]?.enabled&&p.available&&bridge.manager.get(p.id)).length],['Need connection or rating support',bridge.registry.providers.filter(p=>!p.available||!p.adapter).length]]){const item=element('div',undefined,'kuro-directory-stat');item.append(element('strong',value.toLocaleString()),element('span',label));stats.append(item);}
   const nextSelection=JSON.stringify([needle,category.value,availability.value]);if(nextSelection!==selection){limit=80;selection=nextSelection;}
-  const providers=bridge.registry.providers.filter(p=>p.contentPolicy?.state!=='blocked').filter(p=>[p.name,...p.aliases].some(name=>name.normalize('NFKC').toLocaleLowerCase().includes(needle)))
+  const providers=bridge.registry.providers.filter(p=>[p.name,...p.aliases].some(name=>name.normalize('NFKC').toLocaleLowerCase().includes(needle)))
    .filter(p=>category.value==='all'||p.category===category.value)
-   .filter(p=>availability.value==='all'||availability.value==='reader'&&p.readable&&p.adapter&&p.available||availability.value==='metadata'&&p.category==='metadata'&&p.adapter&&p.available||availability.value==='external'&&!p.adapter&&p.mode==='external'||availability.value==='unresolved'&&p.mode==='unresolved'||availability.value==='enabled'&&p.available&&preferences[p.id]?.enabled);
-  providers.sort((a,b)=>Number(!(a.adapter&&a.readable))-Number(!(b.adapter&&b.readable))||Number(!a.adapter)-Number(!b.adapter)||a.name.localeCompare(b.name));
+   .filter(p=>availability.value==='all'||availability.value==='reader'&&p.readable&&p.adapter&&p.available||availability.value==='metadata'&&p.category==='metadata'&&p.adapter&&p.available||availability.value==='external'&&!p.adapter&&p.mode==='external'||availability.value==='unresolved'&&p.mode==='unresolved'||availability.value==='enabled'&&preferences[p.id]?.enabled);
+  providers.sort((a,b)=>Number(!a.available)-Number(!b.available)||Number(!(a.adapter&&a.readable))-Number(!(b.adapter&&b.readable))||Number(!a.adapter)-Number(!b.adapter)||a.name.localeCompare(b.name));
   const fragment=document.createDocumentFragment(),visible=providers.slice(0,limit);
   for(const p of visible){
    const row=element('article',undefined,'kuro-provider-row');row.dataset.providerId=p.id;
@@ -48,14 +50,13 @@ export function mountProviderDirectory(bridge){
    if(p.aliases.length)body.append(element('p','Also listed as '+p.aliases.join(', '),'kuro-provider-aliases'));
    if(p.health?.error)body.append(element('p',p.health.error,'kuro-provider-error'));
    if(p.adapter)body.append(element('p','Last check: '+formatTime(p.health?.checkedAt||p.verification?.sampleVerifiedAt),'kuro-provider-time'));
-   if(!p.available)body.append(element('p','Restricted by strict content rules. No verified catalogue, covers or reading pages are admitted from this source.','kuro-provider-category'));
+   if(!p.available&&p.adapter)body.append(element('p',preferences[p.id]?.enabled?'Selection saved. This source cannot supply approved titles until its content ratings are supported.':'Optional source. Its titles are hidden until KURO can verify their content ratings.','kuro-provider-category'));
+   if(!p.adapter)body.append(element('p',p.mode==='unresolved'?'Selection is saved for this source. A confirmed address and KURO connection are still needed.':'Read on the provider’s platform. This entry has no in-app KURO reader.','kuro-provider-category'));
    const actions=element('div',undefined,'kuro-provider-actions');
-   if(bridge.manager.get(p.id)){
-    const label=element('label',undefined,'kuro-provider-switch');const input=element('input');input.type='checkbox';input.id='kuro-source-'+p.id;input.setAttribute('aria-label','Enable '+p.name);input.checked=!!preferences[p.id]?.enabled;input.disabled=p.available===false;
-    input.addEventListener('change',()=>bridge.store.getState().setSourceEnabled(p.id,input.checked));label.append(input,element('span',input.disabled?'Restricted':'Use in KURO'));actions.append(label);
-    if(p.available){const explore=element('a',p.readable?'Browse':'Search metadata','kuro-provider-browse');explore.href='/search?source='+p.id+(p.readable?'':'&readable=false');actions.append(explore);}
-   }
-   if(p.website&&p.available){const link=element('a','Visit platform ↗','kuro-provider-visit');link.href=p.website;link.target='_blank';link.rel='noopener noreferrer';actions.append(link);}
+   const label=element('label',undefined,'kuro-provider-switch');const input=element('input');input.type='checkbox';input.id='kuro-source-'+p.id;input.setAttribute('aria-label','Enable '+p.name);input.checked=!!preferences[p.id]?.enabled;
+   input.addEventListener('change',()=>bridge.store.getState().setSourceEnabled(p.id,input.checked));label.append(input,element('span',input.checked?'Selected':'Off'));actions.append(label);
+   if(input.checked&&p.available&&bridge.manager.get(p.id)){const explore=element('a',p.readable?'Browse':'Search metadata','kuro-provider-browse');explore.href='/search?source='+p.id+(p.readable?'':'&readable=false');actions.append(explore);}
+   if(input.checked&&p.website&&p.contentPolicy?.state!=='blocked'&&(p.available||!p.adapter&&p.mode==='external')){try{const url=new URL(p.website);if(url.protocol==='https:'&&!url.username&&!url.password){const link=element('a','Visit platform ↗','kuro-provider-visit');link.href=url.href;link.target='_blank';link.rel='noopener noreferrer';actions.append(link);}}catch{}}
    row.append(badge,body,actions);fragment.append(row);
   }
   list.replaceChildren(fragment);count.textContent=providers.length+' provider'+(providers.length===1?'':'s')+' found · '+visible.length+' shown';more.hidden=visible.length>=providers.length;view.querySelector('.kuro-directory-empty').hidden=providers.length>0;

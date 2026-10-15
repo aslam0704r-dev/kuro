@@ -29,7 +29,7 @@ The supported AniList fields are documented in its [Media reference](https://doc
 - The older arbitrary provider proxy is closed. Production and local CSP restrict manga images and provider API calls to the same-origin gateway.
 - Startup refuses to load the immutable app export when the mandatory content bootstrap is missing.
 - Saved Library/history views use canonical approved metadata. Hidden records are preserved in storage; the safety projection does not write a filtered snapshot over the user's data.
-- Unverified provider controls are disabled. Old preferences, bulk enable and offline directory fallbacks cannot enable them.
+- Every provider entry can have a saved selection in 4.6.0. This never grants content approval: runtime selectors and server gates exclude unsupported ratings, unavailable configurations and missing connections. Bulk selection and offline fallbacks cannot authorize adult, suggestive or unrated titles.
 
 File validation establishes that an image decodes correctly. Audience admission uses rating evidence or a reviewed byte fingerprint. The automated rule cannot establish that a provider labelled every cover or chapter correctly. A universal visual audit of all external pages has not been performed. Quarantine suspected mislabelled titles immediately and review them before permitting further access.
 
@@ -56,7 +56,7 @@ Build and redeploy the whole source, then reload open clients. The server checks
 
 ## Deploy this update
 
-1. Extract `kuro-full-source-4.4.0.zip` into a clean project folder. Keep `package.json`, `vercel.json`, `api/`, `server/`, `client/`, `scripts/`, `data/` and `dist/` together.
+1. Extract the latest complete source ZIP into a clean project folder. Keep `package.json`, `vercel.json`, `api/`, `server/`, `client/`, `scripts/`, `data/` and `dist/` together.
 2. Use Node **22.x**. Run `npm ci --ignore-scripts`, then `npm run build`.
 3. Deploy the complete project to the existing KURO Vercel project. The framework remains Other and output directory remains `dist`.
 4. Retain the existing server-side Supabase URL/publishable key, account encryption key, Upstash connection, `PUBLIC_ORIGIN` and cron configuration from `VERCEL-DEPLOY.md`. Use the permitted provider license mode already configured; commercial/licensed mode keeps MangaDex disabled under its existing policy. No new private key is needed for this update.

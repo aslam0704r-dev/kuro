@@ -1,8 +1,12 @@
-# KURO 4.4.0 provider admission
+# KURO 4.6.0 provider choices
+
+Open **Settings → All 1,236 providers** to save individual source choices. Verified sources start enabled on a fresh installation; additional sources start disabled. Existing explicit Off choices are preserved. **Use verified defaults** restores source selections without resetting other preferences. Choices stay on the current device.
+
+All directory entries can be selected, including external/unresolved entries. Selection is separate from a working KURO connection and content admission: entries without a usable connection or supported ratings explain why their titles cannot appear. The runtime uses only installed, eligible, configured sources. Adult, suggestive and unrated titles remain hidden. See [the 4.6 loading/settings report](docs/PROVIDER-LOADING-4.6.0.md).
 
 Readable titles now require at least one completely checked chapter and confirmed editions are always grouped. The Providers screen shows the recent verified inventory count with its scope. Read [READABLE-CATALOGUE.md](READABLE-CATALOGUE.md); the bundled 100-entry live audit does not establish a count for the entire provider.
 
-Mandatory strict content rules supersede the earlier 4.0/4.1 opt-in behavior. Mature or unverified sources cannot be enabled. See [STRICT-CONTENT.md](STRICT-CONTENT.md) for the full policy and deployment.
+Mandatory strict content rules still govern actual metadata, covers and pages. Enabling a saved source choice cannot bypass them. See [STRICT-CONTENT.md](STRICT-CONTENT.md) for the full policy and deployment.
 
 | Current registry state | Count |
 | --- | --- |
@@ -13,7 +17,7 @@ Mandatory strict content rules supersede the earlier 4.0/4.1 opt-in behavior. Ma
 
 MangaDex is eligible for explicitly safe titles and canonical related chapters. AniList is eligible for non-adult metadata with complete non-adult tag flags. Other adapter source is preserved for future reviewed integrations but cannot supply KURO discovery, covers or reading under this policy.
 
-Open Settings → All providers. Available controls honor the mandatory rule even with older saved preferences or a failed registry request. Entries with adult-source classification are omitted from the visible directory. Restricted providers have no browse/platform link.
+Open Settings → All 1,236 providers. Every entry has a saved choice; adult-source classification stays visibly blocked and supplies no content or platform link. Reading and metadata links appear only for selected, eligible connections. Selected external platform entries provide safe HTTPS platform links; unresolved entries provide none. Offline fallbacks cannot grant content approval.
 
 The audit of every registry entry is [CONTENT-PROVIDER-AUDIT.csv](docs/CONTENT-PROVIDER-AUDIT.csv). This is policy eligibility coverage; it does not assert that all websites or chapters were visually inspected. Earlier availability reports remain historical evidence in docs/.
 
