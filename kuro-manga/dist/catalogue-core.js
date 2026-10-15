@@ -1634,7 +1634,7 @@
   var readinessFresh = (value) => !!value && Date.now() - value.checkedAt < 12e4 && value.expiresAt > Date.now();
   function createCatalogueCore(providers) {
     providers = providers.map(policyProvider);
-    const registry = { providers }, subscribers = /* @__PURE__ */ new Set(), readiness = /* @__PURE__ */ new Map(), checks = /* @__PURE__ */ new Map(), manifests = /* @__PURE__ */ new Map();
+    const registry = { providers }, subscribers = /* @__PURE__ */ new Set(), readiness = /* @__PURE__ */ new Map(), checks = /* @__PURE__ */ new Map(), manifests = /* @__PURE__ */ new Map(), snapshots = /* @__PURE__ */ new Map();
     let epoch = 0, manager, store, activeChapter;
     const local = typeof window !== "undefined" ? createLocalRuntime() : null;
     const safety = createContentRuntime(local), admitted = (row) => row?.sourceId === "local" ? local?.books.some((b) => b.id === row.id) : !!safety.current(row?.sourceId, row?.id);
@@ -1685,6 +1685,18 @@
       const value = readiness.get(id);
       return readinessFresh(value) ? value : void 0;
     };
+    const olderSnapshot = (id, at, revision) => {
+      const previous = snapshots.get(id);
+      return previous && (revision < previous.revision || revision === previous.revision && at < previous.at);
+    };
+    function rememberSnapshot(id, at, ready, revision = 0) {
+      const previous = snapshots.get(id);
+      if (!Number.isFinite(at) || at > Date.now() + 5e3 || !Number.isSafeInteger(revision) || revision < 0 || previous && (revision < previous.revision || revision === previous.revision && (at < previous.at || at === previous.at && (ready || !previous.ready)))) return false;
+      snapshots.delete(id);
+      snapshots.set(id, { at, ready, revision });
+      while (snapshots.size > 2400) snapshots.delete(snapshots.keys().next().value);
+      return true;
+    }
     async function check(manga) {
       const hit = cached(manga.id);
       if (hit) {
@@ -1693,30 +1705,41 @@
         } catch {
           return { ready: false, checkedAt: Date.now(), expiresAt: Date.now() + 12e4, error: CONTENT_MESSAGE };
         }
-        if (readinessFresh(hit)) return hit;
+        if (cached(manga.id) === hit) return hit;
       }
       const started = epoch, key = started + ":" + manga.id;
-      if (checks.has(key)) return checks.get(key);
+      if (checks.has(key)) return checks.get(key).promise;
+      const record = { id: manga.id, invalidated: false, promise: null };
       const task = (async () => {
-        let ready = false, error, expiresAt = Date.now() + 12e4;
+        let ready = false, error, observedAt, inventoryRevision = 0, expiresAt = Date.now() + 12e4;
         try {
           await safety.verify(manga);
           const adapter = manager.require(manga.sourceId);
           if (adapter.capabilities.readable !== false && !manga.catalogueOnly && !manga.publisherUrl) {
             if (manga.sourceId === "mangadex") try {
               const response = await fetch("/api/catalogue/readable/check?" + new URLSearchParams({ provider: manga.sourceId, id: manga.id }), { credentials: "same-origin", cache: "no-store", signal: AbortSignal.timeout(15e3) }), proof = await response.json();
+              if (response.ok) {
+                observedAt = proof.asOf;
+                inventoryRevision = proof.inventoryRevision || 0;
+              }
               ready = response.ok && proof.ready === true && proof.validation === "complete-chapter" && proof.validatedPages > 0 && proof.validatedPages === proof.pageCount && proof.expiresAt > Date.now();
-              if (ready) expiresAt = Math.min(Date.now() + 12e4, proof.expiresAt);
+              if (ready) {
+                expiresAt = Math.min(Date.now() + 12e4, proof.expiresAt);
+                observedAt = proof.asOf;
+                inventoryRevision = proof.inventoryRevision || 0;
+              }
             } catch {
             }
             if (!ready) {
-              const chapters = await adapter.getChapterList(manga.id);
-              for (const chapter of chapters.slice(0, 10)) {
+              const chapters = await adapter.getChapterList(manga.id), cost = (chapter) => Number.isInteger(chapter.pages) && chapter.pages > 0 ? chapter.pages : Infinity;
+              for (const chapter of [...chapters].sort((a, b) => cost(a) - cost(b)).slice(0, 10)) {
                 try {
                   const manifest = await adapter.getChapterPages(chapter.id);
                   ready = completeManifest(manifest, manga.sourceId === "local");
                   if (ready) {
                     expiresAt = Math.min(Date.now() + 12e4, manifest.expiresAt || Date.now() + 12e4);
+                    observedAt = manifest.readabilityAsOf;
+                    inventoryRevision = manifest.inventoryRevision || 0;
                     break;
                   }
                 } catch (e) {
@@ -1730,7 +1753,10 @@
           ready = false;
           error = e.message;
         }
-        if (started !== epoch) return { ready: false, checkedAt: 0, obsolete: true };
+        if (started !== epoch || record.invalidated) return { ready: false, checkedAt: 0, obsolete: true };
+        const snapshotAt = Number.isFinite(observedAt) ? observedAt : Date.now();
+        if (olderSnapshot(manga.id, snapshotAt, inventoryRevision)) return { ready: false, checkedAt: 0, obsolete: true };
+        rememberSnapshot(manga.id, snapshotAt, ready, inventoryRevision);
         const result = { ready: ready && expiresAt > Date.now(), checkedAt: Date.now(), expiresAt, error };
         readiness.set(manga.id, result);
         while (readiness.size > 2e3) readiness.delete(readiness.keys().next().value);
@@ -1739,8 +1765,11 @@
         if (ready && typeof window !== "undefined") window.dispatchEvent(new Event("kuro:readable-updated"));
         return result;
       })();
-      checks.set(key, task);
-      task.finally(() => checks.delete(key));
+      record.promise = task;
+      checks.set(key, record);
+      task.finally(() => {
+        if (checks.get(key) === record) checks.delete(key);
+      });
       return task;
     }
     function preferences(currentRegistry = registry) {
@@ -1770,6 +1799,9 @@
       if (!completeManifest(manifest, manga.sourceId === "local")) throw new Error("The complete chapter could not be verified.");
       const expiresAt = Math.min(Date.now() + 12e4, manifest.expiresAt || Date.now() + 12e4);
       if (expiresAt <= Date.now()) throw new Error("Chapter proof expired. Retry.");
+      const at = Number.isFinite(manifest.readabilityAsOf) ? manifest.readabilityAsOf : Date.now(), revision = manifest.inventoryRevision || 0;
+      if (olderSnapshot(manga.id, at, revision)) throw new Error("Chapter verification changed. Retry.");
+      rememberSnapshot(manga.id, at, true, revision);
       readiness.set(manga.id, { ready: true, checkedAt: Date.now(), expiresAt });
       return manifest;
     }
@@ -1928,7 +1960,19 @@
           if (/^\d+$/.test(mal)) row.identityKeys = [.../* @__PURE__ */ new Set([...row.identityKeys || [], "mal:" + mal])];
           row.coverUrl = location.origin + "/api/catalogue/cover?provider=mangadex&id=" + row.id;
           row.contentApproval = raw.kuroContentApproval;
-          safety.remember(row);
+          const approved = safety.remember(row), proof = raw.kuroReadability, now = Date.now();
+          const valid = !!approved && proof?.ready === true && proof.mangaId === row.id && /^mangadex:[0-9a-f-]{36}$/i.test(proof.chapterId || "") && proof.version === "complete-chapter-1" && proof.policyVersion === CONTENT_POLICY_VERSION && proof.validation === "complete-chapter" && Number.isInteger(proof.validatedPages) && proof.validatedPages > 0 && proof.validatedPages <= 500 && proof.validatedPages === proof.pageCount && Number.isFinite(proof.checkedAt) && proof.checkedAt <= now + 5e3 && Number.isFinite(proof.expiresAt) && proof.expiresAt > now && proof.expiresAt <= proof.checkedAt + 216e5;
+          if (Object.hasOwn(raw, "kuroReadability") && rememberSnapshot(row.id, raw.kuroReadabilityAsOf, valid, raw.kuroReadabilityRevision || 0)) {
+            readiness.delete(row.id);
+            for (const [key, record] of checks) if (record.id === row.id) {
+              record.invalidated = true;
+              checks.delete(key);
+            }
+            if (valid) {
+              readiness.set(row.id, { ready: true, checkedAt: now, expiresAt: Math.min(now + 12e4, proof.expiresAt) });
+              while (readiness.size > 2e3) readiness.delete(readiness.keys().next().value);
+            }
+          }
           return row;
         };
       }
@@ -1941,13 +1985,12 @@
         const React = require2(15), router = require2(11);
         api.useReadyCollection = function(items, active) {
           active = true;
-          const entries = React.useRef(/* @__PURE__ */ new Map()), [revision, setRevision] = React.useState(0), [retry, setRetry] = React.useState(0), [paused, setPaused] = React.useState(false);
+          const [revision, setRevision] = React.useState(0), [retry, setRetry] = React.useState(0), [paused, setPaused] = React.useState(false);
           const ageRevision = React.useSyncExternalStore(safety.subscribe, safety.getSnapshot);
           React.useEffect(() => {
-            const expires = items.map((row) => entries.current.get(row.id) || cached(row.id)).filter(readinessFresh).map((value) => Math.min(value.expiresAt, value.checkedAt + 12e4));
+            const expires = items.map((row) => cached(row.id)).filter(readinessFresh).map((value) => Math.min(value.expiresAt, value.checkedAt + 12e4));
             if (!expires.length) return;
             const timer = setTimeout(() => {
-              entries.current.clear();
               setRetry((x) => x + 1);
               setRevision((x) => x + 1);
             }, Math.max(1, Math.min(...expires) - Date.now() + 1));
@@ -1956,29 +1999,21 @@
           router.useFocusEffect(React.useCallback(() => {
             if (!active || paused || document.hidden) return;
             let alive = true, index = 0;
-            const listener = (invalidate = true) => {
-              if (invalidate) entries.current.clear();
+            const listener = () => {
               setRetry((x) => x + 1);
               setRevision((x) => x + 1);
             };
             subscribers.add(listener);
             const queue = items.filter((row) => {
               const value = cached(row.id);
-              if (value && (!value.ready || admitted(row))) {
-                entries.current.set(row.id, value);
-                return false;
-              }
-              return true;
+              return !(value && (!value.ready || admitted(row)));
             });
             const work = async () => {
               while (alive && !document.hidden) {
                 const row = queue[index++];
                 if (!row) break;
                 const value = await check(row);
-                if (alive && !value.obsolete) {
-                  entries.current.set(row.id, value);
-                  setRevision((x) => x + 1);
-                }
+                if (alive && !value.obsolete) setRevision((x) => x + 1);
               }
             };
             work();
@@ -1992,7 +2027,7 @@
             const ready = [];
             let pending = 0, unavailable = 0;
             for (const row of items) {
-              const value = entries.current.get(row.id) || cached(row.id);
+              const value = cached(row.id);
               if (!readinessFresh(value) || value.ready && !admitted(row)) pending++;
               else if (value.ready) ready.push(row);
               else unavailable++;
@@ -2001,7 +2036,6 @@
           }, [active, items, revision, safety.getSnapshot()]);
           return { ...result, paused, setPaused, retry: () => {
             for (const row of items) readiness.delete(row.id);
-            entries.current.clear();
             setPaused(false);
             setRetry((x) => x + 1);
             setRevision((x) => x + 1);

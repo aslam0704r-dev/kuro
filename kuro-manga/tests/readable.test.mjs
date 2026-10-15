@@ -12,7 +12,7 @@ async function fixture({count=5,corrupt=-1,coordinator=createMemoryCoordinator()
   else {const index=Number(u.pathname.split('/').at(-1).split('.')[0]);seen.push(index);return {body:index===corrupt?Buffer.from('<html>gone</html>'):bytes,headers:{'content-type':'image/png'}};}
   return {body:Buffer.from(JSON.stringify(value)),headers:{'content-type':'application/json'}};
  };
- return {service:createCatalogueService({coordinator,ticketKey:Buffer.alloc(32,4),fetcher,clock,usage:'noncommercial',seedInventory,pageDeadlineMs}),seen,chapterId,breakPage:index=>{corrupt=index;}};
+ return {service:createCatalogueService({coordinator,ticketKey:Buffer.alloc(32,4),fetcher,clock,usage:'noncommercial',seedInventory,pageDeadlineMs,validation:{maxPages:2}}),seen,chapterId,breakPage:index=>{corrupt=index;}};
 }
 const pages=f=>f.service.call('mangadex','pages',{id:'mangadex:'+f.chapterId},'http://localhost').then(x=>x.value);
 test('a corrupt middle page never qualifies a title or yields reading tickets',async()=>{
@@ -50,8 +50,8 @@ test('cold chapter initialization returns pending within its whole-request deadl
 test('two valid chapters remain readable when the newest per-title counting proof is different',async()=>{
  let now=100000;const coordinator=createMemoryCoordinator(()=>now),a=await fixture({count:3,coordinator,clock:()=>now});await pages(a);const initial=await pages(a),oldTicket=new URL(initial.pages[0].url).searchParams.get('ticket');
  now=400001;a.breakPage(0);await assert.rejects(a.service.servePage(oldTicket));a.breakPage(-1);now=400002;assert.equal((await pages(a)).pending,true);
- now=401003;const b=await fixture({count:1,chapterId:'33333333-3333-4333-8333-333333333333',coordinator,clock:()=>now});assert.equal((await pages(b)).verified,true);
- now=402000;const freshA=await pages(a);assert.equal(freshA.verified,true);assert.equal((await a.service.readableSnapshot())[0].chapterId,'mangadex:'+b.chapterId);
+ now=401003;const b=await fixture({count:1,chapterId:'33333333-3333-4333-8333-333333333333',coordinator,clock:()=>now}),manifestB=await pages(b);assert.equal(manifestB.verified,true);
+ now=402000;const freshA=await pages(a);assert.equal(freshA.verified,true);assert.ok(freshA.inventoryRevision>=manifestB.inventoryRevision,'A valid older chapter still carries a current inventory observation');assert.equal((await a.service.readableSnapshot())[0].chapterId,'mangadex:'+b.chapterId);
  const ticket=new URL(freshA.pages[0].url).searchParams.get('ticket');assert.equal((await a.service.servePage(ticket)).mime,'image/png');assert.equal((await a.service.readableSummary()).uniqueCount,1);
 });
 test('deployment usage and scanlation opt-out restrictions also constrain the count',async()=>{

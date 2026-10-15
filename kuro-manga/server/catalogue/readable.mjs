@@ -14,7 +14,7 @@ export function createReadableLedger(coordinator,clock=Date.now,seeds=[],{exclud
  const prune=(rows,at=clock())=>Object.fromEntries(Object.entries(rows||{}).filter(([key,row])=>!key.startsWith('failure:')&&valid(row,at)&&row.checkedAt>failureAt(rows,row.id,row.chapterId,at)).map(([key,row])=>[key,normalize(row)]));
  async function put(row,seed=false) {if(!valid(row))throw sourceError('A complete chapter proof is required',403);const bucket=bucketFor(row.id);return coordinator.lock('readable-inventory:'+bucket,async()=>{const rows=stored(await coordinator.inventoryGet(bucket));
    if(row.checkedAt<=failureAt(rows,row.id,row.chapterId)){if(seed)return false;throw sourceError('This chapter requires a fresh complete check after a known failure',409);}
-   if(rows[row.id]?.checkedAt>row.checkedAt)return true;rows[row.id]=normalize(row);await coordinator.inventorySet(bucket,rows,READABLE_WINDOW_MS);return true;});}
+   if(rows[row.id]?.checkedAt>row.checkedAt)return coordinator.inventorySnapshot?(await coordinator.inventorySnapshot([bucket])).revision:0;rows[row.id]=normalize(row);return coordinator.inventorySet(bucket,rows,READABLE_WINDOW_MS);});}
  let init;
  const initialize=()=>init||=Promise.all(seeds.filter(row=>valid(row)).map(row=>put(row,true)));
  async function revoke(id,chapter) {await initialize();const bucket=bucketFor(id);await coordinator.lock('readable-inventory:'+bucket,async()=>{const rows=stored(await coordinator.inventoryGet(bucket));if(rows[id]&&(!chapter||rows[id].chapterId===chapter))delete rows[id];rows['failure:'+(chapter||id)]={invalidatedAt:clock(),until:clock()+READABLE_WINDOW_MS};await coordinator.inventorySet(bucket,rows,READABLE_WINDOW_MS);});}
@@ -22,27 +22,36 @@ export function createReadableLedger(coordinator,clock=Date.now,seeds=[],{exclud
  async function rows(){return (await snapshot()).items;}
  return {
   async record(manga,proof){await initialize();if(proof.validation!== 'complete-chapter'||proof.version!==READABLE_VERSION)throw sourceError('A complete chapter proof is required',403);
-   const row={...pickManga(manga),version:READABLE_VERSION,policyVersion:CONTENT_POLICY_VERSION,chapterId:proof.chapterId,pageCount:proof.pageCount,validatedPages:proof.validatedPages,checkedAt:proof.checkedAt,expiresAt:proof.expiresAt,manifestDigest:proof.manifestDigest,groups:proof.groups||[]};await put(row);return row;},
+   const row={...pickManga(manga),version:READABLE_VERSION,policyVersion:CONTENT_POLICY_VERSION,chapterId:proof.chapterId,pageCount:proof.pageCount,validatedPages:proof.validatedPages,checkedAt:proof.checkedAt,expiresAt:proof.expiresAt,manifestDigest:proof.manifestDigest,groups:proof.groups||[]};const inventoryRevision=await put(row);return {...row,inventoryRevision};},
   async get(id){await initialize();return prune(await coordinator.inventoryGet(bucketFor(id)))[id];},
+  async getMany(ids){
+   if(!Array.isArray(ids)||ids.length>100)throw sourceError('Too many readable identities',400);
+   await initialize();const buckets=[...new Set(ids.map(bucketFor))],snapshot=coordinator.inventorySnapshot?await coordinator.inventorySnapshot(buckets):{revision:0,values:await Promise.all(buckets.map(bucket=>coordinator.inventoryGet(bucket)))},at=clock();
+   const rows=new Map(snapshot.values.flatMap(value=>Object.entries(prune(value,at)))),result=new Map(ids.filter(id=>rows.has(id)).map(id=>[id,rows.get(id)]));result.revision=snapshot.revision;return result;
+  },
   async failure(id,chapter){await initialize();return failureAt(await coordinator.inventoryGet(bucketFor(id)),id,chapter);},revoke,rows,
   async summary(){const {items,asOf}=await snapshot(),groups=groupSeries(items,true),times=items.map(x=>x.checkedAt);
    return {uniqueCount:groups.length,verifiedEditions:items.length,duplicatesGrouped:items.length-groups.length,qualification:'at least one complete chapter; every page fetched and decoded',scope:'KURO verified remote inventory',windowMs:READABLE_WINDOW_MS,asOf,oldestCheckAt:times.length?Math.min(...times):null,latestCheckAt:times.length?Math.max(...times):null,entireProviderAudited:false,deviceImportsIncluded:false,policyVersion:CONTENT_POLICY_VERSION,readabilityVersion:READABLE_VERSION};}
  };
 }
-export function createChapterValidator(coordinator,image,clock=Date.now) {
- return {async check(provider,clean,policy,invalidatedAt=0) {
+export function createChapterValidator(coordinator,image,clock=Date.now,{maxPages=16,maxDurationMs=4000}={}) {
+ maxPages=Math.max(2,Math.min(16,Math.floor(maxPages)||16));maxDurationMs=Math.max(1,Math.min(4000,Number(maxDurationMs)||4000));
+ return {async check(provider,clean,policy,invalidatedAt=0,onFailure) {
   const manifestDigest=digest(JSON.stringify(clean)),key=READABLE_VERSION+':progress:'+provider+':'+manifestDigest;
   return coordinator.lock(key,async()=>{
    let row=await coordinator.get(key);if(!row||row.expiresAt<=clock()||row.checkedAt<=invalidatedAt)row={chapterId:clean.chapterId,manifestDigest,pageCount:clean.pages.length,evidence:[],expiresAt:clock()+READABLE_WINDOW_MS};
-   // Two image requests per hosted call bound the maximum upstream wait. A
-   // pending result contains no tickets; the client repeats with the same ID.
-   const batch=clean.pages.slice(row.evidence.length,row.evidence.length+2);
-   if(batch.length){const settled=await Promise.allSettled(batch.map(async page=>{const checked=await image(provider,page.url,policy,page.transform,invalidatedAt);return {index:page.index,sha256:checked.sha256,width:checked.width,height:checked.height,mime:checked.mime,checkedAt:checked.validatedAt};}));
-    const failure=settled.find(x=>x.status==='rejected');if(failure)throw failure.reason;
-    row.evidence.push(...settled.map(x=>x.value));row.expiresAt=Math.min(...row.evidence.map(x=>x.checkedAt))+READABLE_WINDOW_MS;
+   // Keep two concurrent image requests, but amortize hosted request overhead
+   // across several pairs. Save every completed pair before starting another.
+   const started=Date.now(),initial=row.evidence.length;
+   while(row.evidence.length<clean.pages.length&&row.evidence.length-initial<maxPages){
+    if(row.evidence.length>initial&&Date.now()-started>=maxDurationMs)break;
+    const batch=clean.pages.slice(row.evidence.length,Math.min(row.evidence.length+2,initial+maxPages));
+    let evidence;try{evidence=await Promise.all(batch.map(async page=>{const checked=await image(provider,page.url,policy,page.transform,invalidatedAt);return {index:page.index,sha256:checked.sha256,width:checked.width,height:checked.height,mime:checked.mime,checkedAt:checked.validatedAt};}));}
+    catch(error){if(onFailure)await onFailure(error);throw error;}
+    row.evidence.push(...evidence);row.expiresAt=Math.min(...row.evidence.map(x=>x.checkedAt))+READABLE_WINDOW_MS;
+    row={...row,version:READABLE_VERSION,validation:'complete-chapter',validatedPages:row.evidence.length,checkedAt:Math.min(...row.evidence.map(x=>x.checkedAt))};
+    await coordinator.set(key,row,Math.max(1,row.expiresAt-clock()));
    }
-   row={...row,version:READABLE_VERSION,validation:'complete-chapter',validatedPages:row.evidence.length,checkedAt:row.evidence.length?Math.min(...row.evidence.map(x=>x.checkedAt)):clock()};
-   await coordinator.set(key,row,Math.max(1,row.expiresAt-clock()));
    return {...row,verified:row.validatedPages===row.pageCount,pending:row.validatedPages!==row.pageCount};
   });
  }};

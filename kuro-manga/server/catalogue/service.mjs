@@ -16,14 +16,14 @@ import {createIkenAdapter} from './adapters/iken.mjs';
 import {createBloggerAdapter} from './adapters/blogger.mjs';
 import {createMangaBoxAdapter} from './adapters/mangabox.mjs';
 import { canonicalParameters } from './parameters.mjs';
-import {withCatalogueDeadline,catalogueSignal} from './deadline.mjs';
+import {withCatalogueDeadline,catalogueSignal,catalogueCleanup} from './deadline.mjs';
 import {CONTENT_POLICY_VERSION,RATING_TTL_MS,classifyMangaDex,providerContentPolicy,forbiddenText,blockedIdentity} from '../../client/content-policy.mjs';
 import {createContentService,requireContentProvider} from './content.mjs';
 import {createReadableLedger,createChapterValidator} from './readable.mjs';
 
 const digest=value=>createHash('sha256').update(value).digest('hex');
 const upstreamLimits={anilist:25,jikan:50,shikimori:60,mangabaka:25,guya:60,mangadex:240};
-export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=fetchPublic,clock=Date.now,excludedGroups=[],seedInventory=[],auditCoverage=null,pageDeadlineMs=20000}){
+export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=fetchPublic,clock=Date.now,excludedGroups=[],seedInventory=[],auditCoverage=null,pageDeadlineMs=20000,validation}){
  const cache=createCatalogueCache(coordinator,clock),tickets=ticketKey?createTickets(ticketKey):null;
  const adapters=new Map(),images=new Map(),upstreamQueues=new Map();let imageBytes=0,activeImages=0;const pending=[];
  async function pace(id){
@@ -50,7 +50,7 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
    return text;
   });return options.contentEvidence&&response.value&&typeof response.value==='object'?{...response.value,kuroContentCheckedAt:response.checkedAt}:response.value;
  }
- const readable=createReadableLedger(coordinator,clock,seedInventory,{excludedGroups}),validator=createChapterValidator(coordinator,image,clock);
+ const readable=createReadableLedger(coordinator,clock,seedInventory,{excludedGroups}),validator=createChapterValidator(coordinator,image,clock,validation);
  const content=createContentService({read:request,clock,onReject:(id,chapter)=>readable.revoke(id,chapter)});
  for(const p of installedProviders){const read=(url,options)=>request(p.id,url,options);
   if(p.adapter==='guya')adapters.set(p.id,createGuyaAdapter(p,read));
@@ -106,7 +106,11 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
     for(const id of ids)await content.manga('mangadex',id);
    }
    const reply=await request('mangadex',parsed.href,{json:true,contentEvidence:true});
-   if(parsed.pathname==='/manga')return {...reply,data:(Array.isArray(reply.data)?reply.data:[]).filter(raw=>classifyMangaDex(raw).allowed).map(raw=>content.seed(raw,reply.kuroContentCheckedAt)?.raw).filter(Boolean),total:undefined};
+   if(parsed.pathname==='/manga'){
+    const rows=(Array.isArray(reply.data)?reply.data:[]).filter(raw=>classifyMangaDex(raw).allowed).map(raw=>content.seed(raw,reply.kuroContentCheckedAt)?.raw).filter(Boolean);
+    const asOf=clock(),proofs=tickets?await readable.getMany(rows.map(raw=>'mangadex-'+raw.id.toLowerCase())):new Map();
+    return {...reply,data:rows.map(raw=>{const proof=proofs.get('mangadex-'+raw.id.toLowerCase());return {...raw,kuroReadabilityAsOf:asOf,kuroReadabilityRevision:proofs.revision||0,kuroReadability:proof?{ready:true,mangaId:proof.id,chapterId:proof.chapterId,version:proof.version,policyVersion:proof.policyVersion,validation:'complete-chapter',validatedPages:proof.validatedPages,pageCount:proof.pageCount,checkedAt:proof.checkedAt,expiresAt:proof.expiresAt}:null};}),total:undefined};
+   }
    if(mangaPath?.[2]||parsed.pathname==='/chapter'){
     const parent=(mangaPath?.[1]||parsed.searchParams.get('manga')).toLowerCase();return {...reply,data:(Array.isArray(reply.data)?reply.data:[]).filter(raw=>raw?.type==='chapter'&&!blockedIdentity('mangadex','mangadex-'+parent,'mangadex:'+raw.id)&&raw.relationships?.filter(x=>x.type==='manga').length===1&&raw.relationships.some(x=>x.type==='manga'&&x.id?.toLowerCase()===parent)&&!raw.attributes?.externalUrl&&(!raw.attributes?.contentRating||raw.attributes.contentRating==='safe')&&!forbiddenText(raw.attributes?.title))};
    }
@@ -115,7 +119,7 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
   async directory(){const ids=installedProviders.map(p=>'health:'+p.id),values=coordinator.getMany?await coordinator.getMany(ids):await Promise.all(ids.map(id=>coordinator.get(id))),health=new Map(installedProviders.map((p,i)=>[p.id,values[i]]));
    return {...registry,contentPolicy:{version:CONTENT_POLICY_VERSION,strict:true,unknown:'blocked'},refreshIntervalMs:300000,usageReady:licensingAllowed('mangabaka',usage),providers:registry.providers.map(p=>({...p,contentPolicy:providerContentPolicy(p),available:providerContentPolicy(p).state==='eligible'&&licensingAllowed(p.id,usage),health:health.get(p.id)||null}))};},
   contentCheck:(provider,id,chapter)=>content.check(provider,id,chapter),
-  async readableCheck(provider,id){if(provider!=='mangadex')throw sourceError('This provider does not supply approved reading pages',409);requireLicense(provider);if(!tickets)throw sourceError('Configure the server page ticket key using the existing account encryption key.',503);await service.contentCheck(provider,id);const row=await readable.get(id);return {ready:!!row,...row?{chapterId:row.chapterId,checkedAt:row.checkedAt,expiresAt:row.expiresAt,validation:'complete-chapter',validatedPages:row.validatedPages,pageCount:row.pageCount}:{}};},
+  async readableCheck(provider,id){if(provider!=='mangadex')throw sourceError('This provider does not supply approved reading pages',409);requireLicense(provider);if(!tickets)throw sourceError('Configure the server page ticket key using the existing account encryption key.',503);await service.contentCheck(provider,id);const asOf=clock(),rows=await readable.getMany([id]),row=rows.get(id);return {ready:!!row,asOf,inventoryRevision:rows.revision,...row?{chapterId:row.chapterId,checkedAt:row.checkedAt,expiresAt:row.expiresAt,validation:'complete-chapter',validatedPages:row.validatedPages,pageCount:row.pageCount}:{}};},
   async readableSummary(){const summary=await readable.summary(),readingConfigured=!!tickets&&licensingAllowed('mangadex',usage);return {...summary,...!readingConfigured?{uniqueCount:0,verifiedEditions:0,duplicatesGrouped:0,oldestCheckAt:null,latestCheckAt:null}:{},readingConfigured,auditCoverage};},
   readableSnapshot:()=>readable.rows(),
   async cover(provider,id){const row=await content.manga(provider,id);if(!row.coverUrl)throw sourceError('Approved cover is unavailable',404);return image(provider,row.coverUrl,row.coverPolicy);},
@@ -189,11 +193,19 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
     if(groups.some(x=>excludedGroups.includes(x.id)))throw sourceError('The scanlation group has requested removal from KURO.',410);
     credits=[{name:'MangaDex',url:'https://mangadex.org/'},...groups.filter(x=>/^[0-9a-f-]{36}$/i.test(x.id)).map(x=>({name:x.attributes?.name||'MangaDex scanlation group',url:'https://mangadex.org/group/'+x.id}))];
    }
-   let proof;try{proof=await validator.check(id,clean,policy,await readable.failure(approved.manga.id,clean.chapterId));}catch(error){await readable.revoke(approved.manga.id,clean.chapterId).catch(()=>{});await health(id,{status:'unavailable',operation:'pages',error:error.message});throw error;}
+   let revocation;const invalidate=error=>{if([403,404,410,422].includes(error.status)||!catalogueSignal()?.aborted)return revocation||=catalogueCleanup(()=>readable.revoke(approved.manga.id,clean.chapterId)).catch(()=>{});};
+   // Register integrity cleanup at image failure, before a shared progress
+   // lock's asynchronous release can race the outer hosted deadline.
+   let proof;try{proof=await validator.check(id,clean,policy,await readable.failure(approved.manga.id,clean.chapterId),invalidate);}catch(error){
+    // A hosted deadline says nothing about page corruption. Retain completed
+    // pairs for retry; the pending response still contains no reader tickets.
+    await invalidate(error);
+    await health(id,{status:'unavailable',operation:'pages',error:error.message});throw error;
+   }
    const details={chapterId:clean.chapterId,verified:proof.verified,pending:proof.pending,validation:'complete-chapter',contentApproval:{version:CONTENT_POLICY_VERSION,mangaId:approved.manga.id},checkedAt:proof.checkedAt,expiresAt:proof.expiresAt,validatedPages:proof.validatedPages,pageCount:proof.pageCount,pageEvidence:proof.evidence,credits};
    if(!proof.verified)return {...details,pages:[]};
-   await readable.record(approved.manga,{...proof,groups:groupIds});await health(id,{status:'chapter-verified',completeChapterVerifiedAt:proof.checkedAt,operation:'pages',error:null});
-   return {...details,
+   const recorded=await readable.record(approved.manga,{...proof,groups:groupIds});await health(id,{status:'chapter-verified',completeChapterVerifiedAt:proof.checkedAt,operation:'pages',error:null});
+   return {...details,readabilityAsOf:clock(),inventoryRevision:recorded.inventoryRevision,
     pages:clean.pages.map(page=>({index:page.index,url:new URL('/api/catalogue/page?ticket='+tickets.issue({provider:id,url:page.url,chapterId:clean.chapterId,mangaId:approved.manga.id,proofCheckedAt:proof.checkedAt,proofExpiresAt:proof.expiresAt,groups:groupIds,transform:page.transform},clock(),policy),origin).href}))};
   }
 }

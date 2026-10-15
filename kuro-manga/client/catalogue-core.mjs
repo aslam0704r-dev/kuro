@@ -13,7 +13,7 @@ export const readinessFresh=value=>!!value&&Date.now()-value.checkedAt<120000&&v
 // immutable export's factory interface is intercepted only at the listed IDs.
 // Upstream scripts and data are never evaluated here.
 export function createCatalogueCore(providers){
- providers=providers.map(policyProvider);const registry={providers},subscribers=new Set(),readiness=new Map(),checks=new Map(),manifests=new Map();let epoch=0,manager,store,activeChapter;
+ providers=providers.map(policyProvider);const registry={providers},subscribers=new Set(),readiness=new Map(),checks=new Map(),manifests=new Map(),snapshots=new Map();let epoch=0,manager,store,activeChapter;
  const local=typeof window!=='undefined'?createLocalRuntime():null;
  const safety=createContentRuntime(local),admitted=row=>row?.sourceId==='local'?local?.books.some(b=>b.id===row.id):!!safety.current(row?.sourceId,row?.id);
  async function request(id,action,params={}){
@@ -40,20 +40,27 @@ export function createCatalogueCore(providers){
  const emitCredits=()=>{if(typeof window!=='undefined'&&activeChapter&&manifests.has(activeChapter))window.dispatchEvent(new CustomEvent('kuro:active-chapter-manifest',{detail:manifests.get(activeChapter)}));};
  function notify(){epoch++;readiness.clear();for(const fn of subscribers)fn();if(typeof window!=='undefined')window.dispatchEvent(new Event('kuro:catalogue-updated'));}
  const cached=id=>{const value=readiness.get(id);return readinessFresh(value)?value:undefined;};
+ const olderSnapshot=(id,at,revision)=>{const previous=snapshots.get(id);return previous&&(revision<previous.revision||revision===previous.revision&&at<previous.at);};
+ function rememberSnapshot(id,at,ready,revision=0){const previous=snapshots.get(id);if(!Number.isFinite(at)||at>Date.now()+5000||!Number.isSafeInteger(revision)||revision<0||previous&&(revision<previous.revision||revision===previous.revision&&(at<previous.at||at===previous.at&&(ready||!previous.ready))))return false;snapshots.delete(id);snapshots.set(id,{at,ready,revision});while(snapshots.size>2400)snapshots.delete(snapshots.keys().next().value);return true;}
  async function check(manga){
-  const hit=cached(manga.id);if(hit){if(hit.ready)try{await safety.verify(manga);}catch{return {ready:false,checkedAt:Date.now(),expiresAt:Date.now()+120000,error:CONTENT_MESSAGE};}if(readinessFresh(hit))return hit;}const started=epoch,key=started+':'+manga.id;if(checks.has(key))return checks.get(key);
-  const task=(async()=>{let ready=false,error,expiresAt=Date.now()+120000;try{
+  const hit=cached(manga.id);if(hit){if(hit.ready)try{await safety.verify(manga);}catch{return {ready:false,checkedAt:Date.now(),expiresAt:Date.now()+120000,error:CONTENT_MESSAGE};}if(cached(manga.id)===hit)return hit;}const started=epoch,key=started+':'+manga.id;if(checks.has(key))return checks.get(key).promise;
+  const record={id:manga.id,invalidated:false,promise:null};
+  const task=(async()=>{let ready=false,error,observedAt,inventoryRevision=0,expiresAt=Date.now()+120000;try{
    await safety.verify(manga);
    const adapter=manager.require(manga.sourceId);if(adapter.capabilities.readable!==false&&!manga.catalogueOnly&&!manga.publisherUrl){
-    if(manga.sourceId==='mangadex')try{const response=await fetch('/api/catalogue/readable/check?'+new URLSearchParams({provider:manga.sourceId,id:manga.id}),{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(15000)}),proof=await response.json();ready=response.ok&&proof.ready===true&&proof.validation==='complete-chapter'&&proof.validatedPages>0&&proof.validatedPages===proof.pageCount&&proof.expiresAt>Date.now();if(ready)expiresAt=Math.min(Date.now()+120000,proof.expiresAt);}catch{}
-    if(!ready){const chapters=await adapter.getChapterList(manga.id);for(const chapter of chapters.slice(0,10)){try{const manifest=await adapter.getChapterPages(chapter.id);ready=completeManifest(manifest,manga.sourceId==='local');if(ready){expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);break;}}catch(e){error=e.message;}}}
+    if(manga.sourceId==='mangadex')try{const response=await fetch('/api/catalogue/readable/check?'+new URLSearchParams({provider:manga.sourceId,id:manga.id}),{credentials:'same-origin',cache:'no-store',signal:AbortSignal.timeout(15000)}),proof=await response.json();if(response.ok){observedAt=proof.asOf;inventoryRevision=proof.inventoryRevision||0;}ready=response.ok&&proof.ready===true&&proof.validation==='complete-chapter'&&proof.validatedPages>0&&proof.validatedPages===proof.pageCount&&proof.expiresAt>Date.now();if(ready){expiresAt=Math.min(Date.now()+120000,proof.expiresAt);observedAt=proof.asOf;inventoryRevision=proof.inventoryRevision||0;}}catch{}
+    if(!ready){const chapters=await adapter.getChapterList(manga.id),cost=chapter=>Number.isInteger(chapter.pages)&&chapter.pages>0?chapter.pages:Infinity;
+     // Any complete chapter qualifies a title. Check the smaller candidates
+     // first; the reader's chapter list and selected chapter stay unchanged.
+     for(const chapter of [...chapters].sort((a,b)=>cost(a)-cost(b)).slice(0,10)){try{const manifest=await adapter.getChapterPages(chapter.id);ready=completeManifest(manifest,manga.sourceId==='local');if(ready){expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);observedAt=manifest.readabilityAsOf;inventoryRevision=manifest.inventoryRevision||0;break;}}catch(e){error=e.message;}}}
    }
    if(ready)await safety.verify(manga,undefined,true);
   }catch(e){ready=false;error=e.message;}
-   if(started!==epoch)return {ready:false,checkedAt:0,obsolete:true};
+   if(started!==epoch||record.invalidated)return {ready:false,checkedAt:0,obsolete:true};
+   const snapshotAt=Number.isFinite(observedAt)?observedAt:Date.now();if(olderSnapshot(manga.id,snapshotAt,inventoryRevision))return {ready:false,checkedAt:0,obsolete:true};rememberSnapshot(manga.id,snapshotAt,ready,inventoryRevision);
    const result={ready:ready&&expiresAt>Date.now(),checkedAt:Date.now(),expiresAt,error};readiness.set(manga.id,result);while(readiness.size>2000)readiness.delete(readiness.keys().next().value);
    core.lastCheck={...result,id:manga.id};safety.changed();if(ready&&typeof window!=='undefined')window.dispatchEvent(new Event('kuro:readable-updated'));return result;
-  })();checks.set(key,task);task.finally(()=>checks.delete(key));return task;
+  })();record.promise=task;checks.set(key,record);task.finally(()=>{if(checks.get(key)===record)checks.delete(key);});return task;
  }
  function preferences(currentRegistry=registry){
   if(!store||!manager)return;const old=store.getState().sourcePreferences,next={...old};let changed=false;
@@ -63,7 +70,7 @@ export function createCatalogueCore(providers){
    if(p.available===false&&next[p.id].enabled){next[p.id]={...next[p.id],enabled:false};changed=true;}}
   if(changed)store.setState({sourcePreferences:next});
  }
- async function checkChapter(manga,chapter){await safety.verify(manga,chapter,true);const manifest=await manager.require(manga.sourceId).getChapterPages(chapter);if(!completeManifest(manifest,manga.sourceId==='local'))throw new Error('The complete chapter could not be verified.');const expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);if(expiresAt<=Date.now())throw new Error('Chapter proof expired. Retry.');readiness.set(manga.id,{ready:true,checkedAt:Date.now(),expiresAt});return manifest;}
+ async function checkChapter(manga,chapter){await safety.verify(manga,chapter,true);const manifest=await manager.require(manga.sourceId).getChapterPages(chapter);if(!completeManifest(manifest,manga.sourceId==='local'))throw new Error('The complete chapter could not be verified.');const expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);if(expiresAt<=Date.now())throw new Error('Chapter proof expired. Retry.');const at=Number.isFinite(manifest.readabilityAsOf)?manifest.readabilityAsOf:Date.now(),revision=manifest.inventoryRevision||0;if(olderSnapshot(manga.id,at,revision))throw new Error('Chapter verification changed. Retry.');rememberSnapshot(manga.id,at,true,revision);readiness.set(manga.id,{ready:true,checkedAt:Date.now(),expiresAt});return manifest;}
  function initialize(id,api,require){
   if([1700,1703,1697].includes(id))return emailAuthExtension(id,api,require);
   if(id===789){manager=api.sourceManager;installAdapters(manager,registry,{request,origin:location.origin});if(local)manager.register(local.adapter);
@@ -112,23 +119,27 @@ export function createCatalogueCore(providers){
    const take=(rows,count)=>{const result=[];for(const row of rows){const index=map.get(row.id);if(used.has(index))continue;used.add(index);result.push(row);if(result.length===count)break;}return result;};
    return {featured:take(popular,5),updates:take(latest,6),popular:take(popular,16),moreUpdates:take(latest,16)};
   };
-  if(id===875){const original=api.mapManga;api.mapManga=(raw,...args)=>{if(!classifyMangaDex(raw).allowed)throw new Error(CONTENT_MESSAGE);const row=original(raw,...args),mal=String(raw.attributes?.links?.mal||'');if(/^\d+$/.test(mal))row.identityKeys=[...new Set([...(row.identityKeys||[]),'mal:'+mal])];row.coverUrl=location.origin+'/api/catalogue/cover?provider=mangadex&id='+row.id;row.contentApproval=raw.kuroContentApproval;safety.remember(row);return row;};}
+  if(id===875){const original=api.mapManga;api.mapManga=(raw,...args)=>{if(!classifyMangaDex(raw).allowed)throw new Error(CONTENT_MESSAGE);const row=original(raw,...args),mal=String(raw.attributes?.links?.mal||'');if(/^\d+$/.test(mal))row.identityKeys=[...new Set([...(row.identityKeys||[]),'mal:'+mal])];row.coverUrl=location.origin+'/api/catalogue/cover?provider=mangadex&id='+row.id;row.contentApproval=raw.kuroContentApproval;
+   const approved=safety.remember(row),proof=raw.kuroReadability,now=Date.now();
+   const valid=!!approved&&proof?.ready===true&&proof.mangaId===row.id&&/^mangadex:[0-9a-f-]{36}$/i.test(proof.chapterId||'')&&proof.version==='complete-chapter-1'&&proof.policyVersion===CONTENT_POLICY_VERSION&&proof.validation==='complete-chapter'&&Number.isInteger(proof.validatedPages)&&proof.validatedPages>0&&proof.validatedPages<=500&&proof.validatedPages===proof.pageCount&&Number.isFinite(proof.checkedAt)&&proof.checkedAt<=now+5000&&Number.isFinite(proof.expiresAt)&&proof.expiresAt>now&&proof.expiresAt<=proof.checkedAt+21600000;
+   if(Object.hasOwn(raw,'kuroReadability')&&rememberSnapshot(row.id,raw.kuroReadabilityAsOf,valid,raw.kuroReadabilityRevision||0)){readiness.delete(row.id);for(const [key,record]of checks)if(record.id===row.id){record.invalidated=true;checks.delete(key);}if(valid){readiness.set(row.id,{ready:true,checkedAt:now,expiresAt:Math.min(now+120000,proof.expiresAt)});while(readiness.size>2000)readiness.delete(readiness.keys().next().value);}}
+   return row;};}
   if(id===1389){api.checkReadability=check;api.cachedReadability=cached;api.forgetReadability=key=>readiness.delete(key);}
   if(id===1388){const React=require(15),router=require(11);api.useReadyCollection=function(items,active){
    active=true;
-   const entries=React.useRef(new Map()),[revision,setRevision]=React.useState(0),[retry,setRetry]=React.useState(0),[paused,setPaused]=React.useState(false);
+   const [revision,setRevision]=React.useState(0),[retry,setRetry]=React.useState(0),[paused,setPaused]=React.useState(false);
    const ageRevision=React.useSyncExternalStore(safety.subscribe,safety.getSnapshot);
-   React.useEffect(()=>{const expires=items.map(row=>entries.current.get(row.id)||cached(row.id)).filter(readinessFresh).map(value=>Math.min(value.expiresAt,value.checkedAt+120000));if(!expires.length)return;const timer=setTimeout(()=>{entries.current.clear();setRetry(x=>x+1);setRevision(x=>x+1);},Math.max(1,Math.min(...expires)-Date.now()+1));return()=>clearTimeout(timer);},[items,revision,ageRevision]);
+   React.useEffect(()=>{const expires=items.map(row=>cached(row.id)).filter(readinessFresh).map(value=>Math.min(value.expiresAt,value.checkedAt+120000));if(!expires.length)return;const timer=setTimeout(()=>{setRetry(x=>x+1);setRevision(x=>x+1);},Math.max(1,Math.min(...expires)-Date.now()+1));return()=>clearTimeout(timer);},[items,revision,ageRevision]);
    router.useFocusEffect(React.useCallback(()=>{
     if(!active||paused||document.hidden)return;let alive=true,index=0;
-    const listener=(invalidate=true)=>{if(invalidate)entries.current.clear();setRetry(x=>x+1);setRevision(x=>x+1);};subscribers.add(listener);
-    const queue=items.filter(row=>{const value=cached(row.id);if(value&&(!value.ready||admitted(row))){entries.current.set(row.id,value);return false;}return true;});
-    const work=async()=>{while(alive&&!document.hidden){const row=queue[index++];if(!row)break;const value=await check(row);if(alive&&!value.obsolete){entries.current.set(row.id,value);setRevision(x=>x+1);}}};work();work();
+    const listener=()=>{setRetry(x=>x+1);setRevision(x=>x+1);};subscribers.add(listener);
+    const queue=items.filter(row=>{const value=cached(row.id);return !(value&&(!value.ready||admitted(row)));});
+    const work=async()=>{while(alive&&!document.hidden){const row=queue[index++];if(!row)break;const value=await check(row);if(alive&&!value.obsolete)setRevision(x=>x+1);}};work();work();
     return()=>{alive=false;subscribers.delete(listener);};
    },[active,retry,items,paused,ageRevision]));
    const result=React.useMemo(()=>{const ready=[];let pending=0,unavailable=0;
-    for(const row of items){const value=entries.current.get(row.id)||cached(row.id);if(!readinessFresh(value)||value.ready&&!admitted(row))pending++;else if(value.ready)ready.push(row);else unavailable++;}return {items:groupSeries(ready,true).map(g=>g.primary),pending,unavailable};
-   },[active,items,revision,safety.getSnapshot()]);return {...result,paused,setPaused,retry:()=>{for(const row of items)readiness.delete(row.id);entries.current.clear();setPaused(false);setRetry(x=>x+1);setRevision(x=>x+1);}};
+    for(const row of items){const value=cached(row.id);if(!readinessFresh(value)||value.ready&&!admitted(row))pending++;else if(value.ready)ready.push(row);else unavailable++;}return {items:groupSeries(ready,true).map(g=>g.primary),pending,unavailable};
+   },[active,items,revision,safety.getSnapshot()]);return {...result,paused,setPaused,retry:()=>{for(const row of items)readiness.delete(row.id);setPaused(false);setRetry(x=>x+1);setRevision(x=>x+1);}};
   };}
   if(id===1595){const original=api.useChapterPages;api.useChapterPages=function(chapter){const query=original(chapter);if(activeChapter!==chapter){activeChapter=chapter;queueMicrotask(()=>window.dispatchEvent(new CustomEvent('kuro:active-chapter-changed',{detail:chapter})));}if(query.data?.verified){manifests.set(chapter,query.data);queueMicrotask(emitCredits);}return query;};}
  }

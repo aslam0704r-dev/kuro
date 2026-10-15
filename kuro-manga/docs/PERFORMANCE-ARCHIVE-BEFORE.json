@@ -1,0 +1,238 @@
+{
+  "phase": "search-before",
+  "origin": "https://kuro-manga.vercel.app",
+  "target": "/search?query=One%20Piece",
+  "events": [
+    {
+      "path": "/api/catalogue/providers",
+      "query": "",
+      "startMs": 1067,
+      "status": 200,
+      "responseMs": 1925,
+      "durationMs": 858
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%3Flimit%3D20%26offset%3D0%26availableTranslatedLanguage%255B%255D%3Den%26hasAvailableChapters%3Dtrue%26order%255BfollowedCount%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 1207,
+      "status": 200,
+      "responseMs": 3403,
+      "durationMs": 2196
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-32d76d19-8a05-4db0-9fc2-e0b0648fe9d0",
+      "startMs": 3983,
+      "status": 200,
+      "responseMs": 4616,
+      "durationMs": 633
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-77bee52c-d2d6-44ad-a33a-1734c1fe696a",
+      "startMs": 3983,
+      "status": 200,
+      "responseMs": 6656,
+      "durationMs": 2673
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F32d76d19-8a05-4db0-9fc2-e0b0648fe9d0%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 4617,
+      "status": 200,
+      "responseMs": 8703,
+      "durationMs": 4086
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F77bee52c-d2d6-44ad-a33a-1734c1fe696a%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 6656,
+      "status": 200,
+      "responseMs": 9098,
+      "durationMs": 2442
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-e78a489b-6632-4d61-b00b-5206f5b8b22b",
+      "startMs": 8709,
+      "status": 200,
+      "responseMs": 11032,
+      "durationMs": 2323
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fe78a489b-6632-4d61-b00b-5206f5b8b22b%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 11033,
+      "status": 200,
+      "responseMs": 13476,
+      "durationMs": 2443
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512",
+      "startMs": 13481,
+      "status": 200,
+      "responseMs": 15885,
+      "durationMs": 2404
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 9100,
+      "status": 200,
+      "responseMs": 16496,
+      "durationMs": 7396
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fb0b721ff-c388-4486-aa0f-c2b0bb321512%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 15885,
+      "status": 200,
+      "responseMs": 18290,
+      "durationMs": 2405
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 17097,
+      "status": 200,
+      "responseMs": 19468,
+      "durationMs": 2371
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-a96676e5-8ae2-425e-b549-7f15dd34a6d8",
+      "startMs": 18295,
+      "status": 200,
+      "responseMs": 20536,
+      "durationMs": 2241
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 20072,
+      "status": 200,
+      "responseMs": 22545,
+      "durationMs": 2473
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fa96676e5-8ae2-425e-b549-7f15dd34a6d8%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 20536,
+      "status": 200,
+      "responseMs": 22901,
+      "durationMs": 2365
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 23147,
+      "status": 200,
+      "responseMs": 25377,
+      "durationMs": 2230
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 25978,
+      "status": 200,
+      "responseMs": 28469,
+      "durationMs": 2491
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 29074,
+      "status": 200,
+      "responseMs": 31674,
+      "durationMs": 2600
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aec6d3763-a6c0-4bac-bb19-e5ac1e53ae75",
+      "startMs": 22902,
+      "status": 200,
+      "responseMs": 31945,
+      "durationMs": 9043
+    }
+  ],
+  "pending": [],
+  "snapshots": [
+    {
+      "text": "02 / THE DISCOVERY ARCHIVE\nTHE ARCHIVE.\n\uf3b0\n2 sources\n\uf563\nAll catalogues\nIn-app\n\uf356\n\uf3b0\nAll\nManga\nManhwa\nManhua\n\uf48b\nYOUR READING COLLECTION\n0 loaded groups \u00b7 0 editions folded\nDEEP OFF\n\uf399\nChapters: 20 checks left \u00b7 0 unconfirmed\n\uf497\nSTORIES WORTH YOUR TIME\n20 source records loaded \u00b7 0 title groups\n\uf1ac\nAll loaded titles saved\nCatalogue pages loaded. Pending chapter checks may add more titles.\nTHE ARCHIVE\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": null,
+      "elapsedMs": 5799
+    },
+    {
+      "text": "02 / THE DISCOVERY ARCHIVE\nTHE ARCHIVE.\n\uf3b0\n2 sources\n\uf563\nAll catalogues\nIn-app\n\uf356\n\uf3b0\nAll\nManga\nManhwa\nManhua\n\uf48b\nYOUR READING COLLECTION\n0 loaded groups \u00b7 0 editions folded\nDEEP OFF\n\uf399\nChapters: 19 checks left \u00b7 1 unconfirmed\n\uf497\n\uf518\nSTORIES WORTH YOUR TIME\n20 source records loaded \u00b7 0 title groups\n\uf1ac\nAll loaded titles saved\nCatalogue pages loaded. Pending chapter checks may add more titles.\nTHE ARCHIVE\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058945013,
+        "expiresAt": 1792059060293,
+        "error": null,
+        "id": "mangadex-32d76d19-8a05-4db0-9fc2-e0b0648fe9d0"
+      },
+      "elapsedMs": 10812
+    },
+    {
+      "text": "02 / THE DISCOVERY ARCHIVE\nTHE ARCHIVE.\n\uf3b0\n2 sources\n\uf563\nAll catalogues\nIn-app\n\uf356\n\uf3b0\nAll\nManga\nManhwa\nManhua\n\uf48b\nYOUR READING COLLECTION\n0 loaded groups \u00b7 0 editions folded\nDEEP OFF\n\uf399\nChapters: 18 checks left \u00b7 2 unconfirmed\n\uf497\n\uf518\nSTORIES WORTH YOUR TIME\n20 source records loaded \u00b7 0 title groups\n\uf1ac\nAll loaded titles saved\nCatalogue pages loaded. Pending chapter checks may add more titles.\nTHE ARCHIVE\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058949786,
+        "expiresAt": 1792059065019,
+        "error": null,
+        "id": "mangadex-e78a489b-6632-4d61-b00b-5206f5b8b22b"
+      },
+      "elapsedMs": 15829
+    },
+    {
+      "text": "02 / THE DISCOVERY ARCHIVE\nTHE ARCHIVE.\n\uf3b0\n2 sources\n\uf563\nAll catalogues\nIn-app\n\uf356\n\uf3b0\nAll\nManga\nManhwa\nManhua\n\uf48b\nYOUR READING COLLECTION\n0 loaded groups \u00b7 0 editions folded\nDEEP OFF\n\uf399\nChapters: 17 checks left \u00b7 3 unconfirmed\n\uf497\n\uf518\nSTORIES WORTH YOUR TIME\n20 source records loaded \u00b7 0 title groups\n\uf1ac\nAll loaded titles saved\nCatalogue pages loaded. Pending chapter checks may add more titles.\nTHE ARCHIVE\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058954601,
+        "expiresAt": 1792059069791,
+        "error": null,
+        "id": "mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512"
+      },
+      "elapsedMs": 20832
+    },
+    {
+      "text": "02 / THE DISCOVERY ARCHIVE\nTHE ARCHIVE.\n\uf3b0\n2 sources\n\uf563\nAll catalogues\nIn-app\n\uf356\n\uf3b0\nAll\nManga\nManhwa\nManhua\n\uf48b\nYOUR READING COLLECTION\n0 loaded groups \u00b7 0 editions folded\nDEEP OFF\n\uf399\nChapters: 17 checks left \u00b7 3 unconfirmed\n\uf497\n\uf518\nSTORIES WORTH YOUR TIME\n20 source records loaded \u00b7 0 title groups\n\uf1ac\nAll loaded titles saved\nCatalogue pages loaded. Pending chapter checks may add more titles.\nTHE ARCHIVE\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058954601,
+        "expiresAt": 1792059069791,
+        "error": null,
+        "id": "mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512"
+      },
+      "elapsedMs": 25845
+    },
+    {
+      "text": "02 / THE DISCOVERY ARCHIVE\nTHE ARCHIVE.\n\uf3b0\n2 sources\n\uf563\nAll catalogues\nIn-app\n\uf356\n\uf3b0\nAll\nManga\nManhwa\nManhua\n\uf48b\nYOUR READING COLLECTION\n0 loaded groups \u00b7 0 editions folded\nDEEP OFF\n\uf399\nChapters: 17 checks left \u00b7 3 unconfirmed\n\uf497\n\uf518\nSTORIES WORTH YOUR TIME\n20 source records loaded \u00b7 0 title groups\n\uf1ac\nAll loaded titles saved\nCatalogue pages loaded. Pending chapter checks may add more titles.\nTHE ARCHIVE\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058954601,
+        "expiresAt": 1792059069791,
+        "error": null,
+        "id": "mangadex-b0b721ff-c388-4486-aa0f-c2b0bb321512"
+      },
+      "elapsedMs": 30863
+    }
+  ],
+  "errors": [],
+  "statuses": {
+    "200": 19
+  }
+}

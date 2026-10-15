@@ -1,0 +1,300 @@
+{
+  "phase": "before",
+  "origin": "https://kuro-manga.vercel.app",
+  "target": "/",
+  "events": [
+    {
+      "path": "/api/catalogue/providers",
+      "query": "",
+      "startMs": 1161,
+      "status": 200,
+      "responseMs": 2069,
+      "durationMs": 908
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%3Flimit%3D20%26offset%3D0%26availableTranslatedLanguage%255B%255D%3Den%26hasAvailableChapters%3Dtrue%26order%255BfollowedCount%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 1308,
+      "status": 200,
+      "responseMs": 3531,
+      "durationMs": 2223
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%3Flimit%3D20%26offset%3D0%26availableTranslatedLanguage%255B%255D%3Den%26hasAvailableChapters%3Dtrue%26order%255BlatestUploadedChapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 1308,
+      "status": 200,
+      "responseMs": 3775,
+      "durationMs": 2467
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-040304b8-6442-482e-a621-f33b13248908",
+      "startMs": 4022,
+      "status": 200,
+      "responseMs": 4909,
+      "durationMs": 887
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7",
+      "startMs": 4022,
+      "status": 200,
+      "responseMs": 6359,
+      "durationMs": 2337
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-32d76d19-8a05-4db0-9fc2-e0b0648fe9d0",
+      "startMs": 4131,
+      "status": 200,
+      "responseMs": 6373,
+      "durationMs": 2242
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F040304b8-6442-482e-a621-f33b13248908%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 4910,
+      "status": 200,
+      "responseMs": 7285,
+      "durationMs": 2375
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F32d76d19-8a05-4db0-9fc2-e0b0648fe9d0%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 6373,
+      "status": 200,
+      "responseMs": 8713,
+      "durationMs": 2340
+    },
+    {
+      "path": "/api/catalogue/readable/check",
+      "query": "provider=mangadex&id=mangadex-77bee52c-d2d6-44ad-a33a-1734c1fe696a",
+      "startMs": 8718,
+      "status": 200,
+      "responseMs": 9368,
+      "durationMs": 650
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2Fe900135b-8eba-4d29-85c9-db3d5ae885c7%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 6359,
+      "status": 200,
+      "responseMs": 9458,
+      "durationMs": 3099
+    },
+    {
+      "path": "/api/catalogue/mangadex",
+      "query": "path=%2Fmanga%2F77bee52c-d2d6-44ad-a33a-1734c1fe696a%2Ffeed%3Flimit%3D500%26offset%3D0%26translatedLanguage%255B%255D%3Den%26order%255Bchapter%255D%3Ddesc%26includes%255B%255D%3Dcover_art%26includes%255B%255D%3Dauthor%26includes%255B%255D%3Dartist%26contentRating%255B%255D%3Dsafe",
+      "startMs": 9368,
+      "status": 200,
+      "responseMs": 11752,
+      "durationMs": 2384
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 7290,
+      "status": 200,
+      "responseMs": 16076,
+      "durationMs": 8786
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3A0e33faa8-b312-47d3-b17b-5c9e9c3e939d",
+      "startMs": 9674,
+      "status": 200,
+      "responseMs": 17971,
+      "durationMs": 8297
+    },
+    {
+      "path": "/api/catalogue/content/check",
+      "query": "provider=mangadex&id=mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7",
+      "startMs": 17971,
+      "status": 200,
+      "responseMs": 18406,
+      "durationMs": 435
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 16679,
+      "status": 200,
+      "responseMs": 19217,
+      "durationMs": 2538
+    },
+    {
+      "path": "/api/catalogue/cover",
+      "query": "provider=mangadex&id=mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7",
+      "startMs": 18435,
+      "status": 200,
+      "responseMs": 19345,
+      "durationMs": 910
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 11753,
+      "status": 200,
+      "responseMs": 19685,
+      "durationMs": 7932
+    },
+    {
+      "path": "/api/catalogue/readable/count",
+      "query": "",
+      "startMs": 18428,
+      "status": 200,
+      "responseMs": 20829,
+      "durationMs": 2401
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 19829,
+      "status": 200,
+      "responseMs": 22294,
+      "durationMs": 2465
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 20296,
+      "status": 200,
+      "responseMs": 22581,
+      "durationMs": 2285
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 22904,
+      "status": 200,
+      "responseMs": 25287,
+      "durationMs": 2383
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 23185,
+      "status": 200,
+      "responseMs": 25545,
+      "durationMs": 2360
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 25892,
+      "status": 200,
+      "responseMs": 28362,
+      "durationMs": 2470
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 26150,
+      "status": 200,
+      "responseMs": 28587,
+      "durationMs": 2437
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 28968,
+      "status": 200,
+      "responseMs": 31467,
+      "durationMs": 2499
+    },
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Aeda848f0-279b-4e52-9160-d7e3002fc886",
+      "startMs": 29202,
+      "status": 200,
+      "responseMs": 31687,
+      "durationMs": 2485
+    }
+  ],
+  "pending": [
+    {
+      "path": "/api/catalogue/provider/mangadex/pages",
+      "query": "id=mangadex%3Ab5db723f-9f02-431b-94c5-854d41ef40ab",
+      "startMs": 32082
+    }
+  ],
+  "snapshots": [
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nChecking recent updates for readable chapters\u2026\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n0 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": null,
+      "elapsedMs": 6054
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nChecking recent updates for readable chapters\u2026\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n0 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058501253,
+        "expiresAt": 1792058616670,
+        "error": null,
+        "id": "mangadex-32d76d19-8a05-4db0-9fc2-e0b0648fe9d0"
+      },
+      "elapsedMs": 11059
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nChecking recent updates for readable chapters\u2026\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n0 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 0,
+      "loadedCovers": 0,
+      "lastCheck": {
+        "ready": false,
+        "checkedAt": 1792058501253,
+        "expiresAt": 1792058616670,
+        "error": null,
+        "id": "mangadex-32d76d19-8a05-4db0-9fc2-e0b0648fe9d0"
+      },
+      "elapsedMs": 16066
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n1 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 1,
+      "loadedCovers": 1,
+      "lastCheck": {
+        "ready": true,
+        "checkedAt": 1792058510952,
+        "expiresAt": 1792058630510,
+        "error": null,
+        "id": "mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7"
+      },
+      "elapsedMs": 21084
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n1 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 1,
+      "loadedCovers": 1,
+      "lastCheck": {
+        "ready": true,
+        "checkedAt": 1792058510952,
+        "expiresAt": 1792058630510,
+        "error": null,
+        "id": "mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7"
+      },
+      "elapsedMs": 26101
+    },
+    {
+      "text": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nTHE UPDATE DESK\nLATEST UPDATES.\nSource update order \u00b7 different stories from the spotlight\nSee all \u2197\nMANGADEX\nThe Ghostly Doctor\nListed in this source\u2019s latest updates\nOPEN SERIES  \u2197\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nPOPULAR ACROSS SOURCES\nSource popularity rankings \u00b7 not a live global chart\nSEE ALL\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n1 unique Home picks \u00b7 Checking source feeds and chapter availability\u2026\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+      "coverImages": 1,
+      "loadedCovers": 1,
+      "lastCheck": {
+        "ready": true,
+        "checkedAt": 1792058510952,
+        "expiresAt": 1792058630510,
+        "error": null,
+        "id": "mangadex-e900135b-8eba-4d29-85c9-db3d5ae885c7"
+      },
+      "elapsedMs": 31117
+    }
+  ],
+  "errors": [],
+  "statuses": {
+    "200": 26
+  }
+}

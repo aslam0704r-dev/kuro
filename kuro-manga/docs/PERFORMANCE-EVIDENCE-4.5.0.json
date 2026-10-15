@@ -1,0 +1,42 @@
+{
+  "version": "4.5.0",
+  "date_client": "2026-10-15",
+  "node": {
+    "passed": 232,
+    "failed": 0,
+    "skipped": 0,
+    "real_redis": true,
+    "log_sha256": "742b74d4fffe29181b981623bad027fd385a749d224acec420a0a67141409ef0"
+  },
+  "build": {
+    "passed": true,
+    "log_sha256": "927048d51972bf627a1f7598e5e9c52904a0e8d24f42bf025d0a2076c6cc7f88"
+  },
+  "fresh_browser": {
+    "passed": 46,
+    "failed": 0,
+    "suites": {
+      "readable-performance-browser": 4,
+      "content-browser": 16,
+      "readable-browser": 6,
+      "profile-browser": 13,
+      "profile-ui-regressions": 3,
+      "email-auth-browser": 4
+    }
+  },
+  "controlled_validation": {
+    "pages": 12,
+    "old_invocations": 6,
+    "new_invocations": 1,
+    "all_pages_fetched_decoded": true,
+    "max_image_concurrency": 2
+  },
+  "live_before_reports": [
+    "docs/PERFORMANCE-HOME-BEFORE.json",
+    "docs/PERFORMANCE-ARCHIVE-BEFORE.json"
+  ],
+  "live_after_receipt": "KURO-PUSH-DEPLOYMENT-4.5.0.json",
+  "live_account_storage_tested": false,
+  "provider_audit_repeated": false,
+  "private_keys_requested_or_exposed": false
+}

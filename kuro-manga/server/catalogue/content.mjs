@@ -19,7 +19,10 @@ export function createContentService({read,clock=Date.now,onReject=async()=>{}})
  function seed(raw,checkedAt){
   if(!classifyMangaDex(raw).allowed||!Number.isFinite(checkedAt)||checkedAt+30000<=clock())return undefined;
   const uuid=raw.id.toLowerCase(),cover=raw.relationships?.find(x=>x.type==='cover_art')?.attributes?.fileName,mapped=mdManga(raw);
-  const row={raw:{...raw,kuroContentApproval:{version:CONTENT_POLICY_VERSION,checkedAt}},manga:{...mapped,contentApproval:{...mapped.contentApproval,checkedAt}},coverUrl:typeof cover==='string'&&/^[a-z0-9-]+\.(?:png|jpe?g|webp)$/i.test(cover)?'https://uploads.mangadex.org/covers/'+uuid+'/'+cover:null,coverPolicy:{hosts:['uploads.mangadex.org'],paths:['/covers/'+uuid+'/']}};
+  // Provider JSON cannot assert KURO's independent full-chapter proof. Lists
+  // attach that field later using only the deployment's validated inventory.
+  const {kuroReadability:ignoredProof,kuroReadabilityAsOf:ignoredSnapshot,kuroReadabilityRevision:ignoredRevision,...providerRaw}=raw;
+  const row={raw:{...providerRaw,kuroContentApproval:{version:CONTENT_POLICY_VERSION,checkedAt}},manga:{...mapped,contentApproval:{...mapped.contentApproval,checkedAt}},coverUrl:typeof cover==='string'&&/^[a-z0-9-]+\.(?:png|jpe?g|webp)$/i.test(cover)?'https://uploads.mangadex.org/covers/'+uuid+'/'+cover:null,coverPolicy:{hosts:['uploads.mangadex.org'],paths:['/covers/'+uuid+'/']}};
   approved.set(uuid,row);while(approved.size>2000)approved.delete(approved.keys().next().value);return row;
  }
  async function manga(provider,id){try{return await loadManga(provider,id);}catch(error){if(provider==='mangadex'&&[403,404,410].includes(error.status)&&UUID.test(String(id).replace(/^mangadex-/,'')))await onReject('mangadex-'+String(id).replace(/^mangadex-/,'').toLowerCase());throw error;}}

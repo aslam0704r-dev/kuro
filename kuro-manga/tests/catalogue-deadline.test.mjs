@@ -1,4 +1,10 @@
 import test from 'node:test';import assert from 'node:assert/strict';
+test('a hosted deadline waits for registered integrity cleanup with an independent signal',async()=>{
+ const {withCatalogueDeadline,catalogueSignal,catalogueCleanup}=await import('../server/catalogue/deadline.mjs');
+ assert.equal(typeof catalogueCleanup,'function');let cleaned=false,parent;
+ await assert.rejects(withCatalogueDeadline(async()=>{parent=catalogueSignal();catalogueCleanup(async()=>{assert.notEqual(catalogueSignal(),parent);await new Promise(resolve=>setTimeout(resolve,30));assert.equal(catalogueSignal().aborted,false);cleaned=true;});await new Promise(resolve=>parent.addEventListener('abort',resolve,{once:true}));},5),/deadline/);
+ assert.equal(cleaned,true);
+});
 test('catalogue deadlines abort public work without leaking into sibling calls',async()=>{
  const {withCatalogueDeadline,catalogueSignal}=await import('../server/catalogue/deadline.mjs');let aborted=false;
  assert.equal(catalogueSignal(),undefined);

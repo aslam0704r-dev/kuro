@@ -9,8 +9,10 @@ export function createMemoryCoordinator(clock=Date.now){
  const prune=map=>{for(const [key,row]of map)if(row.expires<=clock())map.delete(key);};
  return {
   async inventoryGet(bucket){const row=inventory.get(bucket);if(!row||row.expires<=clock()){inventory.delete(bucket);return {};}return structuredClone(row.value);},
+  async inventoryMany(buckets){return Promise.all(buckets.map(bucket=>this.inventoryGet(bucket)));},
+  async inventorySnapshot(buckets){const revision=inventoryRevision;return {revision,values:await this.inventoryMany(buckets)};},
   async inventoryAll(){for(let attempt=0;attempt<3;attempt++){const revision=inventoryRevision,data=await Promise.all(Array.from({length:256},(_,i)=>this.inventoryGet(i.toString(16).padStart(2,'0'))));if(revision===inventoryRevision)return data;}throw sourceError('Readable inventory changed during counting. Retry shortly.',503);},
-  async inventorySet(bucket,value,ttl){if(!/^[a-f0-9]{2}$/.test(bucket)||Buffer.byteLength(JSON.stringify(value))>512*1024)throw sourceError('Readable inventory capacity reached',503);inventory.set(bucket,{value:structuredClone(value),expires:clock()+ttl});inventoryRevision++;},
+  async inventorySet(bucket,value,ttl){if(!/^[a-f0-9]{2}$/.test(bucket)||Buffer.byteLength(JSON.stringify(value))>512*1024)throw sourceError('Readable inventory capacity reached',503);inventory.set(bucket,{value:structuredClone(value),expires:clock()+ttl});return ++inventoryRevision;},
   async get(key){const row=rows.get(key);if(!row||row.expires<=clock()){rows.delete(key);return null;}return structuredClone(row.value);},
   async getMany(keys){return Promise.all(keys.map(key=>this.get(key)));},
   async set(key,value,ttl){prune(rows);if(!rows.has(key)&&rows.size>=2000)rows.delete(rows.keys().next().value);rows.set(key,{value:structuredClone(value),expires:clock()+ttl});},
@@ -32,11 +34,24 @@ export function createRedisCoordinator(url,token,prefix='kuro:catalogue:v1'){
  const evaluate=(script,keys,args=[],cleanup=false)=>command(['EVAL',script,keys.length,...keys,...args],cleanup);
  return {
   async inventoryGet(bucket){if(!/^[a-f0-9]{2}$/.test(bucket))throw sourceError('Invalid inventory bucket',400);const data=await evaluate(READ,[prefix+':readable-v1:'+bucket]);try{return data===null?{}:JSON.parse(data);}catch{throw sourceError('Invalid readable inventory',503);}},
+  async inventoryMany(buckets){
+   if(!Array.isArray(buckets)||buckets.length>100||buckets.some(bucket=>!/^[a-f0-9]{2}$/.test(bucket)))throw sourceError('Invalid inventory buckets',400);
+   if(!buckets.length)return [];
+   const data=await evaluate("local r={};for i,k in ipairs(KEYS) do local v=redis.call('GET',k);r[i]=v or false;end;return r",buckets.map(bucket=>prefix+':readable-v1:'+bucket));
+   if(!Array.isArray(data)||data.length!==buckets.length)throw sourceError('Invalid readable inventory',503);
+   return data.map(item=>{try{return item===null||item===false?{}:JSON.parse(item);}catch{throw sourceError('Invalid readable inventory',503);}});
+  },
+  async inventorySnapshot(buckets){
+   if(!Array.isArray(buckets)||buckets.length>100||buckets.some(bucket=>!/^[a-f0-9]{2}$/.test(bucket)))throw sourceError('Invalid inventory buckets',400);
+   const result=await evaluate("local r={};for i=2,#KEYS do local v=redis.call('GET',KEYS[i]);r[i-1]=v or false;end;return {redis.call('GET',KEYS[1]) or '0',r}",[prefix+':readable-revision',...buckets.map(bucket=>prefix+':readable-v1:'+bucket)]);
+   if(!Array.isArray(result)||!Number.isSafeInteger(Number(result[0]))||Number(result[0])<0||!Array.isArray(result[1])||result[1].length!==buckets.length)throw sourceError('Invalid readable inventory',503);
+   return {revision:Number(result[0]),values:result[1].map(item=>{try{return item===null||item===false?{}:JSON.parse(item);}catch{throw sourceError('Invalid readable inventory',503);}})};
+  },
   async inventoryAll(){for(let attempt=0;attempt<3;attempt++){const revision=await evaluate("return redis.call('GET',KEYS[1]) or '0'",[prefix+':readable-revision']),values=[];for(let i=0;i<256;i+=32){const keys=Array.from({length:Math.min(32,256-i)},(_,j)=>prefix+':readable-v1:'+(i+j).toString(16).padStart(2,'0'));
    // Lua reads the primary consistently, avoiding a replica-lag count of zero.
    const data=await evaluate("local r={};for i,k in ipairs(KEYS) do local v=redis.call('GET',k);r[i]=v or false;end;return r",keys);
    if(!Array.isArray(data)||data.length!==keys.length)throw sourceError('Invalid readable inventory',503);for(const item of data){try{values.push(item===null||item===false?{}:JSON.parse(item));}catch{throw sourceError('Invalid readable inventory',503);}}}if(revision===await evaluate("return redis.call('GET',KEYS[1]) or '0'",[prefix+':readable-revision']))return values;}throw sourceError('Readable inventory changed during counting. Retry shortly.',503);},
-  async inventorySet(bucket,value,ttl){if(!/^[a-f0-9]{2}$/.test(bucket))throw sourceError('Invalid inventory bucket',400);const data=JSON.stringify(value);if(Buffer.byteLength(data)>512*1024)throw sourceError('Readable inventory capacity reached',503);await evaluate("redis.call('SET',KEYS[1],ARGV[1],'PX',ARGV[2]);return redis.call('INCR',KEYS[2])",[prefix+':readable-v1:'+bucket,prefix+':readable-revision'],[data,Math.ceil(ttl)]);},
+  async inventorySet(bucket,value,ttl){if(!/^[a-f0-9]{2}$/.test(bucket))throw sourceError('Invalid inventory bucket',400);const data=JSON.stringify(value);if(Buffer.byteLength(data)>512*1024)throw sourceError('Readable inventory capacity reached',503);return evaluate("redis.call('SET',KEYS[1],ARGV[1],'PX',ARGV[2]);return redis.call('INCR',KEYS[2])",[prefix+':readable-v1:'+bucket,prefix+':readable-revision'],[data,Math.ceil(ttl)]);},
   async get(name){const data=await evaluate(READ,[key('cache:'+name)]);if(data===null)return null;try{return JSON.parse(data);}catch{throw sourceError('Invalid catalogue cache',503);}},
   async getMany(names){const values=[];for(let i=0;i<names.length;i+=100){const data=await command(['MGET',...names.slice(i,i+100).map(name=>key('cache:'+name))]);
    if(!Array.isArray(data)||data.length!==Math.min(100,names.length-i))throw sourceError('Invalid catalogue cache',503);

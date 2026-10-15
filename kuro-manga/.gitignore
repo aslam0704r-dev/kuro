@@ -1,6 +1,8 @@
 /node_modules/
 /private-data/
 /work/
+__pycache__/
+*.pyc
 /tests/.state-*/
 /tests/.auth-*/
 /tests/.config-*/
