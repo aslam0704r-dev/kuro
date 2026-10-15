@@ -6,7 +6,7 @@ Application: `C:/Users/Aslam/Documents/Codex/KURO-Update-4.4/kuro-manga`.
 
 ## Result
 
-**No remaining actionable findings in the reviewed scope after the corrections below.** All eight independent reproductions now pass on the current source. This is a bounded code and regression review, not a production performance guarantee or a new provider/content audit.
+**No remaining actionable findings in the reviewed scope after the corrections below.** All nine independent reproductions now pass on the current source, including the follow-up adapter-wrapping variant. This is a bounded code and regression review, not a production performance guarantee or a new provider/content audit.
 
 Inspected the changed catalogue core, listing scheduler, MangaDex HTTP helper, actual Discovery hook replacement, provider-directory UI, generated companion, exported manifest validator, tests, version changes and release documentation. Saved selections remain separate from runtime eligibility and content approval. The server/content-policy modules, account/profile implementation and original Metro export are unchanged by this diff.
 
@@ -21,6 +21,7 @@ Every row below was actionable at the time of reproduction and is now resolved. 
 | P2 | Initial readiness checks ignored HTTP-date Retry-After. Return a 429 from `/readable/check` with a date five minutes ahead; the old path scheduled a one-minute retry. | `client/catalogue-core.mjs:85` shares `retryDate` with metadata/page handling. Reviewer case 5 now preserves the full five-minute window and suppresses an immediate second request. |
 | P2 | Temporary interruption became a false unreadable result. Return valid pending page progress, then reject the next page fetch with `TypeError('fetch failed')`; the inner chapter catch exhausted the candidate and cached `ready:false` for 120 seconds. An initial `AbortSignal.timeout` rejection named `TimeoutError` had the same final effect. | Shared temporary-failure classification (`client/catalogue-core.mjs:14`) is used before advancing a candidate (`:101`) and by pending/backoff recovery (`:104`). Reviewer cases 6 and 7 pass: progress stays pending with retry timing and no negative cache entry. Focused repository tests additionally exercise page aborts and non-JSON error bodies. |
 | P2 | Concurrent responses shortened a source cooldown. Start two readiness calls; resolve a 429 with Retry-After 300 seconds, then another with 30 seconds. After 31 seconds a third title caused a new network request, despite the first five-minute source window. | Both core HTTP response boundaries use `Math.max` with the existing source deadline (`client/catalogue-core.mjs:43` and `:85`). Reviewer case 8 passes: only the original two network calls occur and the later title inherits the five-minute deadline. |
+| P2, follow-up variant | The legacy chapter-list adapter could wrap a metadata 429 in a fresh Error, dropping its `status` and `retryAt`. Despite the shared HTTP helper already recording a source cooldown, listing classification could then cache a false unreadable result. | The outer listing catch at `client/catalogue-core.mjs:104` now treats an active authoritative source cooldown as pending and retains the greater deadline. Independent reviewer case 9 exercises the shared HTTP helper, wraps its error without the fields, verifies no negative cache or premature second metadata call, then advances past the 60-second cooldown and proves successful complete-chapter admission without manual cache clearing. |
 
 The runnable independent cases are in `KURO_4.6_REPROS.test.mjs` beside this report. They use stubbed responses and test stores, with no private environment or production access.
 
@@ -28,8 +29,8 @@ The runnable independent cases are in `KURO_4.6_REPROS.test.mjs` beside this rep
 
 | Check executed by reviewer | Result |
 | --- | --- |
-| Eight reviewer reproductions after the final fixes | **8 passed, 0 failed, 0 skipped** |
-| `listing-queue`, `listing-check`, `provider-selection`, `discovery-progressive`, `catalogue-http` repository tests | **39 passed, 0 failed, 0 skipped** |
+| Nine reviewer reproductions after the final fixes | **9 passed, 0 failed, 0 skipped** |
+| `listing-queue`, `listing-check`, `provider-selection`, `discovery-progressive`, `catalogue-http` repository tests | **40 passed, 0 failed, 0 skipped** |
 | Retained 4.5 adversarial proof/revocation suite on current 4.6 source, using dedicated Redis at port 16479 and isolated test namespaces | **14 passed, 0 failed, 0 skipped** |
 | Independent fresh-browser Home and Search controlled cold fixtures on the regenerated companion | Both passed; no page script errors or external network requests |
 | Read-only esbuild output comparison using the production catalogue-build options | Current generated companion matches current source byte for byte |
@@ -37,13 +38,15 @@ The runnable independent cases are in `KURO_4.6_REPROS.test.mjs` beside this rep
 
 The retained 4.5 cases cover upstream proof-field spoofing, mounted negative invalidation, old positive/negative list replay, direct-reader ordering, A/B/A chapter evidence, delayed primary snapshots, expiry/revocation/group restrictions in memory and Redis, and integrity failure with sibling deadlines/slow progress unlock. The focused 4.6 cases cover fairness, two active scheduled steps, shared ownership, unmount cleanup/capacity, hidden pages, complete-manifest identity, independent provider publication/paging/query keys, settings persistence and HTTP cooldowns.
 
-In each independent browser fixture, the first page-batch calls were long A, long B, then short. The short approved title and its cover appeared while both long chapters still returned pending; neither long title nor its cover appeared. The final measured observations were **1,093 ms on Home** and **1,088 ms on Search**, including navigation and the network-idle wait. Fresh remote defaults were exactly MangaDex and AniList. Selecting unsupported Guya saved its choice, kept runtime eligibility false, and retained the short title's existing proof/card.
+In each independent browser fixture, the first page-batch calls were long A, long B, then short. The short approved title and its cover appeared while both long chapters still returned pending; neither long title nor its cover appeared. Rerunning against the companion with the adapter-wrapping correction produced observations of **1,554 ms on Home** and **966 ms on Search**, including navigation and the network-idle wait. Fresh remote defaults were exactly MangaDex and AniList. Selecting unsupported Guya saved its choice, kept runtime eligibility false, and retained the short title's existing proof/card.
 
-Browser evidence is in `KURO_4.6_BROWSER_REPRO.py`, `KURO_4.6_BROWSER_RESULT.json`, `KURO_4.6_REVIEW_HOME.png` and `KURO_4.6_REVIEW_SEARCH.png` beside this report. These are controlled, fast synthetic responses; the timings do not predict production latency. The baseline replay comparison and the complete 271-test/56-browser release runs were performed by the implementer and are separate evidence, not reviewer reruns.
+Browser evidence is in `KURO_4.6_BROWSER_REPRO.py`, `KURO_4.6_BROWSER_RESULT.json`, `KURO_4.6_REVIEW_HOME.png` and `KURO_4.6_REVIEW_SEARCH.png` beside this report. These are controlled, fast synthetic responses; the timings do not predict production latency. The baseline replay comparison and the complete 272-test/56-browser release runs were performed by the implementer and are separate evidence, not reviewer reruns. The retained 14-case 4.5 suite passed during the initial scoped review; the follow-up reran the nine reviewer cases, 40 focused repository cases, the two browser fixtures and generated-output comparison.
+
+The implementer also supplied bounded live observations of the initial deployed 4.6 commit `2ca69f8`, before the adapter-wrapping correction: Home at 6.336 seconds versus a prior 11.595-second observation that encountered a 429, and a cold One Piece result at 26.434 seconds with validation calls around 9.8–11.4 seconds. These were not repeated by this reviewer, are not a controlled general speed comparison, and do not verify the corrected deployment. Further live catalogue probes were stopped after the Home 429. They confirm the need to retain the latency/backoff limitations below.
 
 Final generated companion SHA-256:
 
-`b5673608eb352ccd1cb3fee3abcc8f22fee0a9bae4261cc54acf016f7baecf56`
+`0ecbe790c78df997bf9745ad5568aa9b784eaaef9df6fc0a4965b9426bb30f4e`
 
 Original Metro export SHA-256:
 

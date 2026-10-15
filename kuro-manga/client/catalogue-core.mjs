@@ -101,7 +101,7 @@ export function createCatalogueCore(providers){
      }catch(failure){if(temporaryFailure(failure))throw failure;error=failure.message;progress.index++;progress.attempts=0;if(progress.index<progress.chapters.length){if(obsolete())return {obsolete:true};listingProgress.set(manga.id,progress);return {pending:true};}}
     }
     if(ready)await safety.verify(manga,undefined,true);
-   }catch(failure){error=failure.message;if(obsolete())return {obsolete:true};if(temporaryFailure(failure)){progress.retryAt=failure.retryAt||Date.now()+30000;listingProgress.set(manga.id,progress);sourceRetryAt.set(manga.sourceId,Math.max(sourceRetryAt.get(manga.sourceId)||0,progress.retryAt));return {pending:true,retryAt:progress.retryAt,error};}ready=false;}
+   }catch(failure){error=failure.message;if(obsolete())return {obsolete:true};if(temporaryFailure(failure)||(sourceRetryAt.get(manga.sourceId)||0)>Date.now()){progress.retryAt=Math.max(sourceRetryAt.get(manga.sourceId)||0,failure.retryAt||Date.now()+30000);listingProgress.set(manga.id,progress);sourceRetryAt.set(manga.sourceId,Math.max(sourceRetryAt.get(manga.sourceId)||0,progress.retryAt));return {pending:true,retryAt:progress.retryAt,error};}ready=false;}
    if(obsolete())return {obsolete:true};listingProgress.delete(manga.id);
    const observation=progress.proof||{asOf:progress.observedAt,inventoryRevision:progress.inventoryRevision},at=Number.isFinite(observation.asOf)?observation.asOf:Date.now(),revision=observation.inventoryRevision||0;
    if(olderSnapshot(manga.id,at,revision))return {obsolete:true};rememberSnapshot(manga.id,at,ready,revision);

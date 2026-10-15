@@ -31,7 +31,7 @@ Connector code and an enabled switch do not prove current availability. This rel
 1. Home/search collections share a two-worker listing queue. A job validates at most one hosted page batch per turn; a still-pending chapter moves behind other titles. Duplicate watchers share the same in-flight step. Removing the last watcher prevents further batches and releases queue capacity. Hidden pages start no new listing work.
 2. A short chapter can qualify during its first turn, immediately after metadata preparation. The queue does not prepare every title's metadata before allowing an easy chapter to complete. Smaller chapters remain the first candidates.
 3. Search/Discovery queries each provider/page independently. Completed results are merged while slower queries continue. Existing cursor signatures, edition grouping, filters and the 25-page per-source bound remain. Query keys isolate changed searches and source filters. Home already used independent feed queries and retains that behavior.
-4. The legacy MangaDex HTTP helper deduplicates concurrent GETs, caps response caching at ten seconds and the rating evidence's expiry, and honors numeric/HTTP-date Retry-After without immediate retries. Page and readiness requests share its source cooldown. A throttled listing stays pending and releases the worker.
+4. The legacy MangaDex HTTP helper deduplicates concurrent GETs, caps response caching at ten seconds and the rating evidence's expiry, and honors numeric/HTTP-date Retry-After without immediate retries. Page and readiness requests share its source cooldown. A throttled listing stays pending and releases the worker, including when a legacy adapter wraps the HTTP error and drops its status fields.
 5. Existing complete-chapter proofs, expiry and atomic inventory revision ordering remain authoritative. A partial manifest, another chapter's manifest or a corrupt page cannot qualify a card. Direct-reader selected-chapter validation and existing Library/history full checks retain their earlier behavior; the two-worker listing limit is not a claim about every request in the whole application.
 
 No dependency, server environment variable, private key, database migration, Storage policy or native installer rebuild is required. Existing Supabase/private avatar SQL and deployment configuration remain in the full source.
@@ -48,7 +48,7 @@ Cold titles and slow image hosts can still require multiple turns. Source budget
 
 ## Final local results
 
-- Automated Node checks: **271 passed, 0 failed, 0 skipped**, with the dedicated real Redis test instance.
+- Automated Node checks: **272 passed, 0 failed, 0 skipped**, with the dedicated real Redis test instance.
 - Browser checks: **56 passed, 0 failed** across provider selection/loading, content, readability, profile and email suites.
 - Production build, immutable original-export hash, native release asset validation and whitespace checks passed.
 - The preview server and dedicated Redis fixture were restarted after the tool interruption; the final results above come from complete fresh reruns. Earlier connection-refused fixture attempts are not counted as product results.

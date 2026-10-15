@@ -66,3 +66,9 @@ test('concurrent rate-limit replies cannot shorten the active source retry windo
  const {core}=setup(()=>reply(complete())),replies=[];globalThis.fetch=async()=>new Promise(resolve=>replies.push(resolve));const first=core.checkListing(row),second=core.checkListing({...row,id:'mangadex-33333333-3333-4333-8333-333333333333'});while(replies.length<2)await new Promise(resolve=>setImmediate(resolve));
  const limited=seconds=>({ok:false,status:429,headers:{get:()=>String(seconds)},json:async()=>({error:'Source rate limit reached'})});replies[0](limited(300));const long=await first;replies[1](limited(30));await second;const third=await core.checkListing({...row,id:'mangadex-44444444-4444-4444-8444-444444444444'});assert.equal(third.pending,true);assert.ok(third.retryAt>=long.retryAt);
 });
+
+test('legacy adapter error wrapping cannot turn a shared metadata cooldown into an unreadable title',async()=>{
+ const {core,manager}=setup(()=>reply(complete())),http=core.initialize(861,{},()=>({resolveFetchUrl:url=>url}));globalThis.fetch=async url=>String(url).includes('/readable/check')?{ok:true,json:async()=>({ready:false,asOf:Date.now(),inventoryRevision:1})}:{ok:false,status:429,headers:{get:()=> '60'}};
+ manager.require('mangadex').getChapterList=async()=>{try{return await http.requestJson('https://api.mangadex.org/manga/'+MID+'/feed');}catch(error){throw new Error('[mangadex] Failed to load chapters — '+error.message);}};
+ const result=await core.checkListing(row);assert.equal(result.pending,true);assert.ok(result.retryAt>=Date.now()+59000);assert.equal(core.cached(row.id),undefined);
+});

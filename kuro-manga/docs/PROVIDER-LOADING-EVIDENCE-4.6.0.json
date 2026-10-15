@@ -2,11 +2,11 @@
   "version": "4.6.0",
   "date_client": "2026-10-15",
   "node": {
-    "passed": 271,
+    "passed": 272,
     "failed": 0,
     "skipped": 0,
     "dedicated_real_redis": true,
-    "log_sha256": "54f1e1ea75dab0c5fe19502b3b05a5ea77feee764eaeb7bb125a4ab015bef501"
+    "log_sha256": "7df03b4e56cb5d00a5b0cdfc7f48d63e545011a0d9e17f92958373f90a7784cd"
   },
   "build": {
     "passed": true,
@@ -25,13 +25,13 @@
       "email-auth-browser": 4
     },
     "log_sha256": {
-      "provider-loading-browser": "13a15f7150b3727ffb30b558a87403301f13481ed55b100eb218e200dcd70d9e",
-      "readable-performance-browser": "1413cc15e9ee5e70a757b9dc3c7aae27ca9f716efc50b0853b957deb9988fe1f",
-      "content-browser": "e3d75f02d849b4161bd22f302f1c164981bc429a1a8ab55a2ae1716b353c3b9b",
-      "readable-browser": "c83ab758d603ac55a7a57664c4a65cc0b44874dcf1297548afa483786cd68fbb",
+      "provider-loading-browser": "e0002a04fb5751ae79a56766c43f3eb5740b97a9d1a0e4b602896cd156934134",
+      "readable-performance-browser": "df2bd7d2187d373a3dfa6e4ac6e26d69e387a5f3baa383d71ea93a86dfe12431",
+      "content-browser": "aeaf2f421a5e2f03be6442a809bdcf1e068338b1446262a46bcb8de541903c3b",
+      "readable-browser": "5708ef17481ce9170b1bccd3c95a36fcad6f017f2bbaf007fe092b693c14264b",
       "profile-browser": "03ac449360f010a54157ce62740f9c193d1aee05a5257f3685ed6c16b5eb465d",
-      "profile-ui-regressions": "d8e911d9aae6421c2088f340612b6763a082db639eef0c0d9b2a8fca9bab95d9",
-      "email-auth-browser": "71f951ade7d2127be202bfe3a98191180bc1f92f169d06c0d9adb3ec6abd9930"
+      "profile-ui-regressions": "37cf2efed66e2c78c910afb60b12edc720e55b976bdfec0d2ab4e7aa07aca7b5",
+      "email-auth-browser": "922b94901888e9fd89852e6a4d127932d6105014c3c0e910d6360ec4012b7f9c"
     }
   },
   "controlled_cold_queue": {
@@ -43,11 +43,11 @@
     "patched": [
       {
         "route": "/",
-        "short_title_visible_ms": 453
+        "short_title_visible_ms": 457
       },
       {
         "route": "/search",
-        "short_title_visible_ms": 439
+        "short_title_visible_ms": 472
       }
     ],
     "synthetic_fast_responses": true,
@@ -70,6 +70,6 @@
   "live_authenticated_supabase_rls_tested": false,
   "private_keys_requested_or_exposed": false,
   "review_report": "docs/PROVIDER-LOADING-REVIEW-4.6.0.md",
-  "review_sha256": "50528f699f81fb095dacbb7896b57cb234c1dd451ed8a407a5e7acb02797ec3f",
+  "review_sha256": "f399abee655091b79bac583c0101dda98b404fc3b71b35c31a342c4953dafb9b",
   "discarded_experiment": "Device imports deliberately do not participate in Discovery; no product change was made to expose them there."
 }

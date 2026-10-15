@@ -2135,8 +2135,8 @@
         } catch (failure) {
           error = failure.message;
           if (obsolete()) return { obsolete: true };
-          if (temporaryFailure(failure)) {
-            progress.retryAt = failure.retryAt || Date.now() + 3e4;
+          if (temporaryFailure(failure) || (sourceRetryAt.get(manga.sourceId) || 0) > Date.now()) {
+            progress.retryAt = Math.max(sourceRetryAt.get(manga.sourceId) || 0, failure.retryAt || Date.now() + 3e4);
             listingProgress.set(manga.id, progress);
             sourceRetryAt.set(manga.sourceId, Math.max(sourceRetryAt.get(manga.sourceId) || 0, progress.retryAt));
             return { pending: true, retryAt: progress.retryAt, error };
