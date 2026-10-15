@@ -8,7 +8,7 @@ async function boot(){
  let registry;try{registry=await jsonFetch('/api/catalogue/providers');}catch{registry=await(await fetch('/provider-registry.json',{cache:'no-cache'})).json();registry.offline=true;}
  // Bootstrap policy remains authoritative when a stale/offline directory is read.
  registry.providers=registry.providers.map(p=>{const policy=core.registry.providers.find(x=>x.id===p.id)?.contentPolicy||{state:'restricted',reason:'no-supported-positive-rating',version:'strict-1'};return {...p,contentPolicy:policy,available:policy.state==='eligible'&&p.available!==false};});
- core.registry=registry;core.preferences(registry);const queryClient=window.__r(1596).queryClient;
+ core.preferences(registry);registry=core.registry;const queryClient=window.__r(1596).queryClient;
  let bridge;const refresh=createRefreshController({isVisible:()=>!document.hidden,onRefresh:async()=>{
   window.__r(861).clearHttpCache();core.notify();
   if(/^\/providers\/?$/.test(location.pathname)){

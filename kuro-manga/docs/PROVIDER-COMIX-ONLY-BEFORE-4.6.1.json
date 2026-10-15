@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-15T18:26:40.792188+00:00",
+  "isolatedGuestContext": true,
+  "state": {
+    "comixSelected": true,
+    "activeIds": [],
+    "hasComixConnector": false
+  },
+  "directoryText": "C\nComix\nADDRESS NEEDED\n\nManga aggregators\n\nThe current address did not pass public access or identity checks. See the provider check report.\n\nSelection is saved for this source. A confirmed address and KURO connection are still needed.\n\nSelected",
+  "homeCoverElements": 0,
+  "catalogueRequests": [
+    "/api/catalogue/providers",
+    "/api/catalogue/readable/count",
+    "/api/catalogue/providers"
+  ],
+  "homeText": "KURO /\nTHE STORY HOUSE\n\uf4aa\n\uf563\nYOUR NEXT WORLD AWAITS.\nReload the spotlight \u2192\n01 / CHOOSE YOUR UNIVERSE\nONE MORE CHAPTER.\nFrom Japan\nMANGA\n\uf149\nFrom Korea\nMANHWA\n\uf149\nFrom China\nMANHUA\n\uf149\nSET THE MOOD.\nPick a feeling. Discover a different shelf.\n\uf58d\n\uf21e\nSURPRISE ME\n\uf31a\nADRENALINE\n\uf4c4\nOTHER WORLDS\n\uf377\nHEARTBEATS\n\uf1ca\nSLOW DAYS\nDOWN THE RABBIT HOLE\nSmall detours. Entirely new worlds.\n\uf4c4\nFANTASY & ADVENTURE\nWorlds beyond ours\n\uf133\n\uf225\nCOMPLETED SERIES\nFinished. Binge-ready.\n\uf133\n\uf377\nROMANCE STORIES\nA little heart-racing\n\uf133\n\uf488\nWEBTOON ORIGINALS\nFrom the publisher\n\uf133\n0 unique Home picks \u00b7 Only chapter-verified titles are shown. Rankings follow each source.\n\uf284\nThere\u2019s more out there.\nBrowse all sources, genres and catalogues.\n\uf133\nKURO / CINEMA\n\uf383\n01 / HOME\n\uf284\n02 / EXPLORE\n\uf110\n03 / LIBRARY\n\uf48b\n04 / SETTINGS",
+  "pageErrors": []
+}

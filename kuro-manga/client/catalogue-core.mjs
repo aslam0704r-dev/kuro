@@ -8,6 +8,8 @@ import {emailAuthExtension} from './email-auth.mjs';
 import {createListingQueue} from './listing-queue.mjs';
 import {progressiveDiscovery} from './progressive-discovery.mjs';
 import {createCatalogueHttp,retryDate} from './catalogue-http.mjs';
+import {providerState} from '../dist/provider-state.mjs';
+import {sourceScreen,sourceSettingsCard} from './source-notice.mjs';
 import {CONTENT_MESSAGE,CONTENT_POLICY_VERSION,classifyMangaDex,policyProvider,providerContentPolicy} from './content-policy.mjs';
 export const completeManifest=(manifest,local=false)=>manifest?.verified===true&&Array.isArray(manifest.pages)&&manifest.pages.length>0&&(local?manifest.validation==='device':manifest.validation==='complete-chapter'&&manifest.validatedPages===manifest.pages.length&&manifest.pageCount===manifest.pages.length);
 export const readinessFresh=value=>!!value&&Date.now()-value.checkedAt<120000&&value.expiresAt>Date.now();
@@ -19,7 +21,7 @@ async function jsonBody(response){let value;try{value=await response.json();}cat
 // Upstream scripts and data are never evaluated here.
 export function createCatalogueCore(providers){
  providers=providers.map(policyProvider);const registry={providers},subscribers=new Set(),readiness=new Map(),checks=new Map(),manifests=new Map(),snapshots=new Map(),listingProgress=new Map(),sourceRetryAt=new Map();let epoch=0,manager,store,activeChapter;
- let runtimeEligible=new Set(providers.filter(p=>p.contentPolicy.state==='eligible'&&p.available!==false).map(p=>p.id));
+ let runtimeEligible=new Set(providers.filter(p=>providerState(p,{},true).canEnable).map(p=>p.id));
  const local=typeof window!=='undefined'?createLocalRuntime():null;
  const safety=createContentRuntime(local),admitted=row=>row?.sourceId==='local'?local?.books.some(b=>b.id===row.id):!!safety.current(row?.sourceId,row?.id);
  async function request(id,action,params={}){
@@ -113,17 +115,21 @@ export function createCatalogueCore(providers){
  function preferences(currentRegistry=core.registry){
   if(!store||!manager)return;const old=store.getState().sourcePreferences,next={...old};let changed=false;
   currentRegistry={...currentRegistry,providers:currentRegistry.providers.map(policyProvider)};
-  core.registry=currentRegistry;const eligible=new Set(currentRegistry.providers.filter(p=>p.contentPolicy.state==='eligible'&&p.available!==false).map(p=>p.id));if([...eligible].sort().join('|')!==[...runtimeEligible].sort().join('|'))changed=true;runtimeEligible=eligible;
-  // A saved source choice is separate from content admission. Older exports
-  // enabled every bundled adapter; migrate those defaults once, then retain
-  // explicit choices even if a source has no working/rating-compatible reader.
-  for(const p of currentRegistry.providers){const previous=next[p.id];if(previous?.selectionVersion===1)continue;
-   next[p.id]={...previous,enabled:p.contentPolicy.state==='eligible'&&p.available!==false&&(typeof previous?.enabled==='boolean'?previous.enabled:true),selectionVersion:1,language:previous?.language||p.language||'en',readingMode:previous?.readingMode||(p.id==='guya'?'RTL':undefined)};changed=true;}
-  if(manager.get('local')&&next.local?.selectionVersion!==1){next.local={...next.local,enabled:typeof next.local?.enabled==='boolean'?next.local.enabled:true,selectionVersion:1,language:next.local?.language||'en'};changed=true;}
+  core.registry=currentRegistry;const eligible=new Set(currentRegistry.providers.filter(p=>providerState(p,{},!!manager.get(p.id)).canEnable).map(p=>p.id));if([...eligible].sort().join('|')!==[...runtimeEligible].sort().join('|'))changed=true;runtimeEligible=eligible;
+  // On is reserved for usable connections. Retain a reason for an old unusable
+  // selection, without restoring it or silently enabling a different reader.
+  for(const p of currentRegistry.providers){const previous=next[p.id],usable=providerState(p,previous,!!manager.get(p.id)).canEnable;
+   const enabled=usable&&(typeof previous?.enabled==='boolean'?previous.enabled:['mangadex','anilist'].includes(p.id)),unavailableSelection=!usable&&(previous?.unavailableSelection===true||previous?.enabled===true);
+   if(previous?.selectionVersion===2&&previous.enabled===enabled&&previous.unavailableSelection===unavailableSelection)continue;
+   next[p.id]={...previous,enabled,unavailableSelection,selectionVersion:2,language:previous?.language||p.language||'en',readingMode:previous?.readingMode||(p.id==='guya'?'RTL':undefined)};changed=true;}
+  if(manager.get('local')&&next.local?.selectionVersion!==2){next.local={...next.local,enabled:typeof next.local?.enabled==='boolean'?next.local.enabled:true,selectionVersion:2,language:next.local?.language||'en'};changed=true;}
   if(changed)store.setState({sourcePreferences:next});
  }
  async function checkChapter(manga,chapter){await safety.verify(manga,chapter,true);const manifest=await manager.require(manga.sourceId).getChapterPages(chapter);if(!completeManifest(manifest,manga.sourceId==='local'))throw new Error('The complete chapter could not be verified.');const expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);if(expiresAt<=Date.now())throw new Error('Chapter proof expired. Retry.');const at=Number.isFinite(manifest.readabilityAsOf)?manifest.readabilityAsOf:Date.now(),revision=manifest.inventoryRevision||0;if(olderSnapshot(manga.id,at,revision))throw new Error('Chapter verification changed. Retry.');rememberSnapshot(manga.id,at,true,revision);readiness.set(manga.id,{ready:true,checkedAt:Date.now(),expiresAt});return manifest;}
  function initialize(id,api,require){
+  if(id===1341)return {...api,HomeScreen:sourceScreen(require(15),api.HomeScreen,core,require)};
+  if(id===1670)return {...api,SearchScreen:sourceScreen(require(15),api.SearchScreen,core,require,true)};
+  if(id===1687)return {...api,SourceSettingsCard:sourceSettingsCard(require(15),api.SourceSettingsCard,core)};
   if(id===861)return createCatalogueHttp(api,url=>require(862).resolveFetchUrl(url),{getRetryAt:()=>sourceRetryAt.get('mangadex')||0,onBackoff:until=>sourceRetryAt.set('mangadex',Math.max(sourceRetryAt.get('mangadex')||0,until))});
   if(id===1597)return {...api,useDiscovery:progressiveDiscovery(require)};
   if([1700,1703,1697].includes(id))return emailAuthExtension(id,api,require);
@@ -162,7 +168,9 @@ export function createCatalogueCore(providers){
   if(id===784){store=api.useSettingsStore;preferences();store.persist?.onFinishHydration?.(()=>preferences());
    const originalReset=store.getState().resetToDefaults;
    const known=id=>core.registry.providers.some(p=>p.id===id)||id==='local'&&manager.get(id);
-   store.setState({setSourceEnabled:(id,value)=>{if(!known(id))return;const sourcePreferences=store.getState().sourcePreferences;store.setState({sourcePreferences:{...sourcePreferences,[id]:{...sourcePreferences[id],enabled:!!value,selectionVersion:1}}});},setAllSourcesEnabled:value=>{const sourcePreferences=store.getState().sourcePreferences;store.setState({sourcePreferences:Object.fromEntries(Object.entries(sourcePreferences).map(([id,p])=>[id,{...p,enabled:known(id)&&!!value,selectionVersion:1}]))});},resetToDefaults:()=>{originalReset();store.setState({sourcePreferences:{}});preferences(core.registry);}});
+   const usable=id=>id==='local'?!!manager.get(id):core.sourceState(id).canEnable;
+   const resetSourceDefaults=()=>{const sourcePreferences=store.getState().sourcePreferences;store.setState({sourcePreferences:Object.fromEntries(Object.entries(sourcePreferences).map(([id,p])=>[id,{...p,enabled:usable(id)&&['local','mangadex','anilist'].includes(id),unavailableSelection:false,selectionVersion:2}]))});};
+   store.setState({setSourceEnabled:(id,value)=>{if(!known(id))return;const sourcePreferences=store.getState().sourcePreferences,allowed=usable(id);store.setState({sourcePreferences:{...sourcePreferences,[id]:{...sourcePreferences[id],enabled:allowed&&!!value,unavailableSelection:!allowed&&!!value,selectionVersion:2}}});},setAllSourcesEnabled:value=>{const sourcePreferences=store.getState().sourcePreferences;store.setState({sourcePreferences:Object.fromEntries(Object.entries(sourcePreferences).map(([id,p])=>[id,{...p,enabled:known(id)&&usable(id)&&!!value,unavailableSelection:false,selectionVersion:2}]))});},resetSourceDefaults,resetToDefaults:()=>{originalReset();store.setState({sourcePreferences:{}});preferences(core.registry);}});
    const activeIds=state=>Object.keys(state.sourcePreferences).filter(id=>state.sourcePreferences[id]?.enabled&&manager.get(id)&&(id==='local'||runtimeEligible.has(id))).sort();
    let previous=store.getState().sourcePreferences,previousActive=JSON.stringify(activeIds(store.getState()));store.subscribe(state=>{if(state.sourcePreferences===previous)return;previous=state.sourcePreferences;preferences(core.registry);const active=JSON.stringify(activeIds(store.getState()));if(active!==previousActive){previousActive=active;notify();}});
    // Legacy hooks call require() for these IDs. Never pass external, unresolved
@@ -202,10 +210,10 @@ export function createCatalogueCore(providers){
   };}
   if(id===1595){const original=api.useChapterPages;api.useChapterPages=function(chapter){const query=original(chapter);if(activeChapter!==chapter){activeChapter=chapter;queueMicrotask(()=>window.dispatchEvent(new CustomEvent('kuro:active-chapter-changed',{detail:chapter})));}if(query.data?.verified){manifests.set(chapter,query.data);queueMicrotask(emitCredits);}return query;};}
  }
- const core={registry,initialize,local,safety,notify,resume:()=>{listing.resume();for(const fn of subscribers)fn(false);},preferences,check,checkListing,checkChapter,cached,replayCredits:emitCredits,get manager(){return manager;},get store(){return store;},get epoch(){return epoch;},lastCheck:null};safety.configureReadability(check,cached,checkChapter);return core;
+ const core={registry,initialize,local,safety,notify,resume:()=>{listing.resume();for(const fn of subscribers)fn(false);},preferences,check,checkListing,checkChapter,cached,sourceState:id=>providerState(core.registry.providers.find(p=>p.id===id),store?.getState().sourcePreferences[id],!!manager?.get(id)),replayCredits:emitCredits,get manager(){return manager;},get store(){return store;},get epoch(){return epoch;},lastCheck:null};safety.configureReadability(check,cached,checkChapter);return core;
 }
 function installBootstrap(core){
- let define;const ids=new Set([789,784,1706,790,794,870,791,1342,875,1389,1388,1595,1597,861,862,1249,1660,1536,1602,1705,1722,873,1700,1703,1697]);
+ let define;const ids=new Set([789,784,1706,790,794,870,791,1342,875,1389,1388,1595,1597,861,862,1249,1660,1536,1602,1705,1722,873,1700,1703,1697,1341,1670,1687]);
  Object.defineProperty(window,'__d',{configurable:true,get:()=>define,set(original){define=function(factory,id,dependencies,...rest){
   if(!ids.has(id))return original(factory,id,dependencies,...rest);
   const wrapped=function(global,require,importDefault,importAll,module,exports,map){

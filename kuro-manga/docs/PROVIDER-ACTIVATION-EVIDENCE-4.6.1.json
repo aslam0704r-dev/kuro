@@ -1,0 +1,90 @@
+{
+  "version": "4.6.1",
+  "date_client": "2026-10-16",
+  "node": {
+    "passed": 286,
+    "failed": 0,
+    "skipped": 0,
+    "dedicated_real_redis": true,
+    "log_sha256": "e34c9bbaec0a5b97930f59b49de650b287b090232c85bfbdc41a2a9c1239ee84"
+  },
+  "build": {
+    "passed": true,
+    "log_sha256": "2888a3303f4d9ec89e13e6ce7f8b0f74d260953e0fd35d6dd005cc24f1506b85",
+    "original_export_unchanged": true,
+    "native_assets_validated": true
+  },
+  "fresh_browser": {
+    "passed": 66,
+    "failed": 0,
+    "suites": {
+      "provider-activation-browser": 10,
+      "provider-loading-browser": 10,
+      "readable-performance-browser": 4,
+      "content-browser": 16,
+      "readable-browser": 6,
+      "profile-browser": 13,
+      "profile-ui-regressions": 3,
+      "email-auth-browser": 4
+    },
+    "log_sha256": {
+      "provider-activation-browser": "b871a47bd3e57de7bb84fc0b30c61082467816fcd71e88d8ae77aad76672666f",
+      "provider-loading-browser": "fc3b7e08e34e88069402174e25e5375c3a2a212ce617cccbde757d82eabb3729",
+      "readable-performance-browser": "7a263f94c1f9c123cdd777246369dd238959700c7fef92a4fc665bb246ffa517",
+      "content-browser": "b93ca507147be686db60cc786a399172a876d17401bdb874190600ce49e85e57",
+      "readable-browser": "486b99fbb5a6b2ab8b946e4b306c48c376d9df4e289ad45a1f606dc99006519d",
+      "profile-browser": "03ac449360f010a54157ce62740f9c193d1aee05a5257f3685ed6c16b5eb465d",
+      "profile-ui-regressions": "7db4a38ff8c80342765157e95cd078f3f4729133c83b5078f78118047f4273a3",
+      "email-auth-browser": "db5d1ac45f41be5749ac63ae323d0ed968007bd6c6f5293235786b1b62a141c6"
+    },
+    "controlled_provider_account_storage_fixtures": true
+  },
+  "before_after_browser": {
+    "baseline_commit": "ef92f92e55db56154f3c4cb0e0d3fe410f29d048",
+    "baseline_version": "4.6.0",
+    "cases": 10,
+    "baseline_passed": 1,
+    "baseline_failed": 9,
+    "patched_passed": 10,
+    "baseline_log_sha256": "9f6b2383fa058cae7055ecc4461123302c7f341090952805815a1bea0de770ef",
+    "assets_replayed": [
+      "catalogue-core.js",
+      "provider-directory.js"
+    ],
+    "discarded_fixture_attempt": "An initial baseline route handler treated the Playwright Request argument as a filename. It was corrected and the complete comparison rerun; only the corrected assertion failures are counted."
+  },
+  "integration_audit": {
+    "directory_entries": 1236,
+    "usable_readers": [
+      "mangadex"
+    ],
+    "usable_metadata": [
+      "anilist"
+    ],
+    "saved_on_without_runtime_connection": 0,
+    "counts": {
+      "external-platform-only": 673,
+      "missing-supported-content-rating": 93,
+      "missing-connector-and-confirmed-address": 447,
+      "runtime-enabled": 2,
+      "blocked-content-source": 21
+    },
+    "audit_sha256": "87a3ffbbd2fe1b89241aa1371fae6edc67cd2790fe2b802339abdb0007423750",
+    "all_websites_checked": false,
+    "all_titles_or_chapters_checked": false,
+    "live_comix_observations": "docs/PROVIDER-ACTIVATION-BEFORE-4.6.1.json"
+  },
+  "independent_review": {
+    "report": "docs/PROVIDER-ACTIVATION-REVIEW-4.6.1.md",
+    "sha256": "6c3ccedb7cbf327d695ef21695f0b41f433e9c3613ecca62dbfd3ed27197396b",
+    "independent_node": 8,
+    "retained_proof_regressions": 14,
+    "browser_flows": 7,
+    "counts_not_added_to_release_totals": true
+  },
+  "content_policy_unchanged": true,
+  "live_authenticated_supabase_rls_tested": false,
+  "native_os_install_repeated": false,
+  "private_keys_requested_or_exposed": false,
+  "deployment_receipt": "KURO-PUSH-DEPLOYMENT-4.6.1.json"
+}

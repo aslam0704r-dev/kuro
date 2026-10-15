@@ -1,6 +1,12 @@
-# KURO 4.6.0 — optional sources and progressive loading
+# KURO 4.6.1 — reliable provider activation
 
-Open **Settings → All 1,236 providers**. Verified sources start on; additional sources start off and have saved selection switches. Status labels distinguish a saved choice from a working reader, external platform or unresolved connection. Mandatory adult/unrated-content and complete-chapter checks remain in force.
+Only installed, content-eligible and configured KURO connections can be switched **On**. The provider directory explains unavailable connections; existing unavailable selections are switched Off without deleting library or account data. Home and Search explain when the selected sources cannot supply reading pages and offer an explicit MangaDex recovery action.
+
+Read [the 4.6.1 correction and verification scope](docs/PROVIDER-ACTIVATION-4.6.1.md), [provider setup](PROVIDERS-SETUP.md) and [START-HERE.md](START-HERE.md). The 1,236-entry integration audit admits MangaDex reading and AniList metadata under the existing strict rules. Comix has no installed connector and remains unavailable. This is not a claim that all provider websites or every manga have been checked. No new environment setting, secret or SQL migration is needed.
+
+## Previous release — 4.6.0
+
+Version 4.6.0 added saved choices throughout the directory. Version 4.6.1 replaces that behaviour with the usable-connections-only rule above. Mandatory adult/unrated-content and complete-chapter checks remain in force.
 
 Home/search share a fair incremental chapter-check queue. Discovery publishes each provider/page independently, and source cooldowns honor Retry-After. Read [the 4.6 report](docs/PROVIDER-LOADING-4.6.0.md), [source setup](PROVIDERS-SETUP.md) and [START-HERE.md](START-HERE.md). No new environment setting or SQL migration is needed. The provider inventory is not a claim of 1,236 working readers.
 

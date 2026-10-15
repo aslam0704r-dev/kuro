@@ -1875,6 +1875,104 @@
     } };
   }
 
+  // dist/provider-state.mjs
+  init_define_KURO_BOOTSTRAP_PROVIDERS();
+  function providerState(provider, preference = {}, registered = false) {
+    const selected = preference?.enabled === true;
+    let reason, label, description;
+    if (provider?.contentPolicy?.state === "blocked") {
+      reason = "content-blocked";
+      label = "Blocked by content rules";
+      description = "This source cannot be enabled under your strict content rules.";
+    } else if (!provider?.adapter) {
+      if (provider?.mode === "external") {
+        reason = "external-only";
+        label = "External platform";
+        description = "Read on the provider\u2019s platform. This entry has no KURO reader connection.";
+      } else {
+        reason = "missing-connection";
+        label = "Connection unavailable";
+        description = "No working KURO connection is installed for this source.";
+      }
+    } else if (provider.contentPolicy?.state !== "eligible") {
+      reason = "rating-unsupported";
+      label = "Rating support needed";
+      description = "KURO cannot verify this source\u2019s content ratings, so it stays Off under your strict rules.";
+    } else if (!registered) {
+      reason = "missing-connection";
+      label = "Connection unavailable";
+      description = "The KURO connection for this source is not installed.";
+    } else if (provider.available !== true) {
+      reason = "setup-required";
+      label = "Setup needed";
+      description = "This source needs deployment setup before it can be switched On.";
+    } else {
+      reason = "usable";
+      label = provider.readable === true ? "Reader connection" : "Metadata only";
+      description = provider.readable === true ? "Approved titles appear after a complete chapter has been checked." : "This source supplies catalogue information. It does not provide reading pages.";
+    }
+    const canEnable = reason === "usable";
+    return { id: provider?.id, name: provider?.name || "Source", canEnable, active: canEnable && selected, reading: canEnable && provider.readable === true, reason, label, description, previousSelection: preference?.unavailableSelection === true };
+  }
+
+  // client/source-notice.mjs
+  init_define_KURO_BOOTSTRAP_PROVIDERS();
+  function readingSourceNotice(core, sourceId = "") {
+    const all = core.registry.providers, providers = sourceId ? all.filter((p) => p.id === sourceId) : all, states = providers.map((p) => core.sourceState(p.id));
+    if (states.some((state) => state.active && state.reading)) return null;
+    const preferences = core.store.getState().sourcePreferences;
+    const previous = providers.filter((p) => preferences[p.id]?.unavailableSelection), metadata = states.filter((state) => state.active && !state.reading);
+    const messages = [];
+    if (sourceId) {
+      const state = states[0];
+      if (!state) messages.push("This source has no usable KURO connection.");
+      else if (!state.canEnable) messages.push(state.name + ": " + state.description);
+      else if (!state.reading) messages.push(state.name + " supplies catalogue information, not reading pages.");
+      else messages.push(state.name + " is Off.");
+    } else {
+      for (const provider of previous.slice(0, 3)) {
+        const state = core.sourceState(provider.id);
+        messages.push(state.name + ": " + state.description);
+      }
+      if (previous.length > 3) messages.push(previous.length - 3 + " other unavailable selections were also switched Off.");
+      for (const state of metadata) messages.push(state.name + " supplies catalogue information, not reading pages.");
+    }
+    if (!messages.length) messages.push("Choose a usable reading source to load manga and manhwa.");
+    if (!sourceId && preferences.local?.enabled) messages.push("Device imports remain available in your Library.");
+    const mangaDex = core.sourceState("mangadex");
+    return { title: sourceId ? "No reader for this source" : "No online reader is On", messages, canEnableMangaDex: mangaDex.canEnable, mangaDexActive: mangaDex.active };
+  }
+  function sourceScreen(React, Screen, core, require2, search = false) {
+    const h = React.createElement, { EmptyState } = require2(1396), router = require2(11);
+    const subscribe = (listener) => core.store.subscribe(listener), snapshot = () => core.store.getState().sourcePreferences;
+    return function SourceAwareScreen(props) {
+      React.useSyncExternalStore(subscribe, snapshot, snapshot);
+      const params = router.useLocalSearchParams(), sourceId = search && typeof params.source === "string" ? params.source : "";
+      const notice = readingSourceNotice(core, sourceId);
+      if (!notice) return h(Screen, props);
+      const enable = () => {
+        core.store.getState().setSourceEnabled("mangadex", true);
+        if (search) router.router.replace({ pathname: "/search", params: { source: "mangadex", ...typeof params.q === "string" ? { q: params.q } : {} } });
+      };
+      return h(
+        "section",
+        { className: "kuro-source-empty", "aria-label": "Reading source status" },
+        h("p", { className: "kuro-source-empty-brand" }, "KURO / YOUR SOURCES"),
+        h(EmptyState, { icon: "book-outline", title: notice.title, message: notice.messages.join("\n"), ...notice.canEnableMangaDex ? { actionLabel: notice.mangaDexActive ? "Use MangaDex" : "Turn on MangaDex", onAction: enable } : {} }),
+        h("div", { className: "kuro-source-empty-actions" }, h("button", { type: "button", onClick: () => router.router.push("/providers") }, "Manage providers")),
+        h("p", { className: "kuro-source-empty-footnote" }, "Unavailable entries stay Off. Adult, suggestive and unverified titles stay hidden.")
+      );
+    };
+  }
+  function sourceSettingsCard(React, Card, core) {
+    const subscribe = (listener) => core.store.subscribe(listener), snapshot = () => core.store.getState().sourcePreferences;
+    return function UsableSourceSettingsCard(props) {
+      React.useSyncExternalStore(subscribe, snapshot, snapshot);
+      if (props.sourceId !== "local" && !core.sourceState(props.sourceId).canEnable) return null;
+      return React.createElement(Card, props);
+    };
+  }
+
   // client/catalogue-core.mjs
   var completeManifest = (manifest, local = false) => manifest?.verified === true && Array.isArray(manifest.pages) && manifest.pages.length > 0 && (local ? manifest.validation === "device" : manifest.validation === "complete-chapter" && manifest.validatedPages === manifest.pages.length && manifest.pageCount === manifest.pages.length);
   var readinessFresh = (value) => !!value && Date.now() - value.checkedAt < 12e4 && value.expiresAt > Date.now();
@@ -1895,7 +1993,7 @@
     providers = providers.map(policyProvider);
     const registry = { providers }, subscribers = /* @__PURE__ */ new Set(), readiness = /* @__PURE__ */ new Map(), checks = /* @__PURE__ */ new Map(), manifests = /* @__PURE__ */ new Map(), snapshots = /* @__PURE__ */ new Map(), listingProgress = /* @__PURE__ */ new Map(), sourceRetryAt = /* @__PURE__ */ new Map();
     let epoch = 0, manager, store, activeChapter;
-    let runtimeEligible = new Set(providers.filter((p) => p.contentPolicy.state === "eligible" && p.available !== false).map((p) => p.id));
+    let runtimeEligible = new Set(providers.filter((p) => providerState(p, {}, true).canEnable).map((p) => p.id));
     const local = typeof window !== "undefined" ? createLocalRuntime() : null;
     const safety = createContentRuntime(local), admitted = (row) => row?.sourceId === "local" ? local?.books.some((b) => b.id === row.id) : !!safety.current(row?.sourceId, row?.id);
     async function request(id, action, params = {}) {
@@ -2170,17 +2268,18 @@
       let changed = false;
       currentRegistry = { ...currentRegistry, providers: currentRegistry.providers.map(policyProvider) };
       core.registry = currentRegistry;
-      const eligible = new Set(currentRegistry.providers.filter((p) => p.contentPolicy.state === "eligible" && p.available !== false).map((p) => p.id));
+      const eligible = new Set(currentRegistry.providers.filter((p) => providerState(p, {}, !!manager.get(p.id)).canEnable).map((p) => p.id));
       if ([...eligible].sort().join("|") !== [...runtimeEligible].sort().join("|")) changed = true;
       runtimeEligible = eligible;
       for (const p of currentRegistry.providers) {
-        const previous = next[p.id];
-        if (previous?.selectionVersion === 1) continue;
-        next[p.id] = { ...previous, enabled: p.contentPolicy.state === "eligible" && p.available !== false && (typeof previous?.enabled === "boolean" ? previous.enabled : true), selectionVersion: 1, language: previous?.language || p.language || "en", readingMode: previous?.readingMode || (p.id === "guya" ? "RTL" : void 0) };
+        const previous = next[p.id], usable = providerState(p, previous, !!manager.get(p.id)).canEnable;
+        const enabled = usable && (typeof previous?.enabled === "boolean" ? previous.enabled : ["mangadex", "anilist"].includes(p.id)), unavailableSelection = !usable && (previous?.unavailableSelection === true || previous?.enabled === true);
+        if (previous?.selectionVersion === 2 && previous.enabled === enabled && previous.unavailableSelection === unavailableSelection) continue;
+        next[p.id] = { ...previous, enabled, unavailableSelection, selectionVersion: 2, language: previous?.language || p.language || "en", readingMode: previous?.readingMode || (p.id === "guya" ? "RTL" : void 0) };
         changed = true;
       }
-      if (manager.get("local") && next.local?.selectionVersion !== 1) {
-        next.local = { ...next.local, enabled: typeof next.local?.enabled === "boolean" ? next.local.enabled : true, selectionVersion: 1, language: next.local?.language || "en" };
+      if (manager.get("local") && next.local?.selectionVersion !== 2) {
+        next.local = { ...next.local, enabled: typeof next.local?.enabled === "boolean" ? next.local.enabled : true, selectionVersion: 2, language: next.local?.language || "en" };
         changed = true;
       }
       if (changed) store.setState({ sourcePreferences: next });
@@ -2198,6 +2297,9 @@
       return manifest;
     }
     function initialize(id, api, require2) {
+      if (id === 1341) return { ...api, HomeScreen: sourceScreen(require2(15), api.HomeScreen, core, require2) };
+      if (id === 1670) return { ...api, SearchScreen: sourceScreen(require2(15), api.SearchScreen, core, require2, true) };
+      if (id === 1687) return { ...api, SourceSettingsCard: sourceSettingsCard(require2(15), api.SourceSettingsCard, core) };
       if (id === 861) return createCatalogueHttp(api, (url) => require2(862).resolveFetchUrl(url), { getRetryAt: () => sourceRetryAt.get("mangadex") || 0, onBackoff: (until) => sourceRetryAt.set("mangadex", Math.max(sourceRetryAt.get("mangadex") || 0, until)) });
       if (id === 1597) return { ...api, useDiscovery: progressiveDiscovery(require2) };
       if ([1700, 1703, 1697].includes(id)) return emailAuthExtension(id, api, require2);
@@ -2307,14 +2409,19 @@
         store.persist?.onFinishHydration?.(() => preferences());
         const originalReset = store.getState().resetToDefaults;
         const known = (id2) => core.registry.providers.some((p) => p.id === id2) || id2 === "local" && manager.get(id2);
+        const usable = (id2) => id2 === "local" ? !!manager.get(id2) : core.sourceState(id2).canEnable;
+        const resetSourceDefaults = () => {
+          const sourcePreferences = store.getState().sourcePreferences;
+          store.setState({ sourcePreferences: Object.fromEntries(Object.entries(sourcePreferences).map(([id2, p]) => [id2, { ...p, enabled: usable(id2) && ["local", "mangadex", "anilist"].includes(id2), unavailableSelection: false, selectionVersion: 2 }])) });
+        };
         store.setState({ setSourceEnabled: (id2, value) => {
           if (!known(id2)) return;
-          const sourcePreferences = store.getState().sourcePreferences;
-          store.setState({ sourcePreferences: { ...sourcePreferences, [id2]: { ...sourcePreferences[id2], enabled: !!value, selectionVersion: 1 } } });
+          const sourcePreferences = store.getState().sourcePreferences, allowed = usable(id2);
+          store.setState({ sourcePreferences: { ...sourcePreferences, [id2]: { ...sourcePreferences[id2], enabled: allowed && !!value, unavailableSelection: !allowed && !!value, selectionVersion: 2 } } });
         }, setAllSourcesEnabled: (value) => {
           const sourcePreferences = store.getState().sourcePreferences;
-          store.setState({ sourcePreferences: Object.fromEntries(Object.entries(sourcePreferences).map(([id2, p]) => [id2, { ...p, enabled: known(id2) && !!value, selectionVersion: 1 }])) });
-        }, resetToDefaults: () => {
+          store.setState({ sourcePreferences: Object.fromEntries(Object.entries(sourcePreferences).map(([id2, p]) => [id2, { ...p, enabled: known(id2) && usable(id2) && !!value, unavailableSelection: false, selectionVersion: 2 }])) });
+        }, resetSourceDefaults, resetToDefaults: () => {
           originalReset();
           store.setState({ sourcePreferences: {} });
           preferences(core.registry);
@@ -2456,7 +2563,7 @@
     const core = { registry, initialize, local, safety, notify, resume: () => {
       listing.resume();
       for (const fn of subscribers) fn(false);
-    }, preferences, check, checkListing, checkChapter, cached, replayCredits: emitCredits, get manager() {
+    }, preferences, check, checkListing, checkChapter, cached, sourceState: (id) => providerState(core.registry.providers.find((p) => p.id === id), store?.getState().sourcePreferences[id], !!manager?.get(id)), replayCredits: emitCredits, get manager() {
       return manager;
     }, get store() {
       return store;
@@ -2468,7 +2575,7 @@
   }
   function installBootstrap(core) {
     let define;
-    const ids = /* @__PURE__ */ new Set([789, 784, 1706, 790, 794, 870, 791, 1342, 875, 1389, 1388, 1595, 1597, 861, 862, 1249, 1660, 1536, 1602, 1705, 1722, 873, 1700, 1703, 1697]);
+    const ids = /* @__PURE__ */ new Set([789, 784, 1706, 790, 794, 870, 791, 1342, 875, 1389, 1388, 1595, 1597, 861, 862, 1249, 1660, 1536, 1602, 1705, 1722, 873, 1700, 1703, 1697, 1341, 1670, 1687]);
     Object.defineProperty(window, "__d", { configurable: true, get: () => define, set(original) {
       define = function(factory, id, dependencies, ...rest) {
         if (!ids.has(id)) return original(factory, id, dependencies, ...rest);

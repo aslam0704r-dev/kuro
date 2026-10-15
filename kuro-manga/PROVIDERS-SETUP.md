@@ -1,8 +1,8 @@
-# KURO 4.6.0 provider choices
+# KURO 4.6.1 provider choices
 
-Open **Settings → All 1,236 providers** to save individual source choices. Verified sources start enabled on a fresh installation; additional sources start disabled. Existing explicit Off choices are preserved. **Use verified defaults** restores source selections without resetting other preferences. Choices stay on the current device.
+Open **Settings → All 1,236 providers**. Only installed, content-eligible and configured connections can be switched **On**. Unavailable switches are disabled and explain the missing requirement. MangaDex reading and AniList metadata start On in fresh settings when deployment configuration allows them. Existing explicit Off choices are preserved. **Use verified defaults** restores usable verified source selections without resetting other preferences or language choices. Choices stay on the current device.
 
-All directory entries can be selected, including external/unresolved entries. Selection is separate from a working KURO connection and content admission: entries without a usable connection or supported ratings explain why their titles cannot appear. The runtime uses only installed, eligible, configured sources. Adult, suggestive and unrated titles remain hidden. See [the 4.6 loading/settings report](docs/PROVIDER-LOADING-4.6.0.md).
+The same rule applies to individual switches, bulk actions, saved-setting migration, runtime source IDs, directory refresh and the older Settings cards. Old unavailable On choices become Off, retaining an explanation. Home/Search show a source-specific explanation and an explicit MangaDex recovery action when there is no selected online reader. Metadata-only selection does not supply chapters. Device imports remain available in Library when enabled. Adult, suggestive and unrated titles remain hidden. See [the 4.6.1 report](docs/PROVIDER-ACTIVATION-4.6.1.md).
 
 Readable titles now require at least one completely checked chapter and confirmed editions are always grouped. The Providers screen shows the recent verified inventory count with its scope. Read [READABLE-CATALOGUE.md](READABLE-CATALOGUE.md); the bundled 100-entry live audit does not establish a count for the entire provider.
 
@@ -17,7 +17,7 @@ Mandatory strict content rules still govern actual metadata, covers and pages. E
 
 MangaDex is eligible for explicitly safe titles and canonical related chapters. AniList is eligible for non-adult metadata with complete non-adult tag flags. Other adapter source is preserved for future reviewed integrations but cannot supply KURO discovery, covers or reading under this policy.
 
-Open Settings → All 1,236 providers. Every entry has a saved choice; adult-source classification stays visibly blocked and supplies no content or platform link. Reading and metadata links appear only for selected, eligible connections. Selected external platform entries provide safe HTTPS platform links; unresolved entries provide none. Offline fallbacks cannot grant content approval.
+Open Settings → All 1,236 providers. Reading links appear only for active reader connections. Metadata connections are labelled as information sources. External-only platforms can have a safe HTTPS **Visit platform** link while their KURO switch remains unavailable. Unresolved entries have no fabricated browse link. Adult-source classification stays visibly blocked and supplies no content or platform link. Offline fallbacks cannot grant content approval. Comix has no installed KURO connector; normal server requests to its site and API returned access restrictions during this investigation. It cannot be activated by changing its switch.
 
 The audit of every registry entry is [CONTENT-PROVIDER-AUDIT.csv](docs/CONTENT-PROVIDER-AUDIT.csv). This is policy eligibility coverage; it does not assert that all websites or chapters were visually inspected. Earlier availability reports remain historical evidence in docs/.
 

@@ -63,9 +63,9 @@ class StrictContentBrowser(unittest.TestCase):
   self.context.route('**/catalogue-core.js',lambda route:route.abort());self.page.goto(origin+'/library',wait_until='domcontentloaded');expect(self.page.get_by_text('KURO could not start safely',exact=True)).to_be_visible();self.assertFalse(self.page.evaluate("typeof window.__r==='function'"));self.no_errors()
  def test_source_selection_cannot_grant_content_or_reader_permission(self):
   self.ready('/providers');self.page.evaluate("()=>{const s=__r(784).useSettingsStore;s.getState().setSourceEnabled('guya',true);s.getState().setAllSourcesEnabled(true);}")
-  self.assertTrue(self.page.evaluate("__r(784).useSettingsStore.getState().sourcePreferences.guya.enabled"));self.assertEqual(self.page.evaluate("()=>__r(789).sourceManager.enabled(['guya']).length"),0);self.no_errors()
+  self.assertFalse(self.page.evaluate("__r(784).useSettingsStore.getState().sourcePreferences.guya.enabled"));self.assertEqual(self.page.evaluate("()=>__r(789).sourceManager.enabled(['guya']).length"),0);self.no_errors()
  def test_directory_has_no_browse_or_platform_link_for_a_restricted_provider(self):
-  self.ready('/providers');self.page.get_by_label('Find a provider').fill('Guya');row=self.page.locator('[data-provider-id="guya"]');expect(row.get_by_role('checkbox')).to_be_enabled();expect(row.get_by_role('link')).to_have_count(0);expect(row).to_contain_text('Rating support needed');self.no_errors()
+  self.ready('/providers');self.page.get_by_label('Find a provider').fill('Guya');row=self.page.locator('[data-provider-id="guya"]');expect(row.get_by_role('checkbox')).to_be_disabled();expect(row.get_by_role('link')).to_have_count(0);expect(row).to_contain_text('Rating support needed');self.no_errors()
  def test_unknown_direct_detail_hides_url_title_and_cover(self):
   self.ready(self.direct());expect(self.page.get_by_text('This title is unavailable',exact=True)).to_be_visible();expect(self.page.get_by_text('POISONED TITLE',exact=True)).to_have_count(0)
   self.assertFalse(any('untrusted.example' in url for url in self.requests));self.no_errors();self.page.screenshot(path=str(evidence/'blocked-title-desktop.png'))
