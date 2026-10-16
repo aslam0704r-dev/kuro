@@ -7,7 +7,7 @@ export function providerState(provider,preference={},registered=false){
   reason='content-blocked';label='Blocked by content rules';description='This source cannot be enabled under your strict content rules.';
  }else if(!provider?.adapter){
   if(provider?.mode==='external'){reason='external-only';label='External platform';description='Read on the provider’s platform. This entry has no KURO reader connection.';}
-  else {reason='missing-connection';label='Connection unavailable';description='No working KURO connection is installed for this source.';}
+  else {reason='missing-connection';label='Connection unavailable';description='This source needs a hosted KURO connector before it can supply manga.';}
  }else if(provider.contentPolicy?.state!=='eligible'){
   reason='rating-unsupported';label='Rating support needed';description='KURO cannot verify this source’s content ratings, so it stays Off under your strict rules.';
  }else if(!registered){

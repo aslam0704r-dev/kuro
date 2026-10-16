@@ -44,7 +44,7 @@ class CataloguePerformanceBrowser(unittest.TestCase):
  def test_home_renders_ready_titles_without_chapter_round_trips(self):self.warm('/')
  def test_archive_renders_ready_titles_without_chapter_round_trips(self):self.warm('/search')
  def invalid(self,patch):
-  self.proof_patch=patch;self.reject_fallback=True;self.readiness_calls=[];self.ready('/search');self.page.wait_for_load_state('networkidle')
+  self.proof_patch=patch;self.reject_fallback=True;self.readiness_calls=[];self.ready('/search');self.page.wait_for_function("()=>KuroCatalogueCore.lastCheck?.id==='mangadex-"+fixture.MID+"'",timeout=8000);self.page.wait_for_load_state('networkidle')
   self.assertGreater(len(self.readiness_calls),0)
   self.assertEqual(self.page.locator('img[src*="/api/catalogue/cover"]').count(),0);self.no_errors()
  def test_expired_inline_proof_cannot_show_a_title(self):self.invalid({'expiresAt':int(time.time()*1000)-1})

@@ -21,6 +21,7 @@ import {CONTENT_POLICY_VERSION,RATING_TTL_MS,classifyMangaDex,providerContentPol
 import {createContentService,requireContentProvider} from './content.mjs';
 import {createReadableLedger,createChapterValidator} from './readable.mjs';
 import {createTitleQualifier} from './qualify.mjs';
+import {providerState} from '../../dist/provider-state.mjs';
 
 const digest=value=>createHash('sha256').update(value).digest('hex');
 const upstreamLimits={anilist:25,jikan:50,shikimori:60,mangabaka:25,guya:60,mangadex:240};
@@ -120,7 +121,10 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
    return reply;
   },
   async directory(){const ids=installedProviders.map(p=>'health:'+p.id),values=coordinator.getMany?await coordinator.getMany(ids):await Promise.all(ids.map(id=>coordinator.get(id))),health=new Map(installedProviders.map((p,i)=>[p.id,values[i]]));
-   return {...registry,contentPolicy:{version:CONTENT_POLICY_VERSION,strict:true,unknown:'blocked'},refreshIntervalMs:300000,usageReady:licensingAllowed('mangabaka',usage),providers:registry.providers.map(p=>({...p,...p.id==='mangadex'?{qualificationVersion:1}:{},contentPolicy:providerContentPolicy(p),available:providerContentPolicy(p).state==='eligible'&&licensingAllowed(p.id,usage),health:health.get(p.id)||null}))};},
+   const providers=registry.providers.map(p=>{const row={...p,...p.id==='mangadex'?{qualificationVersion:1}:{},contentPolicy:providerContentPolicy(p),available:providerContentPolicy(p).state==='eligible'&&adapters.has(p.id)&&licensingAllowed(p.id,usage)&&(!p.readable||!!tickets),health:health.get(p.id)||null};
+    const state=providerState(row,{},adapters.has(p.id));return {...row,connection:{usable:state.canEnable,reading:state.reading,reason:state.reason,label:state.label,description:state.description}};});
+   return {...registry,contentPolicy:{version:CONTENT_POLICY_VERSION,strict:true,unknown:'blocked'},refreshIntervalMs:300000,usageReady:licensingAllowed('mangabaka',usage),providers,
+    connections:{readers:providers.filter(p=>p.connection.reading).length,metadata:providers.filter(p=>p.connection.usable&&!p.connection.reading).length,unavailable:providers.filter(p=>!p.connection.usable).length}};},
   contentCheck:(provider,id,chapter)=>content.check(provider,id,chapter),
   async readableCheck(provider,id){if(provider!=='mangadex')throw sourceError('This provider does not supply approved reading pages',409);requireLicense(provider);if(!tickets)throw sourceError('Configure the server page ticket key using the existing account encryption key.',503);await service.contentCheck(provider,id);const asOf=clock(),rows=await readable.getMany([id]),row=rows.get(id);return {ready:!!row,asOf,inventoryRevision:rows.revision,...row?{chapterId:row.chapterId,checkedAt:row.checkedAt,expiresAt:row.expiresAt,validation:'complete-chapter',validatedPages:row.validatedPages,pageCount:row.pageCount}:{}};},
   async readableSummary(){const summary=await readable.summary(),readingConfigured=!!tickets&&licensingAllowed('mangadex',usage);return {...summary,...!readingConfigured?{uniqueCount:0,verifiedEditions:0,duplicatesGrouped:0,oldestCheckAt:null,latestCheckAt:null}:{},readingConfigured,auditCoverage};},

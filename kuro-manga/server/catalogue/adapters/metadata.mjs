@@ -13,8 +13,11 @@ export function mapMetadata(provider,data){
  }else if(provider==='shikimori'){
   id=data.id;title=data.name||data.russian;cover=httpsURL(data.image?.original,'https://shikimori.io/');status=data.status;description=data.description;genres=(data.genres||[]).map(x=>x.name);alt=[data.russian,data.japanese].flat().filter(Boolean);rating=Number(data.score)||undefined;keys=['mal:'+id];url='https://shikimori.io/mangas/'+id;
  }else if(provider==='mangabaka'){
-  id=data.id;title=data.title;cover=data.cover?.x250?.x1||data.cover?.raw?.url;status=data.status;description=data.description;genres=data.genres||[];author=data.authors?.join(', ');rating=Number(data.rating)/10;
-  alt=[data.native_title,data.romanized_title,...Object.values(data.secondary_titles||{}).flat().map(x=>x.title)].filter(Boolean);
+  const titles=Array.isArray(data.titles)?data.titles:[];
+  id=data.id;title=data.title||titles.find(x=>x.language==='en'&&x.is_primary===true)?.title||titles.find(x=>x.is_primary===true)?.title;
+  cover=typeof data.cover?.x250==='string'?data.cover.x250:typeof data.cover?.raw==='string'?data.cover.raw:data.cover?.x250?.x1||data.cover?.raw?.url;status=data.status;description=data.description;
+  genres=Array.isArray(data.genres)?data.genres:Array.isArray(data.tags)?data.tags.filter(x=>x.is_genre===true).map(x=>x.name):[];author=data.authors?.join(', ');rating=data.rating===null?undefined:Number(data.rating)/10;
+  alt=[...titles.map(x=>x.title),data.native_title,data.romanized_title,...Object.values(data.secondary_titles||{}).flat().map(x=>x.title)].filter(x=>typeof x==='string');
   const mapping={my_anime_list:'mal',anilist:'anilist',kitsu:'kitsu',manga_updates:'mu',shikimori:'mal'};
   keys=['mangabaka:'+id,...Object.entries(data.source||{}).flatMap(([name,row])=>mapping[name]&&row?.id?[mapping[name]+':'+row.id]:[])];url='https://mangabaka.org/manga/'+id;
  }else throw sourceError('Unknown metadata provider',400);
@@ -40,7 +43,7 @@ export function createMetadataAdapter(provider,read){return {async call(action,p
  let url;
  if(id==='jikan'){url=new URL(original?'https://api.jikan.moe/v4/manga/'+original+'/full':'https://api.jikan.moe/v4/manga');if(!original){url.searchParams.set('q',q);url.searchParams.set('page',page);url.searchParams.set('limit','24');url.searchParams.set('sfw','true');}}
  if(id==='shikimori'){url=new URL(original?'https://shikimori.io/api/mangas/'+original:'https://shikimori.io/api/mangas');if(!original){url.searchParams.set('search',q);url.searchParams.set('page',page);url.searchParams.set('limit','24');}}
- if(id==='mangabaka'){url=new URL(original?'https://api.mangabaka.org/v1/series/'+original:'https://api.mangabaka.org/v1/series/search');if(!original){url.searchParams.set('q',q);url.searchParams.set('page',page);}}
+ if(id==='mangabaka'){url=new URL(original?'https://api.mangabaka.org/v2/series/'+original:'https://api.mangabaka.org/v2/series/search');if(!original){url.searchParams.set('q',q);url.searchParams.set('page',page);url.searchParams.set('content_rating','safe');}}
  if(!url)throw sourceError('Unknown metadata provider',400);const reply=await read(url.href,{json:true});
  if(original)return mapMetadata(id,reply.data||reply);
  const rows=id==='shikimori'?reply:reply.data;if(!Array.isArray(rows))throw sourceError('Invalid metadata response');const result={items:rows.map(x=>mapMetadata(id,x))};
