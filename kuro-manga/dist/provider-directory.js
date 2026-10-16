@@ -10,18 +10,31 @@ function status(provider,state){
  if(provider.verification?.serviceCheck?.status==='failed-current-check'&&!provider.health?.sampleVerifiedAt)return 'Retry needed';
  return 'Reader connection';
 }
+export async function refreshProviderDirectory(bridge,fetcher=fetch){
+ const response=await fetcher('/api/catalogue/providers',{cache:'no-store',credentials:'same-origin',signal:AbortSignal.timeout(12000)});
+ if(!response.ok)throw new Error('Connection status could not refresh.');
+ const data=await response.json();
+ if(!Array.isArray(data?.providers)||!data.providers.length||data.providers.some(p=>!p||typeof p.id!=='string'))throw new Error('Invalid provider directory.');
+ bridge.core.preferences(data);bridge.registry=bridge.core.registry;
+ return bridge.registry;
+}
 export function mountProviderDirectory(bridge){
  const sourceState=p=>providerState(p,bridge.store.getState().sourcePreferences[p.id],!!bridge.manager.get(p.id));
  const entry=element('a','All '+bridge.registry.providers.length.toLocaleString()+' providers','kuro-directory-entry');entry.id='kuro-provider-entry';entry.href='/providers';entry.hidden=true;document.body.append(entry);
  const view=element('main',undefined,'kuro-provider-directory');view.id='kuro-provider-directory';view.hidden=true;view.setAttribute('aria-label','KURO provider directory');
- view.innerHTML=`<div class="kuro-directory-shell"><header class="kuro-directory-header"><a href="/" class="kuro-directory-brand" aria-label="KURO home">KURO <span>/</span></a><a href="/settings" class="kuro-directory-back">Back to settings</a></header><div class="kuro-directory-heading"><div><p class="kuro-directory-eyebrow">YOUR STORY SOURCES</p><h1>One library. More worlds.</h1><p>Choose where KURO finds your next manga, manhwa or manhua.</p></div><button type="button" id="kuro-catalogue-refresh">Refresh sources <span aria-hidden="true">↻</span></button></div><div class="kuro-directory-stats" aria-label="Provider coverage"></div><section class="kuro-directory-controls" aria-label="Find providers"><label class="kuro-directory-search"><span class="kuro-directory-label">Find a provider</span><input id="kuro-provider-search" type="search" placeholder="Search by name, including aliases" autocomplete="off"></label><label><span class="kuro-directory-label">Provider category</span><select id="kuro-provider-category"><option value="all">All categories</option></select></label><label><span class="kuro-directory-label">Provider availability</span><select id="kuro-provider-availability"><option value="all">All providers</option><option value="reader">Reader adapters</option><option value="metadata">Metadata only</option><option value="external">Open on platform</option><option value="unresolved">Address needed</option><option value="enabled">Enabled in KURO</option></select></label></section><p id="kuro-directory-count" role="status" aria-live="polite"></p><div class="kuro-directory-list"></div><p class="kuro-directory-empty" hidden>No providers match. Try another name or category.</p><footer class="kuro-directory-footer"><p>Enabled sources refresh while KURO is open. Chapters and pages are checked when loaded; availability can change at the provider.</p><p>Metadata credits: <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a> · <a href="https://kitsu.app/" target="_blank" rel="noopener noreferrer">Kitsu</a> · <a href="https://jikan.moe/" target="_blank" rel="noopener noreferrer">Jikan / MyAnimeList</a> · <a href="https://www.mangaupdates.com/" target="_blank" rel="noopener noreferrer">MangaUpdates</a> · <a href="https://shikimori.io/" target="_blank" rel="noopener noreferrer">Shikimori</a> · <a href="https://mangabaka.org/" target="_blank" rel="noopener noreferrer">MangaBaka + its upstream providers</a></p></footer></div>`;
+ view.innerHTML=`<div class="kuro-directory-shell"><header class="kuro-directory-header"><a href="/" class="kuro-directory-brand" aria-label="KURO home">KURO <span>/</span></a><a href="/settings" class="kuro-directory-back">Back to settings</a></header><div class="kuro-directory-heading"><div><p class="kuro-directory-eyebrow">YOUR STORY SOURCES</p><h1>One library. More worlds.</h1><p>Choose where KURO finds your next manga, manhwa or manhua.</p></div><button type="button" id="kuro-catalogue-refresh">Refresh connections <span aria-hidden="true">↻</span></button></div><div class="kuro-directory-stats" aria-label="Provider coverage"></div><section class="kuro-directory-controls" aria-label="Find providers"><label class="kuro-directory-search"><span class="kuro-directory-label">Find a provider</span><input id="kuro-provider-search" type="search" placeholder="Search by name, including aliases" autocomplete="off"></label><label><span class="kuro-directory-label">Provider category</span><select id="kuro-provider-category" aria-label="Provider category"><option value="all">All categories</option></select></label><label><span class="kuro-directory-label">Provider availability</span><select id="kuro-provider-availability" aria-label="Provider availability"><option value="all">All providers</option><option value="reader">Reader adapters</option><option value="metadata">Metadata only</option><option value="external">Open on platform</option><option value="unresolved">Address needed</option><option value="enabled">Enabled in KURO</option></select></label></section><p id="kuro-directory-count" role="status" aria-live="polite"></p><div class="kuro-directory-list"></div><p class="kuro-directory-empty" hidden>No providers match. Try another name or category.</p><footer class="kuro-directory-footer"><p>Enabled sources refresh while KURO is open. Chapters and pages are checked when loaded; availability can change at the provider.</p><p>Metadata credits: <a href="https://anilist.co/" target="_blank" rel="noopener noreferrer">AniList</a> · <a href="https://kitsu.app/" target="_blank" rel="noopener noreferrer">Kitsu</a> · <a href="https://jikan.moe/" target="_blank" rel="noopener noreferrer">Jikan / MyAnimeList</a> · <a href="https://www.mangaupdates.com/" target="_blank" rel="noopener noreferrer">MangaUpdates</a> · <a href="https://shikimori.io/" target="_blank" rel="noopener noreferrer">Shikimori</a> · <a href="https://mangabaka.org/" target="_blank" rel="noopener noreferrer">MangaBaka + its upstream providers</a></p></footer></div>`;
  document.body.append(view);
  const search=view.querySelector('#kuro-provider-search'),category=view.querySelector('#kuro-provider-category'),availability=view.querySelector('#kuro-provider-availability'),list=view.querySelector('.kuro-directory-list'),count=view.querySelector('#kuro-directory-count');
  availability.querySelector('option[value="reader"]').textContent='Usable readers';
  availability.querySelector('option[value="enabled"]').textContent='On in KURO';
+ availability.value='reader';let automaticReaderFilter=true;
  const more=element('button','Show more sources','kuro-directory-more');more.type='button';list.after(more);let limit=80,selection='';
  for(const [value,label]of Object.entries(categories)){const option=element('option',label);option.value=value;category.append(option);}
  const rule=element('p','Only usable KURO connections can be switched On. Unavailable sources stay Off and show what is missing. Metadata sources supply information, not reading pages. Adult, suggestive and unrated titles remain hidden.','kuro-content-notice');view.querySelector('.kuro-directory-heading').after(rule);
+ const recovery=element('div',undefined,'kuro-directory-recovery'),coverage=element('p'),browse=element('a','Browse available manga','kuro-provider-browse'),showAll=element('button','Show all provider entries','kuro-directory-defaults');
+ browse.href='/search?source=mangadex';showAll.type='button';recovery.append(coverage,browse,showAll);rule.after(recovery);
+ browse.addEventListener('click',()=>bridge.store.getState().setSourceEnabled('mangadex',true));
+ showAll.addEventListener('click',()=>{automaticReaderFilter=false;availability.value='all';render();});
  const defaults=element('button','Use verified defaults','kuro-directory-defaults');defaults.type='button';rule.after(defaults);
  defaults.addEventListener('click',()=>bridge.store.getState().resetSourceDefaults());
  const stats=view.querySelector('.kuro-directory-stats');
@@ -32,8 +45,12 @@ export function mountProviderDirectory(bridge){
  window.addEventListener('kuro:readable-updated',()=>updateReadable());setInterval(()=>{if(!view.hidden&&!document.hidden)updateReadable();},30000);
  const formatTime=value=>value?new Date(value).toLocaleString(undefined,{month:'short',day:'numeric',hour:'numeric',minute:'2-digit'}):'Not checked in this session';
  function render(){
-  const needle=search.value.normalize('NFKC').toLocaleLowerCase(),preferences=bridge.store.getState().sourcePreferences,focus=document.activeElement?.id;
+  const needle=search.value.trim().normalize('NFKC').toLocaleLowerCase(),preferences=bridge.store.getState().sourcePreferences,focus=document.activeElement?.id;
   stats.replaceChildren();for(const [label,value]of [['Directory entries',bridge.registry.providers.length],['On in KURO',bridge.registry.providers.filter(p=>sourceState(p).active).length],['Usable connections',bridge.registry.providers.filter(p=>sourceState(p).canEnable).length],['Unavailable for KURO',bridge.registry.providers.filter(p=>!sourceState(p).canEnable).length]]){const item=element('div',undefined,'kuro-directory-stat');item.append(element('strong',value.toLocaleString()),element('span',label));stats.append(item);}
+  const readers=bridge.registry.providers.filter(p=>sourceState(p).reading).length;
+  coverage.textContent=readers+' usable reading connection'+(readers===1?'':'s')+'. The full directory also contains sources that need a connector or rating support. Use a reading connection to browse manga.';
+  browse.hidden=!bridge.registry.providers.some(p=>p.id==='mangadex'&&sourceState(p).reading);
+  showAll.hidden=availability.value==='all';
   const nextSelection=JSON.stringify([needle,category.value,availability.value]);if(nextSelection!==selection){limit=80;selection=nextSelection;}
   const providers=bridge.registry.providers.filter(p=>[p.name,...p.aliases].some(name=>name.normalize('NFKC').toLocaleLowerCase().includes(needle)))
    .filter(p=>category.value==='all'||p.category===category.value)
@@ -63,11 +80,12 @@ export function mountProviderDirectory(bridge){
   if(focus?.startsWith('kuro-source-')){const previous=document.getElementById(focus);(previous&&!previous.disabled?previous:search).focus({preventScroll:true});}
  }
  more.addEventListener('click',()=>{limit+=80;render();});
- for(const control of [search,category,availability])control.addEventListener(control===search?'input':'change',render);
+ search.addEventListener('input',()=>{if(automaticReaderFilter)availability.value=search.value.trim()?'all':'reader';render();});
+ category.addEventListener('change',render);availability.addEventListener('change',()=>{automaticReaderFilter=false;render();});
  bridge.store.subscribe(()=>{if(!view.hidden)render();});
  const refresh=view.querySelector('#kuro-catalogue-refresh');refresh.addEventListener('click',async()=>{
-  refresh.disabled=true;count.textContent='Refreshing enabled sources…';try{await bridge.refresh();const response=await fetch('/api/catalogue/providers',{cache:'no-cache'});if(response.ok){const data=await response.json();bridge.core.preferences(data);bridge.registry=bridge.core.registry;render();}count.textContent+=' · Refresh requested';}
-  catch{count.textContent='Some sources could not refresh. Try again shortly.';}finally{refresh.disabled=false;}
+  refresh.disabled=true;count.textContent='Checking connection status…';try{await refreshProviderDirectory(bridge);render();updateReadable(true);count.textContent+=' · Connection status refreshed';}
+  catch{count.textContent='Connection status could not refresh. Your source choices are unchanged.';}finally{refresh.disabled=false;}
  });
  const credits=element('aside',undefined,'kuro-source-credits');credits.id='kuro-source-credits';credits.setAttribute('aria-label','Source and scanlation credits');credits.hidden=true;document.body.append(credits);
  window.addEventListener('kuro:active-chapter-changed',()=>{credits.hidden=true;});

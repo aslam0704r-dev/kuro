@@ -1902,7 +1902,7 @@
       } else {
         reason = "missing-connection";
         label = "Connection unavailable";
-        description = "No working KURO connection is installed for this source.";
+        description = "This source needs a hosted KURO connector before it can supply manga.";
       }
     } else if (provider.contentPolicy?.state !== "eligible") {
       reason = "rating-unsupported";

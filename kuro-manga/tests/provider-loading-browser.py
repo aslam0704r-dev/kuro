@@ -53,6 +53,19 @@ class ProviderLoadingBrowser(unittest.TestCase):
  def test_only_verified_sources_are_on_in_a_fresh_browser(self):
   self.ready('/providers');prefs=self.page.evaluate('__r(784).useSettingsStore.getState().sourcePreferences')
   remote={p['id']:prefs[p['id']] for p in fixture.registry['providers']};self.assertEqual(len(remote),1236);self.assertEqual(sorted(k for k,v in remote.items() if v['enabled']),['anilist','mangadex']);self.no_errors()
+ def test_directory_starts_with_usable_readers_and_search_still_finds_comix(self):
+  self.ready('/providers');expect(self.page.get_by_label('Provider availability',exact=True)).to_have_value('reader');expect(self.page.locator('[data-provider-id="mangadex"]')).to_be_visible();expect(self.page.locator('.kuro-provider-row')).to_have_count(1)
+  self.find('Comix');expect(self.page.locator('[data-provider-id="comix"]')).to_be_visible();expect(self.page.locator('[data-provider-id="comix"]').get_by_role('checkbox')).to_be_disabled();expect(self.page.get_by_label('Provider availability',exact=True)).to_have_value('all');self.find('');expect(self.page.locator('.kuro-provider-row')).to_have_count(1);self.no_errors()
+ def test_complete_directory_remains_accessible(self):
+  self.ready('/providers');self.page.get_by_role('button',name='Show all provider entries',exact=True).click();expect(self.page.get_by_label('Provider availability',exact=True)).to_have_value('all');expect(self.page.locator('#kuro-directory-count')).to_contain_text('1236 providers found');self.no_errors()
+ def test_refresh_connections_never_waits_for_feed_or_chapter_work(self):
+  self.ready('/providers');self.page.evaluate("()=>{KuroCatalogue.refresh=()=>{throw Error('Unexpected feed refresh')};KuroCatalogue.manager.feedAll=()=>{throw Error('Unexpected catalogue fetch')};}")
+  self.page.get_by_role('button',name='Refresh connections',exact=False).click();expect(self.page.locator('#kuro-directory-count')).to_contain_text('Connection status refreshed');expect(self.page.locator('[data-provider-id="mangadex"]').get_by_role('checkbox')).to_be_checked();self.no_errors()
+ def test_slow_application_bundle_does_not_permanently_disable_provider_controls(self):
+  def delayed(route):time.sleep(3.5);route.continue_()
+  self.context.route('**/_expo/static/js/web/entry-*.js',delayed);self.ready('/providers');expect(self.page.locator('[data-provider-id="mangadex"]')).to_be_visible();self.no_errors()
+ def test_available_reader_action_recovers_without_enabling_comix(self):
+  self.ready('/providers');self.page.evaluate('__r(784).useSettingsStore.getState().setAllSourcesEnabled(false)');self.page.get_by_role('link',name='Browse available manga',exact=True).click();self.page.wait_for_url('**/search?source=mangadex');self.page.wait_for_function('()=>window.KuroCatalogue?.ready');prefs=self.page.evaluate('__r(784).useSettingsStore.getState().sourcePreferences');self.assertTrue(prefs['mangadex']['enabled']);self.assertFalse(prefs['comix']['enabled']);self.no_errors()
  def test_unusable_connector_stays_disabled_and_off_after_reload(self):
   self.ready('/providers');self.find('Guya');row=self.page.locator('[data-provider-id="guya"]');checkbox=row.get_by_role('checkbox');expect(checkbox).to_be_disabled();expect(checkbox).not_to_be_checked();self.page.reload();self.page.wait_for_function('()=>window.KuroCatalogue?.ready');self.find('Guya');expect(self.page.locator('[data-provider-id="guya"]').get_by_role('checkbox')).not_to_be_checked();self.assertEqual(self.page.evaluate('__r(789).sourceManager.enabled(["guya"]).length'),0);self.no_errors()
  def test_external_platform_selection_is_not_presented_as_a_reader(self):
@@ -64,7 +77,7 @@ class ProviderLoadingBrowser(unittest.TestCase):
  def test_selecting_unavailable_sources_does_not_crash_home_or_send_requests_to_them(self):
   self.ready('/providers');self.page.evaluate('__r(784).useSettingsStore.getState().setAllSourcesEnabled(true)');self.page.goto(fixture.origin+'/');self.page.wait_for_function('()=>window.KuroCatalogue?.ready');self.page.wait_for_timeout(1200);self.no_errors();self.assertFalse(any('/provider/guya/' in path or '/provider/mangaplus/' in path for path in self.requests))
  def cold_page(self,path):
-  self.cold=True;self.page_calls=[];start=time.monotonic();self.ready(path);expect(self.page.get_by_text('Quick Adventure',exact=True).first).to_be_visible(timeout=6000);self.assertIn(2,self.page_calls);covers=self.page.locator('img[src*="/api/catalogue/cover"]').evaluate_all('(images)=>images.map(image=>image.src)');self.assertGreater(len(covers),0);self.assertTrue(all('00000003-1111-4111-8111-111111111111' in cover for cover in covers));self.no_errors();print('Cold fair queue:',path,round((time.monotonic()-start)*1000),'ms; short title visible while both long chapters remain pending')
+  self.cold=True;self.page_calls=[];start=time.monotonic();self.ready(path);expect(self.page.get_by_text('Quick Adventure',exact=True).first).to_be_visible(timeout=6000);self.assertIn(2,self.page_calls);expect(self.page.locator('img[src*="/api/catalogue/cover"]').first).to_be_visible();covers=self.page.locator('img[src*="/api/catalogue/cover"]').evaluate_all('(images)=>images.map(image=>image.src)');self.assertGreater(len(covers),0);self.assertTrue(all('00000003-1111-4111-8111-111111111111' in cover for cover in covers));self.no_errors();print('Cold fair queue:',path,round((time.monotonic()-start)*1000),'ms; short title visible while both long chapters remain pending')
  def test_home_short_title_appears_while_earlier_long_chapters_are_pending(self):self.cold_page('/')
  def test_search_short_title_appears_while_earlier_long_chapters_are_pending(self):self.cold_page('/search')
  def test_mobile_provider_switches_fit_and_can_be_used(self):
