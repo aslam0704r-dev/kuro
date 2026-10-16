@@ -20,12 +20,13 @@ import {withCatalogueDeadline,catalogueSignal,catalogueCleanup} from './deadline
 import {CONTENT_POLICY_VERSION,RATING_TTL_MS,classifyMangaDex,providerContentPolicy,forbiddenText,blockedIdentity} from '../../client/content-policy.mjs';
 import {createContentService,requireContentProvider} from './content.mjs';
 import {createReadableLedger,createChapterValidator} from './readable.mjs';
+import {createTitleQualifier} from './qualify.mjs';
 
 const digest=value=>createHash('sha256').update(value).digest('hex');
 const upstreamLimits={anilist:25,jikan:50,shikimori:60,mangabaka:25,guya:60,mangadex:240};
 export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=fetchPublic,clock=Date.now,excludedGroups=[],seedInventory=[],auditCoverage=null,pageDeadlineMs=20000,validation}){
  const cache=createCatalogueCache(coordinator,clock),tickets=ticketKey?createTickets(ticketKey):null;
- const adapters=new Map(),images=new Map(),upstreamQueues=new Map();let imageBytes=0,activeImages=0;const pending=[];
+ const adapters=new Map(),images=new Map(),imageLoads=new Map(),upstreamQueues=new Map();let imageBytes=0,activeImages=0;const pending=[];
  async function pace(id){
   const queue=upstreamQueues.get(id)||{tail:Promise.resolve(),last:0,count:0};upstreamQueues.set(id,queue);
   if(queue.count>=8)throw sourceError('Source is busy. Retry shortly.',503);queue.count++;
@@ -67,7 +68,9 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
  }
  async function image(id,url,policy=imagePolicy(id),transform,invalidatedAt=0){
   const key=id+':'+digest(JSON.stringify([url,transform])),hit=images.get(key);if(hit&&hit.expires>clock()&&hit.validatedAt>invalidatedAt)return hit;
-  return withImageSlot(async()=>{
+  const scope=catalogueSignal()||null,bucket=imageLoads.get(scope)||new Map();imageLoads.set(scope,bucket);
+  const loadKey=key+':'+invalidatedAt;if(bucket.has(loadKey))return bucket.get(loadKey);
+  const loading=withImageSlot(async()=>{
    const again=images.get(key);if(again&&again.expires>clock()&&again.validatedAt>invalidatedAt)return again;
    if(!await coordinator.budget('image:'+id,360,60000))throw sourceError('Source image rate limit reached',429,60);
    const res=await fetcher(url,policy,{accept:'image/jpeg,image/png,image/webp,image/avif,image/gif',maxBytes:8*1024*1024,timeoutMs:12000,signal:catalogueSignal()});
@@ -82,7 +85,7 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
    if(images.has(key)){imageBytes-=images.get(key).body.length;images.delete(key);}
    while(images.size&&(imageBytes+row.body.length>32*1024*1024||images.size>=128)){const first=images.keys().next().value;imageBytes-=images.get(first).body.length;images.delete(first);}
    images.set(key,row);imageBytes+=row.body.length;return row;
-  });
+  }).finally(()=>{bucket.delete(loadKey);if(!bucket.size&&imageLoads.get(scope)===bucket)imageLoads.delete(scope);});bucket.set(loadKey,loading);return loading;
  }
  async function health(id,update){const previous=await coordinator.get('health:'+id)||{};await coordinator.set('health:'+id,{...previous,...update,checkedAt:clock()},3600000).catch(()=>{});}
  const service={
@@ -117,7 +120,7 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
    return reply;
   },
   async directory(){const ids=installedProviders.map(p=>'health:'+p.id),values=coordinator.getMany?await coordinator.getMany(ids):await Promise.all(ids.map(id=>coordinator.get(id))),health=new Map(installedProviders.map((p,i)=>[p.id,values[i]]));
-   return {...registry,contentPolicy:{version:CONTENT_POLICY_VERSION,strict:true,unknown:'blocked'},refreshIntervalMs:300000,usageReady:licensingAllowed('mangabaka',usage),providers:registry.providers.map(p=>({...p,contentPolicy:providerContentPolicy(p),available:providerContentPolicy(p).state==='eligible'&&licensingAllowed(p.id,usage),health:health.get(p.id)||null}))};},
+   return {...registry,contentPolicy:{version:CONTENT_POLICY_VERSION,strict:true,unknown:'blocked'},refreshIntervalMs:300000,usageReady:licensingAllowed('mangabaka',usage),providers:registry.providers.map(p=>({...p,...p.id==='mangadex'?{qualificationVersion:1}:{},contentPolicy:providerContentPolicy(p),available:providerContentPolicy(p).state==='eligible'&&licensingAllowed(p.id,usage),health:health.get(p.id)||null}))};},
   contentCheck:(provider,id,chapter)=>content.check(provider,id,chapter),
   async readableCheck(provider,id){if(provider!=='mangadex')throw sourceError('This provider does not supply approved reading pages',409);requireLicense(provider);if(!tickets)throw sourceError('Configure the server page ticket key using the existing account encryption key.',503);await service.contentCheck(provider,id);const asOf=clock(),rows=await readable.getMany([id]),row=rows.get(id);return {ready:!!row,asOf,inventoryRevision:rows.revision,...row?{chapterId:row.chapterId,checkedAt:row.checkedAt,expiresAt:row.expiresAt,validation:'complete-chapter',validatedPages:row.validatedPages,pageCount:row.pageCount}:{}};},
   async readableSummary(){const summary=await readable.summary(),readingConfigured=!!tickets&&licensingAllowed('mangadex',usage);return {...summary,...!readingConfigured?{uniqueCount:0,verifiedEditions:0,duplicatesGrouped:0,oldestCheckAt:null,latestCheckAt:null}:{},readingConfigured,auditCoverage};},
@@ -176,7 +179,8 @@ export function createCatalogueService({coordinator,ticketKey,usage='',fetcher=f
    },Math.min(42000,Math.max(1,deadlineMs)));}catch(error){if(/deadline/i.test(error.message))deadlineExceeded=true;else throw error;}
    return {checkedAt:clock(),scope:'rotating batch of up to 6 public feeds; all feeds also refresh on demand',totalSources:sources.length,scheduled,deadlineExceeded,reports:[...reports]};
   }
- };return service;
+ };const qualify=createTitleQualifier({coordinator,clock,content,readable,call:(...args)=>service.call(...args),deadlineMs:pageDeadlineMs});
+ service.qualify=(id,manga,origin)=>{requireLicense(id);if(!tickets)throw sourceError('Configure the server page ticket key using the existing account encryption key.',503);return qualify(id,manga,origin);};return service;
  async function prepareTrusted(id,manifest,origin){
    const provider=providerFor(id);requireContentProvider(provider);requireLicense(id);if(!provider.readable)throw sourceError('Provider does not supply KURO reading pages',409);
    if(!tickets)throw sourceError('Configure the server page ticket key using the existing account encryption key.',503);

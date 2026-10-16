@@ -37,6 +37,11 @@ export function createCatalogueRoutes(service,{origin=accountOrigin,cronSecret=p
     if([...url.searchParams.keys()].some(k=>!['provider','id'].includes(k)))throw sourceError('Send only manga identity',400);
     send(res,200,await service.readableCheck(url.searchParams.get('provider'),url.searchParams.get('id')));return true;
    }
+   if(url.pathname==='/api/catalogue/readable/qualify'){
+    if(req.method!=='GET')throw sourceError('Method not allowed',405);
+    if([...url.searchParams.keys()].some(k=>!['provider','id'].includes(k)))throw sourceError('Send only manga identity',400);
+    send(res,200,await service.qualify(url.searchParams.get('provider'),url.searchParams.get('id'),origin(req)));return true;
+   }
    if(url.pathname==='/api/catalogue/providers'){
     if(req.method!=='GET')throw sourceError('Method not allowed',405);send(res,200,await service.directory());return true;
    }
