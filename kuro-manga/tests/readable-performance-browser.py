@@ -26,6 +26,9 @@ class CataloguePerformanceBrowser(unittest.TestCase):
     raw['kuroReadability'].update(getattr(self,'proof_patch',{}))
     route.fulfill(json={'result':'ok','data':[raw],'limit':20,'offset':0,'total':1});return
    if upstream.path.endswith('/feed') and getattr(self,'reject_fallback',False):route.fulfill(json={'result':'ok','data':[],'total':0});return
+  if parsed.path.endswith('/readable/qualify'):
+   self.readiness_calls.append(parsed.query);now=int(time.time()*1000)
+   route.fulfill(json={'ready':False,'pending':False,'policyVersion':'strict-1','manga':fixture.manga(),'asOf':now,'inventoryRevision':0});return
   if parsed.path.endswith('/readable/check'):
    self.readiness_calls.append(parsed.query);route.fulfill(json={'ready':False});return
   return fixture.StrictContentBrowser.api(self,route)

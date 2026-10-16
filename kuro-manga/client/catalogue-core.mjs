@@ -28,19 +28,19 @@ export function createCatalogueCore(providers){
   if(action==='pages') {
    // A long chapter is validated across bounded hosted calls. Never forward a
    // pending manifest to the reader or let an old sampled result qualify.
-   for(let attempt=0;attempt<260;attempt++) {
-    const value=await requestOnce(id,action,params);
+   const started=Date.now();for(let attempt=0;attempt<40&&Date.now()-started<60000;attempt++) {
+    const value=await requestOnce(id,action,params,Math.min(25000,Math.max(1,60000-(Date.now()-started))));
     if(completeManifest(value)) {manifests.set(params.id,value);while(manifests.size>64)manifests.delete(manifests.keys().next().value);emitCredits();return value;}
     if(value?.pending!==true||value.verified!==false||value.pages?.length||value.stage!=='preparing'&&(!Number.isInteger(value.pageCount)||value.pageCount<1||value.validatedPages>=value.pageCount))throw new Error('The complete chapter could not be verified.');
-    await new Promise(resolve=>setTimeout(resolve,600));
+    await new Promise(resolve=>setTimeout(resolve,100));
    }throw new Error('Chapter verification is still pending. Retry shortly.');
   }
   return requestOnce(id,action,params);
  }
- async function requestOnce(id,action,params={}){
+ async function requestOnce(id,action,params={},timeoutMs=25000){
   if((sourceRetryAt.get(id)||0)>Date.now()){const error=new Error('Source rate limit reached. Retry later.');error.status=429;error.retryAt=sourceRetryAt.get(id);throw error;}
   const query=new URLSearchParams();for(const [name,value]of Object.entries(params))if(value!==undefined)query.set(name,typeof value==='object'?JSON.stringify(value):String(value));
-  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),25000);try{
+  const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),timeoutMs);try{
    const response=await fetch('/api/catalogue/provider/'+id+'/'+action+'?'+query,{credentials:'same-origin',headers:{Accept:'application/json'},signal:controller.signal});
    const data=await jsonBody(response);if(!response.ok){const error=new Error(data.error||'Provider unavailable. Retry later.');error.status=response.status;if(response.status===429||response.status===503){error.retryAt=Math.max(sourceRetryAt.get(id)||0,retryDate(response.headers?.get('Retry-After')));sourceRetryAt.set(id,error.retryAt);}throw error;}
    if(action==='pages'&&data.result?.contentApproval?.version!==CONTENT_POLICY_VERSION)throw new Error(CONTENT_MESSAGE);return data.result;
@@ -61,7 +61,7 @@ export function createCatalogueCore(providers){
     if(!ready){const chapters=await adapter.getChapterList(manga.id),cost=chapter=>Number.isInteger(chapter.pages)&&chapter.pages>0?chapter.pages:Infinity;
      // Any complete chapter qualifies a title. Check the smaller candidates
      // first; the reader's chapter list and selected chapter stay unchanged.
-     for(const chapter of [...chapters].sort((a,b)=>cost(a)-cost(b)).slice(0,10)){try{const manifest=await adapter.getChapterPages(chapter.id);ready=completeManifest(manifest,manga.sourceId==='local');if(ready){expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);observedAt=manifest.readabilityAsOf;inventoryRevision=manifest.inventoryRevision||0;break;}}catch(e){error=e.message;}}}
+     const verificationStarted=Date.now();for(const chapter of [...chapters].sort((a,b)=>cost(a)-cost(b)).slice(0,10)){if(Date.now()-verificationStarted>=60000){error='Chapter verification is still pending. Retry shortly.';break;}try{const manifest=await adapter.getChapterPages(chapter.id);ready=completeManifest(manifest,manga.sourceId==='local');if(ready){expiresAt=Math.min(Date.now()+120000,manifest.expiresAt||Date.now()+120000);observedAt=manifest.readabilityAsOf;inventoryRevision=manifest.inventoryRevision||0;break;}}catch(e){error=e.message;if(temporaryFailure(e)||/still pending/i.test(e.message))break;}}}
    }
    if(ready)await safety.verify(manga,undefined,true);
   }catch(e){ready=false;error=e.message;}
@@ -72,6 +72,7 @@ export function createCatalogueCore(providers){
   })();record.promise=task;checks.set(key,record);task.finally(()=>{if(checks.get(key)===record)checks.delete(key);});return task;
  }
  async function checkListing(manga){
+  if(core.registry.providers.some(p=>p.id===manga.sourceId&&p.qualificationVersion===1))return checkListingFast(manga);
   const hit=cached(manga.id);if(hit){if(hit.ready)try{await safety.verify(manga);}catch{return {ready:false,checkedAt:Date.now(),expiresAt:Date.now()+120000,error:CONTENT_MESSAGE};}if(cached(manga.id)===hit)return hit;}
   if(manga.sourceId!=='mangadex')return check(manga);
   if((sourceRetryAt.get(manga.sourceId)||0)>Date.now())return {pending:true,retryAt:sourceRetryAt.get(manga.sourceId)};
@@ -109,6 +110,35 @@ export function createCatalogueCore(providers){
    if(olderSnapshot(manga.id,at,revision))return {obsolete:true};rememberSnapshot(manga.id,at,ready,revision);
    const result={ready:ready&&observation.expiresAt>Date.now(),checkedAt:Date.now(),expiresAt:ready?Math.min(Date.now()+120000,observation.expiresAt):Date.now()+120000,error};readiness.set(manga.id,result);while(readiness.size>2000)readiness.delete(readiness.keys().next().value);
    core.lastCheck={...result,id:manga.id};safety.changed();if(result.ready&&typeof window!=='undefined')window.dispatchEvent(new Event('kuro:readable-updated'));return result;
+  })();record.promise=task;checks.set(key,record);task.finally(()=>{if(checks.get(key)===record)checks.delete(key);});return task;
+ }
+ async function checkListingFast(manga){
+  const hit=cached(manga.id);if(hit){if(hit.ready)try{await safety.verify(manga);}catch{return {ready:false,checkedAt:Date.now(),expiresAt:Date.now()+120000,error:CONTENT_MESSAGE};}if(cached(manga.id)===hit)return hit;}
+  const retryAt=sourceRetryAt.get(manga.sourceId)||0;if(retryAt>Date.now())return {pending:true,retryAt};
+  const started=epoch,key='qualify:'+started+':'+manga.id;if(checks.has(key))return checks.get(key).promise;
+  const record={id:manga.id,invalidated:false,promise:null},obsolete=()=>started!==epoch||record.invalidated;
+  const task=(async()=>{
+   try{
+    const response=await fetch('/api/catalogue/readable/qualify?'+new URLSearchParams({provider:manga.sourceId,id:manga.id}),{credentials:'same-origin',cache:'no-store',headers:{Accept:'application/json'},signal:AbortSignal.timeout(25000)}),value=await jsonBody(response);
+    if(!response.ok){const error=new Error(value.error||'Source check is unavailable.');error.status=response.status;if([429,503].includes(response.status)){error.retryAt=Math.max(sourceRetryAt.get(manga.sourceId)||0,retryDate(response.headers?.get('Retry-After')));sourceRetryAt.set(manga.sourceId,error.retryAt);}throw error;}
+    if(obsolete())return {obsolete:true};
+    if(value.policyVersion!==CONTENT_POLICY_VERSION)throw new Error('Source returned an invalid content policy.');
+    if(value.pending===true&&value.ready===false)return {pending:true,validatedPages:value.validatedPages,pageCount:value.pageCount};
+    if(value.manga?.id!==manga.id||value.manga?.sourceId!==manga.sourceId||!safety.remember(value.manga))throw new Error(CONTENT_MESSAGE);
+    const now=Date.now(),ready=value.ready===true;
+    if(ready&&(!/^mangadex:[0-9a-f-]{36}$/i.test(value.chapterId||'')||value.validation!=='complete-chapter'||!Number.isInteger(value.validatedPages)||value.validatedPages<1||value.validatedPages>500||value.validatedPages!==value.pageCount||!Number.isFinite(value.checkedAt)||value.checkedAt>now+5000||!Number.isFinite(value.expiresAt)||value.expiresAt<=now||value.expiresAt>value.checkedAt+21600000))throw new Error('The complete chapter could not be verified.');
+    if(value.manifest){checkedManifest(value.manifest,value.chapterId,location.origin);if(value.manifest.contentApproval?.mangaId!==manga.id)throw new Error('Chapter does not belong to this title.');manifests.set(value.chapterId,value.manifest);while(manifests.size>64)manifests.delete(manifests.keys().next().value);emitCredits();}
+    if(!Number.isFinite(value.asOf)||!Number.isSafeInteger(value.inventoryRevision)||value.inventoryRevision<0)throw new Error('Invalid readability snapshot.');
+    if(olderSnapshot(manga.id,value.asOf,value.inventoryRevision))return {obsolete:true};rememberSnapshot(manga.id,value.asOf,ready,value.inventoryRevision);
+    const result={ready,checkedAt:now,expiresAt:ready?Math.min(now+120000,value.expiresAt):now+120000,error:value.error};readiness.set(manga.id,result);while(readiness.size>2000)readiness.delete(readiness.keys().next().value);core.lastCheck={...result,id:manga.id};safety.changed();
+    if(ready&&typeof window!=='undefined')window.dispatchEvent(new Event('kuro:readable-updated'));return result;
+   }catch(error){
+    if(obsolete())return {obsolete:true};
+    if(temporaryFailure(error)){const retryAt=Math.max(sourceRetryAt.get(manga.sourceId)||0,error.retryAt||Date.now()+30000);sourceRetryAt.set(manga.sourceId,retryAt);return {pending:true,retryAt,error:error.message};}
+    // Malformed/incomplete proofs never become visible, even if their rating
+    // alone is valid. A deliberate retry can ask the canonical service again.
+    const result={ready:false,checkedAt:Date.now(),expiresAt:Date.now()+120000,error:error.message};readiness.set(manga.id,result);safety.changed();return result;
+   }
   })();record.promise=task;checks.set(key,record);task.finally(()=>{if(checks.get(key)===record)checks.delete(key);});return task;
  }
  const listing=createListingQueue({step:checkListing,isVisible:()=>typeof document==='undefined'||!document.hidden});
@@ -210,7 +240,7 @@ export function createCatalogueCore(providers){
   };}
   if(id===1595){const original=api.useChapterPages;api.useChapterPages=function(chapter){const query=original(chapter);if(activeChapter!==chapter){activeChapter=chapter;queueMicrotask(()=>window.dispatchEvent(new CustomEvent('kuro:active-chapter-changed',{detail:chapter})));}if(query.data?.verified){manifests.set(chapter,query.data);queueMicrotask(emitCredits);}return query;};}
  }
- const core={registry,initialize,local,safety,notify,resume:()=>{listing.resume();for(const fn of subscribers)fn(false);},preferences,check,checkListing,checkChapter,cached,sourceState:id=>providerState(core.registry.providers.find(p=>p.id===id),store?.getState().sourcePreferences[id],!!manager?.get(id)),replayCredits:emitCredits,get manager(){return manager;},get store(){return store;},get epoch(){return epoch;},lastCheck:null};safety.configureReadability(check,cached,checkChapter);return core;
+ const core={registry,initialize,local,safety,notify,resume:()=>{listing.resume();for(const fn of subscribers)fn(false);},preferences,check,checkListing,checkChapter,cached,sourceState:id=>providerState(core.registry.providers.find(p=>p.id===id),store?.getState().sourcePreferences[id],!!manager?.get(id)),replayCredits:emitCredits,get manager(){return manager;},get store(){return store;},get epoch(){return epoch;},lastCheck:null};safety.configureReadability(check,cached,checkChapter,id=>readiness.delete(id));return core;
 }
 function installBootstrap(core){
  let define;const ids=new Set([789,784,1706,790,794,870,791,1342,875,1389,1388,1595,1597,861,862,1249,1660,1536,1602,1705,1722,873,1700,1703,1697,1341,1670,1687]);

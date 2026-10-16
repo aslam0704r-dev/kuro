@@ -67,16 +67,27 @@ export function createRedisCoordinator(url,token,prefix='kuro:catalogue:v1'){
  };
 }
 export function createCatalogueCache(coordinator,clock=Date.now){
- const inflight=new Map();
+ const inflight=new Map(),local=new Map();let localBytes=0;
+ // Reuse fresh immutable upstream/operation results inside a warm function.
+ // Inventory and revocation markers always bypass this cache. Never extend a
+ // shared row's original expiry or retain stale content-rating evidence.
+ function remember(key,row){
+  const bytes=Buffer.byteLength(JSON.stringify(row));if(bytes>512*1024)return;
+  if(local.has(key)){localBytes-=local.get(key).bytes;local.delete(key);}
+  for(const [name,entry]of local)if(entry.row.expires<=clock()){local.delete(name);localBytes-=entry.bytes;}
+  while(local.size&&(local.size>=240||localBytes+bytes>4*1024*1024)){const name=local.keys().next().value;localBytes-=local.get(name).bytes;local.delete(name);}
+  local.set(key,{row:structuredClone(row),bytes});localBytes+=bytes;
+ }
  async function load(key,ttl,task){
-  const cached=await coordinator.get('data:'+key);if(cached&&cached.expires>clock())return {...cached,stale:false};
+  const hit=local.get(key);if(hit?.row.expires>clock())return {...structuredClone(hit.row),stale:false};
+  const cached=await coordinator.get('data:'+key);if(cached&&cached.expires>clock()){remember(key,cached);return {...cached,stale:false};}
   return coordinator.lock(key,async()=>{
-   const cached=await coordinator.get('data:'+key);if(cached&&cached.expires>clock())return {...cached,stale:false};
+   const cached=await coordinator.get('data:'+key);if(cached&&cached.expires>clock()){remember(key,cached);return {...cached,stale:false};}
    const negative=await coordinator.get('failure:'+key);if(negative)throw sourceError(negative.message,negative.status,negative.retryAfter);
    try{const value=await task();const row={value,checkedAt:clock(),expires:clock()+ttl};
     // Large HTML inputs can be parsed into a small catalogue result without
     // turning the shared cache into storage for entire remote sites.
-    if(Buffer.byteLength(JSON.stringify(row))<=512*1024)await coordinator.set('data:'+key,row,ttl);return {...row,stale:false};}
+    if(Buffer.byteLength(JSON.stringify(row))<=512*1024){await coordinator.set('data:'+key,row,ttl);remember(key,row);}return {...row,stale:false};}
    catch(error){const retryAfter=Math.min(3600,Math.max(30,error.retryAfter||60));
     if(catalogueSignal()?.aborted)throw sourceError('Catalogue refresh deadline reached',503);
     if(error.status!==503)await coordinator.set('failure:'+key,{message:error.status===429?'Source rate limit reached':'Source temporarily unavailable. Retry later.',status:error.status||502,retryAfter},retryAfter*1000).catch(()=>{});
