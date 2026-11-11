@@ -1,0 +1,17 @@
+{
+  "name": "kuro-ai-studio-workspace",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "kuro-manga"
+  ],
+  "scripts": {
+    "dev": "npm --prefix kuro-manga start",
+    "start": "npm --prefix kuro-manga start",
+    "build": "npm --prefix kuro-manga run build",
+    "test": "npm --prefix kuro-manga test"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
